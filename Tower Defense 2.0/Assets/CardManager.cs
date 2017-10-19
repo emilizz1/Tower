@@ -9,26 +9,42 @@ public class CardManager : MonoBehaviour {
 
     Cards[] cards;
     Money money;
-
-	// Use this for initialization
-	void Start () {
+    Toggle toggle;
+    GameObject prefab;
+    bool objectSelected = false;
+    
+    // Use this for initialization
+    void Start () {
         cards = GetComponentsInChildren<Cards>();
         money = FindObjectOfType<Money>();
+        toggle = FindObjectOfType<Toggle>();
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+    public GameObject GetPrefab()
+    {
+        return prefab;
+    }
 
     public void CardSelected(int cardSelected)
     {
-       
-        SetNewCards();
+        objectSelected = true;
+        prefab = cards[cardSelected].GetPrefab();
         GetMoney(cardSelected);
-
+        toggle.isOn = false;
+        SetNewCards();
         gameObject.SetActive(false);
     }
+
+    public bool GetObjectSelected()
+    {
+        return objectSelected;
+    }
+
+    public void ChangeObjectSelected()
+    {
+        objectSelected = false;
+    }
+
 
     void SetNewCards()
     {
