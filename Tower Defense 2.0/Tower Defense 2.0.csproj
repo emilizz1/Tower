@@ -87,17 +87,21 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\CameraArm.cs" />
-    <Compile Include="Assets\Card.cs" />
-    <Compile Include="Assets\CardHolder.cs" />
-    <Compile Include="Assets\CardManager.cs" />
-    <Compile Include="Assets\Cards.cs" />
-    <Compile Include="Assets\Friendly.cs" />
-    <Compile Include="Assets\Money.cs" />
-    <Compile Include="Assets\PlacementManager.cs" />
+    <Compile Include="Assets\Camera &amp; UI\CameraArm.cs" />
+    <Compile Include="Assets\Camera &amp; UI\Money.cs" />
+    <Compile Include="Assets\Camera &amp; UI\PlacementManager.cs" />
+    <Compile Include="Assets\Cards\Card.cs" />
+    <Compile Include="Assets\Cards\CardHolder.cs" />
+    <Compile Include="Assets\Cards\CardManager.cs" />
+    <Compile Include="Assets\Cards\Cards.cs" />
+    <Compile Include="Assets\Characters\Character.cs" />
+    <Compile Include="Assets\Characters\EnemyAI.cs" />
+    <Compile Include="Assets\Characters\Friendly.cs" />
+    <Compile Include="Assets\Characters\HealthSystem.cs" />
+    <Compile Include="Assets\Characters\WaypointContainer.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Asset Packs - For Students\SimpleFX - Synty\Materials\UnlitVertexColour_Alpha.shader" />
+    <None Include="Assets\Enviroment\SimpleFX - Synty\Materials\UnlitVertexColour_Alpha.shader" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
