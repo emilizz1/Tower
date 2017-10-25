@@ -6,14 +6,11 @@ using UnityEngine.UI;
 public class Cards : MonoBehaviour {
 
     [SerializeField] Card card;
-
-    Text text;
+    
     RawImage rawImage;
-
-    // Use this for initialization
-    void Start () {
-        text = GetComponentInChildren<Text>();
-        text.text = card.GetCost().ToString();
+    
+    void Start ()
+    {
         rawImage = GetComponentInChildren<RawImage>();
         rawImage.texture = card.GetTexture();
 	}
@@ -27,11 +24,20 @@ public class Cards : MonoBehaviour {
     {
         return card.GetCost();
     }
-    
+
+    public GameObject GetEnemyPrefab()
+    {
+        return card.GetEnemyPrefab();
+    }
+
+    public float GetEnemyAmount()
+    {
+        return card.GetEnemyAmount();
+    }
+
     public void SetCard(Card cardToSet)
     {
         card = cardToSet;
-        text.text = card.GetCost().ToString();
         rawImage.texture = card.GetTexture();
     }
 }

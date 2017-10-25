@@ -12,10 +12,12 @@ public class PlacementManager : MonoBehaviour
     float maxRaycasterDepth = 100f;
     Friendly child = null;
     RaycastHit hitInfo;
+    EnemySpawner enemySpawner;
     
 
     private void Start()
     {
+        enemySpawner = GetComponent<EnemySpawner>();
         cardmanager = FindObjectOfType<CardManager>();
     }
 
@@ -36,6 +38,7 @@ public class PlacementManager : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             child.transform.parent = parent.transform;
+            enemySpawner.SpawnEnemies();
         }
         else if (Input.GetKeyDown("q"))
         {

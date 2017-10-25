@@ -95,10 +95,13 @@
     <Compile Include="Assets\Cards\CardManager.cs" />
     <Compile Include="Assets\Cards\Cards.cs" />
     <Compile Include="Assets\Characters\Character.cs" />
-    <Compile Include="Assets\Characters\EnemyAI.cs" />
-    <Compile Include="Assets\Characters\Friendly.cs" />
+    <Compile Include="Assets\Characters\Enemies\EnemyAI.cs" />
+    <Compile Include="Assets\Characters\friends\Friendly.cs" />
     <Compile Include="Assets\Characters\HealthSystem.cs" />
     <Compile Include="Assets\Characters\WaypointContainer.cs" />
+    <Compile Include="Assets\Cost.cs" />
+    <Compile Include="Assets\EnemySpawner.cs" />
+    <Compile Include="Assets\EnemyText.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Enviroment\SimpleFX - Synty\Materials\UnlitVertexColour_Alpha.shader" />
