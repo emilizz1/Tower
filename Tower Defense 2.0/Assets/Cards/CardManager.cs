@@ -19,7 +19,13 @@ public class CardManager : MonoBehaviour {
         cards = GetComponentsInChildren<Cards>();
         money = FindObjectOfType<Money>();
         toggle = FindObjectOfType<Toggle>();
+        toggle.isOn = true;
         SetNewCards();
+    }
+
+    public bool GetToggleState()
+    {
+        return toggle.isOn;
     }
 
     public GameObject GetPrefab()

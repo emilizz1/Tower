@@ -7,8 +7,7 @@ using UnityEngine.AI;
 public class Character : MonoBehaviour
 {
     [Header("Animator Settings")]
-    [SerializeField]
-    RuntimeAnimatorController animatorController;
+    [SerializeField] RuntimeAnimatorController animatorController;
     [SerializeField] AnimatorOverrideController animatorOverrideController;
     [SerializeField] Avatar characterAvatar;
 
@@ -17,14 +16,12 @@ public class Character : MonoBehaviour
     float audioSourceSpatialBlend = 0.5f;
 
     [Header("Captule Collider")]
-    [SerializeField]
-    Vector3 colliderCenter;
+    [SerializeField] Vector3 colliderCenter;
     [SerializeField] float collidererRadius;
     [SerializeField] float colliderHeight;
 
     [Header("Movement")]
-    [SerializeField]
-    float moveSpeedMulyiplier = 1f;
+    [SerializeField] float moveSpeedMulyiplier = 1f;
     [SerializeField] float animationSpeedMultiplier = 1f;
     [SerializeField] float movingTurnSpeed = 360;
     [SerializeField] float stationaryTurnSpeed = 180;
@@ -71,7 +68,7 @@ public class Character : MonoBehaviour
         animator.runtimeAnimatorController = animatorController;
         animator.avatar = characterAvatar;
     }
-    
+
     void Update()
     {
         if (navMeshAgent.remainingDistance > navMeshAgent.stoppingDistance && isAlive)

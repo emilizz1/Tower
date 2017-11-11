@@ -3,22 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HealthSystem : MonoBehaviour {
-
+public class HealthSystem : MonoBehaviour
+{
     [SerializeField] float maxHealthPoints = 100f;
     [SerializeField] Image healthBar;
-    [SerializeField] float deathVanishSeconds = 2f;
+    [SerializeField] float deathVanishSeconds = 1f;
 
+    string Death_Trigger = "Death";
     float currentHealthPoints = 0;
+    Animator animator;
     public float healthAsPercentage { get { return currentHealthPoints / maxHealthPoints; } }
-
-    // Use this for initialization
-    void Start () {
+    Character character;
+    
+    void Start ()
+    {
         currentHealthPoints = maxHealthPoints;
+        animator = GetComponent<Animator>();
+        character = GetComponent<Character>();
 	}
 	
-	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
         UpdateHealthBar();
 	}
 
@@ -42,10 +47,9 @@ public class HealthSystem : MonoBehaviour {
 
     private IEnumerator KillCharacter()
     {
-        //character.Kill();
-        //animator.SetTrigger(Death_Trigger);
+        character.Kill();
+        animator.SetTrigger(Death_Trigger);
         Destroy(gameObject, deathVanishSeconds);
         yield return new WaitForSecondsRealtime(deathVanishSeconds);
-        
     }
 }

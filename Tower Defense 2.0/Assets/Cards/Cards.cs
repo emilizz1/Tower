@@ -12,7 +12,6 @@ public class Cards : MonoBehaviour {
     void Start ()
     {
         rawImage = GetComponentInChildren<RawImage>();
-        rawImage.texture = card.GetTexture();
 	}
 
     public GameObject GetPrefab()
