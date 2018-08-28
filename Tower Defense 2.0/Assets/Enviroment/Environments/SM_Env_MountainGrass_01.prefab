@@ -10,6 +10,7 @@ GameObject:
   - component: {fileID: 405988}
   - component: {fileID: 3382312}
   - component: {fileID: 2347594}
+  - component: {fileID: 65842638846418660}
   m_Layer: 0
   m_Name: SM_Env_MountainGrass_01
   m_TagString: Untagged
@@ -23,13 +24,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 167684}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0.041893803, y: -0.82547104, z: -0.028530603, w: 0.5621641}
+  m_LocalPosition: {x: -31.3, y: -5, z: -50.3}
+  m_LocalScale: {x: 0.90000075, y: 0.9, z: 0.90000075}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -111.489006, z: -5.8110003}
 --- !u!23 &2347594
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -80,3 +81,15 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 167684}
   m_IsPrefabParent: 1
+--- !u!65 &65842638846418660
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 167684}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 39.35031, y: 2.9882917, z: 38.944656}
+  m_Center: {x: -0.000015258789, y: 1.4941459, z: 0}

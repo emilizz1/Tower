@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class SelectManager : MonoBehaviour
 {
-    PlacementManager raycast;
+    [SerializeField] ParticleSystem psBuildings;
+    [SerializeField] ParticleSystem psUnit;
+
     CardManager cardManager;
     RaycastHit hitInfo;
     Buildings selectedBuilding;
@@ -12,49 +14,36 @@ public class SelectManager : MonoBehaviour
 
     void Start()
     {
-        raycast = GetComponent<PlacementManager>();
-        cardManager = FindObjectOfType<CardManager>();
-    }
-
-    void Update()
-    {
-        if (!cardManager.GetToggleState() && Input.GetMouseButtonDown(0))
-        {
-            checkForSelected();
-        }
-        else if (!cardManager.GetToggleState() && selectedCharacter != null && Input.GetMouseButtonDown(1))
-        {
-            MoveSelectedCharacter();
-        }
-    }
-
-    void MoveSelectedCharacter()
-    {
-        hitInfo = raycast.GetHitInfo();
-        selectedCharacter.SetDestination(hitInfo.point);
+        cardManager = FindObjectOfType<CardManager>(); 
     }
 
     void checkForSelected()
     {
-        hitInfo = raycast.GetHitInfo();
         if (hitInfo.transform.GetComponent<Buildings>() && (selectedBuilding != hitInfo.transform.GetComponent<Buildings>()))
         {
-            Unselect();
+            UnselectBuilding();
             selectedBuilding = hitInfo.transform.GetComponent<Buildings>();
-            selectedBuilding.Selected();
+            Instantiate(psBuildings, selectedBuilding.transform.position, psBuildings.transform.rotation,selectedBuilding.transform);
+            if (selectedCharacter!= null && selectedCharacter.GetComponentInChildren<ParticleSystem>())
+            {
+                Destroy(selectedCharacter.GetComponentInChildren<ParticleSystem>());
+            }
+            selectedCharacter = null;
         }
         else if (hitInfo.transform.GetComponent<FriendlyAI>() && (selectedCharacter != hitInfo.transform.GetComponent<Character>()))
         {
             selectedCharacter = hitInfo.transform.GetComponent<Character>();
-            Unselect();
+            Instantiate(psUnit, selectedCharacter.transform.position, psUnit.transform.rotation, selectedCharacter.transform);
+            UnselectBuilding();
         }
     }
 
-    void Unselect()
+    void UnselectBuilding()
     {
         if (selectedBuilding != null)
         {
-            selectedBuilding.Unselected();
+            Destroy(selectedBuilding.GetComponentInChildren<ParticleSystem>());
+            selectedBuilding = null;
         }
     }
 }

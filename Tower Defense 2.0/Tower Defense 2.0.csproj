@@ -14,6 +14,7 @@
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
     <CompilerResponseFile></CompilerResponseFile>
+    <UnityProjectGenerator>VSTU</UnityProjectGenerator>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2017.1.1f1</UnityVersion>
@@ -50,71 +51,100 @@
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="UnityEditor">
-      <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
+      <HintPath>E:/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine">
-      <HintPath>Library\UnityAssemblies\UnityEngine.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UI">
-      <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.Networking">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.TestRunner">
-      <HintPath>Library\UnityAssemblies\UnityEngine.TestRunner.dll</HintPath>
-    </Reference>
-    <Reference Include="nunit.framework">
-      <HintPath>Library\UnityAssemblies\nunit.framework.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.Timeline">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Timeline.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.Analytics">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Analytics.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.HoloLens">
-      <HintPath>Library\UnityAssemblies\UnityEngine.HoloLens.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
-      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.iOS.Extensions.Common">
-      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Common.dll</HintPath>
+      <HintPath>E:/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="Facebook.Unity.Settings">
-      <HintPath>Library\FacebookSDK\Facebook.Unity.Settings.dll</HintPath>
+      <HintPath>Library/FacebookSDK/Facebook.Unity.Settings.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>E:/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Networking">
+      <HintPath>E:/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TestRunner">
+      <HintPath>E:/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/UnityEngine.TestRunner.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>E:/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/net35/unity-custom/nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Timeline">
+      <HintPath>E:/Unity/Editor/Data/UnityExtensions/Unity/Timeline/RuntimeEditor/UnityEngine.Timeline.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Analytics">
+      <HintPath>E:/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.HoloLens">
+      <HintPath>E:/Unity/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
+      <HintPath>E:/Unity/Editor/Data/PlaybackEngines/iOSSupport\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Common">
+      <HintPath>E:/Unity/Editor/Data/PlaybackEngines/iOSSupport\UnityEditor.iOS.Extensions.Common.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Camera &amp; UI\BuildButton.cs" />
+    <ProjectReference Include="Tower Defense 2.0.Plugins.csproj">
+      <Project>{65221B51-C097-64EC-0C7D-1EEE1306EA9A}</Project>
+      <Name>Tower Defense 2.0.Plugins</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Assets\BuildingManager.cs" />
     <Compile Include="Assets\Camera &amp; UI\CameraArm.cs" />
     <Compile Include="Assets\Camera &amp; UI\EnemyText.cs" />
     <Compile Include="Assets\Camera &amp; UI\FaceCamera.cs" />
-    <Compile Include="Assets\Camera &amp; UI\Money.cs" />
-    <Compile Include="Assets\Camera &amp; UI\SelectedCanvas.cs" />
     <Compile Include="Assets\Cards\Card.cs" />
     <Compile Include="Assets\Cards\CardHolder.cs" />
     <Compile Include="Assets\Cards\CardManager.cs" />
     <Compile Include="Assets\Cards\Cards.cs" />
+    <Compile Include="Assets\Cards\Deck.cs" />
+    <Compile Include="Assets\Cards\Discard.cs" />
     <Compile Include="Assets\Characters\Character.cs" />
     <Compile Include="Assets\Characters\HealthSystem.cs" />
     <Compile Include="Assets\Characters\LifePoints.cs" />
-    <Compile Include="Assets\Gameplay\Buildings\Buildings.cs" />
-    <Compile Include="Assets\Gameplay\Cost.cs" />
+    <Compile Include="Assets\Enviroment\LocalNavMeshBuilder.cs" />
+    <Compile Include="Assets\Enviroment\NavMeshSourceTag.cs" />
+    <Compile Include="Assets\Gameplay\BuildingPlacementManager.cs" />
+    <Compile Include="Assets\Gameplay\Buildings &amp; Units\Buildings.cs" />
+    <Compile Include="Assets\Gameplay\Buildings &amp; Units\BuildingsHolder.cs" />
+    <Compile Include="Assets\Gameplay\Buildings &amp; Units\Church\Church.cs" />
+    <Compile Include="Assets\Gameplay\Buildings &amp; Units\Forest\Forest.cs" />
+    <Compile Include="Assets\Gameplay\Buildings &amp; Units\FriendlyAI.cs" />
+    <Compile Include="Assets\Gameplay\Buildings &amp; Units\Poison.cs" />
     <Compile Include="Assets\Gameplay\Enemies\EnemyAI.cs" />
+    <Compile Include="Assets\Gameplay\Enemies\EnemyHolder.cs" />
     <Compile Include="Assets\Gameplay\Enemies\EnemyObjective.cs" />
+    <Compile Include="Assets\Gameplay\Enemies\EnemyRoundHolder.cs" />
     <Compile Include="Assets\Gameplay\Enemies\EnemySpawner.cs" />
-    <Compile Include="Assets\Gameplay\PlacementManager.cs" />
+    <Compile Include="Assets\Gameplay\Projectile.cs" />
+    <Compile Include="Assets\Gameplay\ProjectileSystem.cs" />
+    <Compile Include="Assets\Gameplay\Resources\ResourcesManager.cs" />
     <Compile Include="Assets\Gameplay\SelectManager.cs" />
-    <Compile Include="Assets\Gameplay\Troops\FriendlyAI.cs" />
+    <Compile Include="Assets\Gameplay\UnitPlacementManager.cs" />
     <Compile Include="Assets\Gameplay\WaypointContainer.cs" />
-    <Compile Include="Assets\LocalNavMeshBuilder.cs" />
-    <Compile Include="Assets\NavMeshSourceTag.cs" />
+    <Compile Include="Assets\LevelEnemyCard.cs" />
+    <Compile Include="Assets\Note.cs" />
+    <Compile Include="Assets\PlayerInput.cs" />
+    <Compile Include="Assets\ResourcesGatherer.cs" />
+    <Compile Include="Assets\Scenes\LevelManager.cs" />
+    <Compile Include="Assets\Scenes\LoadLevel.cs" />
+    <Compile Include="Assets\Scenes\Run selection\LevelSelection.cs" />
+    <Compile Include="Assets\Scenes\Run selection\LevelSelectionManager.cs" />
+    <Compile Include="Assets\Scenes\SaveLoad.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Enviroment\SimpleFX - Synty\Materials\UnlitVertexColour_Alpha.shader" />
     <None Include="Assets\Enviroment\SimpleSky\ReadMe.txt" />
+    <None Include="Assets\Standard Assets\Environment\Water (Basic)\Shaders\FXWaterBasic.shader" />
+    <None Include="Assets\Standard Assets\Environment\Water\Water\Shaders\FXWaterPro.shader" />
+    <None Include="Assets\Standard Assets\Environment\Water\Water4\Shaders\FXWater4Advanced.shader" />
+    <None Include="Assets\Standard Assets\Environment\Water\Water4\Shaders\FXWater4Simple.shader" />
+    <None Include="Assets\Standard Assets\Environment\Water\Water4\Shaders\WaterInclude.cginc" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

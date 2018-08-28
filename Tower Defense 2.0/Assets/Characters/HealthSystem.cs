@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.AI;
 
 public class HealthSystem : MonoBehaviour
 {
@@ -50,6 +51,21 @@ public class HealthSystem : MonoBehaviour
         character.Kill();
         animator.SetTrigger(Death_Trigger);
         Destroy(gameObject, deathVanishSeconds);
+        DestroyColliders();
         yield return new WaitForSecondsRealtime(deathVanishSeconds);
+    }
+
+    void DestroyColliders()
+    {
+        Destroy( GetComponent<NavMeshAgent>());
+        Destroy(GetComponent<Rigidbody>());
+        Destroy(GetComponent<CapsuleCollider>());
+        Destroy(GetComponent<EnemyAI>());
+        Destroy(character);
+    }
+
+    public float GetMaxHP()
+    {
+        return maxHealthPoints;
     }
 }

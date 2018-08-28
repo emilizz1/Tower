@@ -2,32 +2,37 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraArm : MonoBehaviour {
+public class CameraArm : MonoBehaviour
+{
+    Vector3 LevelView = new Vector3(0f, 45f, -20f);
+    Vector3 BattlefieldView = new Vector3(0f,27.5f,-15f);
+    Vector3 buildingView = new Vector3(0f, 15f, -7.5f);
+    Vector3 velocity = Vector3.zero;
+    Vector3 newPosition;
 
-    [SerializeField] float scrollSpeed = 1f;
 
-    Camera mCamera;
+    void Start()
+    {
+        newPosition = transform.position;
+    }
 
-	// Use this for initialization
-	void Start () {
-        mCamera = FindObjectOfType<Camera>();
-	}
-
-    // Update is called once per frame
     void Update()
     {
-        float xAxisValue = Input.GetAxis("Horizontal");
-        float zAxisValue = Input.GetAxis("Vertical");
-        float scrollWheel = Input.GetAxis("Mouse ScrollWheel");
-        
-        transform.Translate(new Vector3(xAxisValue * scrollSpeed, 0.0f, zAxisValue * scrollSpeed));
-        if(scrollWheel > 0f)
-        {
-            mCamera.transform.Translate(new Vector3(0f, -1f, 0f));
-        }
-        else if (scrollWheel < 0f)
-        {
-            mCamera.transform.Translate(new Vector3(0f, 1f, 0f));
-        }
+        transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref velocity, 0.5f);
+    }
+
+    public void ViewBuilding(Vector3 position)
+    {
+        newPosition = position + buildingView;
+    }
+
+    public void ViewBattleField()
+    {
+        newPosition = BattlefieldView;
+    }
+
+    public void Viewlevel()
+    {
+        newPosition = LevelView;
     }
 }

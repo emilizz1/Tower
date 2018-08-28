@@ -20,12 +20,17 @@ public class LifePoints : MonoBehaviour
         text.text = lifePoints.ToString();
         if(lifePoints == 0)
         {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(3);
         }
 	}
 
     public void DamageLifePoints(float amount)
     {
         lifePoints -= amount;
+    }
+
+    public float GetLifePoints()
+    {
+        return lifePoints;
     }
 }

@@ -1,14 +1,21 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[Serializable]
 [CreateAssetMenu(menuName = ("Tower defense/Card Holder"))]
 public class CardHolder : ScriptableObject {
 
     [SerializeField] Card[] cards;
-	
-	public Card GetRandomCard()
+
+    public Card[] GetAllCards()
     {
-        return cards[Random.Range(0, cards.Length)];
+        return cards;
+    }
+
+    public void SetAllCars(Card[] card)
+    {
+        cards = card;
     }
 }

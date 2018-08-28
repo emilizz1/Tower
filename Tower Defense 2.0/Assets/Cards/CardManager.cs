@@ -2,35 +2,35 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
-public class CardManager : MonoBehaviour {
-
-    [SerializeField] CardHolder cardHolder;
-    
+public class CardManager : MonoBehaviour
+{
     Cards[] cards;
     List<GameObject> enemies = new List<GameObject>();
-    Money money;
-    Toggle toggle;
-    GameObject prefab;
-    bool objectSelected = false;
+    ResourcesManager rM;
+    BuildingsHolder prefabs;
+    BuildingPlacementManager bPM;
+    Deck deck;
+    List<Card> selectedCards;
+    LevelEnemyCard levelEnemyCard;
+
+    int cardToRemove;
+    int cardSelected;
     
-    // Use this for initialization
-    void Start () {
+    void Start()
+    {
+        bPM = FindObjectOfType<BuildingPlacementManager>();
+        rM = FindObjectOfType<ResourcesManager>();
         cards = GetComponentsInChildren<Cards>();
-        money = FindObjectOfType<Money>();
-        toggle = FindObjectOfType<Toggle>();
-        toggle.isOn = true;
-        SetNewCards();
+        deck = FindObjectOfType<Deck>();
+        levelEnemyCard = FindObjectOfType<LevelEnemyCard>();
+        SetNewCards(true);
     }
 
-    public bool GetToggleState()
+    public BuildingsHolder GetPrefabs()
     {
-        return toggle.isOn;
-    }
-
-    public GameObject GetPrefab()
-    {
-        return prefab;
+        return prefabs;
     }
 
     public List<GameObject> GetEnemiesToCome()
@@ -38,61 +38,73 @@ public class CardManager : MonoBehaviour {
         return enemies;
     }
 
-    public void CardSelected(int cardSelected)
+    public void CardSelected(int selectedCard, bool firstChoice)
     {
-        objectSelected = true;
-        prefab = cards[cardSelected].GetPrefab();
-        GetMoney(cardSelected);
-        SetEnemies(cardSelected);
-        toggle.isOn = false;
-        SetNewCards();
-        gameObject.SetActive(false);
+        cardSelected = selectedCard;
+        prefabs = cards[cardSelected].GetPrefabs();
+        SetNewCards(!firstChoice);
+        if (firstChoice)
+        {
+            bPM.BuildingSelected();
+        }
+        else
+        {
+            SetEnemies();
+            GetMoney();
+            TurnCards(false);
+        }
     }
 
-    public bool GetObjectSelected()
-    {
-        return objectSelected;
-    }
-
-    public void ChangeObjectSelected()
-    {
-        objectSelected = false;
-    }
-
-    void SetEnemies(int cardSelected)
+    void SetEnemies()
     {
         enemies = new List<GameObject>();
-        for (int i = 0; i <= 2; i++)
+        for (int o = 0; o < cards[cardSelected].GetEnemyAmount(); o++)
         {
-            if (cardSelected != i)
-            {
-                for (int o = 0; o < cards[i].GetEnemyAmount(); o++)
-                {
-                    enemies.Add(cards[i].GetEnemyPrefab());
-                }
-            }
+            enemies.Add(cards[cardSelected].GetEnemyPrefab());
         }
     }
 
-    void SetNewCards()
+    void GetMoney()
     {
-        for (int i = 0; i <= 2; i++)
+        rM.AddGold(cards[cardSelected].GetEnemyCardCost());
+    }
+
+    void SetNewCards(bool secondChoice)
+    {
+
+        int i = 0;
+        if (secondChoice)
         {
-            cards[i].SetCard(cardHolder.GetRandomCard());
+            deck.RemoveACard(cards[cardToRemove].GetCard());
+            selectedCards = deck.GetNewCards();
+            levelEnemyCard.TurnOffEnemyCards();
+        }
+        else
+        {
+            cardToRemove = cardSelected;
+            levelEnemyCard.PutEnemiesOnScreen();
+        }
+        foreach (Card card in selectedCards)
+        {
+            cards[i++].SetCard(card, secondChoice);
         }
     }
 
-    void GetMoney(int cardSelected)
+    public void TurnCards(bool isItOn)
     {
-        for(int i=0;i<=2;i++)
+        int i = 0;
+        if(!isItOn)
         {
-            if(cardSelected == i)
+            foreach (Cards card in cards)
             {
-                money.ChangeMoneyAmount(-cards[i].GetCardCost());
+                card.SetupCards(false, false, false);
             }
-            else
+        }
+        else
+        {
+            foreach (Card card in selectedCards)
             {
-                money.ChangeMoneyAmount(cards[i].GetCardCost());
+                cards[i++].SetCard(card, true);
             }
         }
     }

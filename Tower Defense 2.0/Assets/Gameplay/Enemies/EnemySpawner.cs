@@ -4,30 +4,49 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-
-    [SerializeField] GameObject enemyHolder;
-    [SerializeField] GameObject spawnPlace;
-
     CardManager cardManager;
     List<GameObject> enemies;
-
-	// Use this for initialization
+    EnemyAI[] levelEnemies;
+    LevelManager levelManager;
+    
+    
 	void Start () {
+        levelManager = FindObjectOfType<LevelManager>();
         cardManager = FindObjectOfType<CardManager>();
 	}
-
-    public void SpawnEnemies()
-    {
-        enemies = new List<GameObject>(cardManager.GetEnemiesToCome());
-        StartCoroutine(SpawningEnemies());
-    }
 
     private IEnumerator SpawningEnemies()
     {
         foreach (GameObject enemy in enemies)
         {
-            Instantiate(enemy, spawnPlace.transform.position, Quaternion.identity, enemyHolder.transform);
-            yield return new WaitForSecondsRealtime(1f);
+            Instantiate(enemy, this.transform.position, Quaternion.identity, this.transform);
+            yield return new WaitForSecondsRealtime(0.2f);
         }
+
+    }
+
+    public void StartNextWave()
+    {
+
+        enemies = cardManager.GetEnemiesToCome();
+        levelEnemies = levelManager.GetCurrentLevelEnemies();
+        if (levelEnemies != null)
+        {
+            foreach (EnemyAI enemy in levelEnemies)
+            {
+                enemies.Add(enemy.gameObject);
+            }
+        }
+        StartCoroutine(SpawningEnemies());
+    }
+
+    public EnemyAI[] GetAllEnemies()
+    {
+        return GetComponentsInChildren<EnemyAI>();
+    }
+
+    public bool AreEnemiesAlive()
+    {
+        return GetComponentsInChildren<EnemyAI>().Length == 0;
     }
 }

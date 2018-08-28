@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,25 +7,25 @@ using UnityEngine.UI;
 [CreateAssetMenu(menuName = ("Tower defense/Card"))]
 public class Card : ScriptableObject
 {
-    [SerializeField] float cost;
-    [SerializeField] Texture image;
-    [SerializeField] GameObject prefab;
+    [SerializeField] int cost;
+    [SerializeField] Texture enemyImage;
+    [SerializeField] BuildingsHolder prefabs;
     [SerializeField] GameObject enemyPrefab;
     [SerializeField] float amount;
 
-    public float GetCost()
+    public int GetEnemyGoldAmount()
     {
         return cost;
     }
 
-    public Texture GetTexture()
+    public Texture GetEnemyTexture()
     {
-        return image;
+        return enemyImage;
     }
 
-    public GameObject GetPrefab()
+    public BuildingsHolder GetPrefabs()
     {
-        return prefab;
+        return prefabs;
     }
 
     public GameObject GetEnemyPrefab()

@@ -14,9 +14,10 @@ public class Character : MonoBehaviour
     [Header("Audio")]
     [SerializeField]
     float audioSourceSpatialBlend = 0.5f;
-
+    
     [Header("Captule Collider")]
-    [SerializeField] Vector3 colliderCenter;
+    [SerializeField]
+    Vector3 colliderCenter;
     [SerializeField] float collidererRadius;
     [SerializeField] float colliderHeight;
 
@@ -27,12 +28,7 @@ public class Character : MonoBehaviour
     [SerializeField] float stationaryTurnSpeed = 180;
     [SerializeField] float moveThreshold = 1f;
 
-    [Header("Nav Mesh Agent")]
-    [SerializeField]
-    float stoppingDistance = 1.3f;
-    [SerializeField] float navMeshSteeringSpeed = 1f;
-
-    NavMeshAgent navMeshAgent;
+    
     Animator animator;
     Rigidbody myRigidbody;
     float turnAmount;
@@ -57,28 +53,9 @@ public class Character : MonoBehaviour
         var audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.spatialBlend = audioSourceSpatialBlend;
 
-        navMeshAgent = gameObject.AddComponent<NavMeshAgent>();
-        navMeshAgent.updateRotation = false;
-        navMeshAgent.updatePosition = true;
-        navMeshAgent.stoppingDistance = stoppingDistance;
-        navMeshAgent.speed = navMeshSteeringSpeed;
-        navMeshAgent.autoBraking = false;
-
         animator = gameObject.AddComponent<Animator>();
         animator.runtimeAnimatorController = animatorController;
         animator.avatar = characterAvatar;
-    }
-
-    void Update()
-    {
-        if (navMeshAgent.remainingDistance > navMeshAgent.stoppingDistance && isAlive)
-        {
-            Move(navMeshAgent.desiredVelocity);
-        }
-        else
-        {
-            Move(Vector3.zero);
-        }
     }
 
     private void OnAnimatorMove()
@@ -91,11 +68,6 @@ public class Character : MonoBehaviour
         }
     }
 
-    public float GetStoppingDistance()
-    {
-        return stoppingDistance;
-    }
-
     public float GetAnimSpeedMultiplier()
     {
         return animator.speed;
@@ -106,17 +78,12 @@ public class Character : MonoBehaviour
         isAlive = false;
     }
 
-    public void SetDestination(Vector3 worldPos)
-    {
-        navMeshAgent.destination = worldPos;
-    }
-
     public AnimatorOverrideController GetOverrideController()
     {
         return animatorOverrideController;
     }
 
-    void Move(Vector3 movement)
+    public void Move(Vector3 movement)
     {
         SetFoweardAndTurn(movement);
         ApplyExtraTurnRotation();
@@ -145,5 +112,15 @@ public class Character : MonoBehaviour
     {
         float turnSpeed = Mathf.Lerp(stationaryTurnSpeed, movingTurnSpeed, forwardAmount);
         transform.Rotate(0, turnAmount * turnSpeed * Time.deltaTime, 0);
+    }
+
+    public bool GetIsAlive()
+    {
+        return isAlive;
+    }
+
+    public float GetMovementSpeed()
+    {
+        return moveSpeedMulyiplier;
     }
 }

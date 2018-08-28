@@ -15,6 +15,5 @@ public class WaypointContainer : MonoBehaviour {
             Gizmos.DrawLine(previousPosition, waypoint.position);
             previousPosition = waypoint.position;
         }
-        Gizmos.DrawLine(previousPosition, firstPosition);
     }
 }

@@ -1,41 +1,59 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 [RequireComponent(typeof(Character))]
 [RequireComponent(typeof(HealthSystem))]
 public class EnemyAI : MonoBehaviour
 {
-    [SerializeField] float waypointWaitTime = 5f;
+    [Header("Nav Mesh Agent")]
+    [SerializeField] float stoppingDistance = 1f;
+    [SerializeField] float navMeshSteeringSpeed = 1f;
     [SerializeField] float damageToLifePoints = 1;
 
+    NavMeshAgent navMeshAgent;
     WaypointContainer patrolPath;
     int nextWaypointIndex;
     Character character;
-    
+
+    void Awake()
+    {
+        AddNavMeshAgent();
+    }
+
     void Start ()
     {
         character = GetComponent<Character>();
         patrolPath = FindObjectOfType<WaypointContainer>();
     }
-	
-	void Update ()
+
+    void Update ()
     {
-        StartCoroutine(Patrol());
+        Patrol();
+        if (navMeshAgent.remainingDistance > navMeshAgent.stoppingDistance && character.GetIsAlive())
+        {
+            character.Move(navMeshAgent.desiredVelocity);
+        }
+        else
+        {
+            character.Move(Vector3.zero);
+        }
+
 	}
 
-    private IEnumerator Patrol()
+    void Patrol()
     {
-       while(patrolPath != null)
+       if(patrolPath != null)
         {
             Vector3 nextWaypointPos = patrolPath.transform.GetChild(nextWaypointIndex).position;
-            character.SetDestination(nextWaypointPos);
-            if (Vector3.Distance(transform.position, nextWaypointPos) <= character.GetStoppingDistance())
+            SetDestination(nextWaypointPos);
+            if (Vector3.Distance(transform.position, nextWaypointPos) <= stoppingDistance)
             {
                 CycleWaypoint(nextWaypointPos);
             }
-            yield return new WaitForSeconds(waypointWaitTime);
         }
+        
     }
 
     private void CycleWaypoint(Vector3 nextWaypointPos)
@@ -47,4 +65,21 @@ public class EnemyAI : MonoBehaviour
     {
         return damageToLifePoints;
     }
+
+    void AddNavMeshAgent()
+    {
+        navMeshAgent = gameObject.AddComponent<NavMeshAgent>();
+        navMeshAgent.updateRotation = false;
+        navMeshAgent.updatePosition = true;
+        navMeshAgent.stoppingDistance = stoppingDistance;
+        navMeshAgent.speed = navMeshSteeringSpeed;
+        navMeshAgent.autoBraking = false;
+    }
+
+    void SetDestination(Vector3 worldPos)
+    {
+        navMeshAgent.destination = worldPos;
+    }
+
+
 }
