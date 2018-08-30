@@ -631,7 +631,7 @@ GameObject:
   - component: {fileID: 107506773}
   - component: {fileID: 107506772}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Coal Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1836,7 +1836,7 @@ GameObject:
   - component: {fileID: 429530114}
   - component: {fileID: 429530113}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Gold Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3918,6 +3918,7 @@ RectTransform:
   - {fileID: 693270933}
   - {fileID: 1263665864}
   - {fileID: 1567409609}
+  - {fileID: 1027586940}
   - {fileID: 1858089131}
   m_Father: {fileID: 1343118106}
   m_RootOrder: 1
@@ -4406,12 +4407,12 @@ RectTransform:
   - {fileID: 1011009797}
   - {fileID: 1057517086}
   - {fileID: 1349808283}
-  m_Father: {fileID: 1693239678}
+  m_Father: {fileID: 990259216}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 415, y: 0}
+  m_AnchoredPosition: {x: -90, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1048986842
@@ -4724,7 +4725,7 @@ GameObject:
   - component: {fileID: 1085494629}
   - component: {fileID: 1085494628}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Wood Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5539,7 +5540,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1165942523}
   - component: {fileID: 1165942524}
-  - component: {fileID: 1165942525}
   m_Layer: 5
   m_Name: Resources
   m_TagString: Untagged
@@ -5581,23 +5581,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7890a3528927bf44bd00b05b6bdd71a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  resourceImage: {fileID: 1581668026744250, guid: ce9e004f5e3933941ba5998c345504c6,
+    type: 2}
   gold: {fileID: 1129862637}
   wood: {fileID: 100445148}
   coal: {fileID: 1619364357}
-  goldImage: {fileID: 21300000, guid: 8badecae48978c24fab15f95df1513c1, type: 3}
-  woodImage: {fileID: 21300000, guid: 1874681610826854cbe82ff4ff29a4c6, type: 3}
-  coalImage: {fileID: 21300000, guid: 462be0da23456184e8d6180eb9a1098a, type: 3}
---- !u!114 &1165942525
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1165942522}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f52b204a4aff1a468e5c111b7fcbcdc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  goldImage: {fileID: 429530113}
+  woodImage: {fileID: 1085494628}
+  coalImage: {fileID: 107506772}
+  leftCard: {fileID: 1693239678}
+  rightCard: {fileID: 990259216}
 --- !u!1 &1214354432
 GameObject:
   m_ObjectHideFlags: 0
@@ -7620,7 +7613,6 @@ RectTransform:
   - {fileID: 903316514}
   - {fileID: 1453970897}
   - {fileID: 625316833}
-  - {fileID: 1027586940}
   m_Father: {fileID: 1343118106}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8216,7 +8208,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 990259216}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

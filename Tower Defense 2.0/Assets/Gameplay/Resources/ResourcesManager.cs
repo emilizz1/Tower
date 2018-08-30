@@ -5,13 +5,21 @@ using UnityEngine.UI;
 
 public class ResourcesManager : MonoBehaviour
 {
+    [SerializeField] GameObject resourceImage;
+    [Header("Resources")]
     [SerializeField] Text gold;
     [SerializeField] Text wood;
     [SerializeField] Text coal;
-    [SerializeField] Sprite goldImage;
-    [SerializeField] Sprite woodImage;
-    [SerializeField] Sprite coalImage;
+    [SerializeField] Image goldImage;
+    [SerializeField] Image woodImage;
+    [SerializeField] Image coalImage;
+    [Header("ResourceLocations")]
+    [SerializeField] Transform leftCard;
+    [SerializeField] Transform rightCard;
 
+    Sprite goldSprite;
+    Sprite woodSprite;
+    Sprite coalSprite;
     int currentGold = 0;
     int currentWood = 1;
     int currentCoal = 1;
@@ -19,6 +27,9 @@ public class ResourcesManager : MonoBehaviour
     void Start()
     {
         updateText();
+        goldSprite = goldImage.sprite;
+        woodSprite = woodImage.sprite;
+        coalSprite = coalImage.sprite;
     }
 
     void updateText()
@@ -28,24 +39,23 @@ public class ResourcesManager : MonoBehaviour
         coal.text = currentCoal.ToString();
     }
 
-    public void AddResources(int amount = 0, Sprite image = null)
+    public void AddResources(int amount, Sprite image)
     {
-        if (goldImage == image)
+        if (goldSprite == image)
         {
-            currentGold += amount;
+            StartCoroutine(MoveResources(rightCard, image, amount, goldImage.transform));
         }
-        else if (woodImage == image)
+        else if (woodSprite == image)
         {
-            currentWood += amount;
+            StartCoroutine(MoveResources(rightCard, image, amount, woodImage.transform));
         }
-        else if (coalImage == image)
+        else if (coalSprite == image)
         {
-            currentCoal += amount;
+            StartCoroutine(MoveResources(rightCard, image, amount, coalImage.transform));
         }
-        updateText();
     }
 
-    public bool CheckForResources(int goldAmount = 0, int woodAmount = 0, int coalAmount = 0)
+    public bool CheckForResources(int goldAmount, int woodAmount, int coalAmount)
     {
         if (goldAmount <= currentGold && woodAmount <= currentWood && coalAmount <= currentCoal)
         {
@@ -71,17 +81,59 @@ public class ResourcesManager : MonoBehaviour
     {
         if (gold)
         {
-            return goldImage;
+            return goldSprite;
         }
         else if (wood)
         {
-            return woodImage;
+            return woodSprite;
         }
         else if (coal)
         {
-            return coalImage;
+            return coalSprite;
         }
         return null;
+    }
+
+    IEnumerator MoveResources(Transform resTransform, Sprite resImage, int amount, Transform target)
+    {
+        int i = 0;
+        while (i < amount)
+        {
+            i++;
+            StartCoroutine(MoveResource(resTransform, resImage, target));
+            yield return new WaitForSecondsRealtime(0.1f);
+        }
+    }
+
+    IEnumerator MoveResource(Transform resTransform, Sprite resImage, Transform target)
+    {
+        var createdResource = Instantiate(resourceImage, resTransform.position, Quaternion.identity, transform);
+        createdResource.GetComponent<Image>().sprite = resImage;
+        while (Vector3.Distance(createdResource.transform.position, target.position) > 1f)
+        {
+             
+            createdResource.transform.position = Vector3.MoveTowards(createdResource.transform.position, target.position, 10f);
+            yield return new WaitForFixedUpdate();
+        }
+        AddOneResourceAmount(resImage);
+        Destroy(createdResource);
+    }
+
+    void AddOneResourceAmount(Sprite image)
+    {
+        if (goldSprite == image)
+        {
+            currentGold += 1;
+        }
+        else if (woodSprite == image)
+        {
+            currentWood += 1;
+        }
+        else if (coalSprite == image)
+        {
+            currentCoal += 1;
+        }
+        updateText();
     }
 }
 	
