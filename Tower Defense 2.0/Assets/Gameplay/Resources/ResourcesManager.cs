@@ -43,15 +43,15 @@ public class ResourcesManager : MonoBehaviour
     {
         if (goldSprite == image)
         {
-            StartCoroutine(MoveResources(rightCard, image, amount, goldImage.transform));
+            StartCoroutine(MoveResources(rightCard, image, amount, goldImage.transform, false));
         }
         else if (woodSprite == image)
         {
-            StartCoroutine(MoveResources(rightCard, image, amount, woodImage.transform));
+            StartCoroutine(MoveResources(rightCard, image, amount, woodImage.transform, false));
         }
         else if (coalSprite == image)
         {
-            StartCoroutine(MoveResources(rightCard, image, amount, coalImage.transform));
+            StartCoroutine(MoveResources(rightCard, image, amount, coalImage.transform, false));
         }
     }
 
@@ -59,10 +59,18 @@ public class ResourcesManager : MonoBehaviour
     {
         if (goldAmount <= currentGold && woodAmount <= currentWood && coalAmount <= currentCoal)
         {
-            currentGold -= goldAmount;
-            currentWood -= woodAmount;
-            currentCoal -= coalAmount;
-            updateText();
+            if(goldAmount > 0)
+            {
+                StartCoroutine(MoveResources(goldImage.transform, goldSprite, goldAmount, leftCard, true));
+            }
+            if(woodAmount > 0)
+            {
+                StartCoroutine(MoveResources(woodImage.transform, woodSprite, woodAmount, leftCard, true));
+            }
+            if (coalAmount > 0)
+            {
+                StartCoroutine(MoveResources(coalImage.transform, coalSprite, coalAmount, leftCard, true));
+            }
             return true;
         }
         else
@@ -71,51 +79,40 @@ public class ResourcesManager : MonoBehaviour
         }
     }
 
-    public void AddGold(int amount)
+    public void AddGold(int amount, Transform cardTransform)
     {
-        currentGold += amount;
-        updateText();
+        StartCoroutine(MoveResources(cardTransform, goldSprite, amount, goldImage.transform, false));
     }
 
-    public Sprite GetResourceImages(bool gold = false, bool wood = false, bool coal = false)
-    {
-        if (gold)
-        {
-            return goldSprite;
-        }
-        else if (wood)
-        {
-            return woodSprite;
-        }
-        else if (coal)
-        {
-            return coalSprite;
-        }
-        return null;
-    }
-
-    IEnumerator MoveResources(Transform resTransform, Sprite resImage, int amount, Transform target)
+    IEnumerator MoveResources(Transform resTransform, Sprite resImage, int amount, Transform target, bool toPayResource)
     {
         int i = 0;
         while (i < amount)
         {
             i++;
-            StartCoroutine(MoveResource(resTransform, resImage, target));
+            StartCoroutine(MoveResource(resTransform, resImage, target, toPayResource));
             yield return new WaitForSecondsRealtime(0.1f);
         }
     }
 
-    IEnumerator MoveResource(Transform resTransform, Sprite resImage, Transform target)
+    IEnumerator MoveResource(Transform resTransform, Sprite resImage, Transform target, bool toPayResource)
     {
         var createdResource = Instantiate(resourceImage, resTransform.position, Quaternion.identity, transform);
         createdResource.GetComponent<Image>().sprite = resImage;
+        if(toPayResource)
+        {
+            PayOneResourceAmount(resImage);
+        }
         while (Vector3.Distance(createdResource.transform.position, target.position) > 1f)
         {
              
             createdResource.transform.position = Vector3.MoveTowards(createdResource.transform.position, target.position, 10f);
             yield return new WaitForFixedUpdate();
         }
-        AddOneResourceAmount(resImage);
+        if (!toPayResource)
+        {
+            AddOneResourceAmount(resImage);
+        }
         Destroy(createdResource);
     }
 
@@ -132,6 +129,23 @@ public class ResourcesManager : MonoBehaviour
         else if (coalSprite == image)
         {
             currentCoal += 1;
+        }
+        updateText();
+    }
+
+    void PayOneResourceAmount(Sprite image)
+    {
+        if (goldSprite == image)
+        {
+            currentGold -= 1;
+        }
+        else if (woodSprite == image)
+        {
+            currentWood -= 1;
+        }
+        else if (coalSprite == image)
+        {
+            currentCoal -= 1;
         }
         updateText();
     }

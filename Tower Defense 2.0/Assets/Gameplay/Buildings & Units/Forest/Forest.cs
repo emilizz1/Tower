@@ -17,18 +17,21 @@ public class Forest : MonoBehaviour
     public void Shoot()
     {
         target = friendlyAI.GetTarget();
-        Poison poison;
-        
-        if (target != null && target.GetComponent<Poison>())
+        if (target != null)
         {
-            poison = target.GetComponent<Poison>();
-            poison.AddPoison();
+            Poison poison;
+
+            if (target.GetComponent<Poison>())
+            {
+                poison = target.GetComponent<Poison>();
+                poison.AddPoison();
+            }
+            else
+            {
+                target.gameObject.AddComponent<Poison>();
+            }
+            Instantiate(poisonPS[target.GetComponent<Poison>().GetCurrentPoison() - 1], target.transform);
+            target = null;
         }
-        else
-        {
-            target.gameObject.AddComponent<Poison>();
-        }
-        Instantiate(poisonPS[target.GetComponent<Poison>().GetCurrentPoison() - 1], target.transform);
-        target = null;
     }
 }

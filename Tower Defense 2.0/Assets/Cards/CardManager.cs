@@ -17,6 +17,7 @@ public class CardManager : MonoBehaviour
 
     int cardToRemove;
     int cardSelected;
+    bool firstRound = true;
     
     void Start()
     {
@@ -47,10 +48,10 @@ public class CardManager : MonoBehaviour
         {
             bPM.BuildingSelected();
         }
-        else
+        else 
         {
             SetEnemies();
-            GetMoney();
+            GiveGold();
             TurnCards(false);
         }
     }
@@ -64,9 +65,13 @@ public class CardManager : MonoBehaviour
         }
     }
 
-    void GetMoney()
+    void GiveGold()
     {
-        rM.AddGold(cards[cardSelected].GetEnemyCardCost());
+        if (!firstRound)
+        {
+            rM.AddGold(cards[cardSelected].GetEnemyCardCost(), cards[cardSelected].transform);
+        }
+        firstRound = false;
     }
 
     void SetNewCards(bool secondChoice)

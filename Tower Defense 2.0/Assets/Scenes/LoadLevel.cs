@@ -13,7 +13,7 @@ public class LoadLevel : MonoBehaviour
 
     IEnumerator LoadNewScene(int scene)
     {
-        AsyncOperation async = Application.LoadLevelAsync(scene);
+        AsyncOperation async = SceneManager.LoadSceneAsync(scene);
 
         while (!async.isDone)
         {

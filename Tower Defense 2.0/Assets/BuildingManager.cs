@@ -79,7 +79,6 @@ public class BuildingManager : MonoBehaviour
     {
         card.SetupUnitCard(buildings[buildingNumber], false);
         card.SetupResourceCard(buildings[buildingNumber]);
-        int[] cost = buildings[buildingNumber].GetBuildingUnitCost();
     }
 
     public Buildings GetBulding(int selected)

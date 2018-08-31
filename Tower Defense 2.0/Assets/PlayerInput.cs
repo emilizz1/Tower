@@ -87,12 +87,14 @@ public class PlayerInput : MonoBehaviour
                     currentState = State.placingUnit;
                     placementM.PrepareForPlacement();
                     buildingM.TurnBuildings(false, false);
+                    
                     break;
                 }
                 else
                 {
                     IsAnotherBuildingAvailable();
                 }
+                
                 break;
             case State.placingUnit:
                 placementM.PlaceUnit(choice, currentBuilding);
