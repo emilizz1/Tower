@@ -44,7 +44,6 @@ public class BuildingManager : MonoBehaviour
         if(choice == 0)
         {
             int[] cost = buildings[buildingNumber].GetBuildingUnitCost();
-            
             if (rM.CheckForResources(cost[0], cost[1], cost[2]))
             {
                 placingUnit = true;

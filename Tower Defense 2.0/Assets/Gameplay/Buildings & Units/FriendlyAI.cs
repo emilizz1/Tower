@@ -165,4 +165,9 @@ public class FriendlyAI : MonoBehaviour
     {
         return target;
     }
+
+    public float GetRange()
+    {
+        return maxAttackRange;
+    }
 }

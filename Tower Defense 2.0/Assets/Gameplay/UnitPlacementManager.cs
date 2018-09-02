@@ -10,6 +10,8 @@ public class UnitPlacementManager : MonoBehaviour
     [SerializeField] ParticleSystem whitePS;
     [SerializeField] ParticleSystem redPS;
     [SerializeField] GameObject colorChoice;
+    [SerializeField] GameObject firstPlacementRange;
+    [SerializeField] GameObject secondPlacementRange;
 
     BuildingManager buildingM;
     int whiteLengh;
@@ -38,16 +40,25 @@ public class UnitPlacementManager : MonoBehaviour
         unit.gameObject.layer = 0;
         unit.transform.parent = friendlyHolder.transform;
         whitePS.gameObject.SetActive(false);
+        firstPlacementRange.SetActive(false);
         redPS.gameObject.SetActive(false);
+        secondPlacementRange.SetActive(false);
         colorChoice.SetActive(false);
     }
 
-    public void PrepareForPlacement()   
+    public void PrepareForPlacement(int currentBuilding)   
     {
+        float unitRange = buildingM.GetBulding(currentBuilding).GetUnit().GetComponent<FriendlyAI>().GetRange();
         whitePS.gameObject.SetActive(true);
+        firstPlacementRange.SetActive(true);
         redPS.gameObject.SetActive(true);
+        secondPlacementRange.SetActive(true);
         whitePS.transform.position = placementPositionsLeft[Random.Range(0, whiteLengh)].transform.position;
+        firstPlacementRange.transform.position = new Vector3(whitePS.transform.position.x, -1f, whitePS.transform.position.z);
+        firstPlacementRange.transform.localScale = new Vector3(unitRange * 2, 1f, unitRange * 2);
         redPS.transform.position = placementPositionsRight[Random.Range(0, redLengh)].transform.position;
+        secondPlacementRange.transform.position = new Vector3(redPS.transform.position.x, -1f, redPS.transform.position.z);
+        secondPlacementRange.transform.localScale = new Vector3(unitRange * 2, 1f, unitRange * 2);
         colorChoice.SetActive(true);
     }
 

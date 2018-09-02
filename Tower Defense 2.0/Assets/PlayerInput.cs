@@ -85,7 +85,7 @@ public class PlayerInput : MonoBehaviour
                 {
                     myCamera.ViewBattleField();
                     currentState = State.placingUnit;
-                    placementM.PrepareForPlacement();
+                    placementM.PrepareForPlacement(currentBuilding);
                     buildingM.TurnBuildings(false, false);
                     
                     break;
