@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Buildings : MonoBehaviour
 {
     [SerializeField] string buildingName;
-    [SerializeField] int[] buildUnitCost;
+    [Tooltip("Gold, Wood, Coal")][SerializeField] int[] buildUnitCost;
     [SerializeField] GameObject unitPrefab;
     [SerializeField] int resourceAmount;
     [SerializeField] Sprite resource;

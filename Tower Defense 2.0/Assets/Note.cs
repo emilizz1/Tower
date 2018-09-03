@@ -3,3 +3,4 @@
 // fill next level buildings with info
 // make pauses when delivering resources. Is it nessesary? Alt: when paying drop them.
 // Balance!!!
+// finish shack

@@ -70,6 +70,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4697738551084602}
+  - component: {fileID: 65676607354956398}
+  - component: {fileID: 114060004267911116}
   m_Layer: 0
   m_Name: ShadyHouse
   m_TagString: Untagged
@@ -389,3 +391,36 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1793711998455186}
   m_Mesh: {fileID: 4300000, guid: 402c06b62e597b2409088043cbf6c332, type: 3}
+--- !u!65 &65676607354956398
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1643513344858704}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114060004267911116
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1643513344858704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2037a481f74be743afbc3df149b433c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildingName: Shack
+  buildUnitCost: 020000000000000002000000
+  unitPrefab: {fileID: 0}
+  resourceAmount: 1
+  resource: {fileID: 21300000, guid: 462be0da23456184e8d6180eb9a1098a, type: 3}
+  Level: 0
+  iD: 6
+  buildingImage: {fileID: 0}
+  SpecialPower: '-'
+  unitsImage: {fileID: 0}
