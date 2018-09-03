@@ -79,7 +79,7 @@ public class Cards : MonoBehaviour
         enemyImage.texture = card.GetEnemyTexture();
         enemyName.text = enemy.name.ToString();
         enemyAmount.text = "Amount: " + card.GetEnemyAmount().ToString();
-        enemyStats.text = "Health: " + enemy.GetComponent<HealthSystem>().GetMaxHP().ToString() + " Movement speed: " + enemy.GetComponent<Character>().GetMovementSpeed().ToString();
+        enemyStats.text = "Health: " + enemy.GetComponent<HealthSystem>().GetMaxHP().ToString() + " Speed: " + enemy.GetComponent<Character>().GetMovementSpeed().ToString();
         goldGained.text = card.GetEnemyGoldAmount().ToString();
     }
 
