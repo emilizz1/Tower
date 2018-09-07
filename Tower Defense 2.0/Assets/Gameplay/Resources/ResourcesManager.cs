@@ -20,7 +20,7 @@ public class ResourcesManager : MonoBehaviour
     Sprite goldSprite;
     Sprite woodSprite;
     Sprite coalSprite;
-    int currentGold = 0;
+    int currentGold = 2;
     int currentWood = 1;
     int currentCoal = 1;
 

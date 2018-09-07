@@ -9,7 +9,6 @@ public class EnemySpawner : MonoBehaviour
     EnemyAI[] levelEnemies;
     LevelManager levelManager;
     
-    
 	void Start () {
         levelManager = FindObjectOfType<LevelManager>();
         cardManager = FindObjectOfType<CardManager>();
@@ -20,14 +19,13 @@ public class EnemySpawner : MonoBehaviour
         foreach (GameObject enemy in enemies)
         {
             Instantiate(enemy, this.transform.position, Quaternion.identity, this.transform);
-            yield return new WaitForSecondsRealtime(0.2f);
+            yield return new WaitForSecondsRealtime(0.25f);
         }
 
     }
 
     public void StartNextWave()
     {
-
         enemies = cardManager.GetEnemiesToCome();
         levelEnemies = levelManager.GetCurrentLevelEnemies();
         if (levelEnemies != null)
@@ -49,4 +47,6 @@ public class EnemySpawner : MonoBehaviour
     {
         return GetComponentsInChildren<EnemyAI>().Length == 0;
     }
+
+
 }

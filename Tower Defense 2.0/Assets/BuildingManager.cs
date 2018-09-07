@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class BuildingManager : MonoBehaviour
 {
-    [SerializeField] Cards card;
+    [SerializeField] Cards cardL;
+    [SerializeField] Cards cardR;
 
     ResourcesManager rM;
     Buildings[] buildings = new Buildings[10];
@@ -67,7 +68,8 @@ public class BuildingManager : MonoBehaviour
 
     public void TurnBuildings(bool isItOn, bool firstBuilding)
     {
-        card.SetupCards(false, false, isItOn);
+        cardL.SetupCards(false, false, isItOn);
+        cardR.SetupCards(false, false, !isItOn);
         if (firstBuilding)
         {
             PutInformation(0);
@@ -76,8 +78,8 @@ public class BuildingManager : MonoBehaviour
 
     void PutInformation(int buildingNumber)
     {
-        card.SetupUnitCard(buildings[buildingNumber], false);
-        card.SetupResourceCard(buildings[buildingNumber]);
+        cardL.SetupUnitCard(buildings[buildingNumber], false);
+        cardL.SetupResourceCard(buildings[buildingNumber]);
     }
 
     public Buildings GetBulding(int selected)

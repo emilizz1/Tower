@@ -43,15 +43,16 @@ public class CardManager : MonoBehaviour
     {
         cardSelected = selectedCard;
         prefabs = cards[cardSelected].GetPrefabs();
-        SetNewCards(!firstChoice);
         if (firstChoice)
         {
+            SetNewCards(!firstChoice);
             bPM.BuildingSelected();
         }
         else 
         {
             SetEnemies();
             GiveGold();
+            SetNewCards(!firstChoice);
             TurnCards(false);
         }
     }
