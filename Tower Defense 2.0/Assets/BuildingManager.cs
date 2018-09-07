@@ -69,7 +69,7 @@ public class BuildingManager : MonoBehaviour
     public void TurnBuildings(bool isItOn, bool firstBuilding)
     {
         cardL.SetupCards(false, false, isItOn);
-        cardR.SetupCards(false, false, !isItOn);
+        cardR.SetupCards(false, false, false);
         if (firstBuilding)
         {
             PutInformation(0);
