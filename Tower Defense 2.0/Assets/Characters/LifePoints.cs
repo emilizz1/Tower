@@ -20,7 +20,7 @@ public class LifePoints : MonoBehaviour
         text.text = lifePoints.ToString();
         if(lifePoints == 0)
         {
-            SceneManager.LoadScene(3);
+            SceneManager.LoadScene(2);
         }
 	}
 

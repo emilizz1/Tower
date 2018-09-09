@@ -94,7 +94,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\BuildingManager.cs" />
     <Compile Include="Assets\Camera &amp; UI\CameraArm.cs" />
     <Compile Include="Assets\Camera &amp; UI\EnemyText.cs" />
     <Compile Include="Assets\Camera &amp; UI\FaceCamera.cs" />
@@ -104,11 +103,13 @@
     <Compile Include="Assets\Cards\Cards.cs" />
     <Compile Include="Assets\Cards\Deck.cs" />
     <Compile Include="Assets\Cards\Discard.cs" />
+    <Compile Include="Assets\Cards\LevelEnemyCard.cs" />
     <Compile Include="Assets\Characters\Character.cs" />
     <Compile Include="Assets\Characters\HealthSystem.cs" />
     <Compile Include="Assets\Characters\LifePoints.cs" />
     <Compile Include="Assets\Enviroment\LocalNavMeshBuilder.cs" />
     <Compile Include="Assets\Enviroment\NavMeshSourceTag.cs" />
+    <Compile Include="Assets\Gameplay\BuildingManager.cs" />
     <Compile Include="Assets\Gameplay\BuildingPlacementManager.cs" />
     <Compile Include="Assets\Gameplay\Buildings &amp; Units\Buildings.cs" />
     <Compile Include="Assets\Gameplay\Buildings &amp; Units\BuildingsHolder.cs" />
@@ -121,14 +122,13 @@
     <Compile Include="Assets\Gameplay\Enemies\EnemyObjective.cs" />
     <Compile Include="Assets\Gameplay\Enemies\EnemyRoundHolder.cs" />
     <Compile Include="Assets\Gameplay\Enemies\EnemySpawner.cs" />
+    <Compile Include="Assets\Gameplay\PlayerInput.cs" />
     <Compile Include="Assets\Gameplay\Projectile.cs" />
     <Compile Include="Assets\Gameplay\ProjectileSystem.cs" />
     <Compile Include="Assets\Gameplay\Resources\ResourcesManager.cs" />
     <Compile Include="Assets\Gameplay\UnitPlacementManager.cs" />
     <Compile Include="Assets\Gameplay\WaypointContainer.cs" />
-    <Compile Include="Assets\LevelEnemyCard.cs" />
     <Compile Include="Assets\Note.cs" />
-    <Compile Include="Assets\PlayerInput.cs" />
     <Compile Include="Assets\Scenes\LevelManager.cs" />
     <Compile Include="Assets\Scenes\LoadLevel.cs" />
     <Compile Include="Assets\Scenes\Run selection\LevelSelection.cs" />
