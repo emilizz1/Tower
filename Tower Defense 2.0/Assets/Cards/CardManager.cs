@@ -81,6 +81,7 @@ public class CardManager : MonoBehaviour
         int i = 0;
         if (secondChoice)
         {
+            print(cards[cardToRemove].GetCard());
             deck.RemoveACard(cards[cardToRemove].GetCard());
             selectedCards = deck.GetNewCards();
             levelEnemyCard.TurnOffEnemyCards();
