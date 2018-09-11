@@ -92,14 +92,13 @@ public class Cards : MonoBehaviour
         production.text = "Resource: " + settingBuilding.GetResourceAmount().ToString();
         productionImage.sprite = settingBuilding.GetResource();
         SetupUnitCard(settingBuilding, true);
-
     }
 
     public void SetupUnitCard(Buildings building, bool whileChoosingBuilding)
     {
         if (whileChoosingBuilding)
         {
-            unitsCard.transform.localPosition = new Vector3(unitsCard.transform.localPosition.x, -150f, unitsCard.transform.localPosition.z);
+            unitsCard.transform.localPosition = new Vector3(unitsCard.transform.localPosition.x, -250f, unitsCard.transform.localPosition.z);
             unitsCard.transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
         }
         else

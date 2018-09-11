@@ -77,11 +77,9 @@ public class CardManager : MonoBehaviour
 
     void SetNewCards(bool secondChoice)
     {
-
         int i = 0;
         if (secondChoice)
         {
-            print(cards[cardToRemove].GetCard());
             deck.RemoveACard(cards[cardToRemove].GetCard());
             selectedCards = deck.GetNewCards();
             levelEnemyCard.TurnOffEnemyCards();
