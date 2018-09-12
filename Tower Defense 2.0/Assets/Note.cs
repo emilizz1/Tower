@@ -4,5 +4,3 @@
 // Balance!!!
 //Change units to differ from level to levels
 // build run selection
-// build card showcase
-//build more pages and page turning

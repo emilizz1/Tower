@@ -37,8 +37,6 @@ public class ShowcaseCard : MonoBehaviour
         SetupEnemyCard();
     }
 
-    
-
     void SetupBuildingCard(int buildingLevel)
     {
         Buildings settingBuilding = myCard.GetPrefabs().GetBuilding(buildingLevel);

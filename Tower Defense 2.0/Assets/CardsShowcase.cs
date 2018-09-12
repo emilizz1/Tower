@@ -10,7 +10,6 @@ public class CardsShowcase : MonoBehaviour
     [SerializeField] GameObject[] Pages;
 
     List<Buildings> buildings = new List<Buildings>();
-
     int currentlyActiveCards = 0;
 
     void Start()
@@ -25,20 +24,21 @@ public class CardsShowcase : MonoBehaviour
         {
             SetupCard(card);
         }
+        TurnOffCards();
     }
 
     private void SetupCard(Card card)
     {
-        
-        cards[currentlyActiveCards].PutInformation(card, GetBuildingLevel(card)); //todo count building Level
+        cards[currentlyActiveCards].gameObject.SetActive(true);
+        cards[currentlyActiveCards].PutInformation(card, GetBuildingLevel(card));
         currentlyActiveCards++;
     }
 
     void TurnOffCards()
     {
-        foreach (ShowcaseCard card in cards)
+        for (int i = currentlyActiveCards; i < cards.Length; i++)
         {
-            card.gameObject.SetActive(false);
+            cards[i].gameObject.SetActive(false);
         }
         currentlyActiveCards = 0;
     }
