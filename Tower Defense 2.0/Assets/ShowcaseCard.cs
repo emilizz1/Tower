@@ -42,7 +42,7 @@ public class ShowcaseCard : MonoBehaviour
         Buildings settingBuilding = myCard.GetPrefabs().GetBuilding(buildingLevel);
         buildingImage.texture = settingBuilding.GetBuildingTexture();
         buildingName.text = settingBuilding.GetBuildingName();
-        production.text = "Resource: " + settingBuilding.GetResourceAmount().ToString();
+        production.text = settingBuilding.GetResourceAmount().ToString();
         productionImage.sprite = settingBuilding.GetResource();
         SetupUnitCard(settingBuilding);
     }
