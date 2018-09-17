@@ -20,8 +20,9 @@ public class Cards : MonoBehaviour
     [SerializeField] RawImage unitImage;
     [SerializeField] Text unitName;
     [SerializeField] Text unitStats;
-    [SerializeField] Image[] costImages;
-    [SerializeField] Text[] costText;
+    [SerializeField] GameObject[] costImages0;
+    [SerializeField] GameObject[] costImages1;
+    [SerializeField] GameObject[] costImages2;
 
     [Header("Enemy Setup")]
     [SerializeField] GameObject enemyCard;
@@ -78,8 +79,8 @@ public class Cards : MonoBehaviour
         var enemy = card.GetEnemyPrefab();
         enemyImage.texture = card.GetEnemyTexture();
         enemyName.text = enemy.name.ToString();
-        enemyAmount.text = "Amount: " + card.GetEnemyAmount().ToString();
-        enemyStats.text = "Health: " + enemy.GetComponent<HealthSystem>().GetMaxHP().ToString() + " Speed: " + enemy.GetComponent<Character>().GetMovementSpeed().ToString();
+        enemyAmount.text = card.GetEnemyAmount().ToString();
+        enemyStats.text = enemy.GetComponent<HealthSystem>().GetMaxHP().ToString();
         goldGained.text = card.GetEnemyGoldAmount().ToString();
     }
 
@@ -89,7 +90,7 @@ public class Cards : MonoBehaviour
         Buildings settingBuilding = card.GetPrefabs().GetBuilding(buildingLevel);
         buildingImage.texture = settingBuilding.GetBuildingTexture();
         buildingName.text = settingBuilding.GetBuildingName();
-        production.text = "Resource: " + settingBuilding.GetResourceAmount().ToString();
+        production.text = settingBuilding.GetResourceAmount().ToString();
         productionImage.sprite = settingBuilding.GetResource();
         SetupUnitCard(settingBuilding, true);
     }
@@ -112,18 +113,24 @@ public class Cards : MonoBehaviour
         building.GetUnit().GetComponent<FriendlyAI>().GiveStats(out attack, out speed, out range);
         unitStats.text = "Attack: " + attack.ToString() + " Speed: " + ((speed * -10f) + 20f).ToString() + " Range: " + range.ToString() + " Special Power: " + building.GetSpecialPower();
         int[] unitCost = building.GetBuildingUnitCost();
-        int nextFreeCostSlot = 0;
-        for (int i = 0; i < 3; i++)
+        PutUnitResourcesOn(costImages0, unitCost[0], 0);
+        PutUnitResourcesOn(costImages1, unitCost[1], 1);
+        PutUnitResourcesOn(costImages2, unitCost[2], 2);
+    }
+
+    void PutUnitResourcesOn(GameObject[] objects, int cost, int currentResource)
+    {
+        foreach (GameObject resource in objects)
         {
-            costImages[i].enabled = false;
-            costText[i].enabled = false;
-            if(unitCost[i] != 0)
+            if (cost > 0)
             {
-                costImages[nextFreeCostSlot].enabled = true;
-                costImages[nextFreeCostSlot].sprite = resources[i];
-                costText[nextFreeCostSlot].enabled = true;
-                costText[nextFreeCostSlot].text = unitCost[i].ToString();
-                nextFreeCostSlot++;
+                resource.SetActive(true);
+                resource.GetComponentsInChildren<Image>()[1].sprite = resources[currentResource];
+                cost--;
+            }
+            else
+            {
+                resource.SetActive(false);
             }
         }
     }

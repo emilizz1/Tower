@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class ResourcesManager : MonoBehaviour
 {
     [SerializeField] GameObject resourceImage;
+    [SerializeField] float resourceMoveSpeed = 10f;
     [Header("Resources")]
     [SerializeField] Text gold;
     [SerializeField] Text wood;
@@ -106,7 +107,7 @@ public class ResourcesManager : MonoBehaviour
         while (Vector3.Distance(createdResource.transform.position, target.position) > 1f)
         {
              
-            createdResource.transform.position = Vector3.MoveTowards(createdResource.transform.position, target.position, 10f);
+            createdResource.transform.position = Vector3.MoveTowards(createdResource.transform.position, target.position, resourceMoveSpeed);
             yield return new WaitForFixedUpdate();
         }
         if (!toPayResource)
