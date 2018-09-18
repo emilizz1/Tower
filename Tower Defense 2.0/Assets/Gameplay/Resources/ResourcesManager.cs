@@ -44,15 +44,15 @@ public class ResourcesManager : MonoBehaviour
     {
         if (goldSprite == image)
         {
-            StartCoroutine(MoveResources(rightCard, image, amount, goldImage.transform, false));
+            StartCoroutine(GatherResources(rightCard, image, amount, goldImage.transform));
         }
         else if (woodSprite == image)
         {
-            StartCoroutine(MoveResources(rightCard, image, amount, woodImage.transform, false));
+            StartCoroutine(GatherResources(rightCard, image, amount, woodImage.transform));
         }
         else if (coalSprite == image)
         {
-            StartCoroutine(MoveResources(rightCard, image, amount, coalImage.transform, false));
+            StartCoroutine(GatherResources(rightCard, image, amount, coalImage.transform));
         }
     }
 
@@ -62,15 +62,15 @@ public class ResourcesManager : MonoBehaviour
         {
             if(goldAmount > 0)
             {
-                StartCoroutine(MoveResources(goldImage.transform, goldSprite, goldAmount, leftCard, true));
+                StartCoroutine(PayResources(goldImage.transform, goldSprite, goldAmount));
             }
             if(woodAmount > 0)
             {
-                StartCoroutine(MoveResources(woodImage.transform, woodSprite, woodAmount, leftCard, true));
+                StartCoroutine(PayResources(woodImage.transform, woodSprite, woodAmount));
             }
             if (coalAmount > 0)
             {
-                StartCoroutine(MoveResources(coalImage.transform, coalSprite, coalAmount, leftCard, true));
+                StartCoroutine(PayResources(coalImage.transform, coalSprite, coalAmount));
             }
             return true;
         }
@@ -82,38 +82,58 @@ public class ResourcesManager : MonoBehaviour
 
     public void AddGold(int amount, Transform cardTransform)
     {
-        StartCoroutine(MoveResources(cardTransform, goldSprite, amount, goldImage.transform, false));
+        StartCoroutine(GatherResources(cardTransform, goldSprite, amount, goldImage.transform));
     }
 
-    IEnumerator MoveResources(Transform resTransform, Sprite resImage, int amount, Transform target, bool toPayResource)
+    IEnumerator PayResources(Transform resTransform, Sprite resImage, int amount)
     {
         int i = 0;
         while (i < amount)
         {
             i++;
-            StartCoroutine(MoveResource(resTransform, resImage, target, toPayResource));
+            StartCoroutine(PayResource(resTransform, resImage));
             yield return new WaitForSecondsRealtime(0.1f);
         }
     }
 
-    IEnumerator MoveResource(Transform resTransform, Sprite resImage, Transform target, bool toPayResource)
+    IEnumerator PayResource(Transform resTransform, Sprite resImage)
+    {
+        var createdResource = Instantiate(resourceImage, resTransform.position, Quaternion.identity, transform);
+        var createdResImage = createdResource.GetComponent<Image>().color;
+        createdResource.GetComponent<Image>().sprite = resImage;
+        Vector3 target = new Vector3(createdResource.transform.position.x, createdResource.transform.position.y - 200f, 0f);
+        PayOneResourceAmount(resImage);
+        while (Vector3.Distance(createdResource.transform.position, target) > 1f)
+        {
+            createdResource.transform.position = Vector3.MoveTowards(createdResource.transform.position, target, resourceMoveSpeed / 3);
+            createdResImage.a = createdResImage.a - 0.05f;
+            createdResource.GetComponent<Image>().color = createdResImage;
+            yield return new WaitForSeconds(0.05f);
+        }
+        Destroy(createdResource);
+    }
+
+    IEnumerator GatherResources(Transform resTransform, Sprite resImage, int amount, Transform target)
+    {
+        int i = 0;
+        while (i < amount)
+        {
+            i++;
+            StartCoroutine(GatherResource(resTransform, resImage, target));
+            yield return new WaitForSecondsRealtime(0.15f);
+        }
+    }
+
+    IEnumerator GatherResource(Transform resTransform, Sprite resImage, Transform target)
     {
         var createdResource = Instantiate(resourceImage, resTransform.position, Quaternion.identity, transform);
         createdResource.GetComponent<Image>().sprite = resImage;
-        if(toPayResource)
-        {
-            PayOneResourceAmount(resImage);
-        }
         while (Vector3.Distance(createdResource.transform.position, target.position) > 1f)
         {
-             
             createdResource.transform.position = Vector3.MoveTowards(createdResource.transform.position, target.position, resourceMoveSpeed);
             yield return new WaitForFixedUpdate();
         }
-        if (!toPayResource)
-        {
-            AddOneResourceAmount(resImage);
-        }
+        AddOneResourceAmount(resImage);
         Destroy(createdResource);
     }
 
