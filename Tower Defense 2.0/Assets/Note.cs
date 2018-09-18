@@ -1,9 +1,8 @@
-﻿// Need more images for buildings and units
+﻿// Need more images for enemies
 // special powers for enemy units?
 // make pauses when delivering resources. Is it nessesary? Alt: when paying drop them.
 // Balance!!!
-//Change units to differ from level to levels
+// Change units to differ from level to levels
 // build run selection
-// import adventure pack -- need sandhouse units
 // Idea make units images to gifs
-// make ui cards bigger
+// when placed unit  actives a ps

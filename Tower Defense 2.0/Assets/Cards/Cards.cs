@@ -34,8 +34,7 @@ public class Cards : MonoBehaviour
 
     [Header("Resource Setup")]
     [SerializeField] GameObject resourceCard;
-    [SerializeField] Image resourceImage;
-    [SerializeField] Text resourceText;
+    [SerializeField] Image[] resourceImages;
  
     Card card;
 
@@ -174,7 +173,19 @@ public class Cards : MonoBehaviour
 
     public void SetupResourceCard(Buildings building)
     {
-        resourceImage.sprite = building.GetResource();
-        resourceText.text = building.GetResourceAmount().ToString();
+        int resourceAmount = building.GetResourceAmount();
+        foreach(Image resource in resourceImages)
+        {
+            if (resourceAmount > 0)
+            {
+                resource.transform.parent.gameObject.SetActive(true);
+                resource.sprite = building.GetResource();
+                resourceAmount--;
+            }
+            else
+            {
+                resource.transform.parent.gameObject.SetActive(false);
+            }
+        }
     }
 }
