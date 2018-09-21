@@ -4,3 +4,5 @@
 // Change units to differ from level to levels
 // build run selection
 // Idea make units images to gifs
+// animations for deck and discard
+//build selection level enviroment

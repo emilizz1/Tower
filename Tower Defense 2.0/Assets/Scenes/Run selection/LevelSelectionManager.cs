@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelSelectionManager : MonoBehaviour {
+public class LevelSelectionManager : MonoBehaviour
+{
     Rect screenRectOnConstruction = new Rect(0, 0, Screen.width, Screen.height);
     float maxRaycasterDepth = 1000f;
     RaycastHit hitInfo;

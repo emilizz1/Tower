@@ -101,10 +101,12 @@
     <Compile Include="Assets\Cards\CardHolder.cs" />
     <Compile Include="Assets\Cards\CardManager.cs" />
     <Compile Include="Assets\Cards\Cards.cs" />
+    <Compile Include="Assets\Cards\CardsShowcase.cs" />
     <Compile Include="Assets\Cards\Deck.cs" />
     <Compile Include="Assets\Cards\Discard.cs" />
+    <Compile Include="Assets\Cards\GameplayShowcaseSwitchButton.cs" />
     <Compile Include="Assets\Cards\LevelEnemyCard.cs" />
-    <Compile Include="Assets\CardsShowcase.cs" />
+    <Compile Include="Assets\Cards\ShowcaseCard.cs" />
     <Compile Include="Assets\Characters\Character.cs" />
     <Compile Include="Assets\Characters\HealthSystem.cs" />
     <Compile Include="Assets\Characters\LifePoints.cs" />
@@ -129,14 +131,12 @@
     <Compile Include="Assets\Gameplay\Resources\ResourcesManager.cs" />
     <Compile Include="Assets\Gameplay\UnitPlacementManager.cs" />
     <Compile Include="Assets\Gameplay\WaypointContainer.cs" />
-    <Compile Include="Assets\GameplayShowcaseSwitchButton.cs" />
     <Compile Include="Assets\Note.cs" />
     <Compile Include="Assets\Scenes\LevelManager.cs" />
     <Compile Include="Assets\Scenes\LoadLevel.cs" />
     <Compile Include="Assets\Scenes\Run selection\LevelSelection.cs" />
     <Compile Include="Assets\Scenes\Run selection\LevelSelectionManager.cs" />
     <Compile Include="Assets\Scenes\SaveLoad.cs" />
-    <Compile Include="Assets\ShowcaseCard.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Enviroment\SimpleFX - Synty\Materials\UnlitVertexColour_Alpha.shader" />
