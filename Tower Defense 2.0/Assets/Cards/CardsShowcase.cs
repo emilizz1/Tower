@@ -12,6 +12,21 @@ public class CardsShowcase : MonoBehaviour
     List<Buildings> buildings = new List<Buildings>();
     int currentlyActiveCards = 0;
 
+    public static CardsShowcase control;
+
+    void Awake()
+    {
+        if (control == null)
+        {
+            DontDestroyOnLoad(gameObject);
+            control = this;
+        }
+        else if (control != null)
+        {
+            Destroy(gameObject);
+        }
+    }
+
     void Start()
     {
         ShowcaseCards();
