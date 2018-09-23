@@ -5,16 +5,20 @@ using UnityEngine;
 public class LevelSelection : MonoBehaviour
 {
     [SerializeField] int levelToLoad;
+    [SerializeField] ParticleSystem ps;
     [SerializeField] LevelSelection[] afterCompletionUnlocks;
 
-	public int GetLevel()
+    public bool isActive = false;
+
+    public int GetLevel()
     {
         return levelToLoad;
     }
 
     public void IsActive(bool isActive)
     {
-        GetComponentInChildren<ParticleSystem>().gameObject.SetActive(isActive);
+        this.isActive = isActive;
+        ps.gameObject.SetActive(isActive);
     }
 
     public void TurnOnAllnextLevels()

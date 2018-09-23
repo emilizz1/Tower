@@ -5,7 +5,6 @@ using UnityEngine;
 public class LevelSelectionManager : MonoBehaviour
 {
     [SerializeField] LevelSelection lastCompletedLevel;
-    [SerializeField] bool clean;
 
     Rect screenRectOnConstruction = new Rect(0, 0, Screen.width, Screen.height);
     float maxRaycasterDepth = 1000f;
@@ -15,26 +14,28 @@ public class LevelSelectionManager : MonoBehaviour
     void Start()
     {
         loadLevel = GetComponent<LoadLevel>();
+        ActivateActiveLevels();
     }
 
     void Update ()
     {
-        if (clean)
+        if (Input.GetMouseButtonDown(0))
         {
-            foreach (LevelSelection level in FindObjectsOfType<LevelSelection>())
+            PerformRaycast();
+            if (hitInfo.transform.gameObject.GetComponent<LevelSelection>() && hitInfo.transform.gameObject.GetComponent<LevelSelection>().isActive)
             {
-                level.IsActive(false);
+                loadLevel.LoadScene(hitInfo.transform.gameObject.GetComponent<LevelSelection>().GetLevel());
             }
         }
+    }
+
+    void ActivateActiveLevels()
+    {
+        foreach (LevelSelection level in FindObjectsOfType<LevelSelection>())
+        {
+            level.IsActive(false);
+        }
         lastCompletedLevel.TurnOnAllnextLevels();
-        //if (Input.GetMouseButtonDown(0))
-        //{
-        //    PerformRaycast();
-        //    if (hitInfo.transform.gameObject.GetComponent<LevelSelection>())
-        //    {
-        //        loadLevel.LoadScene( hitInfo.transform.gameObject.GetComponent<LevelSelection>().GetLevel());
-        //    }
-        //}
     }
 
     void PerformRaycast()

@@ -8,8 +8,23 @@ public class LifePoints : MonoBehaviour
 {
     Text text;
     float lifePoints;
-    
-	void Start ()
+
+    public static LifePoints control;
+
+    void Awake()
+    {
+        if (control == null)
+        {
+            DontDestroyOnLoad(gameObject);
+            control = this;
+        }
+        else if (control != null)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    void Start ()
     {
         text = GetComponent<Text>();
         lifePoints = 20;
