@@ -6,3 +6,4 @@
 // animations for deck and discard
 // build selection level enviroment
 // build event system
+// add playablity with mouse
