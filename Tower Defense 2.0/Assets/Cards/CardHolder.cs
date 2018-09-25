@@ -14,8 +14,14 @@ public class CardHolder : ScriptableObject {
         return cards;
     }
 
-    public void SetAllCars(Card[] card)
+    public void AddCard(Card cardToAdd)
     {
-        cards = card;
+        Card[] temp = new Card[cards.Length + 1];
+        for (int i = 0; i < cards.Length; i++)
+        {
+            temp[i] = cards[i];
+        }
+        temp[cards.Length] = cardToAdd;
+        cards = temp;
     }
 }
