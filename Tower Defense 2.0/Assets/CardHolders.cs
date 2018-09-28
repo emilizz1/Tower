@@ -5,7 +5,9 @@ using UnityEngine;
 public class CardHolders : MonoBehaviour
 {
     [SerializeField] CardHolder playerCards;
+    [SerializeField] CardHolder startignPlayerCards;
     [SerializeField] CardHolder addableCards;
+    [SerializeField] CardHolder startingAddableCards;
 
     public static CardHolders control;
 
@@ -22,6 +24,14 @@ public class CardHolders : MonoBehaviour
         }
     }
 
+    void Start()
+    { // TODO fix that only on game start this happens
+        RemoveAllCards(playerCards);
+        AddAllCards(startignPlayerCards, playerCards);
+        RemoveAllCards(addableCards);
+        AddAllCards(startingAddableCards, addableCards);
+    }
+
     public Card[] GetAllPlayerCards()
     {
         return playerCards.GetAllCards();
@@ -34,25 +44,37 @@ public class CardHolders : MonoBehaviour
 
     public void AddPlayerCard(Card cardToAdd)
     {
-        Card[] cards = playerCards.GetAllCards();
-        Card[] temp = new Card[cards.Length + 1];
-        for (int i = 0; i < cards.Length; i++)
-        {
-            temp[i] = cards[i];
-        }
-        temp[cards.Length] = cardToAdd;
-        cards = temp;
+        playerCards.AddCard(cardToAdd);
     }
 
     public void AddAddableCard(Card cardToAdd)
     {
-        Card[] cards = addableCards.GetAllCards();
-        Card[] temp = new Card[cards.Length + 1];
-        for (int i = 0; i < cards.Length; i++)
+        addableCards.AddCard(cardToAdd);
+    }
+
+    public void RemovePlayerCard(Card cardToRemove)
+    {
+        playerCards.RemoveCard(cardToRemove);
+    }
+
+    public void RemoveAddableCard(Card cardToRemove)
+    {
+        addableCards.RemoveCard(cardToRemove);
+    }
+
+    void AddAllCards(CardHolder from, CardHolder to)
+    {
+        foreach(Card card in from.GetAllCards())
         {
-            temp[i] = cards[i];
+            to.AddCard(card);
         }
-        temp[cards.Length] = cardToAdd;
-        cards = temp;
+    }
+
+    void RemoveAllCards(CardHolder from)
+    {
+        foreach(Card card in from.GetAllCards())
+        {
+            from.RemoveCard(card);
+        }
     }
 }

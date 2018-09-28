@@ -18,6 +18,7 @@ public class AddCardEvent : MonoBehaviour
     public void Activated()
     {
         FindObjectOfType<CardHolders>().AddPlayerCard(card);
+        FindObjectOfType<CardHolders>().RemoveAddableCard(card);
     }
 
     int GetBuildingLevel()

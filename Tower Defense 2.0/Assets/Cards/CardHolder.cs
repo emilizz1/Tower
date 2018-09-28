@@ -24,4 +24,17 @@ public class CardHolder : ScriptableObject {
         temp[cards.Length] = cardToAdd;
         cards = temp;
     }
+
+    public void RemoveCard(Card cardToRemove)
+    {
+        for (int i = 0; i < cards.Length; i++)
+        {
+            if (cards[i] == cardToRemove)
+            {
+                cards[i] = cards[cards.Length - 1];
+                Array.Resize<Card>(ref cards, cards.Length - 1);
+            }
+
+        }
+    }
 }
