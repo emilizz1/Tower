@@ -22,14 +22,13 @@ public class CardHolders : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
-
-    void Start()
-    { // TODO fix that only on game start this happens
-        RemoveAllCards(playerCards);
-        AddAllCards(startignPlayerCards, playerCards);
-        RemoveAllCards(addableCards);
-        AddAllCards(startingAddableCards, addableCards);
+        if (playerCards.GetAllCards().Length == 0)
+        {
+            RemoveAllCards(playerCards);
+            AddAllCards(startignPlayerCards, playerCards);
+            RemoveAllCards(addableCards);
+            AddAllCards(startingAddableCards, addableCards);
+        }
     }
 
     public Card[] GetAllPlayerCards()

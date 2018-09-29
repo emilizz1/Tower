@@ -32,7 +32,7 @@ public class LevelManager : MonoBehaviour
     {
         if (currentLevel == enemyHolder.GetLevelCount() + 1)
         {
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(3);
         }
         else if (lifepoints.GetLifePoints() == 0)
         {
