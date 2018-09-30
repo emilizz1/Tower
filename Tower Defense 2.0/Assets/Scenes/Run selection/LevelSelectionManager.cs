@@ -6,6 +6,8 @@ public class LevelSelectionManager : MonoBehaviour
 {
     [SerializeField] LevelSelection lastCompletedLevel;
 
+    bool readyTosSelect = false;
+
     Rect screenRectOnConstruction = new Rect(0, 0, Screen.width, Screen.height);
     float maxRaycasterDepth = 1000f;
     RaycastHit hitInfo;
@@ -19,7 +21,7 @@ public class LevelSelectionManager : MonoBehaviour
 
     void Update ()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && readyTosSelect)
         {
             PerformRaycast();
             if (hitInfo.transform.gameObject.GetComponent<LevelSelection>() && hitInfo.transform.gameObject.GetComponent<LevelSelection>().isActive)
@@ -45,5 +47,10 @@ public class LevelSelectionManager : MonoBehaviour
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             Physics.Raycast(ray, out hitInfo, maxRaycasterDepth);
         }
+    }
+
+    public void ChangeReadyToSelect(bool change)
+    {
+        readyTosSelect = change;
     }
 }

@@ -13,10 +13,12 @@ public class RunSelectionPlayerInput : MonoBehaviour
     }
 
     EventManager eventManager;
+    LevelSelectionManager levelSelectionManager;
 
     void Start()
     {
         eventManager = FindObjectOfType<EventManager>();
+        levelSelectionManager = FindObjectOfType<LevelSelectionManager>();
     }
 
     void Update()
@@ -37,6 +39,7 @@ public class RunSelectionPlayerInput : MonoBehaviour
         {
             case State.choosingEvent:
                 eventManager.EventChosen(choice);
+                levelSelectionManager.ChangeReadyToSelect(true);
                 break;
         }
     }

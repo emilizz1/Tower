@@ -50,13 +50,13 @@ public class EnemyAI : MonoBehaviour
             SetDestination(nextWaypointPos);
             if (Vector3.Distance(transform.position, nextWaypointPos) <= stoppingDistance)
             {
-                CycleWaypoint(nextWaypointPos);
+                CycleWaypoint();
             }
         }
         
     }
 
-    private void CycleWaypoint(Vector3 nextWaypointPos)
+    private void CycleWaypoint()
     {
         nextWaypointIndex = (nextWaypointIndex + 1) % patrolPath.transform.childCount;
     }

@@ -18,27 +18,12 @@ public class ResourcesManager : MonoBehaviour
     [SerializeField] Transform leftCard;
     [SerializeField] Transform rightCard;
 
-    public static ResourcesManager control;
-
     Sprite goldSprite;
     Sprite woodSprite;
     Sprite coalSprite;
     int currentGold = 3;
     int currentWood = 2;
     int currentCoal = 2;
-
-    void Awake()
-    {
-        if (control == null)
-        {
-            DontDestroyOnLoad(gameObject);
-            control = this;
-        }
-        else if (control != null)
-        {
-            Destroy(gameObject);
-        }
-    }
 
     void Start()
     {
