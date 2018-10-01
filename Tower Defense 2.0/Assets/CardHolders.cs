@@ -9,28 +9,6 @@ public class CardHolders : MonoBehaviour
     [SerializeField] CardHolder addableCards;
     [SerializeField] CardHolder startingAddableCards;
 
-    public static CardHolders control;
-
-    void Awake()
-    {
-        if (control == null)
-        {
-            DontDestroyOnLoad(gameObject);
-            control = this;
-        }
-        else if (control != null)
-        {
-            Destroy(gameObject);
-        }
-        if (playerCards.GetAllCards().Length == 0)
-        {
-            RemoveAllCards(playerCards);
-            AddAllCards(startignPlayerCards, playerCards);
-            RemoveAllCards(addableCards);
-            AddAllCards(startingAddableCards, addableCards);
-        }
-    }
-
     public Card[] GetAllPlayerCards()
     {
         return playerCards.GetAllCards();

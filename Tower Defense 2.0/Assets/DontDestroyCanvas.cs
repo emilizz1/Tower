@@ -4,18 +4,16 @@ using UnityEngine;
 
 public class DontDestroyCanvas : MonoBehaviour
 {
-    public static DontDestroyCanvas control;
-
     void Awake()
     {
-        if (control == null)
-        {
-            DontDestroyOnLoad(gameObject);
-            control = this;
-        }
-        else if (control != null)
+        int numDontDestroyCanvas = FindObjectsOfType<DontDestroyCanvas>().Length;
+        if (numDontDestroyCanvas > 1)
         {
             Destroy(gameObject);
+        }
+        else
+        {
+            DontDestroyOnLoad(gameObject);
         }
     }
 }

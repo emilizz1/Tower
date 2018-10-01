@@ -14,10 +14,8 @@ public class ResourcesManager : MonoBehaviour
     [SerializeField] Image goldImage;
     [SerializeField] Image woodImage;
     [SerializeField] Image coalImage;
-    [Header("ResourceLocations")]
-    [SerializeField] Transform leftCard;
-    [SerializeField] Transform rightCard;
 
+    Transform rightCard;
     Sprite goldSprite;
     Sprite woodSprite;
     Sprite coalSprite;
@@ -42,6 +40,7 @@ public class ResourcesManager : MonoBehaviour
 
     public void AddResources(int amount, Sprite image)
     {
+        rightCard = FindObjectOfType<ResourceCardChoice>().transform;
         if (goldSprite == image)
         {
             StartCoroutine(GatherResources(rightCard, image, amount, goldImage.transform));
