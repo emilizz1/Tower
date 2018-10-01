@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameplayPlayerInput : MonoBehaviour
 {
@@ -24,6 +25,7 @@ public class GameplayPlayerInput : MonoBehaviour
         enemySelecting,
         buildingBonuses,
         placingUnit,
+        levelCompleted,
         nothing
     }
 
@@ -100,6 +102,9 @@ public class GameplayPlayerInput : MonoBehaviour
                 placementM.PlaceUnit(choice, currentBuilding);
                 IsAnotherBuildingAvailable();
                 break;
+            case State.levelCompleted:
+                SceneManager.LoadSceneAsync(3);
+                break;
             case State.nothing:
                 break;
         }
@@ -141,9 +146,23 @@ public class GameplayPlayerInput : MonoBehaviour
         {
             yield return new WaitForSecondsRealtime(0.5f);
         }
+        CheckForLevelCompleted();
         currentState = State.buildingSelecting;
         cardM.TurnCards(true);
         levelM.LevelFinished();
         myCamera.Viewlevel();
+    }
+
+    void CheckForLevelCompleted()
+    {
+        if (levelM.CheckForLevelWon())
+        {
+            currentState = State.levelCompleted;
+            FindObjectOfType<WiningRewards>().PrepareRewards();
+        }
+        else
+        {
+            return;
+        }
     }
 }

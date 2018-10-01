@@ -13,31 +13,38 @@ public class LevelManager : MonoBehaviour
     Text text;
     int currentLevel = 1;
 
-	void Start () {
+    void Start()
+    {
         text = GetComponent<Text>();
         lifepoints = FindObjectOfType<LifePoints>();
-	}
-	
-	void Update () {
+    }
+
+    void Update()
+    {
         text.text = currentLevel.ToString() + " / " + enemyHolder.GetLevelCount().ToString();
-        CheckForLevelEnd();
-	}
+        CheckForLevelLost();
+    }
 
     public EnemyAI[] GetCurrentLevelEnemies()
     {
-        return enemyHolder.GetEnemies(currentLevel-1).GetEnemy();
+        return enemyHolder.GetEnemies(currentLevel - 1).GetEnemy();
     }
 
-    void CheckForLevelEnd()
+    void CheckForLevelLost()
     {
-        if (currentLevel == enemyHolder.GetLevelCount() + 1)
-        {
-            SceneManager.LoadScene(3);
-        }
-        else if (lifepoints.GetLifePoints() == 0)
+        if (lifepoints.GetLifePoints() == 0)
         {
             SceneManager.LoadScene(2);
         }
+    }
+
+    public bool CheckForLevelWon()
+    {
+        if (currentLevel == enemyHolder.GetLevelCount() + 1)
+        {
+            return true;
+        }
+        return false;
     }
 
     public void LevelFinished()

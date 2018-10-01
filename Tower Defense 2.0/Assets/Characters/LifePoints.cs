@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class LifePoints : MonoBehaviour
 {
@@ -18,10 +17,6 @@ public class LifePoints : MonoBehaviour
 	void Update ()
     {
         text.text = lifePoints.ToString();
-        if(lifePoints == 0)
-        {
-            SceneManager.LoadScene(2);
-        }
 	}
 
     public void DamageLifePoints(float amount)
