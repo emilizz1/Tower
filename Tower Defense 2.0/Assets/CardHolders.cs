@@ -9,6 +9,14 @@ public class CardHolders : MonoBehaviour
     [SerializeField] CardHolder addableCards;
     [SerializeField] CardHolder startingAddableCards;
 
+    void Awake()
+    {
+        RemoveAllCards(playerCards);
+        RemoveAllCards(addableCards);
+        AddAllCards(startignPlayerCards, playerCards);
+        AddAllCards(startingAddableCards, addableCards);
+    }
+
     public Card[] GetAllPlayerCards()
     {
         return playerCards.GetAllCards();

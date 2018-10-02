@@ -40,7 +40,7 @@ public class LevelManager : MonoBehaviour
 
     public bool CheckForLevelWon()
     {
-        if (currentLevel == enemyHolder.GetLevelCount() + 1)
+        if (currentLevel == enemyHolder.GetLevelCount())
         {
             return true;
         }

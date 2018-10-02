@@ -155,8 +155,10 @@ public class GameplayPlayerInput : MonoBehaviour
 
     void CheckForLevelCompleted()
     {
+        print("checking " + levelM.CheckForLevelWon());
         if (levelM.CheckForLevelWon())
         {
+            print("completed");
             currentState = State.levelCompleted;
             FindObjectOfType<WiningRewards>().PrepareRewards();
         }
