@@ -155,7 +155,6 @@ public class GameplayPlayerInput : MonoBehaviour
 
     void CheckForLevelCompleted()
     {
-        print("checking " + levelM.CheckForLevelWon());
         if (levelM.CheckForLevelWon())
         {
             print("completed");

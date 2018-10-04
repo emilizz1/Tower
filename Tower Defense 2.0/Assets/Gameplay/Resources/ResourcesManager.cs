@@ -15,7 +15,7 @@ public class ResourcesManager : MonoBehaviour
     [SerializeField] Image woodImage;
     [SerializeField] Image coalImage;
 
-    Transform rightCard;
+    Transform deliveringFrom;
     Sprite goldSprite;
     Sprite woodSprite;
     Sprite coalSprite;
@@ -38,20 +38,27 @@ public class ResourcesManager : MonoBehaviour
         coal.text = currentCoal.ToString();
     }
 
-    public void AddResources(int amount, Sprite image)
+    public void AddResources(int amount, Sprite image, Transform from = null)
     {
-        rightCard = FindObjectOfType<ResourceCardChoice>().transform;
+        if (from == null)
+        {
+            deliveringFrom = FindObjectOfType<ResourceCardChoice>().transform;
+        }
+        else
+        {
+            deliveringFrom = from;
+        }
         if (goldSprite == image)
         {
-            StartCoroutine(GatherResources(rightCard, image, amount, goldImage.transform));
+            StartCoroutine(GatherResources(deliveringFrom, image, amount, goldImage.transform));
         }
         else if (woodSprite == image)
         {
-            StartCoroutine(GatherResources(rightCard, image, amount, woodImage.transform));
+            StartCoroutine(GatherResources(deliveringFrom, image, amount, woodImage.transform));
         }
         else if (coalSprite == image)
         {
-            StartCoroutine(GatherResources(rightCard, image, amount, coalImage.transform));
+            StartCoroutine(GatherResources(deliveringFrom, image, amount, coalImage.transform));
         }
     }
 

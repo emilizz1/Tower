@@ -24,11 +24,11 @@ public class WiningRewards : MonoBehaviour
         rewards.SetActive(true);
         lifepointText.text = lifepointsRewarded.ToString();
         FindObjectOfType<LifePoints>().DamageLifePoints(-lifepointsRewarded);
-        gold.GetComponentInChildren<Text>().text = resourcesAwarded[0].ToString();
-        resoureceManager.AddResources(resourcesAwarded[0], goldImage);
-        wood.GetComponentInChildren<Text>().text = resourcesAwarded[1].ToString();
-        resoureceManager.AddResources(resourcesAwarded[1], woodImage); 
-        coal.GetComponentInChildren<Text>().text = resourcesAwarded[2].ToString();
-        resoureceManager.AddResources(resourcesAwarded[2], coalImage);
+        gold.gameObject.GetComponentInChildren<Text>().text = resourcesAwarded[0].ToString();
+        resoureceManager.AddResources(resourcesAwarded[0], goldImage, gold.transform);
+        wood.gameObject.GetComponentInChildren<Text>().text = resourcesAwarded[1].ToString();
+        resoureceManager.AddResources(resourcesAwarded[1], woodImage, wood.transform); 
+        coal.gameObject.GetComponentInChildren<Text>().text = resourcesAwarded[2].ToString();
+        resoureceManager.AddResources(resourcesAwarded[2], coalImage, coal.transform);
     }
 }
