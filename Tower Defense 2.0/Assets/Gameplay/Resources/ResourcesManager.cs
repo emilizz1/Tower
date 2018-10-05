@@ -25,10 +25,7 @@ public class ResourcesManager : MonoBehaviour
 
     void Start()
     {
-        updateText();
-        goldSprite = goldImage.sprite;
-        woodSprite = woodImage.sprite;
-        coalSprite = coalImage.sprite;
+        AssignSprites();
     }
 
     void updateText()
@@ -88,6 +85,10 @@ public class ResourcesManager : MonoBehaviour
 
     public void AddGold(int amount, Transform cardTransform)
     {
+        if(goldSprite == null)
+        {
+            AssignSprites();
+        }
         StartCoroutine(GatherResources(cardTransform, goldSprite, amount, goldImage.transform));
     }
 
@@ -175,6 +176,14 @@ public class ResourcesManager : MonoBehaviour
             currentCoal -= 1;
         }
         updateText();
+    }
+
+    void AssignSprites()
+    {
+        updateText();
+        goldSprite = goldImage.sprite;
+        woodSprite = woodImage.sprite;
+        coalSprite = coalImage.sprite;
     }
 }
 	
