@@ -61,6 +61,10 @@ public class ResourcesManager : MonoBehaviour
 
     public bool CheckForResources(int goldAmount, int woodAmount, int coalAmount)
     {
+        if (goldSprite == null)
+        {
+            AssignSprites();
+        }
         if (goldAmount <= currentGold && woodAmount <= currentWood && coalAmount <= currentCoal)
         {
             if(goldAmount > 0)

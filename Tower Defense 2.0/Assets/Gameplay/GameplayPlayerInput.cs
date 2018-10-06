@@ -103,7 +103,6 @@ public class GameplayPlayerInput : MonoBehaviour
                 IsAnotherBuildingAvailable();
                 break;
             case State.levelCompleted:
-                print("level completed");
                 SceneManager.LoadSceneAsync(3);
                 break;
             case State.nothing:
@@ -147,13 +146,12 @@ public class GameplayPlayerInput : MonoBehaviour
         {
             yield return new WaitForSecondsRealtime(0.5f);
         }
-        levelM.LevelFinished();
         if (!CheckForLevelCompleted())
         {
-            print("Level not completed");
             currentState = State.buildingSelecting;
             cardM.TurnCards(true);
         }
+        levelM.LevelFinished();
         myCamera.Viewlevel();
     }
 
@@ -161,7 +159,6 @@ public class GameplayPlayerInput : MonoBehaviour
     {
         if (levelM.CheckForLevelWon())
         {
-            print("completed");
             currentState = State.levelCompleted;
             FindObjectOfType<WiningRewards>().PrepareRewards();
             return true;

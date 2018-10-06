@@ -95,11 +95,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Camera &amp; UI\CameraArm.cs" />
+    <Compile Include="Assets\Camera &amp; UI\DontDestroyCanvas.cs" />
     <Compile Include="Assets\Camera &amp; UI\EnemyText.cs" />
     <Compile Include="Assets\Camera &amp; UI\FaceCamera.cs" />
-    <Compile Include="Assets\CardHolders.cs" />
     <Compile Include="Assets\Cards\Card.cs" />
     <Compile Include="Assets\Cards\CardHolder.cs" />
+    <Compile Include="Assets\Cards\CardHolders.cs" />
     <Compile Include="Assets\Cards\CardManager.cs" />
     <Compile Include="Assets\Cards\Cards.cs" />
     <Compile Include="Assets\Cards\CardsShowcase.cs" />
@@ -111,7 +112,6 @@
     <Compile Include="Assets\Characters\Character.cs" />
     <Compile Include="Assets\Characters\HealthSystem.cs" />
     <Compile Include="Assets\Characters\LifePoints.cs" />
-    <Compile Include="Assets\DontDestroyCanvas.cs" />
     <Compile Include="Assets\Enviroment\LocalNavMeshBuilder.cs" />
     <Compile Include="Assets\Enviroment\NavMeshSourceTag.cs" />
     <Compile Include="Assets\Events\AddCardEvent.cs" />
@@ -133,18 +133,18 @@
     <Compile Include="Assets\Gameplay\GameplayPlayerInput.cs" />
     <Compile Include="Assets\Gameplay\Projectile.cs" />
     <Compile Include="Assets\Gameplay\ProjectileSystem.cs" />
+    <Compile Include="Assets\Gameplay\Resources\ResourceCardChoice.cs" />
     <Compile Include="Assets\Gameplay\Resources\ResourcesManager.cs" />
+    <Compile Include="Assets\Gameplay\Resources\WiningRewards.cs" />
     <Compile Include="Assets\Gameplay\UnitPlacementManager.cs" />
     <Compile Include="Assets\Gameplay\WaypointContainer.cs" />
     <Compile Include="Assets\Note.cs" />
-    <Compile Include="Assets\ResourceCardChoice.cs" />
-    <Compile Include="Assets\RunSelectionPlayerInput.cs" />
     <Compile Include="Assets\Scenes\LevelManager.cs" />
     <Compile Include="Assets\Scenes\LoadLevel.cs" />
     <Compile Include="Assets\Scenes\Run selection\LevelSelection.cs" />
     <Compile Include="Assets\Scenes\Run selection\LevelSelectionManager.cs" />
+    <Compile Include="Assets\Scenes\RunSelectionPlayerInput.cs" />
     <Compile Include="Assets\Scenes\SaveLoad.cs" />
-    <Compile Include="Assets\WiningRewards.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Enviroment\SimpleFX - Synty\Materials\UnlitVertexColour_Alpha.shader" />
