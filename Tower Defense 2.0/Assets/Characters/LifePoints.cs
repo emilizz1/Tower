@@ -5,13 +5,15 @@ using UnityEngine.UI;
 
 public class LifePoints : MonoBehaviour
 {
+    [SerializeField] float startingLifepoints = 20;
+
     Text text;
     float lifePoints;
 
     void Start ()
     {
         text = GetComponent<Text>();
-        lifePoints = 20;
+        lifePoints = startingLifepoints;
 	}
 	
 	void Update ()

@@ -7,14 +7,13 @@ public class ResourcesManager : MonoBehaviour
 {
     [SerializeField] GameObject resourceImage;
     [SerializeField] float resourceMoveSpeed = 10f;
-    [Header("Resources")]
-    [SerializeField] Text gold;
-    [SerializeField] Text wood;
-    [SerializeField] Text coal;
-    [SerializeField] Image goldImage;
-    [SerializeField] Image woodImage;
-    [SerializeField] Image coalImage;
 
+    Text gold;
+    Text wood;
+    Text coal;
+    Image goldImage;
+    Image woodImage;
+    Image coalImage;
     Transform deliveringFrom;
     Sprite goldSprite;
     Sprite woodSprite;
@@ -23,9 +22,22 @@ public class ResourcesManager : MonoBehaviour
     int currentWood = 2;
     int currentCoal = 2;
 
+    void Awake()
+    {
+        int numResourcesManager = FindObjectsOfType<ResourcesManager>().Length;
+        if (numResourcesManager > 1)
+        { 
+            Destroy(gameObject);
+        }
+        else
+        {
+            DontDestroyOnLoad(gameObject);
+        }
+    }
+
     void Start()
     {
-        AssignSprites();
+        AssignSpritesTextImages();
     }
 
     void updateText()
@@ -63,7 +75,7 @@ public class ResourcesManager : MonoBehaviour
     {
         if (goldSprite == null)
         {
-            AssignSprites();
+            AssignSpritesTextImages();
         }
         if (goldAmount <= currentGold && woodAmount <= currentWood && coalAmount <= currentCoal)
         {
@@ -91,7 +103,7 @@ public class ResourcesManager : MonoBehaviour
     {
         if(goldSprite == null)
         {
-            AssignSprites();
+            AssignSpritesTextImages();
         }
         StartCoroutine(GatherResources(cardTransform, goldSprite, amount, goldImage.transform));
     }
@@ -182,12 +194,20 @@ public class ResourcesManager : MonoBehaviour
         updateText();
     }
 
-    void AssignSprites()
+    void AssignSpritesTextImages()
     {
-        updateText();
+        print(GetComponentsInChildren<Image>().Length);
+        goldImage = GetComponentsInChildren<Image>()[0];
+        woodImage = GetComponentsInChildren<Image>()[1];
+        coalImage = GetComponentsInChildren<Image>()[2];
+        gold = GetComponentsInChildren<Text>()[0];
+        wood = GetComponentsInChildren<Text>()[1];
+        coal = GetComponentsInChildren<Text>()[2];
         goldSprite = goldImage.sprite;
         woodSprite = woodImage.sprite;
         coalSprite = coalImage.sprite;
+
+        updateText();
     }
 }
 	
