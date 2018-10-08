@@ -7,44 +7,34 @@ public class ResourcesManager : MonoBehaviour
 {
     [SerializeField] GameObject resourceImage;
     [SerializeField] float resourceMoveSpeed = 10f;
+    [Header("ResourceLinks")]
+    [SerializeField] Text gold;
+    [SerializeField] Text wood;
+    [SerializeField] Text coal;
+    [SerializeField] Image goldImage;
+    [SerializeField] Image woodImage;
+    [SerializeField] Image coalImage;
 
-    Text gold;
-    Text wood;
-    Text coal;
-    Image goldImage;
-    Image woodImage;
-    Image coalImage;
     Transform deliveringFrom;
     Sprite goldSprite;
     Sprite woodSprite;
     Sprite coalSprite;
-    int currentGold = 3;
-    int currentWood = 2;
-    int currentCoal = 2;
-
-    void Awake()
-    {
-        int numResourcesManager = FindObjectsOfType<ResourcesManager>().Length;
-        if (numResourcesManager > 1)
-        { 
-            Destroy(gameObject);
-        }
-        else
-        {
-            DontDestroyOnLoad(gameObject);
-        }
-    }
+    ResourceHolder resourceHolder;
 
     void Start()
     {
-        AssignSpritesTextImages();
+        goldSprite = goldImage.sprite;
+        woodSprite = woodImage.sprite;
+        coalSprite = coalImage.sprite;
+        resourceHolder = FindObjectOfType<ResourceHolder>();
+        updateText();
     }
 
     void updateText()
     {
-        gold.text = currentGold.ToString();
-        wood.text = currentWood.ToString();
-        coal.text = currentCoal.ToString();
+        gold.text = resourceHolder.getCurrentGold().ToString();
+        wood.text = resourceHolder.getCurrentWood().ToString();
+        coal.text = resourceHolder.getCurrentCoal().ToString();
     }
 
     public void AddResources(int amount, Sprite image, Transform from = null)
@@ -73,11 +63,7 @@ public class ResourcesManager : MonoBehaviour
 
     public bool CheckForResources(int goldAmount, int woodAmount, int coalAmount)
     {
-        if (goldSprite == null)
-        {
-            AssignSpritesTextImages();
-        }
-        if (goldAmount <= currentGold && woodAmount <= currentWood && coalAmount <= currentCoal)
+        if (goldAmount <= resourceHolder.getCurrentGold() && woodAmount <= resourceHolder.getCurrentWood() && coalAmount <= resourceHolder.getCurrentCoal())
         {
             if(goldAmount > 0)
             {
@@ -101,10 +87,6 @@ public class ResourcesManager : MonoBehaviour
 
     public void AddGold(int amount, Transform cardTransform)
     {
-        if(goldSprite == null)
-        {
-            AssignSpritesTextImages();
-        }
         StartCoroutine(GatherResources(cardTransform, goldSprite, amount, goldImage.transform));
     }
 
@@ -123,6 +105,7 @@ public class ResourcesManager : MonoBehaviour
     {
         var createdResource = Instantiate(resourceImage, resTransform.position, Quaternion.identity, transform);
         var createdResImage = createdResource.GetComponent<Image>().color;
+        createdResource.transform.localScale = resourceImage.transform.localScale;
         createdResource.GetComponent<Image>().sprite = resImage;
         Vector3 target = new Vector3(createdResource.transform.position.x, createdResource.transform.position.y - 200f, 0f);
         PayOneResourceAmount(resImage);
@@ -164,15 +147,15 @@ public class ResourcesManager : MonoBehaviour
     {
         if (goldSprite == image)
         {
-            currentGold += 1;
+            resourceHolder.AddGold(1);
         }
         else if (woodSprite == image)
         {
-            currentWood += 1;
+            resourceHolder.AddWood(1);
         }
         else if (coalSprite == image)
         {
-            currentCoal += 1;
+            resourceHolder.AddCoal(1);
         }
         updateText();
     }
@@ -181,32 +164,16 @@ public class ResourcesManager : MonoBehaviour
     {
         if (goldSprite == image)
         {
-            currentGold -= 1;
+            resourceHolder.AddGold(-1);
         }
         else if (woodSprite == image)
         {
-            currentWood -= 1;
+            resourceHolder.AddWood(-1);
         }
         else if (coalSprite == image)
         {
-            currentCoal -= 1;
+            resourceHolder.AddCoal(-1);
         }
-        updateText();
-    }
-
-    void AssignSpritesTextImages()
-    {
-        print(GetComponentsInChildren<Image>().Length);
-        goldImage = GetComponentsInChildren<Image>()[0];
-        woodImage = GetComponentsInChildren<Image>()[1];
-        coalImage = GetComponentsInChildren<Image>()[2];
-        gold = GetComponentsInChildren<Text>()[0];
-        wood = GetComponentsInChildren<Text>()[1];
-        coal = GetComponentsInChildren<Text>()[2];
-        goldSprite = goldImage.sprite;
-        woodSprite = woodImage.sprite;
-        coalSprite = coalImage.sprite;
-
         updateText();
     }
 }
