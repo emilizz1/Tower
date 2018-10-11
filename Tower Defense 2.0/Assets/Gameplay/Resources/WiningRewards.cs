@@ -17,6 +17,8 @@ public class WiningRewards : MonoBehaviour
     [SerializeField] GameObject gold;
     [SerializeField] GameObject wood;
     [SerializeField] GameObject coal;
+    [Header("Level")]
+    [SerializeField] int currentLevel;
 
     public void PrepareRewards()
     {

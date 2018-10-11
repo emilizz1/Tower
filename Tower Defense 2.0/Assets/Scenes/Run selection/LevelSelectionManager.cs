@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LevelSelectionManager : MonoBehaviour
 {
-    [SerializeField] LevelSelection lastCompletedLevel;
+    [SerializeField] LevelSelection[] levels;
 
     bool readyTosSelect = false;
 
@@ -12,10 +12,12 @@ public class LevelSelectionManager : MonoBehaviour
     float maxRaycasterDepth = 1000f;
     RaycastHit hitInfo;
     LoadLevel loadLevel;
+    LevelSelection lastCompletedLevel;
 
     void Start()
     {
         loadLevel = GetComponent<LoadLevel>();
+        lastCompletedLevel = levels[FindObjectOfType<LevelCounter>().GetLevelFinished() - 1];
         ActivateActiveLevels();
     }
 
