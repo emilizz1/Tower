@@ -32,5 +32,6 @@ public class WiningRewards : MonoBehaviour
         resoureceManager.AddResources(resourcesAwarded[1], woodImage, wood.transform); 
         coal.gameObject.GetComponentInChildren<Text>().text = resourcesAwarded[2].ToString();
         resoureceManager.AddResources(resourcesAwarded[2], coalImage, coal.transform);
+        FindObjectOfType<LevelCounter>().LevelFinished(currentLevel);
     }
 }

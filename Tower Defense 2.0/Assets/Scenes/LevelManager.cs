@@ -22,20 +22,11 @@ public class LevelManager : MonoBehaviour
     void Update()
     {
         text.text = currentLevel.ToString() + " / " + enemyHolder.GetLevelCount().ToString();
-        CheckForLevelLost();
     }
 
     public EnemyAI[] GetCurrentLevelEnemies()
     {
         return enemyHolder.GetEnemies(currentLevel - 1).GetEnemy();
-    }
-
-    void CheckForLevelLost()
-    {
-        if (lifepoints.GetLifePoints() == 0)
-        {
-            SceneManager.LoadScene(2);
-        }
     }
 
     public bool CheckForLevelWon()
