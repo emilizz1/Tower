@@ -21,16 +21,19 @@ public class ResourceHolder : MonoBehaviour
 
     public int getCurrentGold()
     {
+        print("gold: " + currentGold);
         return currentGold;
     }
 
     public int getCurrentWood()
     {
+        print("wood: " + currentWood);
         return currentWood;
     }
 
     public int getCurrentCoal()
     {
+        print("coal: " + currentCoal);
         return currentCoal;
     }
 

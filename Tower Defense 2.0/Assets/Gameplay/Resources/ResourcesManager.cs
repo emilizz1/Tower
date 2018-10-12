@@ -30,6 +30,15 @@ public class ResourcesManager : MonoBehaviour
         updateText();
     }
 
+    void Update()
+    {
+        if (resourceHolder == null)
+        {
+            resourceHolder = FindObjectOfType<ResourceHolder>();
+            updateText();
+        }
+    }
+
     void updateText()
     {
         gold.text = resourceHolder.getCurrentGold().ToString();
@@ -177,4 +186,3 @@ public class ResourcesManager : MonoBehaviour
         updateText();
     }
 }
-	
