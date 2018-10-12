@@ -20,11 +20,11 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_AmbientSkyColor: {r: 0.023464529, g: 0.169592, b: 0.45588237, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 0
+  m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
   m_HaloStrength: 0.5
@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionBounces: 1
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
-  m_Sun: {fileID: 0}
+  m_Sun: {fileID: 388302498}
   m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
 --- !u!157 &3
 LightmapSettings:
@@ -13333,8 +13333,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f0bb5a2b43cae448a9e0e56fee444d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifepointsRewarded: 5
-  resourcesAwarded: 010000000100000001000000
+  lifepointsRewarded: 10
+  resourcesAwarded: 030000000100000000000000
   rewards: {fileID: 1169823822}
   lifepointText: {fileID: 267656673}
   goldImage: {fileID: 21300000, guid: 8badecae48978c24fab15f95df1513c1, type: 3}
