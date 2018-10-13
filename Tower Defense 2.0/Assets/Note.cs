@@ -1,9 +1,10 @@
 ﻿// Need more images for enemies
 // special powers for enemy units?
-// Balance!!!
-// Change units to differ from level to levels
+// Balance
 // Idea make units images to gifs
 // animations for deck and discard
 // build selection level enviroment
-// build event system
+// build more events
 // add playablity with mouse
+// add persistent Items
+// after finishing level addable cards and or events are added

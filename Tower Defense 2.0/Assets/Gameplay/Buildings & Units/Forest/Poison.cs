@@ -5,6 +5,7 @@ using UnityEngine;
 public class Poison : MonoBehaviour
 {
     int poisonLevel = 1;
+    float poisonDamageMultiplayer = 1.25f;
     HealthSystem health;
 
     void Start()
@@ -17,7 +18,7 @@ public class Poison : MonoBehaviour
     {
         while (health.healthAsPercentage != 0)
         {
-            health.TakeDamage(poisonLevel);
+            health.TakeDamage(poisonLevel * poisonDamageMultiplayer);
             yield return new WaitForSeconds(1f);
         }
     }
