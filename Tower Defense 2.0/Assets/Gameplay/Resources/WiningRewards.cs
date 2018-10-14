@@ -5,12 +5,12 @@ using UnityEngine.UI;
 
 public class WiningRewards : MonoBehaviour
 {
-    [SerializeField] int lifepointsRewarded = 5;
-    [SerializeField] int[] resourcesAwarded;
     [SerializeField] GameObject rewards;
     [Header("Lifepoints")]
     [SerializeField] Text lifepointText;
+    [SerializeField] int lifepointsRewarded = 5;
     [Header("Resources")]
+    [SerializeField] int[] resourcesAwarded;
     [SerializeField] Sprite goldImage;
     [SerializeField] Sprite woodImage;
     [SerializeField] Sprite coalImage;
@@ -19,6 +19,10 @@ public class WiningRewards : MonoBehaviour
     [SerializeField] GameObject coal;
     [Header("Level")]
     [SerializeField] int currentLevel;
+    [Header("Cards")]
+    [SerializeField] GameObject cardRewards;
+    [SerializeField] Card cardAddedToDeck;
+    [SerializeField] Card[] cardsAddedToAddables;
 
     public void PrepareRewards()
     {
@@ -29,9 +33,37 @@ public class WiningRewards : MonoBehaviour
         gold.gameObject.GetComponentInChildren<Text>().text = resourcesAwarded[0].ToString();
         resoureceManager.AddResources(resourcesAwarded[0], goldImage, gold.transform);
         wood.gameObject.GetComponentInChildren<Text>().text = resourcesAwarded[1].ToString();
-        resoureceManager.AddResources(resourcesAwarded[1], woodImage, wood.transform); 
+        resoureceManager.AddResources(resourcesAwarded[1], woodImage, wood.transform);
         coal.gameObject.GetComponentInChildren<Text>().text = resourcesAwarded[2].ToString();
         resoureceManager.AddResources(resourcesAwarded[2], coalImage, coal.transform);
         FindObjectOfType<LevelCounter>().LevelFinished(currentLevel);
+        if (cardAddedToDeck != null)
+        {
+            cardRewards.SetActive(true);
+            FindObjectOfType<CardHolders>().AddPlayerCard(cardAddedToDeck);
+            GetComponentInChildren<ShowcaseCard>().PutInformation(cardAddedToDeck, GetBuildingLevel());
+        }
+        else
+        {
+            cardRewards.SetActive(false);
+        }
+        foreach (Card card in cardsAddedToAddables)
+        {
+            FindObjectOfType<CardHolders>().AddAddableCard(card);
+        }
+    }
+
+    int GetBuildingLevel()
+    {
+        int buildingLevel = 0;
+        Buildings currentlyLooking = cardAddedToDeck.GetPrefabs().GetBuilding(0);
+        foreach(Card card in FindObjectOfType<CardHolders>().GetAllPlayerCards())
+        {
+            if(currentlyLooking == card.GetPrefabs().GetBuilding(0))
+            {
+                buildingLevel++;
+            }
+        }
+        return buildingLevel;
     }
 }
