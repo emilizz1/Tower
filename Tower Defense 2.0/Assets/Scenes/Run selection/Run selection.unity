@@ -7135,10 +7135,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 396319531}
-  - component: {fileID: 396319527}
   - component: {fileID: 396319530}
   - component: {fileID: 396319529}
   - component: {fileID: 396319528}
+  - component: {fileID: 396319527}
   m_Layer: 0
   m_Name: Level 0
   m_TagString: Untagged
@@ -7161,6 +7161,10 @@ MonoBehaviour:
   ps: {fileID: 187913975}
   afterCompletionUnlocks:
   - {fileID: 1683619487}
+  events:
+  - {fileID: 1009004605311182, guid: 838e31a957e2337429e14861b0554929, type: 2}
+  - {fileID: 1169431950807720, guid: 9080c0c112dc6a9499509699a1b05013, type: 2}
+  - {fileID: 1169431950807720, guid: 9080c0c112dc6a9499509699a1b05013, type: 2}
   isActive: 0
 --- !u!33 &396319528
 MeshFilter:
@@ -7262,6 +7266,7 @@ MonoBehaviour:
   levelToLoad: 5
   ps: {fileID: 1537626680}
   afterCompletionUnlocks: []
+  events: []
   isActive: 0
 --- !u!33 &410191452
 MeshFilter:
@@ -7574,6 +7579,7 @@ MonoBehaviour:
   levelToLoad: 5
   ps: {fileID: 580905809}
   afterCompletionUnlocks: []
+  events: []
   isActive: 0
 --- !u!33 &576616587
 MeshFilter:
@@ -11303,6 +11309,7 @@ MonoBehaviour:
   levelToLoad: 7
   ps: {fileID: 2091720288}
   afterCompletionUnlocks: []
+  events: []
   isActive: 0
 --- !u!33 &770089306
 MeshFilter:
@@ -15851,6 +15858,7 @@ MonoBehaviour:
   afterCompletionUnlocks:
   - {fileID: 576616586}
   - {fileID: 410191451}
+  events: []
   isActive: 0
 --- !u!33 &1671446093
 MeshFilter:
@@ -15972,10 +15980,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftChoice: {fileID: 1506789673}
   rightChoice: {fileID: 690179021}
-  events:
-  - {fileID: 1169431950807720, guid: 9080c0c112dc6a9499509699a1b05013, type: 2}
-  - {fileID: 1437406260967834, guid: 8fc542345b1bf4341b1c4652f1f46efb, type: 2}
-  - {fileID: 1009004605311182, guid: 838e31a957e2337429e14861b0554929, type: 2}
 --- !u!1 &1683619486
 GameObject:
   m_ObjectHideFlags: 0
@@ -16011,6 +16015,11 @@ MonoBehaviour:
   afterCompletionUnlocks:
   - {fileID: 1671446092}
   - {fileID: 770089305}
+  events:
+  - {fileID: 1437406260967834, guid: 8fc542345b1bf4341b1c4652f1f46efb, type: 2}
+  - {fileID: 1009004605311182, guid: 838e31a957e2337429e14861b0554929, type: 2}
+  - {fileID: 1009004605311182, guid: 838e31a957e2337429e14861b0554929, type: 2}
+  - {fileID: 1169431950807720, guid: 9080c0c112dc6a9499509699a1b05013, type: 2}
   isActive: 0
 --- !u!33 &1683619488
 MeshFilter:

@@ -6,12 +6,12 @@ public class EventManager : MonoBehaviour
 {
     [SerializeField] GameObject leftChoice;
     [SerializeField] GameObject rightChoice;
-    [SerializeField] GameObject[] events;
 
 	void Start ()
     {
-        Instantiate(events[Random.Range(0, events.Length)], leftChoice.transform);
-        Instantiate(events[Random.Range(0, events.Length)], rightChoice.transform);
+        LevelSelection myEvent = FindObjectOfType<LevelSelectionManager>().GetCurrentLevel();
+        Instantiate(myEvent.GetEvents()[Random.Range(0, myEvent.GetEvents().Length)], leftChoice.transform);
+        Instantiate(myEvent.GetEvents()[Random.Range(0, myEvent.GetEvents().Length)], rightChoice.transform);
         SetEventsActive(true);
 	}
 

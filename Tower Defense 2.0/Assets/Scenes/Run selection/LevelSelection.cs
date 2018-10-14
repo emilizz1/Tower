@@ -7,6 +7,7 @@ public class LevelSelection : MonoBehaviour
     [SerializeField] int levelToLoad;
     [SerializeField] ParticleSystem ps;
     [SerializeField] LevelSelection[] afterCompletionUnlocks;
+    [SerializeField] GameObject[] events;
 
     public bool isActive = false;
 
@@ -27,5 +28,10 @@ public class LevelSelection : MonoBehaviour
         {
             level.IsActive(true);
         }
+    }
+
+    public GameObject[] GetEvents()
+    {
+        return events;
     }
 }

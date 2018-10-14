@@ -55,4 +55,9 @@ public class LevelSelectionManager : MonoBehaviour
     {
         readyTosSelect = change;
     }
+
+    public LevelSelection GetCurrentLevel()
+    {
+        return levels[FindObjectOfType<LevelCounter>().GetLevelFinished() - 1];
+    }
 }

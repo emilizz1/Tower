@@ -7,5 +7,3 @@
 // build more events
 // add playablity with mouse
 // add persistent Items
-// after finishing level addable cards and or events are added
-// make script that fills cards
