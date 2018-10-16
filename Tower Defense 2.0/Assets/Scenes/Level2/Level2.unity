@@ -9404,6 +9404,26 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ad30eb58fdec3b34aa65174ba41cad16, type: 2}
   m_IsPrefabParent: 0
+--- !u!198 &287594243 stripped
+ParticleSystem:
+  m_PrefabParentObject: {fileID: 198564219839535740, guid: ad30eb58fdec3b34aa65174ba41cad16,
+    type: 2}
+  m_PrefabInternal: {fileID: 287594242}
+--- !u!198 &287594244 stripped
+ParticleSystem:
+  m_PrefabParentObject: {fileID: 198453105636651564, guid: ad30eb58fdec3b34aa65174ba41cad16,
+    type: 2}
+  m_PrefabInternal: {fileID: 287594242}
+--- !u!1 &287594245 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1241358333890348, guid: ad30eb58fdec3b34aa65174ba41cad16,
+    type: 2}
+  m_PrefabInternal: {fileID: 287594242}
+--- !u!1 &287594246 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1564603356775094, guid: ad30eb58fdec3b34aa65174ba41cad16,
+    type: 2}
+  m_PrefabInternal: {fileID: 287594242}
 --- !u!1 &291861879
 GameObject:
   m_ObjectHideFlags: 0
@@ -16072,38 +16092,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16a78202375319648b9cf78cf045e5f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  friendlyHolder: {fileID: 0}
+  friendlyHolder: {fileID: 1435096209}
   placementPositionsLeft:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 964440742}
+  - {fileID: 538534570}
+  - {fileID: 763623523}
+  - {fileID: 2039332033}
+  - {fileID: 100955783}
+  - {fileID: 1570085264}
+  - {fileID: 683446356}
+  - {fileID: 1575804464}
+  - {fileID: 754902683}
+  - {fileID: 329041923}
+  - {fileID: 1813621128}
+  - {fileID: 303739777}
   placementPositionsRight:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  whitePS: {fileID: 0}
-  redPS: {fileID: 0}
+  - {fileID: 1935935788}
+  - {fileID: 975465224}
+  - {fileID: 155909749}
+  - {fileID: 636325004}
+  - {fileID: 16282202}
+  - {fileID: 1909472489}
+  - {fileID: 1025647913}
+  - {fileID: 1885382841}
+  - {fileID: 1360273146}
+  - {fileID: 383066394}
+  - {fileID: 1305856327}
+  - {fileID: 1987755691}
+  whitePS: {fileID: 287594244}
+  redPS: {fileID: 287594243}
   colorChoice: {fileID: 423876481}
-  firstPlacementRange: {fileID: 0}
-  secondPlacementRange: {fileID: 0}
+  firstPlacementRange: {fileID: 287594245}
+  secondPlacementRange: {fileID: 287594246}
 --- !u!114 &447728936
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16130,8 +16150,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f73af65262ee58442a492efe0df3abcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  placementPositions: {fileID: 0}
-  friendllyHolder: {fileID: 0}
+  placementPositions: {fileID: 1091935251}
+  friendllyHolder: {fileID: 1435096209}
 --- !u!114 &447728938
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -53145,6 +53165,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cd9bcf282c575b8409acb87864f0077c, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1435096209 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1656035456762216, guid: cd9bcf282c575b8409acb87864f0077c,
+    type: 2}
+  m_PrefabInternal: {fileID: 1435096208}
 --- !u!1 &1438054641
 GameObject:
   m_ObjectHideFlags: 0
