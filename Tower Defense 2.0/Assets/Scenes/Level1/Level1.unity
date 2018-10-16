@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 388302498}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -1274,6 +1274,26 @@ Prefab:
     - target: {fileID: 4053367774742722, guid: a699542aaa9865848b374158f8e41178, type: 2}
       propertyPath: m_RootOrder
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 218860059793005434, guid: a699542aaa9865848b374158f8e41178,
+        type: 2}
+      propertyPath: m_TreeDistance
+      value: 2000
+      objectReference: {fileID: 0}
+    - target: {fileID: 218860059793005434, guid: a699542aaa9865848b374158f8e41178,
+        type: 2}
+      propertyPath: m_TreeMaximumFullLODCount
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 218860059793005434, guid: a699542aaa9865848b374158f8e41178,
+        type: 2}
+      propertyPath: m_TreeCrossFadeLength
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 218860059793005434, guid: a699542aaa9865848b374158f8e41178,
+        type: 2}
+      propertyPath: m_TreeBillboardDistance
+      value: 150
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a699542aaa9865848b374158f8e41178, type: 2}
