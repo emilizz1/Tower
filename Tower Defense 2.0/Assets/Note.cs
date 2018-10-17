@@ -15,12 +15,13 @@
 // think of restrictions how many cards can be removed
 // 3rd button? (position rerolls)
 // implement more resources, hide when not used
+// sutvarkyt friendly placement
 
 // Ideas for permanent Items:
 // 00: After level gain 2/1/1 resources
 // 01: Boost for dmg, rng, spd to bow, pistol, throwing characters
 // 02: after building x amount of buildings temple apears which gives gold or wood
 // 03: swamp apears in level, slowed enemies
-// 04: first enemy of level dies automaticly
+// 04: first enemy of level dies automaticly (same as lifes??)
 // 05: gain/ remove 2 cards
 // 06: better position for units first

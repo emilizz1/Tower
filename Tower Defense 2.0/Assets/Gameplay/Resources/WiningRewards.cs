@@ -64,6 +64,6 @@ public class WiningRewards : MonoBehaviour
                 buildingLevel++;
             }
         }
-        return buildingLevel;
+        return buildingLevel + 1;
     }
 }
