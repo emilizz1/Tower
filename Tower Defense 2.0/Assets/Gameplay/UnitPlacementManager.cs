@@ -5,14 +5,16 @@ using UnityEngine;
 public class UnitPlacementManager : MonoBehaviour
 {
     [SerializeField] GameObject friendlyHolder;
-    [SerializeField] GameObject[] placementPositionsLeft;
-    [SerializeField] GameObject[] placementPositionsRight;
+    [SerializeField] GameObject placementPositionnLeft;
+    [SerializeField] GameObject placementPositionnRight;
     [SerializeField] ParticleSystem whitePS;
     [SerializeField] ParticleSystem redPS;
     [SerializeField] GameObject colorChoice;
     [SerializeField] GameObject firstPlacementRange;
     [SerializeField] GameObject secondPlacementRange;
 
+    Transform[] placementPositionsLeft;
+    Transform[] placementPositionsRight;
     BuildingManager buildingM;
     int whiteLengh;
     int redLengh;
@@ -20,6 +22,8 @@ public class UnitPlacementManager : MonoBehaviour
     private void Start()
     {
         buildingM = FindObjectOfType<BuildingManager>();
+        placementPositionsLeft = placementPositionnLeft.GetComponentsInChildren<Transform>();
+        placementPositionsRight = placementPositionnRight.GetComponentsInChildren<Transform>();
         whiteLengh = placementPositionsLeft.Length;
         redLengh = placementPositionsRight.Length;
     }
@@ -53,10 +57,10 @@ public class UnitPlacementManager : MonoBehaviour
         firstPlacementRange.SetActive(true);
         redPS.gameObject.SetActive(true);
         secondPlacementRange.SetActive(true);
-        whitePS.transform.position = placementPositionsLeft[Random.Range(0, whiteLengh)].transform.position;
+        whitePS.transform.position = placementPositionsLeft[Random.Range(0, whiteLengh)].position;
         firstPlacementRange.transform.position = new Vector3(whitePS.transform.position.x, -1f, whitePS.transform.position.z);
         firstPlacementRange.transform.localScale = new Vector3(unitRange * 2, 1f, unitRange * 2);
-        redPS.transform.position = placementPositionsRight[Random.Range(0, redLengh)].transform.position;
+        redPS.transform.position = placementPositionsRight[Random.Range(0, redLengh)].position;
         secondPlacementRange.transform.position = new Vector3(redPS.transform.position.x, -1f, redPS.transform.position.z);
         secondPlacementRange.transform.localScale = new Vector3(unitRange * 2, 1f, unitRange * 2);
         colorChoice.SetActive(true);
@@ -68,7 +72,7 @@ public class UnitPlacementManager : MonoBehaviour
         {
             for (int i = 0; i < whiteLengh; i++)
             {
-                if(position == placementPositionsLeft[i].transform.position)
+                if(position == placementPositionsLeft[i].position)
                 {
                     placementPositionsLeft[i] = placementPositionsLeft[whiteLengh-1];
                     whiteLengh--;
@@ -79,7 +83,7 @@ public class UnitPlacementManager : MonoBehaviour
         {
             for (int i = 0; i < redLengh; i++)
             {
-                if (position == placementPositionsRight[i].transform.position)
+                if (position == placementPositionsRight[i].position)
                 {
                     
                     placementPositionsRight[i] = placementPositionsRight[redLengh-1];

@@ -1,4 +1,4 @@
-﻿// Need more images for enemies
+﻿// Need more images
 // special powers for enemy units?
 // Balance
 // Idea make units images to gifs
@@ -15,7 +15,6 @@
 // think of restrictions how many cards can be removed
 // 3rd button? (position rerolls)
 // implement more resources, hide when not used
-// sutvarkyt friendly placement
 
 // Ideas for permanent Items:
 // 00: After level gain 2/1/1 resources
