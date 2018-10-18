@@ -4,18 +4,19 @@ using UnityEngine;
 
 public class UpcomingActions : MonoBehaviour
 {
+    [SerializeField] GameObject buildingSelectingIcon;
+    [SerializeField] GameObject enemySelectingIcon;
+    [SerializeField] GameObject enemyWaveIcon;
+    [SerializeField] GameObject buildingBonusesIcon;
+    [SerializeField] GameObject levelComnpletedIcon;
+    [SerializeField] GameObject nextTurnIcon;
+
+    [SerializeField] float objectsWidh = 30f;
+
     bool firstTurn = true;
+    bool lastTurn = false;
 
-    List<State> states = new List<State>();
-
-    enum State
-    {
-        buildingSelecting,
-        enemySelecting,
-        enemyWave,
-        buildingBonuses,
-        levelCompleted,
-    }
+    GameObject[] states;
 
     void Start ()
     {
@@ -29,15 +30,48 @@ public class UpcomingActions : MonoBehaviour
 
     void PrepareNextLevel()
     {
+        states = null;
         if (firstTurn)
         {
-            states.Add(State.buildingSelecting);
-            states.Add(State.buildingBonuses);
+            states[states.Length] = buildingSelectingIcon;
+            AddAllbuildingBonusesIcons();
             firstTurn = false;
         }
-        states.Add(State.buildingSelecting);
-        states.Add(State.enemySelecting);
-        states.Add(State.buildingBonuses);
-        states.Add(State.enemyWave);
+        else
+        {
+            states[states.Length] = buildingSelectingIcon;
+            states[states.Length] = enemySelectingIcon;
+            AddAllbuildingBonusesIcons();
+            states[states.Length] = enemyWaveIcon;
+            if (lastTurn)
+            {
+                states[states.Length] = levelComnpletedIcon;
+            }
+            else
+            {
+                states[states.Length] = nextTurnIcon;
+            }
+        }
+    }
+
+    void ArrangeStates()
+    {
+        float currentPosition = -objectsWidh * ((states.Length - 1f) / 2f);
+        if (states.Length % 2 == 0)
+        {
+            currentPosition -= 15;
+        }
+        foreach (GameObject state in states)
+        {
+            var tempPos = state.transform.position;
+            tempPos.x = currentPosition;
+            state.transform.position = tempPos;
+            currentPosition += objectsWidh;
+        }
+    }
+
+    void AddAllbuildingBonusesIcons()
+    {
+
     }
 }
