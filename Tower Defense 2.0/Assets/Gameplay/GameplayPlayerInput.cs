@@ -110,7 +110,7 @@ public class GameplayPlayerInput : MonoBehaviour
 
     void IsAnotherBuildingAvailable()
     {
-        if (buildingM.GetBuildingsLengt() > currentBuilding + 1)
+        if (buildingM.GetBuildingsLength() > currentBuilding + 1)
         {
             buildingM.TurnBuildings(true,false);
             currentBuilding++;

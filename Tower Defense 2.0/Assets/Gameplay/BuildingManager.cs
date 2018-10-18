@@ -35,7 +35,7 @@ public class BuildingManager : MonoBehaviour
         }
     }
 
-    public int GetBuildingsLengt()
+    public int GetBuildingsLength()
     {
         return currentBuildingLengh;
     }
@@ -58,7 +58,6 @@ public class BuildingManager : MonoBehaviour
         else if(choice == 1)
         {
             rM.AddResources(buildings[buildingNumber].GetResourceAmount(), buildings[buildingNumber].GetResource());
-            //resource adding animation
         }
         if (buildingNumber + 1 < currentBuildingLengh)
         {

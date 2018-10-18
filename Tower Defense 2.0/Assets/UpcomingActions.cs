@@ -16,11 +16,12 @@ public class UpcomingActions : MonoBehaviour
     bool firstTurn = true;
     bool lastTurn = false;
 
+    BuildingManager buildingManager;
     GameObject[] states;
 
     void Start ()
     {
-
+        buildingManager = FindObjectOfType<BuildingManager>();
 	}
 	
 	void Update ()
@@ -72,6 +73,11 @@ public class UpcomingActions : MonoBehaviour
 
     void AddAllbuildingBonusesIcons()
     {
-
+        for (int i = 0; i < buildingManager.GetBuildingsLength(); i++)
+        {
+            Buildings myBuilding = buildingManager.GetBulding(i);
+            var myBuildingBonusIcon = Instantiate(buildingBonusesIcon, transform). GetComponent<BuildingBonusIcon>();
+            myBuildingBonusIcon.PutInformation(myBuilding.GetResource(), myBuilding.GetResourceAmount(), myBuilding.GetBuildingUnitCost());
+        }
     }
 }
