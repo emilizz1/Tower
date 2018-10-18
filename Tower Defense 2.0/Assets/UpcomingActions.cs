@@ -12,24 +12,22 @@ public class UpcomingActions : MonoBehaviour
     [SerializeField] GameObject nextTurnIcon;
 
     [SerializeField] float objectsWidh = 30f;
+    [SerializeField] float objectSize = 1.3f;
+    [SerializeField] float objectElevation = 30f;
 
     bool firstTurn = true;
     bool lastTurn = false;
 
     BuildingManager buildingManager;
     GameObject[] states;
+    int currentlyActive = 0;
 
     void Start ()
     {
         buildingManager = FindObjectOfType<BuildingManager>();
 	}
-	
-	void Update ()
-    {
-		
-	}
 
-    void PrepareNextLevel()
+    public void PrepareLevel()
     {
         states = null;
         if (firstTurn)
@@ -79,5 +77,24 @@ public class UpcomingActions : MonoBehaviour
             var myBuildingBonusIcon = Instantiate(buildingBonusesIcon, transform). GetComponent<BuildingBonusIcon>();
             myBuildingBonusIcon.PutInformation(myBuilding.GetResource(), myBuilding.GetResourceAmount(), myBuilding.GetBuildingUnitCost());
         }
+    }
+
+    public void NewLevel()
+    {
+        currentlyActive = 0;
+        PrepareLevel();
+        states[currentlyActive].transform.localScale = new Vector3(objectSize, objectSize, objectSize);
+        states[currentlyActive].transform.localPosition = new Vector3(states[currentlyActive].transform.position.x, objectElevation);
+    }
+
+    public void PhaseFinished()
+    {
+        var lastState = states[currentlyActive];
+        var currentState = states[currentlyActive + 1];
+        currentlyActive++;
+        lastState.transform.localScale = new Vector3(1f, 1f, 1f);
+        currentState.transform.localScale = new Vector3(objectSize, objectSize, objectSize);
+        lastState.transform.localPosition = new Vector3(lastState.transform.position.x, 0f);
+        currentState.transform.localPosition = new Vector3(currentState.transform.position.x, objectElevation);
     }
 }

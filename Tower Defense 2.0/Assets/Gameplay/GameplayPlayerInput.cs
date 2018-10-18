@@ -12,6 +12,7 @@ public class GameplayPlayerInput : MonoBehaviour
     UnitPlacementManager placementM;
     EnemySpawner enemySpawner;
     LevelManager levelM;
+    UpcomingActions upcomingActions;
 
     int currentBuilding = 0;
     bool nextStep = true;
@@ -37,6 +38,7 @@ public class GameplayPlayerInput : MonoBehaviour
         placementM = FindObjectOfType<UnitPlacementManager>();
         enemySpawner = FindObjectOfType<EnemySpawner>();
         levelM = FindObjectOfType<LevelManager>();
+        upcomingActions = FindObjectOfType<UpcomingActions>();
 	}
 	
 	void Update ()
@@ -54,25 +56,29 @@ public class GameplayPlayerInput : MonoBehaviour
     void currentChoiceSelected(int choice)
     {
         switch (currentState)
-        { //TODO idea! switch enemy and building selections
+        {
             case State.buildingSelecting:
                 StopCoroutine(WaitingForEnemiesToDie());
                 cardM.CardSelected(choice, true);
                 if (firstRound)
                 {
                     cardM.CardSelected(choice, false);
+                    upcomingActions.PrepareLevel();
                     currentState = State.buildingBonuses;
                     myCamera.ViewBuilding(buildingM.GetBulding(currentBuilding).transform.position);
                     buildingM.TurnBuildings(true, true);
+                    upcomingActions.PhaseFinished();
                 }
                 else
                 {
                     currentState = State.enemySelecting;
+                    upcomingActions.PhaseFinished();
                 }
                 break;
             case State.enemySelecting:
                 cardM.CardSelected(choice, false);
                 currentState = State.buildingBonuses;
+                upcomingActions.PhaseFinished();
                 myCamera.ViewBuilding(buildingM.GetBulding(currentBuilding).transform.position);
                 buildingM.TurnBuildings(true, true);
                 break;
@@ -116,6 +122,7 @@ public class GameplayPlayerInput : MonoBehaviour
             currentBuilding++;
             currentState = State.buildingBonuses;
             myCamera.ViewBuilding(buildingM.GetBulding(currentBuilding).transform.position);
+            upcomingActions.PhaseFinished();
         }
         else
         {
@@ -127,6 +134,7 @@ public class GameplayPlayerInput : MonoBehaviour
                 cardM.TurnCards(true);
                 firstRound = false;
                 myCamera.Viewlevel();
+                upcomingActions.NewLevel();
             }
             else
             {
@@ -134,6 +142,7 @@ public class GameplayPlayerInput : MonoBehaviour
                 enemySpawner.StartNextWave();
                 StartCoroutine(WaitingForEnemiesToDie());
                 currentState = State.nothing;
+                upcomingActions.PhaseFinished();
             }
         }
     }
@@ -151,6 +160,7 @@ public class GameplayPlayerInput : MonoBehaviour
         }
         levelM.LevelFinished();
         myCamera.Viewlevel();
+        upcomingActions.NewLevel();
     }
 
     bool CheckForLevelCompleted()
