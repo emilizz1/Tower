@@ -76,7 +76,7 @@ public class UpcomingActions : MonoBehaviour
         {
             Buildings myBuilding = buildingManager.GetBulding(i);
             var myBuildingBonusIcon = Instantiate(buildingBonusesIcon, transform). GetComponent<BuildingBonusIcon>();
-            myBuildingBonusIcon.PutInformation(myBuilding.GetResource(), myBuilding.GetResourceAmount(), myBuilding.GetBuildingUnitCost());
+            myBuildingBonusIcon.PutInformation(myBuilding.GetResource(), myBuilding.GetResourceAmount(), myBuilding.GetBuildingUnitCost(), myBuilding.name);
         }
     }
 

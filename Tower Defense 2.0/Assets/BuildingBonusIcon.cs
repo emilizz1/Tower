@@ -10,8 +10,9 @@ public class BuildingBonusIcon : MonoBehaviour
     [SerializeField] Text unitGoldText;
     [SerializeField] Text unitWoodText;
     [SerializeField] Text unitCoalText;
+    [SerializeField] Text buildingName;
 
-    public void PutInformation(Sprite buildingResource, int buildingAmount, int[] UnitCost)
+    public void PutInformation(Sprite buildingResource, int buildingAmount, int[] UnitCost, string buildingName)
     {
         buildingProductionImage.sprite = buildingResource;
         buildingProductionAmount.text = buildingAmount.ToString();
@@ -42,6 +43,7 @@ public class BuildingBonusIcon : MonoBehaviour
         {
             unitCoalText.gameObject.SetActive(false);
         }
+        this.buildingName.text = buildingName;
     }
 	
 }
