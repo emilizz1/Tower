@@ -21,51 +21,51 @@ public class UpcomingActions : MonoBehaviour
     BuildingManager buildingManager;
     GameObject[] states;
     int currentlyActive = 0;
+    int currentlyEmpty = 0;
 
     void Start ()
     {
         buildingManager = FindObjectOfType<BuildingManager>();
+        NewLevel();
 	}
 
     public void PrepareLevel()
     {
-        states = null;
+        states = new GameObject[20] ;
+        currentlyEmpty = 0;
         if (firstTurn)
         {
-            states[states.Length] = buildingSelectingIcon;
+            states[currentlyEmpty++] = Instantiate(buildingSelectingIcon, transform);
             AddAllbuildingBonusesIcons();
             firstTurn = false;
         }
-        else
-        {
-            states[states.Length] = buildingSelectingIcon;
-            states[states.Length] = enemySelectingIcon;
+            states[currentlyEmpty++] = Instantiate(buildingSelectingIcon, transform);
+            states[currentlyEmpty++] = Instantiate(enemySelectingIcon, transform);
             AddAllbuildingBonusesIcons();
-            states[states.Length] = enemyWaveIcon;
+            states[currentlyEmpty++] = Instantiate(enemyWaveIcon, transform);
             if (lastTurn)
             {
-                states[states.Length] = levelComnpletedIcon;
+                states[currentlyEmpty++] = Instantiate(levelComnpletedIcon, transform);
             }
             else
             {
-                states[states.Length] = nextTurnIcon;
+                states[currentlyEmpty++] = Instantiate(nextTurnIcon, transform);
             }
-        }
+        ArrangeStates();
     }
 
     void ArrangeStates()
     {
-        float currentPosition = -objectsWidh * ((states.Length - 1f) / 2f);
-        if (states.Length % 2 == 0)
+        float currentPosition = -objectsWidh * ((currentlyEmpty - 1f) / 2f);
+        if (currentlyEmpty % 2 == 0)
         {
             currentPosition -= objectsWidh /2f;
         }
-        foreach (GameObject state in states)
+        for (int i = 0; i < currentlyEmpty; i++)
         {
-            var tempPos = state.transform.position;
+            var tempPos = states[i].transform.position;
             tempPos.x = currentPosition;
-            state.transform.position = tempPos;
-            //why?
+            states[i].transform.position = tempPos;
             currentPosition += objectsWidh;
         }
     }
@@ -75,13 +75,14 @@ public class UpcomingActions : MonoBehaviour
         for (int i = 0; i < buildingManager.GetBuildingsLength(); i++)
         {
             Buildings myBuilding = buildingManager.GetBulding(i);
-            var myBuildingBonusIcon = Instantiate(buildingBonusesIcon, transform). GetComponent<BuildingBonusIcon>();
+            var myBuildingBonusIcon = Instantiate(buildingBonusesIcon, transform).GetComponent<BuildingBonusIcon>();
             myBuildingBonusIcon.PutInformation(myBuilding.GetResource(), myBuilding.GetResourceAmount(), myBuilding.GetBuildingUnitCost(), myBuilding.name);
         }
     }
 
     public void NewLevel()
     {
+        CleanAllObjects();
         currentlyActive = 0;
         PrepareLevel();
         states[currentlyActive].transform.localScale = new Vector3(objectSize, objectSize, objectSize);
@@ -97,5 +98,15 @@ public class UpcomingActions : MonoBehaviour
         currentState.transform.localScale = new Vector3(objectSize, objectSize, objectSize);
         lastState.transform.localPosition = new Vector3(lastState.transform.position.x, 0f);
         currentState.transform.localPosition = new Vector3(currentState.transform.position.x, objectElevation);
+
+        print(states[2].transform.position);
+    }
+
+    void CleanAllObjects()
+    {
+        for (int i = 0; i < currentlyActive; i++)
+        {
+            Destroy(states[i].gameObject);
+        }
     }
 }
