@@ -58,13 +58,14 @@ public class UpcomingActions : MonoBehaviour
         float currentPosition = -objectsWidh * ((states.Length - 1f) / 2f);
         if (states.Length % 2 == 0)
         {
-            currentPosition -= 15;
+            currentPosition -= objectsWidh /2f;
         }
         foreach (GameObject state in states)
         {
             var tempPos = state.transform.position;
             tempPos.x = currentPosition;
             state.transform.position = tempPos;
+            //why?
             currentPosition += objectsWidh;
         }
     }
