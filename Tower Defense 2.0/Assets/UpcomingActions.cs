@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UpcomingActions : MonoBehaviour
 {
@@ -31,7 +32,8 @@ public class UpcomingActions : MonoBehaviour
 
     public void PrepareLevel()
     {
-        states = new GameObject[20] ;
+        CleanAllObjects();
+        states = new GameObject[20];
         currentlyEmpty = 0;
         if (firstTurn)
         {
@@ -39,18 +41,18 @@ public class UpcomingActions : MonoBehaviour
             AddAllbuildingBonusesIcons();
             firstTurn = false;
         }
-            states[currentlyEmpty++] = Instantiate(buildingSelectingIcon, transform);
-            states[currentlyEmpty++] = Instantiate(enemySelectingIcon, transform);
-            AddAllbuildingBonusesIcons();
-            states[currentlyEmpty++] = Instantiate(enemyWaveIcon, transform);
-            if (lastTurn)
-            {
-                states[currentlyEmpty++] = Instantiate(levelComnpletedIcon, transform);
-            }
-            else
-            {
-                states[currentlyEmpty++] = Instantiate(nextTurnIcon, transform);
-            }
+        states[currentlyEmpty++] = Instantiate(buildingSelectingIcon, transform);
+        states[currentlyEmpty++] = Instantiate(enemySelectingIcon, transform);
+        AddAllbuildingBonusesIcons();
+        states[currentlyEmpty++] = Instantiate(enemyWaveIcon, transform);
+        if (lastTurn)
+        {
+            states[currentlyEmpty++] = Instantiate(levelComnpletedIcon, transform);
+        }
+        else
+        {
+            states[currentlyEmpty++] = Instantiate(nextTurnIcon, transform);
+        }
         ArrangeStates();
     }
 
@@ -65,7 +67,8 @@ public class UpcomingActions : MonoBehaviour
         {
             var tempPos = states[i].transform.position;
             tempPos.x = currentPosition;
-            states[i].transform.position = tempPos;
+            tempPos.y = 0f;
+            states[i].transform.localPosition = tempPos;
             currentPosition += objectsWidh;
         }
     }
@@ -75,18 +78,18 @@ public class UpcomingActions : MonoBehaviour
         for (int i = 0; i < buildingManager.GetBuildingsLength(); i++)
         {
             Buildings myBuilding = buildingManager.GetBulding(i);
-            var myBuildingBonusIcon = Instantiate(buildingBonusesIcon, transform).GetComponent<BuildingBonusIcon>();
+            states[currentlyEmpty++] = Instantiate(buildingBonusesIcon, transform);
+            var myBuildingBonusIcon = states[currentlyEmpty -1].GetComponent<BuildingBonusIcon>();
             myBuildingBonusIcon.PutInformation(myBuilding.GetResource(), myBuilding.GetResourceAmount(), myBuilding.GetBuildingUnitCost(), myBuilding.name);
         }
     }
 
     public void NewLevel()
     {
-        CleanAllObjects();
         currentlyActive = 0;
         PrepareLevel();
         states[currentlyActive].transform.localScale = new Vector3(objectSize, objectSize, objectSize);
-        states[currentlyActive].transform.localPosition = new Vector3(states[currentlyActive].transform.position.x, objectElevation);
+        states[currentlyActive].transform.localPosition = new Vector3(states[currentlyActive].transform.localPosition.x, objectElevation);
     }
 
     public void PhaseFinished()
@@ -96,17 +99,14 @@ public class UpcomingActions : MonoBehaviour
         currentlyActive++;
         lastState.transform.localScale = new Vector3(1f, 1f, 1f);
         currentState.transform.localScale = new Vector3(objectSize, objectSize, objectSize);
-        lastState.transform.localPosition = new Vector3(lastState.transform.position.x, 0f);
-        currentState.transform.localPosition = new Vector3(currentState.transform.position.x, objectElevation);
-
-        print(states[2].transform.position);
+        lastState.transform.localPosition = new Vector3(lastState.transform.localPosition.x, 0f);
     }
 
     void CleanAllObjects()
     {
-        for (int i = 0; i < currentlyActive; i++)
+        foreach(Image myObject in GetComponentsInChildren<Image>())
         {
-            Destroy(states[i].gameObject);
+            Destroy(myObject.gameObject);
         }
     }
 }
