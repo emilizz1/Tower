@@ -63,7 +63,6 @@ public class GameplayPlayerInput : MonoBehaviour
                 if (firstRound)
                 {
                     cardM.CardSelected(choice, false);
-                    upcomingActions.PrepareLevel();
                     currentState = State.buildingBonuses;
                     myCamera.ViewBuilding(buildingM.GetBulding(currentBuilding).transform.position);
                     buildingM.TurnBuildings(true, true);
@@ -134,7 +133,7 @@ public class GameplayPlayerInput : MonoBehaviour
                 cardM.TurnCards(true);
                 firstRound = false;
                 myCamera.Viewlevel();
-                upcomingActions.NewLevel();
+                upcomingActions.PhaseFinished();
             }
             else
             {
@@ -160,7 +159,7 @@ public class GameplayPlayerInput : MonoBehaviour
         }
         levelM.LevelFinished();
         myCamera.Viewlevel();
-        upcomingActions.NewLevel();
+        upcomingActions.NewLevel(false);
     }
 
     bool CheckForLevelCompleted()

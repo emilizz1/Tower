@@ -16,7 +16,7 @@ public class UpcomingActions : MonoBehaviour
     [SerializeField] float objectSize = 1.3f;
     [SerializeField] float objectElevation = 30f;
 
-    bool firstTurn = true;
+    bool myFirstTurn = true;
     bool lastTurn = false;
 
     BuildingManager buildingManager;
@@ -27,19 +27,18 @@ public class UpcomingActions : MonoBehaviour
     void Start ()
     {
         buildingManager = FindObjectOfType<BuildingManager>();
-        NewLevel();
+        NewLevel(true);
 	}
 
-    public void PrepareLevel()
+    void PrepareLevel()
     {
         CleanAllObjects();
         states = new GameObject[20];
         currentlyEmpty = 0;
-        if (firstTurn)
+        if (myFirstTurn)
         {
             states[currentlyEmpty++] = Instantiate(buildingSelectingIcon, transform);
             AddAllbuildingBonusesIcons();
-            firstTurn = false;
         }
         states[currentlyEmpty++] = Instantiate(buildingSelectingIcon, transform);
         states[currentlyEmpty++] = Instantiate(enemySelectingIcon, transform);
@@ -84,16 +83,21 @@ public class UpcomingActions : MonoBehaviour
         }
     }
 
-    public void NewLevel()
+    public void NewLevel(bool firstTurn)
     {
-        currentlyActive = 0;
+        if (!firstTurn)
+        {
+            currentlyActive = 0;
+        }
         PrepareLevel();
         states[currentlyActive].transform.localScale = new Vector3(objectSize, objectSize, objectSize);
         states[currentlyActive].transform.localPosition = new Vector3(states[currentlyActive].transform.localPosition.x, objectElevation);
+        myFirstTurn = firstTurn;
     }
 
     public void PhaseFinished()
     {
+        PrepareLevel();
         var lastState = states[currentlyActive];
         var currentState = states[currentlyActive + 1];
         currentlyActive++;
