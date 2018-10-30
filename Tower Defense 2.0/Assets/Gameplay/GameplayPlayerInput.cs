@@ -156,7 +156,7 @@ public class GameplayPlayerInput : MonoBehaviour
         {
             currentState = State.buildingSelecting;
             cardM.TurnCards(true);
-            upcomingActions.PhaseFinished();
+            upcomingActions.NewLevel(false);
         }
         else
         {

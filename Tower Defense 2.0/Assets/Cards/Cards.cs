@@ -98,7 +98,7 @@ public class Cards : MonoBehaviour
     {
         if (whileChoosingBuilding)
         {
-            unitsCard.transform.localPosition = new Vector3(unitsCard.transform.localPosition.x, -250f, unitsCard.transform.localPosition.z);
+            unitsCard.transform.localPosition = new Vector3(unitsCard.transform.localPosition.x, -175f, unitsCard.transform.localPosition.z); // TODO -175 serialize
             unitsCard.transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
         }
         else
