@@ -10,7 +10,6 @@ public class UpcomingActions : MonoBehaviour
     [SerializeField] GameObject enemyWaveIcon;
     [SerializeField] GameObject buildingBonusesIcon;
     [SerializeField] GameObject levelComnpletedIcon;
-    [SerializeField] GameObject nextTurnIcon;
 
     [SerializeField] float objectsWidh = 30f;
     [SerializeField] float objectSize = 1.3f;
@@ -38,19 +37,15 @@ public class UpcomingActions : MonoBehaviour
         if (myFirstTurn)
         {
             states[currentlyEmpty++] = Instantiate(buildingSelectingIcon, transform);
-            AddAllbuildingBonusesIcons();
+            AddAllbuildingBonusesIcons(true);
         }
         states[currentlyEmpty++] = Instantiate(buildingSelectingIcon, transform);
         states[currentlyEmpty++] = Instantiate(enemySelectingIcon, transform);
-        AddAllbuildingBonusesIcons();
+        AddAllbuildingBonusesIcons(false);
         states[currentlyEmpty++] = Instantiate(enemyWaveIcon, transform);
-        if (lastTurn)
+        if (FindObjectOfType<LevelManager>().CheckForLevelWon())
         {
             states[currentlyEmpty++] = Instantiate(levelComnpletedIcon, transform);
-        }
-        else
-        {
-            states[currentlyEmpty++] = Instantiate(nextTurnIcon, transform);
         }
         ArrangeStates();
     }
@@ -72,7 +67,7 @@ public class UpcomingActions : MonoBehaviour
         }
     }
 
-    void AddAllbuildingBonusesIcons()
+    void AddAllbuildingBonusesIcons(bool firstTurn)
     {
         for (int i = 0; i < buildingManager.GetBuildingsLength(); i++)
         {
@@ -80,6 +75,7 @@ public class UpcomingActions : MonoBehaviour
             states[currentlyEmpty++] = Instantiate(buildingBonusesIcon, transform);
             var myBuildingBonusIcon = states[currentlyEmpty -1].GetComponent<BuildingBonusIcon>();
             myBuildingBonusIcon.PutInformation(myBuilding.GetResource(), myBuilding.GetResourceAmount(), myBuilding.GetBuildingUnitCost(), myBuilding.name);
+            if (firstTurn) { return; }
         }
     }
 
@@ -89,10 +85,10 @@ public class UpcomingActions : MonoBehaviour
         {
             currentlyActive = 0;
         }
+        myFirstTurn = firstTurn;
         PrepareLevel();
         states[currentlyActive].transform.localScale = new Vector3(objectSize, objectSize, objectSize);
         states[currentlyActive].transform.localPosition = new Vector3(states[currentlyActive].transform.localPosition.x, objectElevation);
-        myFirstTurn = firstTurn;
     }
 
     public void PhaseFinished()

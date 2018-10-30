@@ -26,6 +26,8 @@ public class UnitPlacementManager : MonoBehaviour
         placementPositionsRight = placementPositionnRight.GetComponentsInChildren<Transform>();
         whiteLengh = placementPositionsLeft.Length;
         redLengh = placementPositionsRight.Length;
+        RemovePosition(Vector3.zero, true);
+        RemovePosition(Vector3.zero, false);
     }
 
     public void PlaceUnit(int choice, int currentBuilding)

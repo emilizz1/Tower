@@ -8,7 +8,6 @@
 // add playablity with mouse
 // add persistent Items
 // add branching building paths
-// Idea! make line of buildings still comming up. Player to know how much to pay.
 // card shocase pages
 // more events: legendary cards, permanent items, upgrade a card
 // make negative events

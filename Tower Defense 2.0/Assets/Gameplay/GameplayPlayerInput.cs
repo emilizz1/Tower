@@ -156,10 +156,14 @@ public class GameplayPlayerInput : MonoBehaviour
         {
             currentState = State.buildingSelecting;
             cardM.TurnCards(true);
+            upcomingActions.PhaseFinished();
+        }
+        else
+        {
+            upcomingActions.NewLevel(false);
         }
         levelM.LevelFinished();
         myCamera.Viewlevel();
-        upcomingActions.NewLevel(false);
     }
 
     bool CheckForLevelCompleted()
