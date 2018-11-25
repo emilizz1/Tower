@@ -68,7 +68,7 @@ public class ShowcaseCard : MonoBehaviour
             if (cost > 0)
             {
                 resource.SetActive(true);
-                resource.GetComponentsInChildren<Image>()[1].sprite = resources[currentResource];
+                resource.GetComponentsInChildren<Image>()[0].sprite = resources[currentResource];
                 cost--;
             }
             else
