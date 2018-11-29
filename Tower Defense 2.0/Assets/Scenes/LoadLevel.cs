@@ -3,21 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LoadLevel : MonoBehaviour
+namespace Towers.Scenes
 {
-    public void LoadScene(int scene)
+    public class LoadLevel : MonoBehaviour
     {
-        StartCoroutine(LoadNewScene(0));
-        StartCoroutine(LoadNewScene(scene));
-    }
-
-    IEnumerator LoadNewScene(int scene)
-    {
-        AsyncOperation async = SceneManager.LoadSceneAsync(scene);
-
-        while (!async.isDone)
+        public void LoadScene(int scene)
         {
-            yield return null;
+            StartCoroutine(LoadNewScene(0));
+            StartCoroutine(LoadNewScene(scene));
+        }
+
+        IEnumerator LoadNewScene(int scene)
+        {
+            AsyncOperation async = SceneManager.LoadSceneAsync(scene);
+
+            while (!async.isDone)
+            {
+                yield return null;
+            }
         }
     }
 }

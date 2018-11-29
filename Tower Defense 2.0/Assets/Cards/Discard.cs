@@ -1,34 +1,36 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Discard : MonoBehaviour
+namespace Towers.Cards
 {
-    List<Card> discard = new List<Card>();
-    Text text;
-
-    void Start()
+    public class Discard : MonoBehaviour
     {
-        text = GetComponentInChildren<Text>();
-        UpdateText();
-    }
+        List<Card> discard = new List<Card>();
+        Text text;
 
-    public List<Card> GetDiscard()
-    {
-        List<Card> tempDiscard = new List<Card>(discard);
-        discard.RemoveRange(0, discard.Count);
-        return tempDiscard;
-    }
+        void Start()
+        {
+            text = GetComponentInChildren<Text>();
+            UpdateText();
+        }
 
-    public void DiscardCards(List<Card> discardedCards)
-    {
-        discard.AddRange(discardedCards);
-        UpdateText();
-    }
+        public List<Card> GetDiscard()
+        {
+            List<Card> tempDiscard = new List<Card>(discard);
+            discard.RemoveRange(0, discard.Count);
+            return tempDiscard;
+        }
 
-    void UpdateText()
-    {
-        text.text = discard.Count.ToString();
+        public void DiscardCards(List<Card> discardedCards)
+        {
+            discard.AddRange(discardedCards);
+            UpdateText();
+        }
+
+        void UpdateText()
+        {
+            text.text = discard.Count.ToString();
+        }
     }
 }

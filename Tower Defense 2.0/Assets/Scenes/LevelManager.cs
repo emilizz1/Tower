@@ -4,42 +4,45 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class LevelManager : MonoBehaviour
+namespace Towers.Scenes
 {
-    [SerializeField] EnemyHolder enemyHolder;
-
-    LifePoints lifepoints;
-    EnemyRoundHolder[] enemies;
-    Text text;
-    int currentLevel = 1;
-
-    void Start()
+    public class LevelManager : MonoBehaviour
     {
-        text = GetComponent<Text>();
-        lifepoints = FindObjectOfType<LifePoints>();
-    }
+        [SerializeField] EnemyHolder enemyHolder;
 
-    void Update()
-    {
-        text.text = currentLevel.ToString() + " / " + enemyHolder.GetLevelCount().ToString();
-    }
+        LifePoints lifepoints;
+        EnemyRoundHolder[] enemies;
+        Text text;
+        int currentLevel = 1;
 
-    public EnemyAI[] GetCurrentLevelEnemies()
-    {
-        return enemyHolder.GetEnemies(currentLevel - 1).GetEnemy();
-    }
-
-    public bool CheckForLevelWon()
-    {
-        if (currentLevel == enemyHolder.GetLevelCount())
+        void Start()
         {
-            return true;
+            text = GetComponent<Text>();
+            lifepoints = FindObjectOfType<LifePoints>();
         }
-        return false;
-    }
 
-    public void LevelFinished()
-    {
-        currentLevel++;
+        void Update()
+        {
+            text.text = currentLevel.ToString() + " / " + enemyHolder.GetLevelCount().ToString();
+        }
+
+        public EnemyAI[] GetCurrentLevelEnemies()
+        {
+            return enemyHolder.GetEnemies(currentLevel - 1).GetEnemy();
+        }
+
+        public bool CheckForLevelWon()
+        {
+            if (currentLevel == enemyHolder.GetLevelCount())
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public void LevelFinished()
+        {
+            currentLevel++;
+        }
     }
 }

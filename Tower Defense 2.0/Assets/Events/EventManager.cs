@@ -2,35 +2,38 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EventManager : MonoBehaviour
+namespace Towers.Events
 {
-    [SerializeField] GameObject leftChoice;
-    [SerializeField] GameObject rightChoice;
-
-	void Start ()
+    public class EventManager : MonoBehaviour
     {
-        LevelSelection myEvent = FindObjectOfType<LevelSelectionManager>().GetCurrentLevel();
-        Instantiate(myEvent.GetEvents()[Random.Range(0, myEvent.GetEvents().Length)], leftChoice.transform);
-        Instantiate(myEvent.GetEvents()[Random.Range(0, myEvent.GetEvents().Length)], rightChoice.transform);
-        SetEventsActive(true);
-	}
+        [SerializeField] GameObject leftChoice;
+        [SerializeField] GameObject rightChoice;
 
-    void SetEventsActive(bool isActive)
-    {
-        leftChoice.SetActive(isActive);
-        rightChoice.SetActive(isActive);
-    }
-
-    public void EventChosen(int choice)
-    {
-        if(choice == 0)
+        void Start()
         {
-            leftChoice.BroadcastMessage("Activated");
+            LevelSelection myEvent = FindObjectOfType<LevelSelectionManager>().GetCurrentLevel();
+            Instantiate(myEvent.GetEvents()[Random.Range(0, myEvent.GetEvents().Length)], leftChoice.transform);
+            Instantiate(myEvent.GetEvents()[Random.Range(0, myEvent.GetEvents().Length)], rightChoice.transform);
+            SetEventsActive(true);
         }
-        else if(choice == 1)
+
+        void SetEventsActive(bool isActive)
         {
-            rightChoice.BroadcastMessage("Activated");
+            leftChoice.SetActive(isActive);
+            rightChoice.SetActive(isActive);
         }
-        SetEventsActive(false);
+
+        public void EventChosen(int choice)
+        {
+            if (choice == 0)
+            {
+                leftChoice.BroadcastMessage("Activated");
+            }
+            else if (choice == 1)
+            {
+                rightChoice.BroadcastMessage("Activated");
+            }
+            SetEventsActive(false);
+        }
     }
 }

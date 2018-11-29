@@ -1,40 +1,42 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-[Serializable]
-[CreateAssetMenu(menuName = ("Tower defense/Card Holder"))]
-public class CardHolder : ScriptableObject {
-
-    [SerializeField] Card[] cards;
-
-    public Card[] GetAllCards()
+namespace Towers.Cards
+{
+    [Serializable]
+    [CreateAssetMenu(menuName = ("Tower defense/Card Holder"))]
+    public class CardHolder : ScriptableObject
     {
-        return cards;
-    }
 
-    public void AddCard(Card cardToAdd)
-    {
-        Card[] temp = new Card[cards.Length + 1];
-        for (int i = 0; i < cards.Length; i++)
+        [SerializeField] Card[] cards;
+
+        public Card[] GetAllCards()
         {
-            temp[i] = cards[i];
+            return cards;
         }
-        temp[cards.Length] = cardToAdd;
-        cards = temp;
-    }
 
-    public void RemoveCard(Card cardToRemove)
-    {
-        for (int i = 0; i < cards.Length; i++)
+        public void AddCard(Card cardToAdd)
         {
-            if (cards[i] == cardToRemove)
+            Card[] temp = new Card[cards.Length + 1];
+            for (int i = 0; i < cards.Length; i++)
             {
-                cards[i] = cards[cards.Length - 1];
-                Array.Resize<Card>(ref cards, cards.Length - 1);
+                temp[i] = cards[i];
             }
+            temp[cards.Length] = cardToAdd;
+            cards = temp;
+        }
 
+        public void RemoveCard(Card cardToRemove)
+        {
+            for (int i = 0; i < cards.Length; i++)
+            {
+                if (cards[i] == cardToRemove)
+                {
+                    cards[i] = cards[cards.Length - 1];
+                    Array.Resize<Card>(ref cards, cards.Length - 1);
+                }
+
+            }
         }
     }
 }

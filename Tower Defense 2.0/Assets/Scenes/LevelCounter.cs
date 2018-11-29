@@ -3,17 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LevelCounter : MonoBehaviour
+namespace Towers.Scenes
 {
-    int currentScene;
-
-    public void LevelFinished( int level)
+    public class LevelCounter : MonoBehaviour
     {
-        currentScene = level;
-    }
+        int currentScene;
 
-    public int GetLevelFinished()
-    {
-        return currentScene;
+        public void LevelFinished(int level)
+        {
+            currentScene = level;
+        }
+
+        public int GetLevelFinished()
+        {
+            return currentScene;
+        }
     }
 }

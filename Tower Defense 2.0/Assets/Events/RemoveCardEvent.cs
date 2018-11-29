@@ -2,35 +2,38 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RemoveCardEvent : MonoBehaviour
+namespace Towers.Events
 {
-    [SerializeField] ShowcaseCard cardShowcase;
-
-    Card card;
-
-    void Start()
+    public class RemoveCardEvent : MonoBehaviour
     {
-        Card[] addableCards = FindObjectOfType<CardHolders>().GetAllPlayerCards();
-        card = addableCards[Random.Range(0, addableCards.Length)];
-        cardShowcase.PutInformation(card, GetBuildingLevel());
-    }
+        [SerializeField] ShowcaseCard cardShowcase;
 
-    public void Activated()
-    {
-        FindObjectOfType<CardHolders>().RemovePlayerCard(card);
-    }
+        Card card;
 
-    int GetBuildingLevel()
-    {
-        int buildingLevel = -1;
-        Card[] playerCards = FindObjectOfType<CardHolders>().GetAllPlayerCards();
-        foreach (Card lookingCard in playerCards)
+        void Start()
         {
-            if (card.GetPrefabs().GetBuilding(0).GetID() == lookingCard.GetPrefabs().GetBuilding(0).GetID())
-            {
-                buildingLevel++;
-            }
+            Card[] addableCards = FindObjectOfType<CardHolders>().GetAllPlayerCards();
+            card = addableCards[Random.Range(0, addableCards.Length)];
+            cardShowcase.PutInformation(card, GetBuildingLevel());
         }
-        return buildingLevel;
+
+        public void Activated()
+        {
+            FindObjectOfType<CardHolders>().RemovePlayerCard(card);
+        }
+
+        int GetBuildingLevel()
+        {
+            int buildingLevel = -1;
+            Card[] playerCards = FindObjectOfType<CardHolders>().GetAllPlayerCards();
+            foreach (Card lookingCard in playerCards)
+            {
+                if (card.GetPrefabs().GetBuilding(0).GetID() == lookingCard.GetPrefabs().GetBuilding(0).GetID())
+                {
+                    buildingLevel++;
+                }
+            }
+            return buildingLevel;
+        }
     }
 }

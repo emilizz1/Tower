@@ -1,19 +1,20 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class DontDestroyCanvas : MonoBehaviour
+namespace Towers.CameraUI
 {
-    void Awake()
+    public class DontDestroyCanvas : MonoBehaviour
     {
-        int numDontDestroyCanvas = FindObjectsOfType<DontDestroyCanvas>().Length;
-        if (numDontDestroyCanvas > 1)
+        void Awake()
         {
-            Destroy(gameObject);
-        }
-        else
-        {
-            DontDestroyOnLoad(gameObject);
+            int numDontDestroyCanvas = FindObjectsOfType<DontDestroyCanvas>().Length;
+            if (numDontDestroyCanvas > 1)
+            {
+                Destroy(gameObject);
+            }
+            else
+            {
+                DontDestroyOnLoad(gameObject);
+            }
         }
     }
 }

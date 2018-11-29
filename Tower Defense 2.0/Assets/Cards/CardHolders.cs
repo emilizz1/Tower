@@ -1,65 +1,66 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class CardHolders : MonoBehaviour
+namespace Towers.Cards
 {
-    [SerializeField] CardHolder playerCards;
-    [SerializeField] CardHolder startignPlayerCards;
-    [SerializeField] CardHolder addableCards;
-    [SerializeField] CardHolder startingAddableCards;
-
-    void Awake()
+    public class CardHolders : MonoBehaviour
     {
-        RemoveAllCards(playerCards);
-        RemoveAllCards(addableCards);
-        AddAllCards(startignPlayerCards, playerCards);
-        AddAllCards(startingAddableCards, addableCards);
-    }
+        [SerializeField] CardHolder playerCards;
+        [SerializeField] CardHolder startignPlayerCards;
+        [SerializeField] CardHolder addableCards;
+        [SerializeField] CardHolder startingAddableCards;
 
-    public Card[] GetAllPlayerCards()
-    {
-        return playerCards.GetAllCards();
-    }
-
-    public Card[] GetAllAddableCards()
-    {
-        return addableCards.GetAllCards();
-    }
-
-    public void AddPlayerCard(Card cardToAdd)
-    {
-        playerCards.AddCard(cardToAdd);
-    }
-
-    public void AddAddableCard(Card cardToAdd)
-    {
-        addableCards.AddCard(cardToAdd);
-    }
-
-    public void RemovePlayerCard(Card cardToRemove)
-    {
-        playerCards.RemoveCard(cardToRemove);
-    }
-
-    public void RemoveAddableCard(Card cardToRemove)
-    {
-        addableCards.RemoveCard(cardToRemove);
-    }
-
-    void AddAllCards(CardHolder from, CardHolder to)
-    {
-        foreach(Card card in from.GetAllCards())
+        void Awake()
         {
-            to.AddCard(card);
+            RemoveAllCards(playerCards);
+            RemoveAllCards(addableCards);
+            AddAllCards(startignPlayerCards, playerCards);
+            AddAllCards(startingAddableCards, addableCards);
         }
-    }
 
-    void RemoveAllCards(CardHolder from)
-    {
-        foreach(Card card in from.GetAllCards())
+        public Card[] GetAllPlayerCards()
         {
-            from.RemoveCard(card);
+            return playerCards.GetAllCards();
+        }
+
+        public Card[] GetAllAddableCards()
+        {
+            return addableCards.GetAllCards();
+        }
+
+        public void AddPlayerCard(Card cardToAdd)
+        {
+            playerCards.AddCard(cardToAdd);
+        }
+
+        public void AddAddableCard(Card cardToAdd)
+        {
+            addableCards.AddCard(cardToAdd);
+        }
+
+        public void RemovePlayerCard(Card cardToRemove)
+        {
+            playerCards.RemoveCard(cardToRemove);
+        }
+
+        public void RemoveAddableCard(Card cardToRemove)
+        {
+            addableCards.RemoveCard(cardToRemove);
+        }
+
+        void AddAllCards(CardHolder from, CardHolder to)
+        {
+            foreach (Card card in from.GetAllCards())
+            {
+                to.AddCard(card);
+            }
+        }
+
+        void RemoveAllCards(CardHolder from)
+        {
+            foreach (Card card in from.GetAllCards())
+            {
+                from.RemoveCard(card);
+            }
         }
     }
 }

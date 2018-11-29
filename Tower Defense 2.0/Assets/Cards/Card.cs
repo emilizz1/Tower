@@ -1,40 +1,39 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 
-[CreateAssetMenu(menuName = ("Tower defense/Card"))]
-public class Card : ScriptableObject
+namespace Towers.Cards
 {
-    [SerializeField] int cost;
-    [SerializeField] Texture enemyImage;
-    [SerializeField] BuildingsHolder prefabs;
-    [SerializeField] GameObject enemyPrefab;
-    [SerializeField] float amount;
-
-    public int GetEnemyGoldAmount()
+    [CreateAssetMenu(menuName = ("Tower defense/Card"))]
+    public class Card : ScriptableObject
     {
-        return cost;
-    }
+        [SerializeField] int cost;
+        [SerializeField] Texture enemyImage;
+        [SerializeField] BuildingsHolder prefabs;
+        [SerializeField] GameObject enemyPrefab;
+        [SerializeField] float amount;
 
-    public Texture GetEnemyTexture()
-    {
-        return enemyImage;
-    }
+        public int GetEnemyGoldAmount()
+        {
+            return cost;
+        }
 
-    public BuildingsHolder GetPrefabs()
-    {
-        return prefabs;
-    }
+        public Texture GetEnemyTexture()
+        {
+            return enemyImage;
+        }
 
-    public GameObject GetEnemyPrefab()
-    {
-        return enemyPrefab;
-    }
+        public BuildingsHolder GetPrefabs()
+        {
+            return prefabs;
+        }
 
-    public float GetEnemyAmount()
-    {
-        return amount;
+        public GameObject GetEnemyPrefab()
+        {
+            return enemyPrefab;
+        }
+
+        public float GetEnemyAmount()
+        {
+            return amount;
+        }
     }
 }

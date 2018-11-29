@@ -1,18 +1,20 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class FaceCamera : MonoBehaviour {
-
-    Camera cameraToLookAt;
-
-    void Start()
+namespace Towers.CameraUI
+{
+    public class FaceCamera : MonoBehaviour
     {
-        cameraToLookAt = Camera.main;
-    }
 
-    void LateUpdate()
-    {
-        transform.LookAt(cameraToLookAt.transform);
+        Camera cameraToLookAt;
+
+        void Start()
+        {
+            cameraToLookAt = Camera.main;
+        }
+
+        void LateUpdate()
+        {
+            transform.LookAt(cameraToLookAt.transform);
+        }
     }
 }

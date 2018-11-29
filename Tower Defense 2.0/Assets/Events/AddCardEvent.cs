@@ -2,36 +2,39 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AddCardEvent : MonoBehaviour
+namespace Towers.Events
 {
-    [SerializeField] ShowcaseCard cardShowcase;
-
-    Card card;
-
-    void Start()
+    public class AddCardEvent : MonoBehaviour
     {
-        Card[] addableCards = FindObjectOfType<CardHolders>().GetAllAddableCards();
-        card = addableCards[Random.Range(0, addableCards.Length)];
-        cardShowcase.PutInformation(card, GetBuildingLevel());
-    }
+        [SerializeField] ShowcaseCard cardShowcase;
 
-    public void Activated()
-    {
-        FindObjectOfType<CardHolders>().AddPlayerCard(card);
-        FindObjectOfType<CardHolders>().RemoveAddableCard(card);
-    }
+        Card card;
 
-    int GetBuildingLevel()
-    {
-        int buildingLevel = 0;
-        Card[] playerCards = FindObjectOfType<CardHolders>().GetAllPlayerCards();
-        foreach(Card lookingCard in playerCards)
+        void Start()
         {
-            if(card.GetPrefabs().GetBuilding(0).GetID() == lookingCard.GetPrefabs().GetBuilding(0).GetID())
-            {
-                buildingLevel++;
-            }
+            Card[] addableCards = FindObjectOfType<CardHolders>().GetAllAddableCards();
+            card = addableCards[Random.Range(0, addableCards.Length)];
+            cardShowcase.PutInformation(card, GetBuildingLevel());
         }
-        return buildingLevel;
+
+        public void Activated()
+        {
+            FindObjectOfType<CardHolders>().AddPlayerCard(card);
+            FindObjectOfType<CardHolders>().RemoveAddableCard(card);
+        }
+
+        int GetBuildingLevel()
+        {
+            int buildingLevel = 0;
+            Card[] playerCards = FindObjectOfType<CardHolders>().GetAllPlayerCards();
+            foreach (Card lookingCard in playerCards)
+            {
+                if (card.GetPrefabs().GetBuilding(0).GetID() == lookingCard.GetPrefabs().GetBuilding(0).GetID())
+                {
+                    buildingLevel++;
+                }
+            }
+            return buildingLevel;
+        }
     }
 }

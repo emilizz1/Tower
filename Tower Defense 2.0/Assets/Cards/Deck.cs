@@ -1,72 +1,74 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using UnityEngine.UI;
 
-public class Deck : MonoBehaviour
+namespace Towers.Cards
 {
-    [SerializeField] CardHolder levelCards;
-
-    bool deckPrepared = false;
-
-    Card[] playerCards;
-    List<Card> selected = new List<Card>();
-    List<Card> deck = new List<Card>();
-    Discard discard;
-    Text text;
-
-    void ShuffleHolders()
+    public class Deck : MonoBehaviour
     {
-        Card[] tempDeck = new Card[playerCards.Length + levelCards.GetAllCards().Length];
-        System.Array.Copy(playerCards, tempDeck, playerCards.Length);
-        System.Array.Copy(levelCards.GetAllCards(), 0, tempDeck, playerCards.Length, levelCards.GetAllCards().Length);
-        deck = tempDeck.ToList<Card>();
-    }
+        [SerializeField] CardHolder levelCards;
 
-    public List<Card> GetNewCards()
-    {
-        if (!deckPrepared)
+        bool deckPrepared = false;
+
+        Card[] playerCards;
+        List<Card> selected = new List<Card>();
+        List<Card> deck = new List<Card>();
+        Discard discard;
+        Text text;
+
+        void ShuffleHolders()
         {
-            PrepareDeck();
+            Card[] tempDeck = new Card[playerCards.Length + levelCards.GetAllCards().Length];
+            System.Array.Copy(playerCards, tempDeck, playerCards.Length);
+            System.Array.Copy(levelCards.GetAllCards(), 0, tempDeck, playerCards.Length, levelCards.GetAllCards().Length);
+            deck = tempDeck.ToList<Card>();
         }
-        if (selected.Count != 0)
+
+        public List<Card> GetNewCards()
         {
-            discard.DiscardCards(selected);
-        }
-        selected = new List<Card>();
-        for (int i = 0; i <= 1; i++)
-        {
-            if (deck.Count <= 0)
+            if (!deckPrepared)
             {
-                deck.AddRange(discard.GetDiscard());
+                PrepareDeck();
             }
-            Card tempCard = deck.ToArray()[UnityEngine.Random.Range(0, deck.Count)];
+            if (selected.Count != 0)
+            {
+                discard.DiscardCards(selected);
+            }
+            selected = new List<Card>();
+            for (int i = 0; i <= 1; i++)
+            {
+                if (deck.Count <= 0)
+                {
+                    deck.AddRange(discard.GetDiscard());
+                }
+                Card tempCard = deck.ToArray()[UnityEngine.Random.Range(0, deck.Count)];
 
-            selected.Add(tempCard);
-            deck.Remove(tempCard);
+                selected.Add(tempCard);
+                deck.Remove(tempCard);
+            }
+            UpdateText();
+            return selected;
+
         }
-        UpdateText();
-        return selected;
 
-    }
+        void PrepareDeck()
+        {
+            text = GetComponentInChildren<Text>();
+            discard = FindObjectOfType<Discard>();
+            playerCards = FindObjectOfType<CardHolders>().GetAllPlayerCards();
+            ShuffleHolders();
+            deckPrepared = true;
+        }
 
-    void PrepareDeck()
-    {
-        text = GetComponentInChildren<Text>();
-        discard = FindObjectOfType<Discard>();
-        playerCards = FindObjectOfType<CardHolders>().GetAllPlayerCards();
-        ShuffleHolders();
-        deckPrepared = true;
-    }
+        public void RemoveACard(Card cardToRemove)
+        {
+            selected.Remove(cardToRemove);
+        }
 
-    public void RemoveACard(Card cardToRemove)
-    {
-        selected.Remove(cardToRemove);
-    }
-
-    void UpdateText()
-    {
-        text.text = deck.Count.ToString();
+        void UpdateText()
+        {
+            text.text = deck.Count.ToString();
+        }
     }
 }
