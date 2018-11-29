@@ -1,8 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using Towers.CardN;
 using UnityEngine;
 
-namespace Towers.Buildings
+
+namespace Towers.BuildingsN
 {
     public class BuildingPlacementManager : MonoBehaviour
     {

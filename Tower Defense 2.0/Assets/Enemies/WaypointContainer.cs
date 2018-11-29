@@ -1,19 +1,21 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class WaypointContainer : MonoBehaviour {
-
-    private void OnDrawGizmos()
+namespace Towers.Enemies
+{
+    public class WaypointContainer : MonoBehaviour
     {
-        Vector3 firstPosition = transform.GetChild(0).position;
-        Vector3 previousPosition = firstPosition;
 
-        foreach(Transform waypoint in transform)
+        private void OnDrawGizmos()
         {
-            Gizmos.DrawSphere(waypoint.position, .2f);
-            Gizmos.DrawLine(previousPosition, waypoint.position);
-            previousPosition = waypoint.position;
+            Vector3 firstPosition = transform.GetChild(0).position;
+            Vector3 previousPosition = firstPosition;
+
+            foreach (Transform waypoint in transform)
+            {
+                Gizmos.DrawSphere(waypoint.position, .2f);
+                Gizmos.DrawLine(previousPosition, waypoint.position);
+                previousPosition = waypoint.position;
+            }
         }
     }
 }

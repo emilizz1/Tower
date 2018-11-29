@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Towers.Cards
+namespace Towers.CardN
 {
     [Serializable]
     [CreateAssetMenu(menuName = ("Tower defense/Card Holder"))]

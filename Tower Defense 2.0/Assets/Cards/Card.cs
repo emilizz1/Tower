@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
+using Towers.BuildingsN;
 
-namespace Towers.Cards
+namespace Towers.CardN
 {
     [CreateAssetMenu(menuName = ("Tower defense/Card"))]
     public class Card : ScriptableObject

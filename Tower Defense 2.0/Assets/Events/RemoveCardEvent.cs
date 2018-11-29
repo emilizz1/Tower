@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using Towers.CardN;
 using UnityEngine;
 
 namespace Towers.Events

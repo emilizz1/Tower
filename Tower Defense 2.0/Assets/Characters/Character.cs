@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Towers.Character
+namespace Towers.CharacterN
 {
     [SelectionBase]
     public class Character : MonoBehaviour

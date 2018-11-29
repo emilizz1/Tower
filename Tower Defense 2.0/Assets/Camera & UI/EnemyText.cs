@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Towers.CardN;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace Towers.CameraUI

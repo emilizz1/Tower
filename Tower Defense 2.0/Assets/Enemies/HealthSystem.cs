@@ -1,71 +1,74 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.AI;
+using Towers.CharacterN;
 
-public class HealthSystem : MonoBehaviour
+namespace Towers.Enemies
 {
-    [SerializeField] float maxHealthPoints = 100f;
-    [SerializeField] Image healthBar;
-    [SerializeField] float deathVanishSeconds = 1f;
+    public class HealthSystem : MonoBehaviour
+    {
+        [SerializeField] float maxHealthPoints = 100f;
+        [SerializeField] Image healthBar;
+        [SerializeField] float deathVanishSeconds = 1f;
 
-    string Death_Trigger = "Death";
-    float currentHealthPoints = 0;
-    Animator animator;
-    public float healthAsPercentage { get { return currentHealthPoints / maxHealthPoints; } }
-    Character character;
-    
-    void Start ()
-    {
-        currentHealthPoints = maxHealthPoints;
-        animator = GetComponent<Animator>();
-        character = GetComponent<Character>();
-	}
-	
-	void Update ()
-    {
-        UpdateHealthBar();
-	}
+        string Death_Trigger = "Death";
+        float currentHealthPoints = 0;
+        Animator animator;
+        public float healthAsPercentage { get { return currentHealthPoints / maxHealthPoints; } }
+        Character character;
 
-    void UpdateHealthBar()
-    {
-        if (healthBar)
+        void Start()
         {
-            healthBar.fillAmount = healthAsPercentage;
+            currentHealthPoints = maxHealthPoints;
+            animator = GetComponent<Animator>();
+            character = GetComponent<Character>();
         }
-    }
 
-    public void TakeDamage(float damage)
-    {
-        bool characterDies = (currentHealthPoints - damage <= 0);
-        currentHealthPoints = Mathf.Clamp(currentHealthPoints - damage, 0f, maxHealthPoints);
-        if (characterDies)
+        void Update()
         {
-            StartCoroutine(KillCharacter());
+            UpdateHealthBar();
         }
-    }
 
-    private IEnumerator KillCharacter()
-    {
-        character.Kill();
-        animator.SetTrigger(Death_Trigger);
-        Destroy(gameObject, deathVanishSeconds);
-        DestroyColliders();
-        yield return new WaitForSecondsRealtime(deathVanishSeconds);
-    }
+        void UpdateHealthBar()
+        {
+            if (healthBar)
+            {
+                healthBar.fillAmount = healthAsPercentage;
+            }
+        }
 
-    void DestroyColliders()
-    {
-        Destroy( GetComponent<NavMeshAgent>());
-        Destroy(GetComponent<Rigidbody>());
-        Destroy(GetComponent<CapsuleCollider>());
-        Destroy(GetComponent<EnemyAI>());
-        Destroy(character);
-    }
+        public void TakeDamage(float damage)
+        {
+            bool characterDies = (currentHealthPoints - damage <= 0);
+            currentHealthPoints = Mathf.Clamp(currentHealthPoints - damage, 0f, maxHealthPoints);
+            if (characterDies)
+            {
+                StartCoroutine(KillCharacter());
+            }
+        }
 
-    public float GetMaxHP()
-    {
-        return maxHealthPoints;
+        private IEnumerator KillCharacter()
+        {
+            character.Kill();
+            animator.SetTrigger(Death_Trigger);
+            Destroy(gameObject, deathVanishSeconds);
+            DestroyColliders();
+            yield return new WaitForSecondsRealtime(deathVanishSeconds);
+        }
+
+        void DestroyColliders()
+        {
+            Destroy(GetComponent<NavMeshAgent>());
+            Destroy(GetComponent<Rigidbody>());
+            Destroy(GetComponent<CapsuleCollider>());
+            Destroy(GetComponent<EnemyAI>());
+            Destroy(character);
+        }
+
+        public float GetMaxHP()
+        {
+            return maxHealthPoints;
+        }
     }
 }

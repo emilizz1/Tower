@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Towers.Buildings
+namespace Towers.BuildingsN
 {
     [CreateAssetMenu(menuName = ("Tower defense/Building"))]
     public class BuildingsHolder : ScriptableObject

@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
+using Towers.BuildingsN;
 using UnityEngine;
 
-namespace Towers.Cards
+namespace Towers.CardN
 {
     public class CardsShowcase : MonoBehaviour
     {

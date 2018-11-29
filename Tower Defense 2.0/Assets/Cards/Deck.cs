@@ -3,7 +3,7 @@ using UnityEngine;
 using System.Linq;
 using UnityEngine.UI;
 
-namespace Towers.Cards
+namespace Towers.CardN
 {
     public class Deck : MonoBehaviour
     {

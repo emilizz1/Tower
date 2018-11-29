@@ -1,19 +1,20 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-[CreateAssetMenu(menuName = ("Tower defense/Enemy Round Holder"))]
-public class EnemyRoundHolder : ScriptableObject
+namespace Towers.Enemies
 {
-    [SerializeField] EnemyAI[] enemies;
-
-    public EnemyAI[] GetEnemy()
+    [CreateAssetMenu(menuName = ("Tower defense/Enemy Round Holder"))]
+    public class EnemyRoundHolder : ScriptableObject
     {
-        return enemies;
-    } 
+        [SerializeField] EnemyAI[] enemies;
 
-    public float GetEnemyCount()
-    {
-        return enemies.Length;
+        public EnemyAI[] GetEnemy()
+        {
+            return enemies;
+        }
+
+        public float GetEnemyCount()
+        {
+            return enemies.Length;
+        }
     }
 }

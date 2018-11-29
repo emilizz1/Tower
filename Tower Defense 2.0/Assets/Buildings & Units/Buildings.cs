@@ -1,9 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 
-namespace Towers.Buildings
+namespace Towers.BuildingsN
 {
     public class Buildings : MonoBehaviour
     {

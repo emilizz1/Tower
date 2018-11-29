@@ -1,8 +1,9 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using System.Linq;
 using UnityEngine.AI;
+using Towers.CharacterN;
+using Towers.BuildingsN.Church;
+using Towers.Enemies;
 
 namespace Towers.Units
 {

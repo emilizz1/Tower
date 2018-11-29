@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Towers.Cards
+namespace Towers.CardN
 {
     public class Discard : MonoBehaviour
     {

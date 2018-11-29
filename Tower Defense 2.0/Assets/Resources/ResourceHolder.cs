@@ -1,51 +1,52 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class ResourceHolder : MonoBehaviour
+namespace Towers.Resources
 {
-    [SerializeField] int startingGold = 3;
-    [SerializeField] int startingWood = 2;
-    [SerializeField] int startingCoal = 2;
-
-    int currentGold;
-    int currentWood;
-    int currentCoal;
-
-    void Awake()
+    public class ResourceHolder : MonoBehaviour
     {
-        currentGold = startingGold;
-        currentWood = startingWood;
-        currentCoal = startingCoal;
-    }
+        [SerializeField] int startingGold = 3;
+        [SerializeField] int startingWood = 2;
+        [SerializeField] int startingCoal = 2;
 
-    public int getCurrentGold()
-    {
-        return currentGold;
-    }
+        int currentGold;
+        int currentWood;
+        int currentCoal;
 
-    public int getCurrentWood()
-    {
-        return currentWood;
-    }
+        void Awake()
+        {
+            currentGold = startingGold;
+            currentWood = startingWood;
+            currentCoal = startingCoal;
+        }
 
-    public int getCurrentCoal()
-    {
-        return currentCoal;
-    }
+        public int getCurrentGold()
+        {
+            return currentGold;
+        }
 
-    public void AddGold(int Amount)
-    {
-        currentGold += Amount;
-    }
+        public int getCurrentWood()
+        {
+            return currentWood;
+        }
 
-    public void AddWood(int Amount)
-    {
-        currentWood += Amount;
-    }
+        public int getCurrentCoal()
+        {
+            return currentCoal;
+        }
 
-    public void AddCoal(int Amount)
-    {
-        currentCoal += Amount;
+        public void AddGold(int Amount)
+        {
+            currentGold += Amount;
+        }
+
+        public void AddWood(int Amount)
+        {
+            currentWood += Amount;
+        }
+
+        public void AddCoal(int Amount)
+        {
+            currentCoal += Amount;
+        }
     }
 }

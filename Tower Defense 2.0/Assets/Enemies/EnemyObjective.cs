@@ -1,16 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class EnemyObjective : MonoBehaviour
+namespace Towers.Enemies
 {
-    private void OnTriggerEnter(Collider collider)
+    public class EnemyObjective : MonoBehaviour
     {
-        
-        if (collider.GetComponent<EnemyAI>())
+        private void OnTriggerEnter(Collider collider)
         {
-            FindObjectOfType<LifePoints>().DamageLifePoints(collider.GetComponent<EnemyAI>().GetDamageToLifePoints());
-            DestroyObject(collider.gameObject);
+
+            if (collider.GetComponent<EnemyAI>())
+            {
+                FindObjectOfType<LifePoints>().DamageLifePoints(collider.GetComponent<EnemyAI>().GetDamageToLifePoints());
+                Destroy(collider.gameObject);
+            }
         }
     }
 }

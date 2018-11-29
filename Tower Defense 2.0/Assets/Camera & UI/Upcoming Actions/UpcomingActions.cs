@@ -1,112 +1,114 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using Towers.BuildingsN;
+using Towers.Scenes;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UpcomingActions : MonoBehaviour
+namespace Towers.CameraUI
 {
-    [SerializeField] GameObject buildingSelectingIcon;
-    [SerializeField] GameObject enemySelectingIcon;
-    [SerializeField] GameObject enemyWaveIcon;
-    [SerializeField] GameObject buildingBonusesIcon;
-    [SerializeField] GameObject levelComnpletedIcon;
-
-    [SerializeField] float objectsWidh = 30f;
-    [SerializeField] float objectSize = 1.3f;
-    [SerializeField] float objectElevation = 30f;
-
-    bool myFirstTurn = true;
-    bool lastTurn = false;
-
-    BuildingManager buildingManager;
-    GameObject[] states;
-    int currentlyActive = 0;
-    int currentlyEmpty = 0;
-
-    void Start ()
+    public class UpcomingActions : MonoBehaviour
     {
-        buildingManager = FindObjectOfType<BuildingManager>();
-        NewLevel(true);
-	}
+        [SerializeField] GameObject buildingSelectingIcon;
+        [SerializeField] GameObject enemySelectingIcon;
+        [SerializeField] GameObject enemyWaveIcon;
+        [SerializeField] GameObject buildingBonusesIcon;
+        [SerializeField] GameObject levelComnpletedIcon;
 
-    void PrepareLevel()
-    {
-        CleanAllObjects();
-        states = new GameObject[20];
-        currentlyEmpty = 0;
-        if (myFirstTurn)
+        [SerializeField] float objectsWidh = 30f;
+        [SerializeField] float objectSize = 1.3f;
+        [SerializeField] float objectElevation = 30f;
+
+        bool myFirstTurn = true;
+
+        BuildingManager buildingManager;
+        GameObject[] states;
+        int currentlyActive = 0;
+        int currentlyEmpty = 0;
+
+        void Start()
         {
+            buildingManager = FindObjectOfType<BuildingManager>();
+            NewLevel(true);
+        }
+
+        void PrepareLevel()
+        {
+            CleanAllObjects();
+            states = new GameObject[20];
+            currentlyEmpty = 0;
+            if (myFirstTurn)
+            {
+                states[currentlyEmpty++] = Instantiate(buildingSelectingIcon, transform);
+                AddAllbuildingBonusesIcons(true);
+            }
             states[currentlyEmpty++] = Instantiate(buildingSelectingIcon, transform);
-            AddAllbuildingBonusesIcons(true);
+            states[currentlyEmpty++] = Instantiate(enemySelectingIcon, transform);
+            AddAllbuildingBonusesIcons(false);
+            states[currentlyEmpty++] = Instantiate(enemyWaveIcon, transform);
+            if (FindObjectOfType<LevelManager>().CheckForLevelWon())
+            {
+                states[currentlyEmpty++] = Instantiate(levelComnpletedIcon, transform);
+            }
+            ArrangeStates();
         }
-        states[currentlyEmpty++] = Instantiate(buildingSelectingIcon, transform);
-        states[currentlyEmpty++] = Instantiate(enemySelectingIcon, transform);
-        AddAllbuildingBonusesIcons(false);
-        states[currentlyEmpty++] = Instantiate(enemyWaveIcon, transform);
-        if (FindObjectOfType<LevelManager>().CheckForLevelWon())
-        {
-            states[currentlyEmpty++] = Instantiate(levelComnpletedIcon, transform);
-        }
-        ArrangeStates();
-    }
 
-    void ArrangeStates()
-    {
-        float currentPosition = -objectsWidh * ((currentlyEmpty - 1f) / 2f);
-        if (currentlyEmpty % 2 == 0)
+        void ArrangeStates()
         {
-            currentPosition -= objectsWidh /2f;
+            float currentPosition = -objectsWidh * ((currentlyEmpty - 1f) / 2f);
+            if (currentlyEmpty % 2 == 0)
+            {
+                currentPosition -= objectsWidh / 2f;
+            }
+            for (int i = 0; i < currentlyEmpty; i++)
+            {
+                var tempPos = states[i].transform.position;
+                tempPos.x = currentPosition;
+                tempPos.y = 0f;
+                states[i].transform.localPosition = tempPos;
+                currentPosition += objectsWidh;
+            }
         }
-        for (int i = 0; i < currentlyEmpty; i++)
+
+        void AddAllbuildingBonusesIcons(bool firstTurn)
         {
-            var tempPos = states[i].transform.position;
-            tempPos.x = currentPosition;
-            tempPos.y = 0f;
-            states[i].transform.localPosition = tempPos;
-            currentPosition += objectsWidh;
+            for (int i = 0; i < buildingManager.GetBuildingsLength(); i++)
+            {
+                Buildings myBuilding = buildingManager.GetBulding(i);
+                states[currentlyEmpty++] = Instantiate(buildingBonusesIcon, transform);
+                var myBuildingBonusIcon = states[currentlyEmpty - 1].GetComponent<BuildingBonusIcon>();
+                myBuildingBonusIcon.PutInformation(myBuilding.GetResource(), myBuilding.GetResourceAmount(), myBuilding.GetBuildingUnitCost(), myBuilding.name);
+                if (firstTurn) { return; }
+            }
         }
-    }
 
-    void AddAllbuildingBonusesIcons(bool firstTurn)
-    {
-        for (int i = 0; i < buildingManager.GetBuildingsLength(); i++)
+        public void NewLevel(bool firstTurn)
         {
-            Buildings myBuilding = buildingManager.GetBulding(i);
-            states[currentlyEmpty++] = Instantiate(buildingBonusesIcon, transform);
-            var myBuildingBonusIcon = states[currentlyEmpty -1].GetComponent<BuildingBonusIcon>();
-            myBuildingBonusIcon.PutInformation(myBuilding.GetResource(), myBuilding.GetResourceAmount(), myBuilding.GetBuildingUnitCost(), myBuilding.name);
-            if (firstTurn) { return; }
+            if (!firstTurn)
+            {
+                currentlyActive = 0;
+            }
+            myFirstTurn = firstTurn;
+            PrepareLevel();
+            states[currentlyActive].transform.localScale = new Vector3(objectSize, objectSize, objectSize);
+            states[currentlyActive].transform.localPosition = new Vector3(states[currentlyActive].transform.localPosition.x, objectElevation);
         }
-    }
 
-    public void NewLevel(bool firstTurn)
-    {
-        if (!firstTurn)
+        public void PhaseFinished()
         {
-            currentlyActive = 0;
+            PrepareLevel();
+            var lastState = states[currentlyActive];
+            var currentState = states[currentlyActive + 1];
+            currentlyActive++;
+            lastState.transform.localScale = new Vector3(1f, 1f, 1f);
+            currentState.transform.localScale = new Vector3(objectSize, objectSize, objectSize);
+            lastState.transform.localPosition = new Vector3(lastState.transform.localPosition.x, 0f);
         }
-        myFirstTurn = firstTurn;
-        PrepareLevel();
-        states[currentlyActive].transform.localScale = new Vector3(objectSize, objectSize, objectSize);
-        states[currentlyActive].transform.localPosition = new Vector3(states[currentlyActive].transform.localPosition.x, objectElevation);
-    }
 
-    public void PhaseFinished()
-    {
-        PrepareLevel();
-        var lastState = states[currentlyActive];
-        var currentState = states[currentlyActive + 1];
-        currentlyActive++;
-        lastState.transform.localScale = new Vector3(1f, 1f, 1f);
-        currentState.transform.localScale = new Vector3(objectSize, objectSize, objectSize);
-        lastState.transform.localPosition = new Vector3(lastState.transform.localPosition.x, 0f);
-    }
-
-    void CleanAllObjects()
-    {
-        foreach(Image myObject in GetComponentsInChildren<Image>())
+        void CleanAllObjects()
         {
-            Destroy(myObject.gameObject);
+            foreach (Image myObject in GetComponentsInChildren<Image>())
+            {
+                Destroy(myObject.gameObject);
+            }
         }
     }
 }

@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using Towers.Enemies;
 using UnityEngine;
 
-namespace Towers.Buildings.Church
+namespace Towers.BuildingsN.Church
 {
     public class Church : MonoBehaviour
     {

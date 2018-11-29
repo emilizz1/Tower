@@ -1,188 +1,190 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ResourcesManager : MonoBehaviour
+namespace Towers.Resources
 {
-    [SerializeField] GameObject resourceImage;
-    [SerializeField] float resourceMoveSpeed = 10f;
-    [Header("ResourceLinks")]
-    [SerializeField] Text gold;
-    [SerializeField] Text wood;
-    [SerializeField] Text coal;
-    [SerializeField] Image goldImage;
-    [SerializeField] Image woodImage;
-    [SerializeField] Image coalImage;
-
-    Transform deliveringFrom;
-    Sprite goldSprite;
-    Sprite woodSprite;
-    Sprite coalSprite;
-    ResourceHolder resourceHolder;
-
-    void Start()
+    public class ResourcesManager : MonoBehaviour
     {
-        goldSprite = goldImage.sprite;
-        woodSprite = woodImage.sprite;
-        coalSprite = coalImage.sprite;
-        resourceHolder = FindObjectOfType<ResourceHolder>();
-        updateText();
-    }
+        [SerializeField] GameObject resourceImage;
+        [SerializeField] float resourceMoveSpeed = 10f;
+        [Header("ResourceLinks")]
+        [SerializeField] Text gold;
+        [SerializeField] Text wood;
+        [SerializeField] Text coal;
+        [SerializeField] Image goldImage;
+        [SerializeField] Image woodImage;
+        [SerializeField] Image coalImage;
 
-    void Update()
-    {
-        if (resourceHolder == null)
+        Transform deliveringFrom;
+        Sprite goldSprite;
+        Sprite woodSprite;
+        Sprite coalSprite;
+        ResourceHolder resourceHolder;
+
+        void Start()
         {
+            goldSprite = goldImage.sprite;
+            woodSprite = woodImage.sprite;
+            coalSprite = coalImage.sprite;
             resourceHolder = FindObjectOfType<ResourceHolder>();
             updateText();
         }
-    }
 
-    void updateText()
-    {
-        gold.text = resourceHolder.getCurrentGold().ToString();
-        wood.text = resourceHolder.getCurrentWood().ToString();
-        coal.text = resourceHolder.getCurrentCoal().ToString();
-    }
-
-    public void AddResources(int amount, Sprite image, Transform from = null)
-    {
-        if (from == null)
+        void Update()
         {
-            deliveringFrom = FindObjectOfType<ResourceCardChoice>().transform;
-        }
-        else
-        {
-            deliveringFrom = from;
-        }
-        if (goldSprite == image)
-        {
-            StartCoroutine(GatherResources(deliveringFrom, image, amount, goldImage.transform));
-        }
-        else if (woodSprite == image)
-        {
-            StartCoroutine(GatherResources(deliveringFrom, image, amount, woodImage.transform));
-        }
-        else if (coalSprite == image)
-        {
-            StartCoroutine(GatherResources(deliveringFrom, image, amount, coalImage.transform));
-        }
-    }
-
-    public bool CheckForResources(int goldAmount, int woodAmount, int coalAmount)
-    {
-        if (goldAmount <= resourceHolder.getCurrentGold() && woodAmount <= resourceHolder.getCurrentWood() && coalAmount <= resourceHolder.getCurrentCoal())
-        {
-            if(goldAmount > 0)
+            if (resourceHolder == null)
             {
-                StartCoroutine(PayResources(goldImage.transform, goldSprite, goldAmount));
+                resourceHolder = FindObjectOfType<ResourceHolder>();
+                updateText();
             }
-            if(woodAmount > 0)
+        }
+
+        void updateText()
+        {
+            gold.text = resourceHolder.getCurrentGold().ToString();
+            wood.text = resourceHolder.getCurrentWood().ToString();
+            coal.text = resourceHolder.getCurrentCoal().ToString();
+        }
+
+        public void AddResources(int amount, Sprite image, Transform from = null)
+        {
+            if (from == null)
             {
-                StartCoroutine(PayResources(woodImage.transform, woodSprite, woodAmount));
+                deliveringFrom = FindObjectOfType<ResourceCardChoice>().transform;
             }
-            if (coalAmount > 0)
+            else
             {
-                StartCoroutine(PayResources(coalImage.transform, coalSprite, coalAmount));
+                deliveringFrom = from;
             }
-            return true;
+            if (goldSprite == image)
+            {
+                StartCoroutine(GatherResources(deliveringFrom, image, amount, goldImage.transform));
+            }
+            else if (woodSprite == image)
+            {
+                StartCoroutine(GatherResources(deliveringFrom, image, amount, woodImage.transform));
+            }
+            else if (coalSprite == image)
+            {
+                StartCoroutine(GatherResources(deliveringFrom, image, amount, coalImage.transform));
+            }
         }
-        else
-        {
-            return false;
-        }
-    }
 
-    public void AddGold(int amount, Transform cardTransform)
-    {
-        StartCoroutine(GatherResources(cardTransform, goldSprite, amount, goldImage.transform));
-    }
+        public bool CheckForResources(int goldAmount, int woodAmount, int coalAmount)
+        {
+            if (goldAmount <= resourceHolder.getCurrentGold() && woodAmount <= resourceHolder.getCurrentWood() && coalAmount <= resourceHolder.getCurrentCoal())
+            {
+                if (goldAmount > 0)
+                {
+                    StartCoroutine(PayResources(goldImage.transform, goldSprite, goldAmount));
+                }
+                if (woodAmount > 0)
+                {
+                    StartCoroutine(PayResources(woodImage.transform, woodSprite, woodAmount));
+                }
+                if (coalAmount > 0)
+                {
+                    StartCoroutine(PayResources(coalImage.transform, coalSprite, coalAmount));
+                }
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
-    IEnumerator PayResources(Transform resTransform, Sprite resImage, int amount)
-    {
-        int i = 0;
-        while (i < amount)
+        public void AddGold(int amount, Transform cardTransform)
         {
-            i++;
-            StartCoroutine(PayResource(resTransform, resImage));
-            yield return new WaitForSecondsRealtime(0.1f);
+            StartCoroutine(GatherResources(cardTransform, goldSprite, amount, goldImage.transform));
         }
-    }
 
-    IEnumerator PayResource(Transform resTransform, Sprite resImage)
-    {
-        var createdResource = Instantiate(resourceImage, resTransform.position, Quaternion.identity, transform);
-        var createdResImage = createdResource.GetComponent<Image>().color;
-        createdResource.transform.localScale = resourceImage.transform.localScale;
-        createdResource.GetComponent<Image>().sprite = resImage;
-        Vector3 target = new Vector3(createdResource.transform.position.x, createdResource.transform.position.y - 200f, 0f);
-        PayOneResourceAmount(resImage);
-        while (Vector3.Distance(createdResource.transform.position, target) > 1f)
+        IEnumerator PayResources(Transform resTransform, Sprite resImage, int amount)
         {
-            createdResource.transform.position = Vector3.MoveTowards(createdResource.transform.position, target, resourceMoveSpeed / 3);
-            createdResImage.a = createdResImage.a - 0.05f;
-            createdResource.GetComponent<Image>().color = createdResImage;
-            yield return new WaitForSeconds(0.05f);
+            int i = 0;
+            while (i < amount)
+            {
+                i++;
+                StartCoroutine(PayResource(resTransform, resImage));
+                yield return new WaitForSecondsRealtime(0.1f);
+            }
         }
-        Destroy(createdResource);
-    }
 
-    IEnumerator GatherResources(Transform resTransform, Sprite resImage, int amount, Transform target)
-    {
-        int i = 0;
-        while (i < amount)
+        IEnumerator PayResource(Transform resTransform, Sprite resImage)
         {
-            i++;
-            StartCoroutine(GatherResource(resTransform, resImage, target));
-            yield return new WaitForSecondsRealtime(0.15f);
+            var createdResource = Instantiate(resourceImage, resTransform.position, Quaternion.identity, transform);
+            var createdResImage = createdResource.GetComponent<Image>().color;
+            createdResource.transform.localScale = resourceImage.transform.localScale;
+            createdResource.GetComponent<Image>().sprite = resImage;
+            Vector3 target = new Vector3(createdResource.transform.position.x, createdResource.transform.position.y - 200f, 0f);
+            PayOneResourceAmount(resImage);
+            while (Vector3.Distance(createdResource.transform.position, target) > 1f)
+            {
+                createdResource.transform.position = Vector3.MoveTowards(createdResource.transform.position, target, resourceMoveSpeed / 3);
+                createdResImage.a = createdResImage.a - 0.05f;
+                createdResource.GetComponent<Image>().color = createdResImage;
+                yield return new WaitForSeconds(0.05f);
+            }
+            Destroy(createdResource);
         }
-    }
 
-    IEnumerator GatherResource(Transform resTransform, Sprite resImage, Transform target)
-    {
-        var createdResource = Instantiate(resourceImage, resTransform.position, Quaternion.identity, transform);
-        createdResource.GetComponent<Image>().sprite = resImage;
-        while (Vector3.Distance(createdResource.transform.position, target.position) > 1f)
+        IEnumerator GatherResources(Transform resTransform, Sprite resImage, int amount, Transform target)
         {
-            createdResource.transform.position = Vector3.MoveTowards(createdResource.transform.position, target.position, resourceMoveSpeed);
-            yield return new WaitForFixedUpdate();
+            int i = 0;
+            while (i < amount)
+            {
+                i++;
+                StartCoroutine(GatherResource(resTransform, resImage, target));
+                yield return new WaitForSecondsRealtime(0.15f);
+            }
         }
-        AddOneResourceAmount(resImage);
-        Destroy(createdResource);
-    }
 
-    void AddOneResourceAmount(Sprite image)
-    {
-        if (goldSprite == image)
+        IEnumerator GatherResource(Transform resTransform, Sprite resImage, Transform target)
         {
-            resourceHolder.AddGold(1);
+            var createdResource = Instantiate(resourceImage, resTransform.position, Quaternion.identity, transform);
+            createdResource.GetComponent<Image>().sprite = resImage;
+            while (Vector3.Distance(createdResource.transform.position, target.position) > 1f)
+            {
+                createdResource.transform.position = Vector3.MoveTowards(createdResource.transform.position, target.position, resourceMoveSpeed);
+                yield return new WaitForFixedUpdate();
+            }
+            AddOneResourceAmount(resImage);
+            Destroy(createdResource);
         }
-        else if (woodSprite == image)
-        {
-            resourceHolder.AddWood(1);
-        }
-        else if (coalSprite == image)
-        {
-            resourceHolder.AddCoal(1);
-        }
-        updateText();
-    }
 
-    void PayOneResourceAmount(Sprite image)
-    {
-        if (goldSprite == image)
+        void AddOneResourceAmount(Sprite image)
         {
-            resourceHolder.AddGold(-1);
+            if (goldSprite == image)
+            {
+                resourceHolder.AddGold(1);
+            }
+            else if (woodSprite == image)
+            {
+                resourceHolder.AddWood(1);
+            }
+            else if (coalSprite == image)
+            {
+                resourceHolder.AddCoal(1);
+            }
+            updateText();
         }
-        else if (woodSprite == image)
+
+        void PayOneResourceAmount(Sprite image)
         {
-            resourceHolder.AddWood(-1);
+            if (goldSprite == image)
+            {
+                resourceHolder.AddGold(-1);
+            }
+            else if (woodSprite == image)
+            {
+                resourceHolder.AddWood(-1);
+            }
+            else if (coalSprite == image)
+            {
+                resourceHolder.AddCoal(-1);
+            }
+            updateText();
         }
-        else if (coalSprite == image)
-        {
-            resourceHolder.AddCoal(-1);
-        }
-        updateText();
     }
 }

@@ -1,16 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using Towers.Enemies;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 namespace Towers.Scenes
 {
     public class LevelManager : MonoBehaviour
     {
         [SerializeField] EnemyHolder enemyHolder;
-
-        LifePoints lifepoints;
+        
         EnemyRoundHolder[] enemies;
         Text text;
         int currentLevel = 1;
@@ -18,7 +15,6 @@ namespace Towers.Scenes
         void Start()
         {
             text = GetComponent<Text>();
-            lifepoints = FindObjectOfType<LifePoints>();
         }
 
         void Update()

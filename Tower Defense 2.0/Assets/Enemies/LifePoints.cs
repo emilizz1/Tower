@@ -1,41 +1,42 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class LifePoints : MonoBehaviour
+namespace Towers.Enemies
 {
-    [SerializeField] float startingLifepoints = 20;
-
-    Text text;
-    float lifePoints;
-
-    void Start ()
+    public class LifePoints : MonoBehaviour
     {
-        text = GetComponent<Text>();
-        lifePoints = startingLifepoints;
-        UpdateLifePoints();
+        [SerializeField] float startingLifepoints = 20;
 
-    }
-	
-	void UpdateLifePoints()
-    {
-        text.text = lifePoints.ToString();
-	}
+        Text text;
+        float lifePoints;
 
-    public void DamageLifePoints(float amount)
-    {
-        lifePoints -= amount;
-        if(lifePoints <= 0f)
+        void Start()
         {
-            SceneManager.LoadScene(2);
-        }
-        UpdateLifePoints();
-    }
+            text = GetComponent<Text>();
+            lifePoints = startingLifepoints;
+            UpdateLifePoints();
 
-    public float GetLifePoints()
-    {
-        return lifePoints;
+        }
+
+        void UpdateLifePoints()
+        {
+            text.text = lifePoints.ToString();
+        }
+
+        public void DamageLifePoints(float amount)
+        {
+            lifePoints -= amount;
+            if (lifePoints <= 0f)
+            {
+                SceneManager.LoadScene(2);
+            }
+            UpdateLifePoints();
+        }
+
+        public float GetLifePoints()
+        {
+            return lifePoints;
+        }
     }
 }

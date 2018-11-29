@@ -1,7 +1,10 @@
-﻿using UnityEngine;
+﻿using Towers.CharacterN;
+using Towers.Enemies;
+using Towers.Scenes;
+using UnityEngine;
 using UnityEngine.UI;
 
-namespace Towers.Cards
+namespace Towers.CardN
 {
     public class LevelEnemyCard : MonoBehaviour
     {

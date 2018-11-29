@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
+using Towers.BuildingsN;
+using Towers.Resources;
 using UnityEngine;
 
-namespace Towers.Cards
+namespace Towers.CardN
 {
     public class CardManager : MonoBehaviour
     {
@@ -111,11 +113,6 @@ namespace Towers.Cards
                     cards[i++].SetCard(card, true);
                 }
             }
-        }
-
-        public void PrepareRewards()
-        {
-
         }
     }
 }

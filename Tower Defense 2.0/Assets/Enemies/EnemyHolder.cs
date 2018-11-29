@@ -1,19 +1,20 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-[CreateAssetMenu(menuName = ("Tower defense/Enemy Holder"))]
-public class EnemyHolder : ScriptableObject
+namespace Towers.Enemies
 {
-    [Tooltip("List one enemy type fully first")] [SerializeField] EnemyRoundHolder[] enemies;
-
-    public float GetLevelCount()
+    [CreateAssetMenu(menuName = ("Tower defense/Enemy Holder"))]
+    public class EnemyHolder : ScriptableObject
     {
-        return enemies.Length;
-    }
+        [Tooltip("List one enemy type fully first")] [SerializeField] EnemyRoundHolder[] enemies;
 
-    public EnemyRoundHolder GetEnemies(int index)
-    {
-        return enemies[index];
+        public float GetLevelCount()
+        {
+            return enemies.Length;
+        }
+
+        public EnemyRoundHolder GetEnemies(int index)
+        {
+            return enemies[index];
+        }
     }
 }
