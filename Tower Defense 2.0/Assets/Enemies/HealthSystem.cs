@@ -20,7 +20,7 @@ namespace Towers.Enemies
 
         void Start()
         {
-            currentHealthPoints = maxHealthPoints;
+            SetHealthToMax();
             animator = GetComponent<Animator>();
             character = GetComponent<Character>();
         }
@@ -48,12 +48,9 @@ namespace Towers.Enemies
             }
         }
 
-        private IEnumerator KillCharacter()
+        public virtual IEnumerator KillCharacter()
         {
-            character.Kill();
-            animator.SetTrigger(Death_Trigger);
-            Destroy(gameObject, deathVanishSeconds);
-            DestroyColliders();
+            Death();
             yield return new WaitForSecondsRealtime(deathVanishSeconds);
         }
 
@@ -69,6 +66,19 @@ namespace Towers.Enemies
         public float GetMaxHP()
         {
             return maxHealthPoints;
+        }
+
+        public void SetHealthToMax()
+        {
+            currentHealthPoints = maxHealthPoints;
+        }
+
+        public void Death()
+        {
+            animator.SetTrigger(Death_Trigger);
+            character.Kill();
+            Destroy(gameObject, deathVanishSeconds);
+            DestroyColliders();
         }
     }
 }

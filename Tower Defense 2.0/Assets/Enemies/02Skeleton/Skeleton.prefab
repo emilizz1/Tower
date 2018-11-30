@@ -623,9 +623,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4343403918628638}
-  - component: {fileID: 114301797961102810}
   - component: {fileID: 114636124373612708}
   - component: {fileID: 114131276643982998}
+  - component: {fileID: 114506182719091886}
   m_Layer: 0
   m_Name: Skeleton
   m_TagString: Untagged
@@ -3771,20 +3771,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &114301797961102810
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1431358493533120}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 362c1f6cd3d829e428cb1625a8572cc8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealthPoints: 95
-  healthBar: {fileID: 114471521043998098}
-  deathVanishSeconds: 1
 --- !u!114 &114471521043998098
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3823,6 +3809,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9eff55f8b253d054e99c365e2d5f9bf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114506182719091886
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1431358493533120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee27cb2b2f320534fa029bc376877778, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealthPoints: 65
+  healthBar: {fileID: 114471521043998098}
+  deathVanishSeconds: 1
+  layingTime: 1
 --- !u!114 &114636124373612708
 MonoBehaviour:
   m_ObjectHideFlags: 1
