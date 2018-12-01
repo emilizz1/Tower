@@ -1992,7 +1992,11 @@ Prefab:
     - target: {fileID: 114902596499867882, guid: 0b36b2dcaa303d44a928f221a856af5b,
         type: 2}
       propertyPath: startingLifepoints
-      value: 25
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1855387514105962, guid: 0b36b2dcaa303d44a928f221a856af5b, type: 2}
+      propertyPath: m_Name
+      value: LifepointsText
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b36b2dcaa303d44a928f221a856af5b, type: 2}
@@ -2254,7 +2258,6 @@ GameObject:
   - component: {fileID: 1416940258}
   - component: {fileID: 1416940263}
   - component: {fileID: 1416940262}
-  - component: {fileID: 1416940261}
   - component: {fileID: 1416940260}
   - component: {fileID: 1416940259}
   m_Layer: 0
@@ -2310,18 +2313,6 @@ MonoBehaviour:
   colorChoice: {fileID: 2057412089}
   firstPlacementRange: {fileID: 456381304}
   secondPlacementRange: {fileID: 440777084}
---- !u!114 &1416940261
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 114721692327369408, guid: 350009527c6919647b62a3bf254ca6e4,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1416940257}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 115dfe7b0938447cbbf9507076f54049, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1416940262
 MonoBehaviour:
   m_ObjectHideFlags: 0

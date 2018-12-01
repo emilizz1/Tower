@@ -2914,7 +2914,7 @@ MonoBehaviour:
   coal: {fileID: 1791313869543940}
   currentLevel: 1
   cardRewards: {fileID: 1323587072331278}
-  cardAddedToDeck: {fileID: 0}
+  cardAddedToDeck: {fileID: 11400000, guid: 3ae52284887c1fe46a61866a78e9025a, type: 2}
   cardsAddedToAddables:
   - {fileID: 11400000, guid: 2101494dd050f2647b140e7c07733c23, type: 2}
 --- !u!114 &114493608957478874
@@ -4006,7 +4006,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8410578e1e6954447af40146fb4f5fdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resources: []
+  resources:
+  - {fileID: 21300000, guid: 8badecae48978c24fab15f95df1513c1, type: 3}
+  - {fileID: 21300000, guid: 1874681610826854cbe82ff4ff29a4c6, type: 3}
+  - {fileID: 21300000, guid: 462be0da23456184e8d6180eb9a1098a, type: 3}
   buildingImage: {fileID: 114452021181085370}
   buildingName: {fileID: 114671499985275242}
   production: {fileID: 114596842718549000}
