@@ -178,6 +178,7 @@ namespace Towers.Scenes
             {
                 currentState = State.levelCompleted;
                 FindObjectOfType<WiningRewards>().PrepareRewards();
+                upcomingActions.ClearAllObjects();
                 return true;
             }
             else

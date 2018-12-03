@@ -32,7 +32,7 @@ namespace Towers.CameraUI
 
         void PrepareLevel()
         {
-            CleanAllObjects();
+            ClearAllObjects();
             states = new GameObject[20];
             currentlyEmpty = 0;
             if (myFirstTurn)
@@ -103,7 +103,7 @@ namespace Towers.CameraUI
             lastState.transform.localPosition = new Vector3(lastState.transform.localPosition.x, 0f);
         }
 
-        void CleanAllObjects()
+        public void ClearAllObjects()
         {
             foreach (Image myObject in GetComponentsInChildren<Image>())
             {

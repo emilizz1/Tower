@@ -6,7 +6,7 @@ namespace Towers.CardN
     [CreateAssetMenu(menuName = ("Tower defense/Card"))]
     public class Card : ScriptableObject
     {
-        [SerializeField] int cost;
+        [SerializeField] int GoldGivenFromEnemies;
         [SerializeField] Texture enemyImage;
         [SerializeField] BuildingsHolder prefabs;
         [SerializeField] GameObject enemyPrefab;
@@ -14,7 +14,7 @@ namespace Towers.CardN
 
         public int GetEnemyGoldAmount()
         {
-            return cost;
+            return GoldGivenFromEnemies;
         }
 
         public Texture GetEnemyTexture()
