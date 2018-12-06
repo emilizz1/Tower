@@ -7,7 +7,6 @@ namespace Towers.CardN
     [CreateAssetMenu(menuName = ("Tower defense/Card Holder"))]
     public class CardHolder : ScriptableObject
     {
-
         [SerializeField] Card[] cards;
 
         public Card[] GetAllCards()
@@ -35,7 +34,6 @@ namespace Towers.CardN
                     cards[i] = cards[cards.Length - 1];
                     Array.Resize<Card>(ref cards, cards.Length - 1);
                 }
-
             }
         }
     }
