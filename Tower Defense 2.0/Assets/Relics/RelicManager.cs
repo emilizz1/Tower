@@ -14,7 +14,8 @@ namespace Towers.Relics
         public void AddRelic(Relic relic)
         {
             GameObject relicToAdd = FindRelic(relic);
-            Instantiate(relicToAdd, relicSpots[currentFreeSpot++].transform.position, Quaternion.identity, transform);
+            Instantiate(relicToAdd, relicSpots[currentFreeSpot].transform.position, Quaternion.identity, relicSpots[currentFreeSpot].transform);
+            currentFreeSpot++;
         }
 
         GameObject FindRelic(Relic relic)

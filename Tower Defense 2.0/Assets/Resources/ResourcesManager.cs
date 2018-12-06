@@ -47,6 +47,13 @@ namespace Towers.Resources
             coal.text = resourceHolder.getCurrentCoal().ToString();
         }
 
+        public void AddResources(int goldAmount, int woodAmount, int coalAmount, Transform deliverFrom)
+        {
+            AddResources(goldAmount, goldImage.sprite, deliverFrom);
+            AddResources(woodAmount, goldImage.sprite, deliverFrom);
+            AddResources(coalAmount, goldImage.sprite, deliverFrom);
+        }
+
         public void AddResources(int amount, Sprite image, Transform from = null)
         {
             if (from == null)
