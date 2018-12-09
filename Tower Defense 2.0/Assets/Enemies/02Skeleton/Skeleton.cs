@@ -1,6 +1,6 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using Towers.BuildingsN.Forest;
 
 namespace Towers.Enemies.Skeleton
 {
@@ -18,6 +18,10 @@ namespace Towers.Enemies.Skeleton
         {
             if (once)
             {
+                if (GetComponent<Poison>())
+                {
+                    Destroy(GetComponent<Poison>());
+                }
                 dead = true;
                 Animator animator = GetComponent<Animator>();
                 animator.SetTrigger(Death_Trigger);
