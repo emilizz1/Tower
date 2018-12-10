@@ -45,8 +45,7 @@ namespace Towers.BuildingsN
         {
             if (choice == 0)
             {
-                int[] cost = buildings[buildingNumber].GetBuildingUnitCost();
-                if (rM.CheckForResources(cost[0], cost[1], cost[2]))
+                if (rM.CheckForResources(buildings[buildingNumber].GetBuildingUnitCost()))
                 {
                     placingUnit = true;
                 }
@@ -58,7 +57,7 @@ namespace Towers.BuildingsN
             }
             else if (choice == 1)
             {
-                rM.AddResources(buildings[buildingNumber].GetResourceAmount(), buildings[buildingNumber].GetResource());
+                rM.AddResources(buildings[buildingNumber].GetResourcesProduced());
             }
             if (buildingNumber + 1 < currentBuildingLengh)
             {

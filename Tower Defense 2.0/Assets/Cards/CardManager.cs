@@ -71,7 +71,7 @@ namespace Towers.CardN
         {
             if (!firstRound)
             {
-                rM.AddGold(cards[cardSelected].GetEnemyCardCost(), cards[cardSelected].transform);
+                rM.AddResources(cards[cardSelected].GetEnemyResourses(), cards[cardSelected].transform);
             }
             firstRound = false;
         }

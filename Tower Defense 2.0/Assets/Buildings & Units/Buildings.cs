@@ -1,21 +1,21 @@
 ﻿using UnityEngine;
+using Towers.Resources;
 
 namespace Towers.BuildingsN
 {
     public class Buildings : MonoBehaviour
     {
         [SerializeField] string buildingName;
-        [Tooltip("Gold, Wood, Coal")] [SerializeField] int[] buildUnitCost;
+        [SerializeField] Resource[] buildUnitCost;
         [SerializeField] GameObject unitPrefab;
-        [SerializeField] int resourceAmount;
-        [SerializeField] Sprite resource;
+        [SerializeField] Resource[] resourceAmountProduced;
         [SerializeField] int Level;
         [SerializeField] int iD;
         [SerializeField] Texture buildingImage;
         [SerializeField] string SpecialPower;
         [SerializeField] Texture unitsImage;
 
-        public int[] GetBuildingUnitCost()
+        public Resource[] GetBuildingUnitCost()
         {
             return buildUnitCost;
         }
@@ -25,14 +25,9 @@ namespace Towers.BuildingsN
             return unitPrefab;
         }
 
-        public int GetResourceAmount()
+        public Resource[] GetResourcesProduced()
         {
-            return resourceAmount;
-        }
-
-        public Sprite GetResource()
-        {
-            return resource;
+            return resourceAmountProduced;
         }
 
         public int GetID()

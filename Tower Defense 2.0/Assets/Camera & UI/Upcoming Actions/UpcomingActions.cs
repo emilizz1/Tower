@@ -75,7 +75,7 @@ namespace Towers.CameraUI
                 Buildings myBuilding = buildingManager.GetBulding(i);
                 states[currentlyEmpty++] = Instantiate(buildingBonusesIcon, transform);
                 var myBuildingBonusIcon = states[currentlyEmpty - 1].GetComponent<BuildingBonusIcon>();
-                myBuildingBonusIcon.PutInformation(myBuilding.GetResource(), myBuilding.GetResourceAmount(), myBuilding.GetBuildingUnitCost(), myBuilding.name);
+                myBuildingBonusIcon.PutInformation(myBuilding.GetResourcesProduced(), myBuilding.GetResourceAmount(), myBuilding.GetBuildingUnitCost(), myBuilding.name);
                 if (firstTurn) { return; }
             }
         }

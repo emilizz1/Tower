@@ -47,7 +47,7 @@ namespace Towers.CardN
             buildingImage.texture = settingBuilding.GetBuildingTexture();
             buildingName.text = settingBuilding.GetBuildingName();
             production.text = settingBuilding.GetResourceAmount().ToString();
-            productionImage.sprite = settingBuilding.GetResource();
+            productionImage.sprite = settingBuilding.GetResourcesProduced();
             SetupUnitCard(settingBuilding);
         }
 
@@ -88,7 +88,7 @@ namespace Towers.CardN
             enemyName.text = enemy.name.ToString();
             enemyAmount.text = myCard.GetEnemyAmount().ToString();
             enemyStats.text = enemy.GetComponent<HealthSystem>().GetMaxHP().ToString();
-            goldGained.text = myCard.GetEnemyGoldAmount().ToString();
+            goldGained.text = myCard.GetEnemyResources().ToString();
         }
     }
 }

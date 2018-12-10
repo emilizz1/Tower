@@ -3,6 +3,7 @@ using Towers.Enemies;
 using Towers.Units;
 using UnityEngine;
 using UnityEngine.UI;
+using Towers.Resources;
 
 namespace Towers.CardN
 {
@@ -46,9 +47,9 @@ namespace Towers.CardN
             return card.GetPrefabs();
         }
 
-        public int GetEnemyCardCost()
+        public Resource[] GetEnemyResourses()
         {
-            return card.GetEnemyGoldAmount();
+            return card.GetEnemyResources();
         }
 
         public GameObject GetEnemyPrefab()
@@ -83,7 +84,7 @@ namespace Towers.CardN
             enemyName.text = enemy.name.ToString();
             enemyAmount.text = card.GetEnemyAmount().ToString();
             enemyStats.text = enemy.GetComponent<HealthSystem>().GetMaxHP().ToString();
-            goldGained.text = card.GetEnemyGoldAmount().ToString();
+            goldGained.text = card.GetEnemyResources().ToString();
         }
 
         void SetupBuildingCard()
@@ -93,7 +94,7 @@ namespace Towers.CardN
             buildingImage.texture = settingBuilding.GetBuildingTexture();
             buildingName.text = settingBuilding.GetBuildingName();
             production.text = settingBuilding.GetResourceAmount().ToString();
-            productionImage.sprite = settingBuilding.GetResource();
+            productionImage.sprite = settingBuilding.GetResourcesProduced();
             SetupUnitCard(settingBuilding, true);
         }
 
@@ -182,7 +183,7 @@ namespace Towers.CardN
                 if (resourceAmount > 0)
                 {
                     resource.transform.parent.gameObject.SetActive(true);
-                    resource.sprite = building.GetResource();
+                    resource.sprite = building.GetResourcesProduced();
                     resourceAmount--;
                 }
                 else
