@@ -1,12 +1,11 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Towers.Resources
 {
     public class ResourceHolder : MonoBehaviour
     {
-        [SerializeField] int startingGold = 3;
-        [SerializeField] int startingWood = 2;
-        [SerializeField] int startingCoal = 2;
+        [SerializeField] Resource[] startingResources;
 
         int currentGold;
         int currentWood;
@@ -14,9 +13,10 @@ namespace Towers.Resources
 
         void Awake()
         {
-            currentGold = startingGold;
-            currentWood = startingWood;
-            currentCoal = startingCoal;
+            foreach (Resource resource in startingResources)
+            {
+                resource.AddResource();
+            }
         }
 
         public int getCurrentGold()
@@ -34,16 +34,19 @@ namespace Towers.Resources
             return currentCoal;
         }
 
+        //Negative amount to remove
         public void AddGold(int Amount)
         {
             currentGold += Amount;
         }
 
+        //Negative amount to remove
         public void AddWood(int Amount)
         {
             currentWood += Amount;
         }
 
+        //Negative amount to remove
         public void AddCoal(int Amount)
         {
             currentCoal += Amount;
