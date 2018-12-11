@@ -1554,6 +1554,16 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 1531881137}
     m_Modifications:
+    - target: {fileID: 114847184904856826, guid: 2ed5b92d733568b44bee2ae8a2f0915c,
+        type: 2}
+      propertyPath: resources.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114847184904856826, guid: 2ed5b92d733568b44bee2ae8a2f0915c,
+        type: 2}
+      propertyPath: costImages.Array.size
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 224914766074110008, guid: 2ed5b92d733568b44bee2ae8a2f0915c,
         type: 2}
       propertyPath: m_LocalPosition.x
@@ -1643,6 +1653,86 @@ Prefab:
         type: 2}
       propertyPath: m_Pivot.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114847184904856826, guid: 2ed5b92d733568b44bee2ae8a2f0915c,
+        type: 2}
+      propertyPath: buildingsCard
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114847184904856826, guid: 2ed5b92d733568b44bee2ae8a2f0915c,
+        type: 2}
+      propertyPath: buildingImage
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114847184904856826, guid: 2ed5b92d733568b44bee2ae8a2f0915c,
+        type: 2}
+      propertyPath: buildingName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114847184904856826, guid: 2ed5b92d733568b44bee2ae8a2f0915c,
+        type: 2}
+      propertyPath: production
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114847184904856826, guid: 2ed5b92d733568b44bee2ae8a2f0915c,
+        type: 2}
+      propertyPath: productionImage
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114847184904856826, guid: 2ed5b92d733568b44bee2ae8a2f0915c,
+        type: 2}
+      propertyPath: unitsCard
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114847184904856826, guid: 2ed5b92d733568b44bee2ae8a2f0915c,
+        type: 2}
+      propertyPath: unitImage
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114847184904856826, guid: 2ed5b92d733568b44bee2ae8a2f0915c,
+        type: 2}
+      propertyPath: unitName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114847184904856826, guid: 2ed5b92d733568b44bee2ae8a2f0915c,
+        type: 2}
+      propertyPath: unitStats
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114847184904856826, guid: 2ed5b92d733568b44bee2ae8a2f0915c,
+        type: 2}
+      propertyPath: enemyCard
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114847184904856826, guid: 2ed5b92d733568b44bee2ae8a2f0915c,
+        type: 2}
+      propertyPath: enemyImage
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114847184904856826, guid: 2ed5b92d733568b44bee2ae8a2f0915c,
+        type: 2}
+      propertyPath: enemyName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114847184904856826, guid: 2ed5b92d733568b44bee2ae8a2f0915c,
+        type: 2}
+      propertyPath: enemyAmount
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114847184904856826, guid: 2ed5b92d733568b44bee2ae8a2f0915c,
+        type: 2}
+      propertyPath: enemyStats
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114847184904856826, guid: 2ed5b92d733568b44bee2ae8a2f0915c,
+        type: 2}
+      propertyPath: goldGained
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114847184904856826, guid: 2ed5b92d733568b44bee2ae8a2f0915c,
+        type: 2}
+      propertyPath: resourceCard
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ed5b92d733568b44bee2ae8a2f0915c, type: 2}

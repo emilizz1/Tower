@@ -8,12 +8,12 @@ namespace Towers.Relics
 {
     public class RelicResoursful : Relic
     {
-        [SerializeField] int[] resourcesToGive = new int[3];
+        [SerializeField] Resource[] resourcesToAdd;
 
         public override void UseRelic()
         {
             base.UseRelic();
-            FindObjectOfType<ResourcesManager>().AddResources(resourcesToGive[0], resourcesToGive[1], resourcesToGive[2], transform);
+            FindObjectOfType<ResourcesManager>().AddResources(resourcesToAdd, transform);
         }
     }
 }

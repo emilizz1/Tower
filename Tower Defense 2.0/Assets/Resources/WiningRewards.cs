@@ -14,13 +14,8 @@ namespace Towers.Resources
         [SerializeField] Text lifepointText;
         [SerializeField] int lifepointsRewarded = 5;
         [Header("Resources")]
-        [SerializeField] int[] resourcesAwarded;
-        [SerializeField] Sprite goldImage;
-        [SerializeField] Sprite woodImage;
-        [SerializeField] Sprite coalImage;
-        [SerializeField] GameObject gold;
-        [SerializeField] GameObject wood;
-        [SerializeField] GameObject coal;
+        [SerializeField] Resource[] resourcesAwarded;
+        [SerializeField] GameObject[] resourcesGameObjects;
         [Header("Level")]
         [SerializeField] int currentLevel;
         [Header("Cards")]
@@ -30,16 +25,10 @@ namespace Towers.Resources
 
         public void PrepareRewards()
         {
-            var resoureceManager = FindObjectOfType<ResourcesManager>();
             rewards.SetActive(true);
             lifepointText.text = lifepointsRewarded.ToString();
             FindObjectOfType<LifePoints>().DamageLifePoints(-lifepointsRewarded);
-            gold.gameObject.GetComponentInChildren<Text>().text = resourcesAwarded[0].ToString();
-            resoureceManager.AddResources(resourcesAwarded[0], goldImage, gold.transform);
-            wood.gameObject.GetComponentInChildren<Text>().text = resourcesAwarded[1].ToString();
-            resoureceManager.AddResources(resourcesAwarded[1], woodImage, wood.transform);
-            coal.gameObject.GetComponentInChildren<Text>().text = resourcesAwarded[2].ToString();
-            resoureceManager.AddResources(resourcesAwarded[2], coalImage, coal.transform);
+            DisplayResourceRewards();
             FindObjectOfType<LevelCounter>().LevelFinished(currentLevel);
             if (cardAddedToDeck != null)
             {
@@ -54,6 +43,25 @@ namespace Towers.Resources
             foreach (Card card in cardsAddedToAddables)
             {
                 FindObjectOfType<CardHolders>().AddAddableCard(card);
+            }
+        }
+
+        void DisplayResourceRewards()
+        {
+            var resourceManager = FindObjectOfType<ResourcesManager>();
+            int currentlyUsedResourceSlot = 0;
+            Resource lastResource = null;
+            foreach (Resource resource in resourcesAwarded)
+            {
+                if(resource != lastResource)
+                {
+                    Resource[] resources = resourceManager.CountAllResourcesOfType(resource, resourcesAwarded);
+                    resourcesGameObjects[currentlyUsedResourceSlot].GetComponent<Image>().sprite = resource.GetSprite();
+                    resourcesGameObjects[currentlyUsedResourceSlot].GetComponent<Text>().text = resources.Length.ToString();
+                    resourceManager.AddResources(resources, resourcesGameObjects[currentlyUsedResourceSlot].transform);
+                    currentlyUsedResourceSlot++;
+                }
+                lastResource = resource;
             }
         }
 

@@ -46,8 +46,8 @@ namespace Towers.CardN
             Buildings settingBuilding = myCard.GetPrefabs().GetBuilding(buildingLevel);
             buildingImage.texture = settingBuilding.GetBuildingTexture();
             buildingName.text = settingBuilding.GetBuildingName();
-            production.text = settingBuilding.GetResourceAmount().ToString();
-            productionImage.sprite = settingBuilding.GetResourcesProduced();
+            production.text = settingBuilding.GetResourcesProduced().Length.ToString();
+            productionImage.sprite = settingBuilding.GetResourcesProduced()[0].GetSprite();
             SetupUnitCard(settingBuilding);
         }
 
@@ -58,10 +58,10 @@ namespace Towers.CardN
             float attack = 0f, speed = 0f, range = 0f;
             building.GetUnit().GetComponent<FriendlyAI>().GiveStats(out attack, out speed, out range);
             unitStats.text = "Attack: " + attack.ToString() + " Speed: " + ((speed * -10f) + 20f).ToString() + " Range: " + range.ToString() + " Special Power: " + building.GetSpecialPower();
-            int[] unitCost = building.GetBuildingUnitCost();
-            PutUnitResourcesOn(costImages0, unitCost[0], 0);
-            PutUnitResourcesOn(costImages1, unitCost[1], 1);
-            PutUnitResourcesOn(costImages2, unitCost[2], 2);
+            //int[] unitCost = building.GetBuildingUnitCost();
+            //PutUnitResourcesOn(costImages0, unitCost[0], 0);
+            //PutUnitResourcesOn(costImages1, unitCost[1], 1);
+            //PutUnitResourcesOn(costImages2, unitCost[2], 2);
         }
 
         void PutUnitResourcesOn(GameObject[] objects, int cost, int currentResource)

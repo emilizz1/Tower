@@ -9,9 +9,6 @@ namespace Towers.CardN
 {
     public class Cards : MonoBehaviour
     {
-        [Header("Resources")]
-        [SerializeField] Sprite[] resources;
-
         [Header("Building Setup")]
         [SerializeField] GameObject buildingsCard;
         [SerializeField] RawImage buildingImage;
@@ -24,9 +21,11 @@ namespace Towers.CardN
         [SerializeField] RawImage unitImage;
         [SerializeField] Text unitName;
         [SerializeField] Text unitStats;
-        [SerializeField] GameObject[] costImages0;
-        [SerializeField] GameObject[] costImages1;
-        [SerializeField] GameObject[] costImages2;
+        [System.Serializable] class CostResources
+        {
+            public GameObject[] resourceSlot;
+        }
+        [SerializeField] CostResources[] costImages;
 
         [Header("Enemy Setup")]
         [SerializeField] GameObject enemyCard;
@@ -93,8 +92,8 @@ namespace Towers.CardN
             Buildings settingBuilding = card.GetPrefabs().GetBuilding(buildingLevel);
             buildingImage.texture = settingBuilding.GetBuildingTexture();
             buildingName.text = settingBuilding.GetBuildingName();
-            production.text = settingBuilding.GetResourceAmount().ToString();
-            productionImage.sprite = settingBuilding.GetResourcesProduced();
+            production.text = settingBuilding.GetResourcesProduced().Length.ToString();
+            productionImage.sprite = settingBuilding.GetResourcesProduced()[0].GetSprite();
             SetupUnitCard(settingBuilding, true);
         }
 
@@ -115,27 +114,26 @@ namespace Towers.CardN
             float attack = 0f, speed = 0f, range = 0f;
             building.GetUnit().GetComponent<FriendlyAI>().GiveStats(out attack, out speed, out range);
             unitStats.text = "Attack: " + attack.ToString() + " Speed: " + ((speed * -10f) + 20f).ToString() + " Range: " + range.ToString() + " Special Power: " + building.GetSpecialPower();
-            int[] unitCost = building.GetBuildingUnitCost();
-            PutUnitResourcesOn(costImages0, unitCost[0], 0);
-            PutUnitResourcesOn(costImages1, unitCost[1], 1);
-            PutUnitResourcesOn(costImages2, unitCost[2], 2);
+            PutUnitResourcesOn(building);
         }
 
-        void PutUnitResourcesOn(GameObject[] objects, int cost, int currentResource)
+        void PutUnitResourcesOn(Buildings building)
         {
-            foreach (GameObject resource in objects)
-            {
-                if (cost > 0)
-                {
-                    resource.SetActive(true);
-                    resource.GetComponentsInChildren<Image>()[1].sprite = resources[currentResource];
-                    cost--;
-                }
-                else
-                {
-                    resource.SetActive(false);
-                }
-            }
+            Resource[] unitCost = building.GetBuildingUnitCost();
+            ResourcesManager resourcesManager = FindObjectOfType<ResourcesManager>();
+            //foreach (GameObject resource in objects)
+            //{
+            //    if (cost > 0)
+            //    {
+            //        resource.SetActive(true);
+            //        resource.GetComponentsInChildren<Image>()[1].sprite = resources[currentResource];
+            //        cost--;
+            //    }
+            //    else
+            //    {
+            //        resource.SetActive(false);
+            //    }
+            //}
         }
 
         public void SetupCards(bool isItBuilding, bool isItEnemy, bool isItResource)
@@ -177,13 +175,13 @@ namespace Towers.CardN
 
         public void SetupResourceCard(Buildings building)
         {
-            int resourceAmount = building.GetResourceAmount();
+            int resourceAmount = building.GetResourcesProduced().Length;
             foreach (Image resource in resourceImages)
             {
                 if (resourceAmount > 0)
                 {
                     resource.transform.parent.gameObject.SetActive(true);
-                    resource.sprite = building.GetResourcesProduced();
+                    resource.sprite = building.GetResourcesProduced()[0].GetSprite();
                     resourceAmount--;
                 }
                 else

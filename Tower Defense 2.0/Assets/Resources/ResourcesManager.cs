@@ -140,5 +140,23 @@ namespace Towers.Resources
             else if (resource.GetSprite() == coalSprite) { return coalImage.transform.position; }
             else { return Vector3.zero; }
         }
+
+        public Resource[] CountAllResourcesOfType(Resource type, Resource[] resources)
+        {
+            int howMany = 0;
+            foreach (Resource resource in resources)
+            {
+                if (resource == type)
+                {
+                    howMany++;
+                }
+            }
+            Resource[] OneTypeResources = new Resource[howMany];
+            for (int i = 0; i < howMany; i++)
+            {
+                OneTypeResources[i] = type;
+            }
+            return OneTypeResources;
+        }
     }
 }

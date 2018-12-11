@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using Towers.Resources;
 
 namespace Towers.CameraUI
 {
@@ -7,44 +8,42 @@ namespace Towers.CameraUI
     {
         [SerializeField] Image buildingProductionImage;
         [SerializeField] Text buildingProductionAmount;
-        [SerializeField] Text unitGoldText;
-        [SerializeField] Text unitWoodText;
-        [SerializeField] Text unitCoalText;
+        [SerializeField] Text[] unitCostText;
         [SerializeField] Text buildingName;
 
-        public void PutInformation(Sprite buildingResource, int buildingAmount, int[] UnitCost, string buildingName)
+        public void PutInformation(Resource[] buildingResource, Resource[] UnitCost, string buildingName)
         {
-            buildingProductionImage.sprite = buildingResource;
-            buildingProductionAmount.text = buildingAmount.ToString();
-            if (UnitCost[0] != 0)
-            {
-                unitGoldText.text = UnitCost[0].ToString();
-                unitGoldText.gameObject.SetActive(true);
-            }
-            else
-            {
-                unitGoldText.gameObject.SetActive(false);
-            }
-            if (UnitCost[1] != 0)
-            {
-                unitWoodText.text = UnitCost[1].ToString();
-                unitWoodText.gameObject.SetActive(true);
-            }
-            else
-            {
-                unitWoodText.gameObject.SetActive(false);
-            }
-            if (UnitCost[2] != 0)
-            {
-                unitCoalText.text = UnitCost[2].ToString();
-                unitCoalText.gameObject.SetActive(true);
-            }
-            else
-            {
-                unitCoalText.gameObject.SetActive(false);
-            }
+            buildingProductionImage.sprite = buildingResource[0].GetSprite();
+            buildingProductionAmount.text = buildingResource.Length.ToString();
+            DisableUnitCostText();
+            PutResourcesInformation(UnitCost);
             this.buildingName.text = buildingName;
         }
 
+        private void PutResourcesInformation(Resource[] UnitCost)
+        {
+            ResourcesManager resourcesManager = FindObjectOfType<ResourcesManager>();
+            int currentlyUsedResourceSlot = 0;
+            Resource lastResource = null;
+            foreach (Resource resource in UnitCost)
+            {
+                if (resource != lastResource)
+                {
+                    unitCostText[currentlyUsedResourceSlot].gameObject.SetActive(true);
+                    Resource[] resources = resourcesManager.CountAllResourcesOfType(resource, UnitCost);
+                    unitCostText[currentlyUsedResourceSlot].text = resources.Length.ToString();
+                    currentlyUsedResourceSlot++;
+                }
+                lastResource = resource;
+            }
+        }
+
+        void DisableUnitCostText()
+        {
+            foreach(Text text in unitCostText)
+            {
+                text.gameObject.SetActive(false);
+            }
+        }
     }
 }
