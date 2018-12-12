@@ -23,7 +23,7 @@ namespace Towers.CardN
         [SerializeField] Text unitStats;
         [System.Serializable] class CostResources
         {
-            public GameObject[] resourceSlot;
+            public GameObject[] resourceSlot = null;
         }
         [SerializeField] CostResources[] costImages;
 
@@ -114,26 +114,34 @@ namespace Towers.CardN
             float attack = 0f, speed = 0f, range = 0f;
             building.GetUnit().GetComponent<FriendlyAI>().GiveStats(out attack, out speed, out range);
             unitStats.text = "Attack: " + attack.ToString() + " Speed: " + ((speed * -10f) + 20f).ToString() + " Range: " + range.ToString() + " Special Power: " + building.GetSpecialPower();
-            PutUnitResourcesOn(building);
+            DisplayUnitCost(building);
         }
 
-        void PutUnitResourcesOn(Buildings building)
+        void DisplayUnitCost(Buildings building)
         {
             Resource[] unitCost = building.GetBuildingUnitCost();
             ResourcesManager resourcesManager = FindObjectOfType<ResourcesManager>();
-            //foreach (GameObject resource in objects)
-            //{
-            //    if (cost > 0)
-            //    {
-            //        resource.SetActive(true);
-            //        resource.GetComponentsInChildren<Image>()[1].sprite = resources[currentResource];
-            //        cost--;
-            //    }
-            //    else
-            //    {
-            //        resource.SetActive(false);
-            //    }
-            //}
+            Resource lastResource = null;
+            int currentlyDisplayedResource = 0;
+            foreach (Resource resource in unitCost)
+            {
+                if (resource != lastResource)
+                {
+                    Resource[] oneTypeResources = resourcesManager.CountAllResourcesOfType(resource, unitCost);
+                    DisplayOneTypeResource(costImages[currentlyDisplayedResource].resourceSlot, oneTypeResources);
+                }
+                lastResource = resource;
+            }
+        }
+
+        void DisplayOneTypeResource(GameObject[] displayOn, Resource[] displayedResources)
+        {
+            int displayCounter = 0;
+            foreach(Resource resource in displayedResources)
+            {
+                displayOn[displayCounter].GetComponent<Image>().sprite = resource.GetSprite();
+                displayCounter++;
+            }
         }
 
         public void SetupCards(bool isItBuilding, bool isItEnemy, bool isItResource)

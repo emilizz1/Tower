@@ -12,7 +12,7 @@ namespace Towers.Enemies
         [SerializeField] Image healthBar;
         [SerializeField] float deathVanishSeconds = 1f;
 
-        string Death_Trigger = "Death";
+        protected string Death_Trigger = "Death";
         float currentHealthPoints = 0;
         Animator animator;
         public float healthAsPercentage { get { return currentHealthPoints / maxHealthPoints; } }
