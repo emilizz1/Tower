@@ -521,10 +521,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildingName: Camp I
-  buildUnitCost: 050000000000000000000000
+  buildUnitCost:
+  - {fileID: 11400000, guid: ab56d4aa84abdd6499e6c50f2fc64889, type: 2}
+  - {fileID: 11400000, guid: ab56d4aa84abdd6499e6c50f2fc64889, type: 2}
+  - {fileID: 11400000, guid: ab56d4aa84abdd6499e6c50f2fc64889, type: 2}
+  - {fileID: 11400000, guid: ab56d4aa84abdd6499e6c50f2fc64889, type: 2}
+  - {fileID: 11400000, guid: ab56d4aa84abdd6499e6c50f2fc64889, type: 2}
   unitPrefab: {fileID: 1478187470132536, guid: dbe10b2ce57d4d24ebe4c16c73075678, type: 2}
-  resourceAmount: 1
-  resource: {fileID: 21300000, guid: 8badecae48978c24fab15f95df1513c1, type: 3}
+  resourceAmountProduced:
+  - {fileID: 11400000, guid: ab56d4aa84abdd6499e6c50f2fc64889, type: 2}
   Level: 0
   iD: 0
   buildingImage: {fileID: 2800000, guid: 8d0ef034843293845a6f096f0abfa260, type: 3}

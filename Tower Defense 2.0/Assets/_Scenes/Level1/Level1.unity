@@ -2217,6 +2217,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114523271518909506, guid: 0b36b2dcaa303d44a928f221a856af5b,
+        type: 2}
+      propertyPath: startingResources.Array.size
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 224477075977509608, guid: 0b36b2dcaa303d44a928f221a856af5b,
         type: 2}
       propertyPath: m_LocalPosition.x
@@ -2316,6 +2321,48 @@ Prefab:
       propertyPath: m_Name
       value: LifepointsText
       objectReference: {fileID: 0}
+    - target: {fileID: 114523271518909506, guid: 0b36b2dcaa303d44a928f221a856af5b,
+        type: 2}
+      propertyPath: startingResources.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: ab56d4aa84abdd6499e6c50f2fc64889,
+        type: 2}
+    - target: {fileID: 114523271518909506, guid: 0b36b2dcaa303d44a928f221a856af5b,
+        type: 2}
+      propertyPath: startingResources.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: ab56d4aa84abdd6499e6c50f2fc64889,
+        type: 2}
+    - target: {fileID: 114523271518909506, guid: 0b36b2dcaa303d44a928f221a856af5b,
+        type: 2}
+      propertyPath: startingResources.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: ab56d4aa84abdd6499e6c50f2fc64889,
+        type: 2}
+    - target: {fileID: 114523271518909506, guid: 0b36b2dcaa303d44a928f221a856af5b,
+        type: 2}
+      propertyPath: startingResources.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: ab56d4aa84abdd6499e6c50f2fc64889,
+        type: 2}
+    - target: {fileID: 114523271518909506, guid: 0b36b2dcaa303d44a928f221a856af5b,
+        type: 2}
+      propertyPath: startingResources.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: 13a7512b5452ef24dbadf8a360fd5df0,
+        type: 2}
+    - target: {fileID: 114523271518909506, guid: 0b36b2dcaa303d44a928f221a856af5b,
+        type: 2}
+      propertyPath: startingResources.Array.data[5]
+      value: 
+      objectReference: {fileID: 11400000, guid: 13a7512b5452ef24dbadf8a360fd5df0,
+        type: 2}
+    - target: {fileID: 114523271518909506, guid: 0b36b2dcaa303d44a928f221a856af5b,
+        type: 2}
+      propertyPath: startingResources.Array.data[6]
+      value: 
+      objectReference: {fileID: 11400000, guid: 1f977c2c7ac1fda4886c7f930f2eef09,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b36b2dcaa303d44a928f221a856af5b, type: 2}
   m_IsPrefabAsset: 0
@@ -3437,6 +3484,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 1531881137}
     m_Modifications:
+    - target: {fileID: 114490749737753194, guid: 8977b09e9ed531d41a5c6408e614e419,
+        type: 2}
+      propertyPath: resourcesAwarded.Array.size
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 224401327575994852, guid: 8977b09e9ed531d41a5c6408e614e419,
         type: 2}
       propertyPath: m_LocalPosition.x
@@ -3527,6 +3579,30 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114490749737753194, guid: 8977b09e9ed531d41a5c6408e614e419,
+        type: 2}
+      propertyPath: resourcesAwarded.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: ab56d4aa84abdd6499e6c50f2fc64889,
+        type: 2}
+    - target: {fileID: 114490749737753194, guid: 8977b09e9ed531d41a5c6408e614e419,
+        type: 2}
+      propertyPath: resourcesAwarded.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: ab56d4aa84abdd6499e6c50f2fc64889,
+        type: 2}
+    - target: {fileID: 114490749737753194, guid: 8977b09e9ed531d41a5c6408e614e419,
+        type: 2}
+      propertyPath: resourcesAwarded.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 13a7512b5452ef24dbadf8a360fd5df0,
+        type: 2}
+    - target: {fileID: 114490749737753194, guid: 8977b09e9ed531d41a5c6408e614e419,
+        type: 2}
+      propertyPath: resourcesAwarded.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 13a7512b5452ef24dbadf8a360fd5df0,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8977b09e9ed531d41a5c6408e614e419, type: 2}
   m_IsPrefabAsset: 0

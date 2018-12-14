@@ -875,10 +875,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildingName: Forest III
-  buildUnitCost: 040000000600000000000000
+  buildUnitCost:
+  - {fileID: 11400000, guid: ab56d4aa84abdd6499e6c50f2fc64889, type: 2}
+  - {fileID: 11400000, guid: ab56d4aa84abdd6499e6c50f2fc64889, type: 2}
+  - {fileID: 11400000, guid: ab56d4aa84abdd6499e6c50f2fc64889, type: 2}
+  - {fileID: 11400000, guid: ab56d4aa84abdd6499e6c50f2fc64889, type: 2}
+  - {fileID: 11400000, guid: 13a7512b5452ef24dbadf8a360fd5df0, type: 2}
+  - {fileID: 11400000, guid: 13a7512b5452ef24dbadf8a360fd5df0, type: 2}
+  - {fileID: 11400000, guid: 13a7512b5452ef24dbadf8a360fd5df0, type: 2}
+  - {fileID: 11400000, guid: 13a7512b5452ef24dbadf8a360fd5df0, type: 2}
+  - {fileID: 11400000, guid: 13a7512b5452ef24dbadf8a360fd5df0, type: 2}
+  - {fileID: 11400000, guid: 13a7512b5452ef24dbadf8a360fd5df0, type: 2}
   unitPrefab: {fileID: 1942048650278786, guid: 4f651f27938e132449eda023268af1a5, type: 2}
-  resourceAmount: 3
-  resource: {fileID: 21300000, guid: 1874681610826854cbe82ff4ff29a4c6, type: 3}
+  resourceAmountProduced:
+  - {fileID: 11400000, guid: 13a7512b5452ef24dbadf8a360fd5df0, type: 2}
+  - {fileID: 11400000, guid: 13a7512b5452ef24dbadf8a360fd5df0, type: 2}
+  - {fileID: 11400000, guid: 13a7512b5452ef24dbadf8a360fd5df0, type: 2}
   Level: 2
   iD: 2
   buildingImage: {fileID: 2800000, guid: acac769016ee0fd45b2217b7a9c7fe89, type: 3}

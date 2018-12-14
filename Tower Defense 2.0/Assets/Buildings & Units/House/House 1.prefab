@@ -364,10 +364,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildingName: Village House I
-  buildUnitCost: 010000000100000000000000
+  buildUnitCost:
+  - {fileID: 11400000, guid: ab56d4aa84abdd6499e6c50f2fc64889, type: 2}
+  - {fileID: 11400000, guid: 13a7512b5452ef24dbadf8a360fd5df0, type: 2}
   unitPrefab: {fileID: 1480109098551122, guid: f93f7313a71fdc7408e9328b541049d7, type: 2}
-  resourceAmount: 1
-  resource: {fileID: 21300000, guid: 1874681610826854cbe82ff4ff29a4c6, type: 3}
+  resourceAmountProduced:
+  - {fileID: 11400000, guid: 13a7512b5452ef24dbadf8a360fd5df0, type: 2}
   Level: 0
   iD: 3
   buildingImage: {fileID: 2800000, guid: 63a373d1cb9ef124d90a0a7cdbcf51ca, type: 3}
