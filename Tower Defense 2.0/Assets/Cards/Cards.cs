@@ -129,8 +129,13 @@ namespace Towers.CardN
                 {
                     Resource[] oneTypeResources = resourcesManager.CountAllResourcesOfType(resource, unitCost);
                     DisplayOneTypeResource(costImages[currentlyDisplayedResource].resourceSlot, oneTypeResources);
+                    currentlyDisplayedResource++;
                 }
                 lastResource = resource;
+            }
+            for (int i = currentlyDisplayedResource; i < costImages.Length; i++)
+            {
+                InactiveAllResources(costImages[i].resourceSlot, 0);
             }
         }
 
@@ -139,8 +144,18 @@ namespace Towers.CardN
             int displayCounter = 0;
             foreach(Resource resource in displayedResources)
             {
-                displayOn[displayCounter].GetComponent<Image>().sprite = resource.GetSprite();
+                displayOn[displayCounter].gameObject.GetComponentsInParent<Transform>()[1].gameObject.SetActive(true);
+                displayOn[displayCounter].GetComponentInChildren<Image>().sprite = resource.GetSprite();
                 displayCounter++;
+            }
+            InactiveAllResources(displayOn, displayCounter);
+        }
+
+        void InactiveAllResources(GameObject[] inactivateObjects, int lastCount)
+        {
+            for (int i = lastCount; i < inactivateObjects.Length; i++)
+            {
+                inactivateObjects[i].GetComponentsInParent<Transform>()[1].gameObject.SetActive(false);
             }
         }
 

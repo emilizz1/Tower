@@ -23,3 +23,5 @@
 // 04: first enemy of level dies automaticly (same as lifes??)
 // 05: gain/ remove 2 cards
 // 06: better position for units first
+
+//TODO replace resource images in showcase card
