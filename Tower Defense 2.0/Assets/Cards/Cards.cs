@@ -161,7 +161,6 @@ namespace Towers.CardN
 
         public void SetupCards(bool isItBuilding, bool isItEnemy, bool isItResource)
         {
-            print(isItBuilding.ToString()+ isItEnemy.ToString()+ isItResource.ToString());
             if (isItBuilding)
             {
                 buildingsCard.SetActive(true);

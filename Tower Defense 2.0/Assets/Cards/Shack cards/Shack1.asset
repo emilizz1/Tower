@@ -11,7 +11,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 793ece55346d0bc4f9311ac6289d008e, type: 3}
   m_Name: Shack1
   m_EditorClassIdentifier: 
-  GoldGivenFromEnemies: 2
+  GoldGivenFromEnemies:
+  - {fileID: 11400000, guid: ab56d4aa84abdd6499e6c50f2fc64889, type: 2}
+  - {fileID: 11400000, guid: ab56d4aa84abdd6499e6c50f2fc64889, type: 2}
   enemyImage: {fileID: 0}
   prefabs: {fileID: 11400000, guid: 39bfca2ed39c8c448b4dfc8e3f1e4235, type: 2}
   enemyPrefab: {fileID: 1431358493533120, guid: 2291fe32e0cd4a049a17cdf84e0053c7,
