@@ -7,7 +7,7 @@ namespace Towers.BuildingsN.Forest
     public class Poison : MonoBehaviour
     {
         int poisonLevel = 1;
-        float poisonDamageMultiplayer = 1.25f;
+        float poisonDamageMultiplayer = 1.33f;
         HealthSystem health;
 
         void Start()

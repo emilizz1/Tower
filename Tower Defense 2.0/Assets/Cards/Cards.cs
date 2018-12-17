@@ -83,7 +83,7 @@ namespace Towers.CardN
             enemyName.text = enemy.name.ToString();
             enemyAmount.text = card.GetEnemyAmount().ToString();
             enemyStats.text = enemy.GetComponent<HealthSystem>().GetMaxHP().ToString();
-            goldGained.text = card.GetEnemyResources().ToString();
+            goldGained.text = card.GetEnemyResources().Length.ToString();
         }
 
         void SetupBuildingCard()
@@ -144,8 +144,8 @@ namespace Towers.CardN
             int displayCounter = 0;
             foreach(Resource resource in displayedResources)
             {
-                displayOn[displayCounter].gameObject.GetComponentsInParent<Transform>()[1].gameObject.SetActive(true);
-                displayOn[displayCounter].GetComponentInChildren<Image>().sprite = resource.GetSprite();
+                displayOn[displayCounter].gameObject.SetActive(true);
+                displayOn[displayCounter].GetComponentsInChildren<Image>()[1].sprite = resource.GetSprite();
                 displayCounter++;
             }
             InactiveAllResources(displayOn, displayCounter);
@@ -155,12 +155,13 @@ namespace Towers.CardN
         {
             for (int i = lastCount; i < inactivateObjects.Length; i++)
             {
-                inactivateObjects[i].GetComponentsInParent<Transform>()[1].gameObject.SetActive(false);
+                inactivateObjects[i].SetActive(false);
             }
         }
 
         public void SetupCards(bool isItBuilding, bool isItEnemy, bool isItResource)
         {
+            print(isItBuilding.ToString()+ isItEnemy.ToString()+ isItResource.ToString());
             if (isItBuilding)
             {
                 buildingsCard.SetActive(true);
