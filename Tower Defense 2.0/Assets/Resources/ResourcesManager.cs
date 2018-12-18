@@ -29,7 +29,7 @@ namespace Towers.Resources
             woodSprite = woodImage.sprite;
             coalSprite = coalImage.sprite;
             resourceHolder = FindObjectOfType<ResourceHolder>();
-            updateText();
+            updateResourceText();
         }
 
         void Update()
@@ -37,11 +37,11 @@ namespace Towers.Resources
             if (resourceHolder == null)
             {
                 resourceHolder = FindObjectOfType<ResourceHolder>();
-                updateText();
+                updateResourceText();
             }
         }
 
-        void updateText()
+        public void updateResourceText()
         {
             gold.text = resourceHolder.getCurrentGold().ToString();
             wood.text = resourceHolder.getCurrentWood().ToString();
@@ -66,7 +66,7 @@ namespace Towers.Resources
                 createdResource.AddComponent<MovingResource>();
                 createdResource.GetComponent<MovingResource>().GiveResourceMovementInfo(GetResourceDestination(resource), resourceMoveSpeed, resource);
                 yield return new WaitForSecondsRealtime(0.15f);
-                updateText();
+                updateResourceText();
             }
         }
 
@@ -113,7 +113,7 @@ namespace Towers.Resources
                 GameObject createdResource = Instantiate(resourceImage, GetResourcePos(resource), Quaternion.identity, transform);
                 createdResource.GetComponent<Image>().sprite = resource.GetSprite();
                 resource.RemoveResource();
-                updateText();
+                updateResourceText();
                 StartCoroutine(ResourceDissapearing(createdResource));
                 yield return new WaitForSecondsRealtime(0.1f);
             }

@@ -19,6 +19,7 @@ namespace Towers.Resources
                 else
                 {
                     myResource.AddResource();
+                    FindObjectOfType<ResourcesManager>().updateResourceText();
                     Destroy(gameObject);
                 }
             }

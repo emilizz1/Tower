@@ -38,7 +38,10 @@ namespace Towers.Resources
             }
             else
             {
-                cardRewards.SetActive(false);
+                if (cardRewards)
+                {
+                    cardRewards.SetActive(false);
+                }
             }
             foreach (Card card in cardsAddedToAddables)
             {
@@ -48,6 +51,7 @@ namespace Towers.Resources
 
         void DisplayResourceRewards()
         {
+            DeactivateAllResourceRewards();
             var resourceManager = FindObjectOfType<ResourcesManager>();
             int currentlyUsedResourceSlot = 0;
             Resource lastResource = null;
@@ -56,12 +60,21 @@ namespace Towers.Resources
                 if(resource != lastResource)
                 {
                     Resource[] resources = resourceManager.CountAllResourcesOfType(resource, resourcesAwarded);
-                    resourcesGameObjects[currentlyUsedResourceSlot].GetComponent<Image>().sprite = resource.GetSprite();
-                    resourcesGameObjects[currentlyUsedResourceSlot].GetComponent<Text>().text = resources.Length.ToString();
+                    resourcesGameObjects[currentlyUsedResourceSlot].SetActive(true);
+                    resourcesGameObjects[currentlyUsedResourceSlot].GetComponentInChildren<Image>().sprite = resource.GetSprite();
+                    resourcesGameObjects[currentlyUsedResourceSlot].GetComponentInChildren<Text>().text = resources.Length.ToString();
                     resourceManager.AddResources(resources, resourcesGameObjects[currentlyUsedResourceSlot].transform);
                     currentlyUsedResourceSlot++;
                 }
                 lastResource = resource;
+            }
+        }
+
+        void DeactivateAllResourceRewards()
+        {
+            foreach (GameObject myGameobject in resourcesGameObjects)
+            {
+                myGameobject.SetActive(false);
             }
         }
 
