@@ -70,5 +70,10 @@ namespace Towers.CardN
         {
             text.text = deck.Count.ToString();
         }
+
+        public CardHolder GetLevelCards()
+        {
+            return levelCards;
+        }
     }
 }

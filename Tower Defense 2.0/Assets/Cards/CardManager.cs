@@ -27,7 +27,6 @@ namespace Towers.CardN
             cards = GetComponentsInChildren<Cards>();
             deck = FindObjectOfType<Deck>();
             levelEnemyCard = FindObjectOfType<LevelEnemyCard>();
-            SetNewCards(true);
         }
 
         public BuildingsHolder GetPrefabs()
@@ -76,7 +75,7 @@ namespace Towers.CardN
             firstRound = false;
         }
 
-        void SetNewCards(bool secondChoice)
+        public void SetNewCards(bool secondChoice)
         {
             int i = 0;
             if (secondChoice)

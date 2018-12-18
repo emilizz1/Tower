@@ -9,10 +9,10 @@ namespace Towers.CardN
         [SerializeField] CardHolder playerCards;
         [SerializeField] ShowcaseCard[] cards;
         [SerializeField] GameObject[] Pages;
-
-        List<Buildings> buildings = new List<Buildings>();
+        
         int currentlyActiveCards = 0;
 
+        List<Buildings> buildings = new List<Buildings>();
         public static CardsShowcase control;
 
         void Awake()

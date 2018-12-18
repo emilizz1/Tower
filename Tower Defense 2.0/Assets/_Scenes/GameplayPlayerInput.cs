@@ -19,15 +19,17 @@ namespace Towers.Scenes
         EnemySpawner enemySpawner;
         LevelManager levelM;
         UpcomingActions upcomingActions;
+        StartLevelDisplayer startLevelDisplayer;
 
         int currentBuilding = 0;
         bool nextStep = true;
         bool placingUnit = false;
         bool firstRound = true;
-        State currentState = State.buildingSelecting;
+        State currentState = State.LevelStarted;
 
         enum State
         {
+            LevelStarted,
             buildingSelecting,
             enemySelecting,
             buildingBonuses,
@@ -45,6 +47,8 @@ namespace Towers.Scenes
             enemySpawner = FindObjectOfType<EnemySpawner>();
             levelM = FindObjectOfType<LevelManager>();
             upcomingActions = FindObjectOfType<UpcomingActions>();
+            startLevelDisplayer = FindObjectOfType<StartLevelDisplayer>();
+            buildingM.TurnBuildings(false, false);
         }
 
         void Update()
@@ -63,6 +67,11 @@ namespace Towers.Scenes
         {
             switch (currentState)
             {
+                case State.LevelStarted:
+                    startLevelDisplayer.TurnOffAllShowcaseCards();
+                    cardM.SetNewCards(true);
+                    currentState = State.buildingSelecting;
+                    break;
                 case State.buildingSelecting:
                     StopCoroutine(WaitingForEnemiesToDie());
                     cardM.CardSelected(choice, true);
