@@ -445,7 +445,7 @@ GameObject:
   m_IsActive: 1
 --- !u!1 &1283096308308646
 GameObject:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
@@ -495,7 +495,7 @@ GameObject:
   m_IsActive: 1
 --- !u!1 &1295673497758430
 GameObject:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
@@ -964,7 +964,7 @@ GameObject:
   m_IsActive: 1
 --- !u!1 &1646939533224340
 GameObject:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
@@ -1507,21 +1507,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1929983680443718
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 224381282123707882}
-  m_Layer: 5
-  m_Name: Gameplay UI
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &1934102865518260
 GameObject:
   m_ObjectHideFlags: 1
@@ -1686,33 +1671,34 @@ MonoBehaviour:
   unitImage: {fileID: 114927901852472650}
   unitName: {fileID: 114729959009176294}
   unitStats: {fileID: 114061420746968158}
-  costImages0:
-  - {fileID: 1397089718838618}
-  - {fileID: 1743548871443874}
-  - {fileID: 1961638632343280}
-  - {fileID: 1838829889733452}
-  - {fileID: 1807475028131638}
-  - {fileID: 1279853866332212}
-  - {fileID: 1618824245784516}
-  - {fileID: 1745086950211004}
-  costImages1:
-  - {fileID: 1472608416339428}
-  - {fileID: 1301306735735146}
-  - {fileID: 1670964382153200}
-  - {fileID: 1757123630847606}
-  - {fileID: 1056425409972060}
-  - {fileID: 1159040927414956}
-  - {fileID: 1293253113182942}
-  - {fileID: 1079592502116056}
-  costImages2:
-  - {fileID: 1958491662927934}
-  - {fileID: 1150348776610604}
-  - {fileID: 1823057347442292}
-  - {fileID: 1122490201527506}
-  - {fileID: 1750071751224194}
-  - {fileID: 1083902249305826}
-  - {fileID: 1852464817080384}
-  - {fileID: 1003804745203548}
+  costImages:
+  - resourceSlot:
+    - {fileID: 1397089718838618}
+    - {fileID: 1743548871443874}
+    - {fileID: 1961638632343280}
+    - {fileID: 1838829889733452}
+    - {fileID: 1807475028131638}
+    - {fileID: 1279853866332212}
+    - {fileID: 1618824245784516}
+    - {fileID: 1745086950211004}
+  - resourceSlot:
+    - {fileID: 1472608416339428}
+    - {fileID: 1301306735735146}
+    - {fileID: 1670964382153200}
+    - {fileID: 1757123630847606}
+    - {fileID: 1056425409972060}
+    - {fileID: 1159040927414956}
+    - {fileID: 1293253113182942}
+    - {fileID: 1079592502116056}
+  - resourceSlot:
+    - {fileID: 1958491662927934}
+    - {fileID: 1150348776610604}
+    - {fileID: 1823057347442292}
+    - {fileID: 1122490201527506}
+    - {fileID: 1750071751224194}
+    - {fileID: 1083902249305826}
+    - {fileID: 1852464817080384}
+    - {fileID: 1003804745203548}
   enemyImage: {fileID: 114557992216488010}
   enemyName: {fileID: 114203617375789570}
   enemyAmount: {fileID: 114151520515961834}
@@ -2275,13 +2261,12 @@ MonoBehaviour:
   rewards: {fileID: 1943595013478038}
   lifepointText: {fileID: 114895383130914692}
   lifepointsRewarded: 10
-  resourcesAwarded: 000000000300000000000000
-  goldImage: {fileID: 21300000, guid: 8badecae48978c24fab15f95df1513c1, type: 3}
-  woodImage: {fileID: 21300000, guid: 1874681610826854cbe82ff4ff29a4c6, type: 3}
-  coalImage: {fileID: 21300000, guid: 462be0da23456184e8d6180eb9a1098a, type: 3}
-  gold: {fileID: 1090923349917292}
-  wood: {fileID: 1480377500547200}
-  coal: {fileID: 1428381342584940}
+  resourcesAwarded:
+  - {fileID: 11400000, guid: ab56d4aa84abdd6499e6c50f2fc64889, type: 2}
+  - {fileID: 11400000, guid: ab56d4aa84abdd6499e6c50f2fc64889, type: 2}
+  - {fileID: 11400000, guid: ab56d4aa84abdd6499e6c50f2fc64889, type: 2}
+  - {fileID: 11400000, guid: 1f977c2c7ac1fda4886c7f930f2eef09, type: 2}
+  resourcesGameObjects: []
   currentLevel: 2
   cardRewards: {fileID: 1905256428680008}
   cardAddedToDeck: {fileID: 11400000, guid: 3ae52284887c1fe46a61866a78e9025a, type: 2}
@@ -5165,7 +5150,9 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 224381282123707882}
+  - {fileID: 224743256070688976}
+  - {fileID: 224731395048496968}
+  - {fileID: 224680006242211788}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5314,27 +5301,6 @@ RectTransform:
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0.66, y: -3.76001}
   m_SizeDelta: {x: 240, y: 210}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!224 &224381282123707882
-RectTransform:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1929983680443718}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 224743256070688976}
-  - {fileID: 224731395048496968}
-  - {fileID: 224680006242211788}
-  m_Father: {fileID: 224282320887509542}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224393279883089502
 RectTransform:
@@ -5806,7 +5772,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224064516134881882}
-  m_Father: {fileID: 224381282123707882}
+  m_Father: {fileID: 224282320887509542}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -6006,12 +5972,12 @@ RectTransform:
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 224354845697430834}
-  m_Father: {fileID: 224381282123707882}
+  m_Father: {fileID: 224282320887509542}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -805, y: 350}
+  m_AnchoredPosition: {x: 105, y: -140}
   m_SizeDelta: {x: 91.54999, y: 36.169983}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224739035418151196
@@ -6043,12 +6009,12 @@ RectTransform:
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 224946599762110324}
-  m_Father: {fileID: 224381282123707882}
+  m_Father: {fileID: 224282320887509542}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -800, y: -380}
+  m_AnchoredPosition: {x: 110, y: 110}
   m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224777860020710510

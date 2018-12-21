@@ -113,7 +113,7 @@ namespace Towers.CardN
             enemyName.text = enemy.name.ToString();
             enemyAmount.text = myCard.GetEnemyAmount().ToString();
             enemyStats.text = enemy.GetComponent<HealthSystem>().GetMaxHP().ToString();
-            goldGained.text = myCard.GetEnemyResources().ToString();
+            goldGained.text = myCard.GetEnemyResources().Length.ToString();
         }
     }
 }

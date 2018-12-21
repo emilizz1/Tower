@@ -24,7 +24,7 @@ namespace Towers.CameraUI
         int currentlyActive = 0;
         int currentlyEmpty = 0;
 
-        void Start()
+        public void StartUpcomingActions()
         {
             buildingManager = FindObjectOfType<BuildingManager>();
             NewLevel(true);
@@ -111,7 +111,7 @@ namespace Towers.CameraUI
             }
         }
 
-        public void HideUpcomingActions()
+        public void DestroyUpcomingActions()
         {
             gameObject.SetActive(false);
         }

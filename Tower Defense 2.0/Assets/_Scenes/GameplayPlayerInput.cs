@@ -69,6 +69,7 @@ namespace Towers.Scenes
             {
                 case State.LevelStarted:
                     startLevelDisplayer.TurnOffAllShowcaseCards();
+                    upcomingActions.StartUpcomingActions();
                     cardM.SetNewCards(true);
                     currentState = State.buildingSelecting;
                     break;
@@ -187,7 +188,7 @@ namespace Towers.Scenes
             {
                 currentState = State.levelCompleted;
                 FindObjectOfType<WiningRewards>().PrepareRewards();
-                upcomingActions.HideUpcomingActions();
+                upcomingActions.DestroyUpcomingActions();
                 return true;
             }
             else

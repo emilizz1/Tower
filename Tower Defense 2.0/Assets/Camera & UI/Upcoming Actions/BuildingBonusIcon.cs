@@ -32,6 +32,7 @@ namespace Towers.CameraUI
                     unitCostText[currentlyUsedResourceSlot].gameObject.SetActive(true);
                     Resource[] resources = resourcesManager.CountAllResourcesOfType(resource, UnitCost);
                     unitCostText[currentlyUsedResourceSlot].text = resources.Length.ToString();
+                    unitCostText[currentlyUsedResourceSlot].GetComponentInChildren<Image>().sprite = resource.GetSprite();
                     currentlyUsedResourceSlot++;
                 }
                 lastResource = resource;
