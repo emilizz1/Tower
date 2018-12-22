@@ -1,28 +1,17 @@
-﻿using Towers.Enemies;
-using Towers.Units;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Towers.BuildingsN.Forest
+namespace Towers.Units
 {
-    public class Forest : MonoBehaviour
+    public class Forest : Shooter
     {
         [SerializeField] GameObject[] poisonPS;
 
-        FriendlyAI friendlyAI;
-        EnemyAI target;
-
-        void Start()
+        protected override void Shoot()
         {
-            friendlyAI = GetComponent<FriendlyAI>();
-        }
-
-        public void Shoot()
-        {
-            target = friendlyAI.GetTarget();
+            base.Shoot();
             if (target != null)
             {
                 Poison poison;
-
                 if (target.GetComponent<Poison>())
                 {
                     poison = target.GetComponent<Poison>();

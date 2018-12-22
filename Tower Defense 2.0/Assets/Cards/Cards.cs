@@ -112,7 +112,7 @@ namespace Towers.CardN
             unitImage.texture = building.GetUnitTexture();
             unitName.text = building.GetUnit().name;
             float attack = 0f, speed = 0f, range = 0f;
-            building.GetUnit().GetComponent<FriendlyAI>().GiveStats(out attack, out speed, out range);
+            building.GetUnit().GetComponent<Shooter>().GiveStats(out attack, out speed, out range);
             unitStats.text = "Attack: " + attack.ToString() + " Speed: " + ((speed * -10f) + 20f).ToString() + " Range: " + range.ToString() + " Special Power: " + building.GetSpecialPower();
             DisplayUnitCost(building);
         }

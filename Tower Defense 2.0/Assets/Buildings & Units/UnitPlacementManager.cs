@@ -44,7 +44,7 @@ namespace Towers.Units
                 unit.transform.position = redPS.transform.position;
                 RemovePosition(redPS.transform.position, false);
             }
-            unit.GetComponent<FriendlyAI>().SetPossition();
+            unit.GetComponent<Shooter>().SetPossition();
             unit.gameObject.layer = 0;
             unit.transform.parent = friendlyHolder.transform;
             whitePS.gameObject.SetActive(false);
@@ -56,7 +56,7 @@ namespace Towers.Units
 
         public void PrepareForPlacement(int currentBuilding)
         {
-            float unitRange = buildingM.GetBulding(currentBuilding).GetUnit().GetComponent<FriendlyAI>().GetRange();
+            float unitRange = buildingM.GetBulding(currentBuilding).GetUnit().GetComponent<Shooter>().GetRange();
             whitePS.gameObject.SetActive(true);
             firstPlacementRange.SetActive(true);
             redPS.gameObject.SetActive(true);

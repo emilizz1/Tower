@@ -2,7 +2,7 @@
 using Towers.Enemies;
 using UnityEngine;
 
-namespace Towers.BuildingsN.Forest
+namespace Towers.Units
 {
     public class Poison : MonoBehaviour
     {

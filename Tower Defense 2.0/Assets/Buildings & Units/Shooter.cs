@@ -2,23 +2,22 @@
 using UnityEngine;
 using UnityEngine.AI;
 using Towers.CharacterN;
-using Towers.BuildingsN.Church;
 using Towers.Enemies;
 
 namespace Towers.Units
 {
     [RequireComponent(typeof(Character))]
-    public class FriendlyAI : MonoBehaviour
+    public class Shooter : MonoBehaviour
     {
         [SerializeField] [Range(0.1f, 2f)] float timeBetweenAttacks = 1f;
-        [SerializeField] float baseDamage = 50f;
+        [SerializeField] protected float baseDamage = 50f;
         [SerializeField] float maxAttackRange = 10f;
         [SerializeField] ProjectileSystem projectileSystem;
         [SerializeField] Transform projectileSocket;
 
         NavMeshAgent navMeshAgent;
         Vector3 permenentPossition;
-        EnemyAI target;
+        protected EnemyAI target;
         Animator animator;
         Character character;
         float lastHitTime;
@@ -113,15 +112,7 @@ namespace Towers.Units
             Gizmos.DrawWireSphere(transform.position, maxAttackRange);
         }
 
-        public void Hit()
-        {
-            if (target != null)
-            {
-                GetComponent<Church>().Play(target.transform, baseDamage);
-            }
-        }
-
-        public void Shoot()
+        protected virtual void Shoot()
         {
             if (target != null)
             {
