@@ -12,6 +12,7 @@ namespace Towers.Enemies
         [SerializeField] float stoppingDistance = 1f;
         [SerializeField] float navMeshSteeringSpeed = 1f;
         [SerializeField] float damageToLifePoints = 1;
+        [SerializeField] float navMeshRadius = 0.25f;
 
         NavMeshAgent navMeshAgent;
         WaypointContainer patrolPath;
@@ -75,6 +76,7 @@ namespace Towers.Enemies
             navMeshAgent.stoppingDistance = stoppingDistance;
             navMeshAgent.speed = navMeshSteeringSpeed;
             navMeshAgent.autoBraking = false;
+            navMeshAgent.radius = navMeshRadius;
         }
 
         void SetDestination(Vector3 worldPos)

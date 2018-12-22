@@ -1,15 +1,16 @@
 ﻿using System.Collections;
 using UnityEngine;
 using Towers.BuildingsN.Forest;
+using UnityEngine.AI;
 
 namespace Towers.Enemies.Skeleton
 {
     public class Skeleton : HealthSystem
     {
         [SerializeField] float layingTime = 1f;
+        [SerializeField] int enemyLayerNum = 11;
 
         bool once = true;
-        bool dead = false;
 
         string RESSURECTION_TRIGGER = "Ressurect";
 
@@ -21,13 +22,13 @@ namespace Towers.Enemies.Skeleton
                 {
                     Destroy(GetComponent<Poison>());
                 }
-                dead = true;
+                GetComponent<Collider>().enabled = false;
+                GetComponent<NavMeshAgent>().radius = 0.000001f;
                 Animator animator = GetComponent<Animator>();
                 animator.SetTrigger(Death_Trigger); 
                 yield return new WaitForSecondsRealtime(layingTime);
                 animator.SetTrigger(RESSURECTION_TRIGGER);
                 SetHealthToMax();
-                dead = false;
                 once = false;
             }
             else
@@ -36,12 +37,10 @@ namespace Towers.Enemies.Skeleton
             }
         }
 
-        private void OnCollisionEnter(Collision collision)
+        void Resurected()
         {
-            if (dead)
-            {
-                Physics.IgnoreCollision(GetComponent<Collider>(), collision.gameObject.GetComponent<Collider>());
-            }
+            GetComponent<Collider>().enabled = true;
+            GetComponent<NavMeshAgent>().radius = 0.25f;
         }
     }
 }
