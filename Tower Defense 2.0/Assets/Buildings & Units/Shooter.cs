@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using Towers.CharacterN;
 using Towers.Enemies;
+using System;
 
 namespace Towers.Units
 {
@@ -32,8 +33,9 @@ namespace Towers.Units
             animator = GetComponent<Animator>();
             character = GetComponent<Character>();
             SetAttackAnimation();
+            SetAnimatorSpeed();
         }
-
+        
         void Update()
         {
             if (target == null)
@@ -163,6 +165,20 @@ namespace Towers.Units
         public float GetRange()
         {
             return maxAttackRange;
+        }
+
+        private void SetAnimatorSpeed()
+        {
+            var attackClip = character.GetOverrideController()[DEFAULT_ATTACK];
+            while(attackClip.length / animator.speed >= timeBetweenAttacks) // if its too fast
+            {
+                animator.speed += 0.01f;
+            }
+            while(attackClip.length / animator.speed <= timeBetweenAttacks)// if its too slow
+            {
+                animator.speed -= 0.01f;
+            }
+            print(animator.speed + "  " + gameObject.name);
         }
     }
 }

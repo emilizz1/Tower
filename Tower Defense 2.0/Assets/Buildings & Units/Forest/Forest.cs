@@ -6,9 +6,13 @@ namespace Towers.Units
     {
         [SerializeField] GameObject[] poisonPS;
 
+        float lastTimeShot = 0;
+
         protected override void Shoot()
         {
             base.Shoot();
+            print(Time.time - lastTimeShot + "  " + gameObject.name);
+            lastTimeShot = Time.time;
             if (target != null)
             {
                 Poison poison;
