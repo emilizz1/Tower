@@ -2271,7 +2271,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 362c1f6cd3d829e428cb1625a8572cc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealthPoints: 130
+  maxHealthPoints: 140
   healthBar: {fileID: 114123783515310148}
   deathVanishSeconds: 2
 --- !u!114 &114072757344386736
@@ -2326,6 +2326,7 @@ MonoBehaviour:
   stoppingDistance: 1
   navMeshSteeringSpeed: 1
   damageToLifePoints: 1
+  navMeshRadius: 0.25
 --- !u!114 &114421114463111852
 MonoBehaviour:
   m_ObjectHideFlags: 1

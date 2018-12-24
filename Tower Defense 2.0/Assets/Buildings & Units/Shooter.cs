@@ -54,6 +54,30 @@ namespace Towers.Units
             CorrectPossition();
         }
 
+        void SetAttackAnimation()
+        {
+            if (!character.GetOverrideController())
+            {
+                Debug.Break();
+                Debug.LogAssertion("please provide " + gameObject + "with animator override controller");
+            }
+            animator.runtimeAnimatorController = character.GetOverrideController();
+        }
+
+        private void SetAnimatorSpeed()
+        {
+            var attackClip = character.GetOverrideController()[DEFAULT_ATTACK];
+            while (attackClip.length / animator.speed >= timeBetweenAttacks) // if its too fast
+            {
+                animator.speed += 0.01f;
+            }
+            while (attackClip.length / animator.speed <= timeBetweenAttacks)// if its too slow
+            {
+                animator.speed -= 0.01f;
+            }
+            print(animator.speed + "  " + gameObject.name);
+        }
+
         void CheckForTarget()
         {
             foreach (EnemyAI enemy in enemySpawner.GetAllEnemies())
@@ -85,16 +109,6 @@ namespace Towers.Units
             transform.LookAt(target.transform);
             animator.SetTrigger(ATTACK_TRIGGER);
             SetAttackAnimation();
-        }
-
-        void SetAttackAnimation()
-        {
-            if (!character.GetOverrideController())
-            {
-                Debug.Break();
-                Debug.LogAssertion("please provide " + gameObject + "with animator override controller");
-            }
-            animator.runtimeAnimatorController = character.GetOverrideController();
         }
 
         bool IsTargetInRange(GameObject target)
@@ -165,20 +179,6 @@ namespace Towers.Units
         public float GetRange()
         {
             return maxAttackRange;
-        }
-
-        private void SetAnimatorSpeed()
-        {
-            var attackClip = character.GetOverrideController()[DEFAULT_ATTACK];
-            while(attackClip.length / animator.speed >= timeBetweenAttacks) // if its too fast
-            {
-                animator.speed += 0.01f;
-            }
-            while(attackClip.length / animator.speed <= timeBetweenAttacks)// if its too slow
-            {
-                animator.speed -= 0.01f;
-            }
-            print(animator.speed + "  " + gameObject.name);
         }
     }
 }
