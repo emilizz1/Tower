@@ -20,6 +20,7 @@ namespace Towers.Events
         {
             leftChoice.SetActive(isActive);
             rightChoice.SetActive(isActive);
+            gameObject.SetActive(isActive);
         }
 
         public void EventChosen(int choice)

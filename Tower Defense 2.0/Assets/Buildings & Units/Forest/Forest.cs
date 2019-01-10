@@ -11,7 +11,6 @@ namespace Towers.Units
         protected override void Shoot()
         {
             base.Shoot();
-            print(Time.time - lastTimeShot + "  " + gameObject.name);
             lastTimeShot = Time.time;
             if (target != null)
             {
