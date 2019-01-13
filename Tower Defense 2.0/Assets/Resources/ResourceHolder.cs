@@ -6,6 +6,9 @@ namespace Towers.Resources
     public class ResourceHolder : MonoBehaviour
     {
         [SerializeField] Resource[] startingResources;
+        [SerializeField] Resource goldResource;
+        [SerializeField] Resource woodResource;
+        [SerializeField] Resource coalResource;
 
         int currentGold;
         int currentWood;
@@ -19,19 +22,21 @@ namespace Towers.Resources
             }
         }
 
-        public int getCurrentGold()
+        public int getCurrentResources(Resource resource)
         {
-            return currentGold;
-        }
-
-        public int getCurrentWood()
-        {
-            return currentWood;
-        }
-
-        public int getCurrentCoal()
-        {
-            return currentCoal;
+            if (resource == goldResource)
+            {
+                return currentGold;
+            }
+            else if(resource == woodResource)
+            {
+                return currentWood;
+            }
+            else if (resource == coalResource)
+            {
+                return currentCoal;
+            }
+            return 0;
         }
 
         //Negative amount to remove

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Towers.CardN;
 using Towers.Resources;
+using UnityEngine.UI;
 
 public class ResourceSeter : MonoBehaviour
 {
@@ -11,13 +12,31 @@ public class ResourceSeter : MonoBehaviour
 
     void Start()
     {
-        SetupCards();
+        var myCards = GatherAllCards();
+        var differentResources = GatherDifferentResources(myCards);
+        int activeResourceSlotAmount = 0;
+        DisplayResources(differentResources, ref activeResourceSlotAmount);
+        FindObjectOfType<ResourcesManager>().GiveActiveResourceSlots(GetActiveResourceSlots(activeResourceSlotAmount));
     }
 
-    void SetupCards()
+    GameObject[] GetActiveResourceSlots(int i)
     {
-        var myCards = GatherAllCards();
-        
+        GameObject[] activeResourceSlots = new GameObject[i];
+        for (int o = 0; o < i; o++)
+        {
+            activeResourceSlots[o] = ResourceSlots[o];
+        }
+        return activeResourceSlots;
+    }
+
+    void DisplayResources(List<Resource> resources, ref int i)
+    {
+        foreach(Resource resource in resources)
+        {
+            ResourceSlots[i].GetComponentInChildren<Image>().sprite = resource.GetSprite();
+            ResourceSlots[i].GetComponent<Text>().text = FindObjectOfType<ResourceHolder>().getCurrentResources(resource).ToString(); ;
+            i++;
+        }
     }
 
     List<Card> GatherAllCards()

@@ -9,18 +9,9 @@ namespace Towers.Resources
         [SerializeField] GameObject resourceImage;
         [SerializeField] float resourceMoveSpeed = 10f;
         [SerializeField] float dissapearingResourceOffset = -200f;
-        [Header("ResourceLinks")]
-        [SerializeField] Text gold;
-        [SerializeField] Text wood;
-        [SerializeField] Text coal;
-        [SerializeField] Image goldImage;
-        [SerializeField] Image woodImage;
-        [SerializeField] Image coalImage;
 
+        GameObject[] resourceSlots;
         Transform deliveringFrom;
-        Sprite goldSprite;
-        Sprite woodSprite;
-        Sprite coalSprite;
         ResourceHolder resourceHolder;
 
         void Start()
@@ -157,6 +148,11 @@ namespace Towers.Resources
                 OneTypeResources[i] = type;
             }
             return OneTypeResources;
+        }
+
+        public void GiveActiveResourceSlots(GameObject[] activeResourceSlots)
+        {
+            resourceSlots = activeResourceSlots;
         }
     }
 }
