@@ -6,7 +6,7 @@ using Towers.CardN;
 using Towers.Resources;
 using UnityEngine.UI;
 
-public class ResourceSeter : MonoBehaviour
+public class ResourceSetter : MonoBehaviour
 {
     [SerializeField] GameObject[] ResourceSlots;
 

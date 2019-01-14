@@ -5,13 +5,10 @@ namespace Towers.Units
     public class Forest : Shooter
     {
         [SerializeField] GameObject[] poisonPS;
-
-        float lastTimeShot = 0;
-
+        
         protected override void Shoot()
         {
             base.Shoot();
-            lastTimeShot = Time.time;
             if (target != null)
             {
                 Poison poison;

@@ -16,9 +16,6 @@ namespace Towers.Resources
 
         void Start()
         {
-            goldSprite = goldImage.sprite;
-            woodSprite = woodImage.sprite;
-            coalSprite = coalImage.sprite;
             resourceHolder = FindObjectOfType<ResourceHolder>();
             updateResourceText();
         }
@@ -34,9 +31,11 @@ namespace Towers.Resources
 
         public void updateResourceText()
         {
-            gold.text = resourceHolder.getCurrentGold().ToString();
-            wood.text = resourceHolder.getCurrentWood().ToString();
-            coal.text = resourceHolder.getCurrentCoal().ToString();
+            for (int i = 0; i < resourceSlots.Length; i++)
+            {
+                resourceSlots[i].GetComponentInChildren<Text>().text = resourceHolder.getCurrentResources(resourceSlots[i].GetComponentInChildren<Image>().sprite).ToString();
+
+            }
         }
         
         public void AddResources(Resource[] Resources, Transform cardTransform = null)
@@ -63,45 +62,39 @@ namespace Towers.Resources
 
         Vector3 GetResourceDestination(Resource resource)
         {
-            if(resource.GetSprite() == goldSprite) { return goldImage.transform.position; }
-            else if(resource.GetSprite() == woodSprite) { return woodImage.transform.position; }
-            else if(resource.GetSprite() == coalSprite) { return coalImage.transform.position; }
-            else { return Vector3.zero; }
+            for (int i = 0; i < resourceSlots.Length; i++)
+            {
+                if (resourceSlots[i].GetComponentInChildren<Image>().sprite == resource.GetSprite())
+                {
+                    return resourceSlots[i].GetComponentInChildren<Image>().transform.position;
+                }
+            }
+            return Vector3.zero; // if no resource was found
         }
 
         public bool CheckForResources(Resource[] resources)
         {
-            int gold = 0, wood = 0, coal = 0;
-            GetResourcesAmounts(resources, out gold, out wood, out coal);
-            if (gold <= resourceHolder.getCurrentGold() && wood <= resourceHolder.getCurrentWood() && coal <= resourceHolder.getCurrentCoal())
+            for (int i = 0; i < resourceSlots.Length; i++)
             {
-                StartCoroutine(PayResources(resources));
-                return true;
+                int currentResource = 0;
+                foreach(Resource resource in resources)
+                {
+                    if(resourceSlots[i].GetComponentInChildren<Image>().sprite == resource.GetSprite())
+                    {
+                        currentResource++;
+                    }
+                }
+                if(resourceHolder.getCurrentResources(resourceSlots[i].GetComponentInChildren<Image>().sprite) < currentResource) { return false; }
             }
-            else
-            {
-                return false;
-            }
-        }
-
-        void GetResourcesAmounts(Resource[] resources, out int gold, out int wood, out int coal)
-        {
-            gold = 0;
-            wood = 0;
-            coal = 0;
-            foreach (Resource resource in resources)
-            {
-                if (resource.GetSprite() == goldSprite) { gold++; }
-                else if (resource.GetSprite() == woodSprite) { wood++; }
-                else if (resource.GetSprite() == coalSprite) { coal++; }
-            }
+            StartCoroutine(PayResources(resources));
+            return true;
         }
 
         IEnumerator PayResources(Resource[] resources)
         {
             foreach (Resource resource in resources)
             {
-                GameObject createdResource = Instantiate(resourceImage, GetResourcePos(resource), Quaternion.identity, transform);
+                GameObject createdResource = Instantiate(resourceImage, GetResourceDestination(resource), Quaternion.identity, transform);
                 createdResource.GetComponent<Image>().sprite = resource.GetSprite();
                 resource.RemoveResource();
                 updateResourceText();
@@ -122,14 +115,6 @@ namespace Towers.Resources
                 yield return new WaitForSeconds(0.05f);
             }
             Destroy(createdResource);
-        }
-
-        Vector3 GetResourcePos(Resource resource)
-        {
-            if (resource.GetSprite() == goldSprite) { return goldImage.transform.position; }
-            else if (resource.GetSprite() == woodSprite) { return woodImage.transform.position; }
-            else if (resource.GetSprite() == coalSprite) { return coalImage.transform.position; }
-            else { return Vector3.zero; }
         }
 
         public Resource[] CountAllResourcesOfType(Resource type, Resource[] resources)

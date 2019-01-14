@@ -8,7 +8,6 @@ namespace Towers.Enemies.Skeleton
     public class Skeleton : HealthSystem
     {
         [SerializeField] float layingTime = 1f;
-        [SerializeField] int enemyLayerNum = 11;
 
         bool once = true;
 
