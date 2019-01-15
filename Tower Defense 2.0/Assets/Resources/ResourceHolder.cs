@@ -56,6 +56,23 @@ namespace Towers.Resources
             return 0;
         }
 
+        public Resource ConvertToResource(Sprite sprite)
+        {
+            if (sprite == goldResource.GetSprite())
+            {
+                return goldResource;
+            }
+            else if (sprite == woodResource.GetSprite())
+            {
+                return woodResource;
+            }
+            else if (sprite == coalResource.GetSprite())
+            {
+                return coalResource;
+            }
+            return null;
+        }
+
         //Negative amount to remove
         public void AddGold(int Amount)
         {

@@ -10,41 +10,42 @@ public class ResourceSetter : MonoBehaviour
 {
     [SerializeField] GameObject[] ResourceSlots;
 
+    int activeResourceSlotAmount = 0;
+
     void Start()
     {
         var myCards = GatherAllCards();
         var differentResources = GatherDifferentResources(myCards);
-        int activeResourceSlotAmount = 0;
-        DisplayResources(differentResources, ref activeResourceSlotAmount);
-        DiactivateEmptySlots(activeResourceSlotAmount);
-        FindObjectOfType<ResourcesManager>().GiveActiveResourceSlots(GetActiveResourceSlots(activeResourceSlotAmount));
+        DisplayResources(differentResources);
+        DiactivateEmptySlots();
+        FindObjectOfType<ResourcesManager>().GiveActiveResourceSlots(GetActiveResourceSlots());
     }
 
-    void DiactivateEmptySlots(int i)
+    void DiactivateEmptySlots()
     {
-        for (int o = i; o < ResourceSlots.Length; o++)
+        for (int o = activeResourceSlotAmount; o < ResourceSlots.Length; o++)
         {
             ResourceSlots[o].SetActive(false);
         }
     }
 
-    GameObject[] GetActiveResourceSlots(int i)
+    public GameObject[] GetActiveResourceSlots()
     {
-        GameObject[] activeResourceSlots = new GameObject[i];
-        for (int o = 0; o < i; o++)
+        GameObject[] activeResourceSlots = new GameObject[activeResourceSlotAmount];
+        for (int o = 0; o < activeResourceSlotAmount; o++)
         {
             activeResourceSlots[o] = ResourceSlots[o];
         }
         return activeResourceSlots;
     }
 
-    void DisplayResources(List<Resource> resources, ref int i)
+    void DisplayResources(List<Resource> resources)
     {
         foreach(Resource resource in resources)
         {
-            ResourceSlots[i].GetComponentInChildren<Image>().sprite = resource.GetSprite();
-            ResourceSlots[i].GetComponentInChildren<Text>().text = FindObjectOfType<ResourceHolder>().getCurrentResources(resource).ToString(); ;
-            i++;
+            ResourceSlots[activeResourceSlotAmount].GetComponentInChildren<Image>().sprite = resource.GetSprite();
+            ResourceSlots[activeResourceSlotAmount].GetComponentInChildren<Text>().text = FindObjectOfType<ResourceHolder>().getCurrentResources(resource).ToString(); ;
+            activeResourceSlotAmount++;
         }
     }
 
