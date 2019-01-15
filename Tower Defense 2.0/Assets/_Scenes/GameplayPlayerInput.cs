@@ -26,6 +26,7 @@ namespace Towers.Scenes
         bool placingUnit = false;
         bool firstRound = true;
         State currentState = State.LevelStarted;
+        float screenWidth;
 
         enum State
         {
@@ -49,15 +50,17 @@ namespace Towers.Scenes
             upcomingActions = FindObjectOfType<UpcomingActions>();
             startLevelDisplayer = FindObjectOfType<StartLevelDisplayer>();
             buildingM.TurnBuildings(false, false);
+            screenWidth = Screen.width;
         }
 
         void Update()
         {
-            if (Input.GetButtonDown("Choice Left"))
+            
+            if (Input.GetButtonDown("Choice Left") || (Input.GetMouseButtonDown(0) && Input.mousePosition.x < screenWidth /2))
             {
                 currentChoiceSelected(0);
             }
-            if (Input.GetButtonDown("Choice Right"))
+            if (Input.GetButtonDown("Choice Right") || (Input.GetMouseButtonDown(0) && Input.mousePosition.x > screenWidth / 2))
             {
                 currentChoiceSelected(1);
             }
