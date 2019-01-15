@@ -12,7 +12,7 @@ public class ResourceSetter : MonoBehaviour
 
     int activeResourceSlotAmount = 0;
 
-    void Start()
+    void Awake()
     {
         var myCards = GatherAllCards();
         var differentResources = GatherDifferentResources(myCards);
