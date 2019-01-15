@@ -51,9 +51,12 @@ public class ResourceSetter : MonoBehaviour
     List<Card> GatherAllCards()
     {
         List<Card> gatheredCards = new List<Card>();
-        foreach(Card card in FindObjectOfType<Deck>().GetLevelCards().GetAllCards())
+        if (FindObjectOfType<Deck>())
         {
-            gatheredCards.Add(card);
+            foreach (Card card in FindObjectOfType<Deck>().GetLevelCards().GetAllCards())
+            {
+                gatheredCards.Add(card);
+            }
         }
         foreach (Card card in FindObjectOfType<CardHolders>().GetAllPlayerCards())
         {
