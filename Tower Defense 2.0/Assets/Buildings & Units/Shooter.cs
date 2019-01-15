@@ -75,7 +75,6 @@ namespace Towers.Units
             {
                 animator.speed -= 0.01f;
             }
-            print(animator.speed + "  " + gameObject.name);
         }
 
         void CheckForTarget()

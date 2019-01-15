@@ -14,12 +14,6 @@ namespace Towers.Resources
         Transform deliveringFrom;
         ResourceHolder resourceHolder;
 
-        void Start()
-        {
-            resourceHolder = FindObjectOfType<ResourceHolder>();
-            updateResourceText();
-        }
-
         void Update()
         {
             if (resourceHolder == null)
@@ -138,6 +132,8 @@ namespace Towers.Resources
         public void GiveActiveResourceSlots(GameObject[] activeResourceSlots)
         {
             resourceSlots = activeResourceSlots;
+            resourceHolder = FindObjectOfType<ResourceHolder>();
+            updateResourceText();
         }
     }
 }

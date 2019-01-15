@@ -16,7 +16,16 @@ public class ResourceSetter : MonoBehaviour
         var differentResources = GatherDifferentResources(myCards);
         int activeResourceSlotAmount = 0;
         DisplayResources(differentResources, ref activeResourceSlotAmount);
+        DiactivateEmptySlots(activeResourceSlotAmount);
         FindObjectOfType<ResourcesManager>().GiveActiveResourceSlots(GetActiveResourceSlots(activeResourceSlotAmount));
+    }
+
+    void DiactivateEmptySlots(int i)
+    {
+        for (int o = i; o < ResourceSlots.Length; o++)
+        {
+            ResourceSlots[o].SetActive(false);
+        }
     }
 
     GameObject[] GetActiveResourceSlots(int i)
@@ -34,7 +43,7 @@ public class ResourceSetter : MonoBehaviour
         foreach(Resource resource in resources)
         {
             ResourceSlots[i].GetComponentInChildren<Image>().sprite = resource.GetSprite();
-            ResourceSlots[i].GetComponent<Text>().text = FindObjectOfType<ResourceHolder>().getCurrentResources(resource).ToString(); ;
+            ResourceSlots[i].GetComponentInChildren<Text>().text = FindObjectOfType<ResourceHolder>().getCurrentResources(resource).ToString(); ;
             i++;
         }
     }
