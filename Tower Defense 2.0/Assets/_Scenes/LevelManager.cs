@@ -1,6 +1,7 @@
 ﻿using Towers.Enemies;
 using UnityEngine;
 using UnityEngine.UI;
+using Towers.CardN;
 
 namespace Towers.Scenes
 {
@@ -8,18 +9,21 @@ namespace Towers.Scenes
     {
         [SerializeField] EnemyHolder enemyHolder;
         
-        EnemyRoundHolder[] enemies;
         Text text;
+        int wavesCount;
         int currentLevel = 1;
 
         void Start()
         {
             text = GetComponent<Text>();
+            wavesCount = enemyHolder.GetLevelCount();
+            CheckForWaveMaxCount();
+            UpdateText();
         }
 
-        void Update()
+        void UpdateText()
         {
-            text.text = currentLevel.ToString() + " / " + enemyHolder.GetLevelCount().ToString();
+            text.text = currentLevel.ToString() + " / " + wavesCount.ToString();
         }
 
         public EnemyAI[] GetCurrentLevelEnemies()
@@ -29,7 +33,7 @@ namespace Towers.Scenes
 
         public bool CheckForLevelWon()
         {
-            if (currentLevel == enemyHolder.GetLevelCount())
+            if (currentLevel == wavesCount)
             {
                 return true;
             }
@@ -39,6 +43,18 @@ namespace Towers.Scenes
         public void LevelFinished()
         {
             currentLevel++;
+            UpdateText();
+        }
+
+        void CheckForWaveMaxCount()
+        {
+            int playableCards = 0;
+            playableCards += FindObjectOfType<Deck>().GetLevelCards().GetAllCards().Length;
+            playableCards += FindObjectOfType<CardHolders>().GetAllPlayerCards().Length;
+            if(playableCards - 2 < enemyHolder.GetAllEnemies().Length)
+            {
+                wavesCount = playableCards - 2;
+            }
         }
     }
 }

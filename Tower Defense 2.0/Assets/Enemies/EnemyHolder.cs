@@ -7,7 +7,7 @@ namespace Towers.Enemies
     {
         [Tooltip("List one enemy type fully first")] [SerializeField] EnemyRoundHolder[] enemies;
 
-        public float GetLevelCount()
+        public int GetLevelCount()
         {
             return enemies.Length;
         }
@@ -15,6 +15,11 @@ namespace Towers.Enemies
         public EnemyRoundHolder GetEnemies(int index)
         {
             return enemies[index];
+        }
+
+        public EnemyRoundHolder[] GetAllEnemies()
+        {
+            return enemies;
         }
     }
 }
