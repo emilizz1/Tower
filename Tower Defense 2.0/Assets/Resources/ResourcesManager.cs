@@ -14,6 +14,11 @@ namespace Towers.Resources
         Transform deliveringFrom;
         ResourceHolder resourceHolder;
 
+        void Start()
+        {
+            updateResourceText();
+        }
+
         void Update()
         {
             if (resourceHolder == null)
@@ -28,7 +33,6 @@ namespace Towers.Resources
             for (int i = 0; i < resourceSlots.Length; i++)
             {
                 resourceSlots[i].GetComponentInChildren<Text>().text = resourceHolder.getCurrentResources(resourceSlots[i].GetComponentInChildren<Image>().sprite).ToString();
-
             }
         }
         
@@ -133,7 +137,6 @@ namespace Towers.Resources
         {
             resourceSlots = activeResourceSlots;
             resourceHolder = FindObjectOfType<ResourceHolder>();
-            updateResourceText();
         }
     }
 }

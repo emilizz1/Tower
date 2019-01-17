@@ -70,13 +70,13 @@ namespace Towers.Scenes
         {
             switch (currentState)
             {
-                case State.LevelStarted:
+                case State.LevelStarted: //showing what cards are added to deck
                     startLevelDisplayer.TurnOffAllShowcaseCards();
                     upcomingActions.StartUpcomingActions();
                     cardM.SetNewCards(true);
                     currentState = State.buildingSelecting;
                     break;
-                case State.buildingSelecting:
+                case State.buildingSelecting: //selected what building to build
                     StopCoroutine(WaitingForEnemiesToDie());
                     cardM.CardSelected(choice, true);
                     if (firstRound)
@@ -90,10 +90,11 @@ namespace Towers.Scenes
                     else
                     {
                         currentState = State.enemySelecting;
+                        cardM.SetNewCards(false);
                         upcomingActions.PhaseFinished();
                     }
                     break;
-                case State.enemySelecting:
+                case State.enemySelecting: //selecting what enemies to add to wave
                     cardM.CardSelected(choice, false);
                     currentState = State.buildingBonuses;
                     upcomingActions.PhaseFinished();
@@ -149,6 +150,7 @@ namespace Towers.Scenes
                 if (firstRound)
                 {
                     currentState = State.buildingSelecting;
+                    cardM.SetNewCards(true);
                     cardM.TurnCards(true);
                     firstRound = false;
                     myCamera.Viewlevel();
@@ -174,6 +176,7 @@ namespace Towers.Scenes
             if (!CheckForLevelCompleted())
             {
                 currentState = State.buildingSelecting;
+                cardM.SetNewCards(true);
                 cardM.TurnCards(true);
                 upcomingActions.NewLevel(false);
             }

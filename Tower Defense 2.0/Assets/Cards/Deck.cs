@@ -31,10 +31,6 @@ namespace Towers.CardN
             {
                 PrepareDeck();
             }
-            if (selected.Count != 0)
-            {
-                discard.DiscardCards(selected);
-            }
             selected = new List<Card>();
             for (int i = 0; i <= 1; i++)
             {

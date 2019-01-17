@@ -20,7 +20,7 @@ namespace Towers.Enemies.Skeleton
                 if (GetComponent<Poison>())
                 {
                     Destroy(GetComponent<Poison>());
-                    Destroy(GetComponent<ParticleSystem>());
+                    Destroy(GetComponentInChildren<ParticleSystem>());
                 }
                 GetComponent<Collider>().enabled = false;
                 GetComponent<NavMeshAgent>().radius = 0.000001f;

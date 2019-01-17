@@ -13,10 +13,10 @@ namespace Towers.CardN
         BuildingsHolder prefabs;
         BuildingPlacementManager bPM;
         Deck deck;
+        Discard discard;
         List<Card> selectedCards;
         LevelEnemyCard levelEnemyCard;
-
-        int cardToRemove;
+        
         int cardSelected;
         bool firstRound = true;
 
@@ -26,6 +26,7 @@ namespace Towers.CardN
             rM = FindObjectOfType<ResourcesManager>();
             cards = GetComponentsInChildren<Cards>();
             deck = FindObjectOfType<Deck>();
+            discard = FindObjectOfType<Discard>();
             levelEnemyCard = FindObjectOfType<LevelEnemyCard>();
         }
 
@@ -45,14 +46,14 @@ namespace Towers.CardN
             prefabs = cards[cardSelected].GetPrefabs();
             if (firstChoice)
             {
-                SetNewCards(!firstChoice);
+                deck.RemoveACard(cards[cardSelected].GetCard());
+                discard.DiscardCards(selectedCards);
                 bPM.BuildingSelected();
             }
             else
             {
                 SetEnemies();
                 GiveGold();
-                SetNewCards(!firstChoice);
                 TurnCards(false);
             }
         }
@@ -80,13 +81,11 @@ namespace Towers.CardN
             int i = 0;
             if (secondChoice)
             {
-                deck.RemoveACard(cards[cardToRemove].GetCard());
                 selectedCards = deck.GetNewCards();
                 levelEnemyCard.TurnOffEnemyCards();
             }
             else
             {
-                cardToRemove = cardSelected;
                 levelEnemyCard.PutEnemiesOnScreen();
             }
             foreach (Card card in selectedCards)
