@@ -15,20 +15,22 @@ namespace Towers.Scenes.RunSelection
 
         EventManager eventManager;
         LevelSelectionManager levelSelectionManager;
+        float screenWidth;
 
         void Start()
         {
             eventManager = FindObjectOfType<EventManager>();
             levelSelectionManager = FindObjectOfType<LevelSelectionManager>();
+            screenWidth = Screen.width;
         }
 
         void Update()
         {
-            if (Input.GetButtonDown("Choice Left"))
+            if (Input.GetButtonDown("Choice Left") || (Input.GetMouseButtonDown(0) && Input.mousePosition.x < screenWidth / 2))
             {
                 currentChoiceSelected(0);
             }
-            if (Input.GetButtonDown("Choice Right"))
+            if (Input.GetButtonDown("Choice Right") || (Input.GetMouseButtonDown(0) && Input.mousePosition.x > screenWidth / 2))
             {
                 currentChoiceSelected(1);
             }
