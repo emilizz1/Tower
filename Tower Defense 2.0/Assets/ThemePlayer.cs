@@ -7,7 +7,7 @@ public class ThemePlayer : MonoBehaviour
     [SerializeField] AudioClip[] audioClips;
     [SerializeField] float audioVolume = 0.5f;
 
-    bool playing;
+    bool playing = true;
 
     AudioSource audioSource;
 
@@ -27,6 +27,7 @@ public class ThemePlayer : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
         audioSource.volume = audioVolume;
+        StartCoroutine(PlayAudio());
 	}
 	
 	IEnumerator PlayAudio()
@@ -34,6 +35,7 @@ public class ThemePlayer : MonoBehaviour
         while (playing)
         {
             audioSource.clip = audioClips[Random.Range(0, audioClips.Length)];
+            audioSource.Play();
             yield return new WaitForSeconds(audioSource.clip.length);
         }
     }

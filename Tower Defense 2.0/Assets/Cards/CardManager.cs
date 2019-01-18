@@ -14,7 +14,7 @@ namespace Towers.CardN
         BuildingPlacementManager bPM;
         Deck deck;
         Discard discard;
-        List<Card> selectedCards;
+        Card[] selectedCards;
         LevelEnemyCard levelEnemyCard;
         
         int cardSelected;
@@ -46,15 +46,23 @@ namespace Towers.CardN
             prefabs = cards[cardSelected].GetPrefabs();
             if (firstChoice)
             {
-                deck.RemoveACard(cards[cardSelected].GetCard());
-                discard.DiscardCards(selectedCards);
+                if (selectedCard == 1) // Discards not selected card
+                {
+                    discard.DiscardCards(selectedCards[0]);
+                }
+                else
+                {
+                    discard.DiscardCards(selectedCards[1]);
+                }
                 bPM.BuildingSelected();
             }
             else
             {
+                deck.RemoveACard(cards[cardSelected].GetCard());
                 SetEnemies();
                 GiveGold();
                 TurnCards(false);
+                levelEnemyCard.TurnOffEnemyCards();
             }
         }
 
@@ -81,8 +89,7 @@ namespace Towers.CardN
             int i = 0;
             if (secondChoice)
             {
-                selectedCards = deck.GetNewCards();
-                levelEnemyCard.TurnOffEnemyCards();
+                selectedCards = deck.GetNewCards().ToArray();
             }
             else
             {

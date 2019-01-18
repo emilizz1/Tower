@@ -22,9 +22,9 @@ namespace Towers.CardN
             return tempDiscard;
         }
 
-        public void DiscardCards(List<Card> discardedCards)
+        public void DiscardCards(Card discardedCard)
         {
-            discard.AddRange(discardedCards);
+            discard.Add(discardedCard);
             UpdateText();
         }
 
