@@ -125,6 +125,7 @@ GameObject:
   - component: {fileID: 377716092}
   - component: {fileID: 377716091}
   - component: {fileID: 377716095}
+  - component: {fileID: 377716096}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -221,6 +222,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b5b2e3ffc0d3494d92edeb598c7c8c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &377716096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 377716090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3f051dfea41ca04da5874cfc8b4bbce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioClips:
+  - {fileID: 8300000, guid: b9fff4b3c69aff247bf119f541b59b13, type: 3}
 --- !u!1 &381985912
 GameObject:
   m_ObjectHideFlags: 0
@@ -677,10 +691,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0239f7d027020224784c783263263e4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioClips:
-  - {fileID: 8300000, guid: 8997fc76512f8af42a1bb108f57a61dd, type: 3}
-  - {fileID: 8300000, guid: 43ec2ad4a5810864592b57b0bc2aa075, type: 3}
-  - {fileID: 8300000, guid: d1e5411a373029c428c05e0e68e6cde0, type: 3}
   audioVolume: 0.25
 --- !u!1 &1312710625
 GameObject:

@@ -1,42 +1,66 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class ThemePlayer : MonoBehaviour
+namespace Towers.Scenes
 {
-    [SerializeField] AudioClip[] audioClips;
-    [SerializeField] float audioVolume = 0.5f;
-
-    bool playing = true;
-
-    AudioSource audioSource;
-
-    void Awake()
+    public class ThemePlayer : MonoBehaviour
     {
-        if(FindObjectsOfType<ThemePlayer>().Length > 1)
+        [SerializeField] float audioVolume = 0.5f;
+
+        bool playing = true;
+
+        AudioClip[] audioClips;
+        AudioSource audioSource;
+
+        void Awake()
         {
-            Destroy(gameObject);
+            if (FindObjectsOfType<ThemePlayer>().Length > 1)
+            {
+                Destroy(gameObject);
+            }
+            else
+            {
+                DontDestroyOnLoad(gameObject);
+            }
         }
-        else
+
+        void Start()
         {
-            DontDestroyOnLoad(gameObject);
+            audioSource = GetComponent<AudioSource>();
+            audioSource.volume = audioVolume;
+            StartCoroutine(PlayAudio());
         }
-    }
-    
-    void Start ()
-    {
-        audioSource = GetComponent<AudioSource>();
-        audioSource.volume = audioVolume;
-        StartCoroutine(PlayAudio());
-	}
-	
-	IEnumerator PlayAudio()
-    {
-        while (playing)
+
+        IEnumerator PlayAudio()
         {
-            audioSource.clip = audioClips[Random.Range(0, audioClips.Length)];
-            audioSource.Play();
-            yield return new WaitForSeconds(audioSource.clip.length);
+            while (playing)
+            {
+                audioSource.clip = audioClips[Random.Range(0, audioClips.Length)];
+                audioSource.Play();
+                yield return new WaitForSeconds(audioSource.clip.length);
+            }
+        }
+
+        IEnumerator ChangedScenes()
+        {
+            while(audioSource.volume > 0f)
+            {
+                audioSource.volume -= 0.01f;
+                yield return new WaitForSeconds(0.1f);
+            }
+            StopCoroutine(PlayAudio());
+            StartCoroutine(PlayAudio());
+            while (audioSource.volume < audioVolume)
+            {
+                audioSource.volume += 0.01f;
+                yield return new WaitForSeconds(0.1f);
+            }
+        }
+
+        public void GiveAudioTheme(AudioClip[] audioThemes)
+        {
+            audioClips = audioThemes;
+            StartCoroutine(ChangedScenes());
         }
     }
 }

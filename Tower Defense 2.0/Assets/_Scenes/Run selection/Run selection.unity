@@ -89949,8 +89949,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1527388802}
-  m_LocalRotation: {x: 0.2759817, y: 0.33264434, z: 0.10247073, w: -0.895925}
-  m_LocalPosition: {x: 173.33838, y: -44.6845, z: 19.164238}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 886.6847, y: -389.2472, z: -2374.4446}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1849060654}
@@ -131351,6 +131351,7 @@ GameObject:
   - component: {fileID: 2142257503}
   - component: {fileID: 2142257502}
   - component: {fileID: 2142257507}
+  - component: {fileID: 2142257508}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -131469,6 +131470,19 @@ MonoBehaviour:
   - {fileID: 1683619487}
   - {fileID: 1671446092}
   - {fileID: 770089305}
+--- !u!114 &2142257508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2142257501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3f051dfea41ca04da5874cfc8b4bbce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioClips:
+  - {fileID: 8300000, guid: 29682ea12cb64b94caf42be34c33d316, type: 3}
 --- !u!4 &2143505010 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: ab1112643ee572748b01dede71158272,

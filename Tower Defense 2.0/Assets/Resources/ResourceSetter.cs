@@ -1,84 +1,84 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using Towers.CardN;
-using Towers.Resources;
 using UnityEngine.UI;
 
-public class ResourceSetter : MonoBehaviour
+namespace Towers.Resources
 {
-    [SerializeField] GameObject[] ResourceSlots;
-
-    int activeResourceSlotAmount = 0;
-
-    void Awake()
+    public class ResourceSetter : MonoBehaviour
     {
-        var myCards = GatherAllCards();
-        var differentResources = GatherDifferentResources(myCards);
-        DisplayResources(differentResources);
-        DiactivateEmptySlots();
-        FindObjectOfType<ResourcesManager>().GiveActiveResourceSlots(GetActiveResourceSlots());
-    }
+        [SerializeField] GameObject[] ResourceSlots;
 
-    void DiactivateEmptySlots()
-    {
-        for (int o = activeResourceSlotAmount; o < ResourceSlots.Length; o++)
+        int activeResourceSlotAmount = 0;
+
+        void Awake()
         {
-            ResourceSlots[o].SetActive(false);
+            var myCards = GatherAllCards();
+            var differentResources = GatherDifferentResources(myCards);
+            DisplayResources(differentResources);
+            DiactivateEmptySlots();
+            FindObjectOfType<ResourcesManager>().GiveActiveResourceSlots(GetActiveResourceSlots());
         }
-    }
 
-    public GameObject[] GetActiveResourceSlots()
-    {
-        GameObject[] activeResourceSlots = new GameObject[activeResourceSlotAmount];
-        for (int o = 0; o < activeResourceSlotAmount; o++)
+        void DiactivateEmptySlots()
         {
-            activeResourceSlots[o] = ResourceSlots[o];
+            for (int o = activeResourceSlotAmount; o < ResourceSlots.Length; o++)
+            {
+                ResourceSlots[o].SetActive(false);
+            }
         }
-        return activeResourceSlots;
-    }
 
-    void DisplayResources(List<Resource> resources)
-    {
-        foreach(Resource resource in resources)
+        public GameObject[] GetActiveResourceSlots()
         {
-            ResourceSlots[activeResourceSlotAmount].GetComponentInChildren<Image>().sprite = resource.GetSprite();
-            ResourceSlots[activeResourceSlotAmount].GetComponentInChildren<Text>().text = FindObjectOfType<ResourceHolder>().getCurrentResources(resource).ToString(); ;
-            activeResourceSlotAmount++;
+            GameObject[] activeResourceSlots = new GameObject[activeResourceSlotAmount];
+            for (int o = 0; o < activeResourceSlotAmount; o++)
+            {
+                activeResourceSlots[o] = ResourceSlots[o];
+            }
+            return activeResourceSlots;
         }
-    }
 
-    List<Card> GatherAllCards()
-    {
-        List<Card> gatheredCards = new List<Card>();
-        if (FindObjectOfType<Deck>())
+        void DisplayResources(List<Resource> resources)
         {
-            foreach (Card card in FindObjectOfType<Deck>().GetLevelCards().GetAllCards())
+            foreach (Resource resource in resources)
+            {
+                ResourceSlots[activeResourceSlotAmount].GetComponentInChildren<Image>().sprite = resource.GetSprite();
+                ResourceSlots[activeResourceSlotAmount].GetComponentInChildren<Text>().text = FindObjectOfType<ResourceHolder>().getCurrentResources(resource).ToString(); ;
+                activeResourceSlotAmount++;
+            }
+        }
+
+        List<Card> GatherAllCards()
+        {
+            List<Card> gatheredCards = new List<Card>();
+            if (FindObjectOfType<Deck>())
+            {
+                foreach (Card card in FindObjectOfType<Deck>().GetLevelCards().GetAllCards())
+                {
+                    gatheredCards.Add(card);
+                }
+            }
+            foreach (Card card in FindObjectOfType<CardHolders>().GetAllPlayerCards())
             {
                 gatheredCards.Add(card);
             }
+            return gatheredCards;
         }
-        foreach (Card card in FindObjectOfType<CardHolders>().GetAllPlayerCards())
-        {
-            gatheredCards.Add(card);
-        }
-        return gatheredCards;
-    }
 
-    List<Resource> GatherDifferentResources(List<Card> myCards)
-    {
-        List<Resource> differentResources = new List<Resource>();
-        foreach(Card card in myCards)
+        List<Resource> GatherDifferentResources(List<Card> myCards)
         {
-            foreach(Resource resource in card.GetPrefabs().GetBuilding(0).GetBuildingUnitCost())
+            List<Resource> differentResources = new List<Resource>();
+            foreach (Card card in myCards)
             {
-                if (!differentResources.Contains(resource))
+                foreach (Resource resource in card.GetPrefabs().GetBuilding(0).GetBuildingUnitCost())
                 {
-                    differentResources.Add(resource);
+                    if (!differentResources.Contains(resource))
+                    {
+                        differentResources.Add(resource);
+                    }
                 }
             }
+            return differentResources;
         }
-        return differentResources;
     }
 }
