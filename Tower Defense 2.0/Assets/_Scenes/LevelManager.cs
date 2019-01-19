@@ -23,7 +23,10 @@ namespace Towers.Scenes
 
         void UpdateText()
         {
-            text.text = currentLevel.ToString() + " / " + wavesCount.ToString();
+            if (currentLevel <= wavesCount)
+            {
+                text.text = currentLevel.ToString() + " / " + wavesCount.ToString();
+            }
         }
 
         public EnemyAI[] GetCurrentLevelEnemies()
