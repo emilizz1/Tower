@@ -619,7 +619,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4414155302243818}
   - component: {fileID: 114297741039120646}
-  - component: {fileID: 114481637491243048}
+  - component: {fileID: 114111847580323940}
   m_Layer: 0
   m_Name: Militia I
   m_TagString: Untagged
@@ -2535,6 +2535,22 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1050204869540700}
   m_Mesh: {fileID: 4300010, guid: d288a0e4a2d923b46898986e979da643, type: 3}
+--- !u!114 &114111847580323940
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1478187470132536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 320ea9245420da143a966ec0a9eacdda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeBetweenAttacks: 0.73
+  baseDamage: 10
+  maxAttackRange: 8
+  projectileSystem: {fileID: 11400000, guid: 972ad2279b2dedb43b6b1b5442930a0f, type: 2}
+  projectileSocket: {fileID: 4343072374976364}
 --- !u!114 &114297741039120646
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2559,22 +2575,6 @@ MonoBehaviour:
   movingTurnSpeed: 360
   stationaryTurnSpeed: 180
   moveThreshold: 1
---- !u!114 &114481637491243048
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1478187470132536}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dca15dd1bf5f21949906b8a2899c7f51, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timeBetweenAttacks: 0.73
-  baseDamage: 10
-  maxAttackRange: 8
-  projectileSystem: {fileID: 11400000, guid: 972ad2279b2dedb43b6b1b5442930a0f, type: 2}
-  projectileSocket: {fileID: 4343072374976364}
 --- !u!137 &137343196673168228
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

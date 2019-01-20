@@ -750,6 +750,7 @@ GameObject:
   - component: {fileID: 4542463506440718}
   - component: {fileID: 114323701688041276}
   - component: {fileID: 114104730855581462}
+  - component: {fileID: 114059458263851054}
   m_Layer: 0
   m_Name: Militia III
   m_TagString: Untagged
@@ -2535,6 +2536,22 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1473537597937240}
   m_Mesh: {fileID: 4300018, guid: d288a0e4a2d923b46898986e979da643, type: 3}
+--- !u!114 &114059458263851054
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1735238351636650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 320ea9245420da143a966ec0a9eacdda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeBetweenAttacks: 0.66
+  baseDamage: 15
+  maxAttackRange: 10
+  projectileSystem: {fileID: 11400000, guid: 972ad2279b2dedb43b6b1b5442930a0f, type: 2}
+  projectileSocket: {fileID: 4159971687517680}
 --- !u!114 &114104730855581462
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -13,8 +13,8 @@ namespace Towers.Units
         [SerializeField] [Range(0.1f, 2f)] float timeBetweenAttacks = 1f;
         [SerializeField] protected float baseDamage = 50f;
         [SerializeField] float maxAttackRange = 10f;
-        [SerializeField] ProjectileSystem projectileSystem;
-        [SerializeField] Transform projectileSocket;
+        [SerializeField] protected ProjectileSystem projectileSystem;
+        [SerializeField] protected Transform projectileSocket;
 
         NavMeshAgent navMeshAgent;
         Vector3 permenentPossition;
@@ -22,7 +22,7 @@ namespace Towers.Units
         Animator animator;
         Character character;
         float lastHitTime;
-        EnemySpawner enemySpawner;
+        protected EnemySpawner enemySpawner;
 
         const string ATTACK_TRIGGER = "Attacking";
         const string DEFAULT_ATTACK = "DEFAULT ATTACK";
@@ -77,7 +77,7 @@ namespace Towers.Units
             }
         }
 
-        void CheckForTarget()
+        protected virtual void CheckForTarget()
         {
             foreach (EnemyAI enemy in enemySpawner.GetAllEnemies())
             {
@@ -110,13 +110,13 @@ namespace Towers.Units
             SetAttackAnimation();
         }
 
-        bool IsTargetInRange(GameObject target)
+        protected bool IsTargetInRange(GameObject target)
         {
             float distanceToTarget = (target.transform.position - transform.position).magnitude;
             return distanceToTarget <= maxAttackRange;
         }
 
-        bool IsTargetAlive(GameObject target)
+        protected bool IsTargetAlive(GameObject target)
         {
             float targetHealth = target.GetComponent<HealthSystem>().healthAsPercentage;
             return targetHealth > Mathf.Epsilon;

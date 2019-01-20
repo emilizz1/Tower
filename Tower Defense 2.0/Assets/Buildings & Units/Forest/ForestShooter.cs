@@ -2,7 +2,8 @@
 
 namespace Towers.Units
 {
-    public class Forest : Shooter
+    // Shots poisoned projectiles, which deal damage over time
+    public class ForestShooter : Shooter
     {
         [SerializeField] GameObject[] poisonPS;
         

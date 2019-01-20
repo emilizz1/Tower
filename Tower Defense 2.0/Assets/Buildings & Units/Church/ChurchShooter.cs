@@ -3,7 +3,8 @@ using UnityEngine;
 
 namespace Towers.Units
 {
-    public class Church : Shooter
+    // Deals AOE damage
+    public class ChurchShooter : Shooter
     {
         [SerializeField] GameObject ps;
         [SerializeField] float radius;
