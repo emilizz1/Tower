@@ -10,6 +10,7 @@ namespace Towers.Scenes
 
         public void LevelFinished(int level)
         {
+            print("Level finished");
             currentLevelFinished = level;
             allFinishedLevels.Add(level);
         }

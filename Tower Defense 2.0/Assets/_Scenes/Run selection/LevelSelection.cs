@@ -9,6 +9,15 @@ namespace Towers.Scenes.RunSelection
         [SerializeField] LevelSelection[] afterCompletionUnlocks;
         [SerializeField] GameObject[] events;
 
+        enum ImageState
+        {
+            completed,
+            available,
+            locked,
+            none
+        }
+
+        ImageState currenteState = ImageState.none;
         public bool isActive = false;
 
         public int GetLevel()
@@ -18,15 +27,19 @@ namespace Towers.Scenes.RunSelection
 
         public void IsActive(bool isActive)
         {
-            if (isActive)
+            if (GetComponentInChildren<Image>())
             {
-                isActive = true;
-                GetComponentInChildren<Image>().sprite = FindObjectOfType<LevelSelectionManager>().GetAvailableLevelSprite();
-            }
-            else
-            {
-                isActive = false;
-                GetComponentInChildren<Image>().sprite = FindObjectOfType<LevelSelectionManager>().GetLockedLevelSprite();
+                if (isActive)
+                {
+                    this.isActive = true;
+                    currenteState = ImageState.completed;
+                }
+                else
+                {
+                    this.isActive = false;
+                    currenteState = ImageState.locked;
+                }
+                UpdateImage();
             }
         }
 
@@ -46,7 +59,25 @@ namespace Towers.Scenes.RunSelection
         public void LevelIsFinished()
         {
             isActive = false;
-            GetComponentInChildren<Image>().sprite = FindObjectOfType<LevelSelectionManager>().GetCompletedLevelSprite();
+            currenteState = ImageState.completed;
+            UpdateImage();
+        }
+
+        void UpdateImage()
+        {
+            switch (currenteState)
+            {
+                case (ImageState.available):
+                    GetComponentInChildren<Image>().sprite = FindObjectOfType<LevelSelectionManager>().GetAvailableLevelSprite();
+                    break;
+                case (ImageState.completed):
+                    GetComponentInChildren<Image>().sprite = FindObjectOfType<LevelSelectionManager>().GetCompletedLevelSprite();
+                    break;
+                case (ImageState.locked):
+                    GetComponentInChildren<Image>().sprite = FindObjectOfType<LevelSelectionManager>().GetLockedLevelSprite();
+                    break;
+            }
+            print(gameObject.name + "   " + currenteState);
         }
     }
 }

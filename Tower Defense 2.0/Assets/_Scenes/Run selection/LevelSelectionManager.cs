@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Towers.Events;
 
 namespace Towers.Scenes.RunSelection
 {
@@ -20,8 +21,9 @@ namespace Towers.Scenes.RunSelection
         void Start()
         {
             loadLevel = GetComponent<LoadLevel>();
-            lastCompletedLevel = levels[FindObjectOfType<LevelCounter>().GetLevelFinished() - 1];
+            lastCompletedLevel = levels[FindObjectOfType<LevelCounter>().GetLevelFinished()];
             ActivateActiveLevels();
+            FindObjectOfType<EventManager>().PrepareEvents();
         }
 
         void Update()

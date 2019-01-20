@@ -31,7 +31,6 @@ namespace Towers.Events
         {
             var resourceHolder = FindObjectOfType<ResourceHolder>();
             var activeResourceSlots = FindObjectOfType<ResourceSetter>().GetActiveResourceSlots();
-            print(activeResourceSlots + " was found with: " + activeResourceSlots.Length);
             Resource[] randomizableResources = new Resource[activeResourceSlots.Length];
             for (int i = 0; i < activeResourceSlots.Length; i++)
             {

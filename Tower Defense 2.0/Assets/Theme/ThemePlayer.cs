@@ -24,13 +24,6 @@ namespace Towers.Scenes
             }
         }
 
-        void Start()
-        {
-            audioSource = GetComponent<AudioSource>();
-            audioSource.volume = audioVolume;
-            StartCoroutine(PlayAudio());
-        }
-
         IEnumerator PlayAudio()
         {
             while (playing)
@@ -60,6 +53,9 @@ namespace Towers.Scenes
         public void GiveAudioTheme(AudioClip[] audioThemes)
         {
             audioClips = audioThemes;
+            audioSource = GetComponent<AudioSource>();
+            audioSource.volume = audioVolume;
+            StartCoroutine(PlayAudio());
             StartCoroutine(ChangedScenes());
         }
     }

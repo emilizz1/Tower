@@ -184,7 +184,7 @@ namespace Towers.Scenes
             {
                 upcomingActions.NewLevel(false);
             }
-            levelM.LevelFinished();
+            levelM.WaveFinished();
             myCamera.Viewlevel();
         }
 

@@ -11,7 +11,7 @@ namespace Towers.Scenes
         
         Text text;
         int wavesCount;
-        int currentLevel = 1;
+        int currentWave = 1;
 
         void Start()
         {
@@ -23,29 +23,29 @@ namespace Towers.Scenes
 
         void UpdateText()
         {
-            if (currentLevel <= wavesCount)
+            if (currentWave <= wavesCount)
             {
-                text.text = currentLevel.ToString() + " / " + wavesCount.ToString();
+                text.text = currentWave.ToString() + " / " + wavesCount.ToString();
             }
         }
 
         public EnemyAI[] GetCurrentLevelEnemies()
         {
-            return enemyHolder.GetEnemies(currentLevel - 1).GetEnemy();
+            return enemyHolder.GetEnemies(currentWave - 1).GetEnemy();
         }
 
         public bool CheckForLevelWon()
         {
-            if (currentLevel == wavesCount)
+            if (currentWave == wavesCount)
             {
                 return true;
             }
             return false;
         }
 
-        public void LevelFinished()
+        public void WaveFinished()
         {
-            currentLevel++;
+            currentWave++;
             UpdateText();
         }
 

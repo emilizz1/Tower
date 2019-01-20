@@ -10,6 +10,7 @@ namespace Towers.Scenes.RunSelection
         enum State
         {
             choosingEvent,
+            choosingLevel,
             nothing
         }
 
@@ -43,6 +44,7 @@ namespace Towers.Scenes.RunSelection
                 case State.choosingEvent:
                     eventManager.EventChosen(choice);
                     levelSelectionManager.ChangeReadyToSelect(true);
+                    currentState = State.choosingLevel;
                     break;
             }
         }

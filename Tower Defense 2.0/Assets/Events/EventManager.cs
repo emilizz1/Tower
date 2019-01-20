@@ -8,7 +8,7 @@ namespace Towers.Events
         [SerializeField] GameObject leftChoice;
         [SerializeField] GameObject rightChoice;
 
-        void Start()
+        public void PrepareEvents()
         {
             LevelSelection myEvent = FindObjectOfType<LevelSelectionManager>().GetCurrentLevel();
             Instantiate(myEvent.GetEvents()[Random.Range(0, myEvent.GetEvents().Length)], leftChoice.transform);
