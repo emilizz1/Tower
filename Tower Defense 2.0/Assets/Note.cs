@@ -2,6 +2,8 @@
 // special powers for enemy units?
 // Balance
 // Idea make units images to gifs
+//TODO fix card showcase resources to 12
+
 // animations for deck and discard
 // build selection level enviroment
 // build more events
