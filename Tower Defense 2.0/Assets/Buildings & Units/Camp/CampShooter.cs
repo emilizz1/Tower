@@ -38,8 +38,11 @@ namespace Towers.Units
             {
                 foreach (EnemyAI enemy in targets)
                 {
-                    projectileSystem.Shoot(enemy.transform, projectileSocket);
-                    enemy.GetComponent<HealthSystem>().TakeDamage(baseDamage);
+                    if (enemy != null)
+                    {
+                        projectileSystem.Shoot(enemy.transform, projectileSocket);
+                        enemy.GetComponent<HealthSystem>().TakeDamage(baseDamage);
+                    }
                 }
             }
         }

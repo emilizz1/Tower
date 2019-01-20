@@ -143,7 +143,7 @@ namespace Towers.Resources
         {
             for (int i = 0; i < resourceSlots.Length; i++)
             {
-                if(resourceSlots[i].GetComponent<Image>().sprite == resource.GetSprite())
+                if(resourceSlots[i].GetComponentInChildren<Image>().sprite == resource.GetSprite())
                 {
                     return true;
                 }

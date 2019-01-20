@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 namespace Towers.Scenes.RunSelection
 {
     public class LevelSelection : MonoBehaviour
     {
         [SerializeField] int levelToLoad;
-        [SerializeField] ParticleSystem ps;
         [SerializeField] LevelSelection[] afterCompletionUnlocks;
         [SerializeField] GameObject[] events;
 
@@ -18,8 +18,16 @@ namespace Towers.Scenes.RunSelection
 
         public void IsActive(bool isActive)
         {
-            this.isActive = isActive;
-            ps.gameObject.SetActive(isActive);
+            if (isActive)
+            {
+                isActive = true;
+                GetComponentInChildren<Image>().sprite = FindObjectOfType<LevelSelectionManager>().GetAvailableLevelSprite();
+            }
+            else
+            {
+                isActive = false;
+                GetComponentInChildren<Image>().sprite = FindObjectOfType<LevelSelectionManager>().GetLockedLevelSprite();
+            }
         }
 
         public void TurnOnAllnextLevels()
@@ -33,6 +41,12 @@ namespace Towers.Scenes.RunSelection
         public GameObject[] GetEvents()
         {
             return events;
+        }
+
+        public void LevelIsFinished()
+        {
+            isActive = false;
+            GetComponentInChildren<Image>().sprite = FindObjectOfType<LevelSelectionManager>().GetCompletedLevelSprite();
         }
     }
 }

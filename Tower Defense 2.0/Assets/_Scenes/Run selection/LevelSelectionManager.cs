@@ -5,6 +5,9 @@ namespace Towers.Scenes.RunSelection
     public class LevelSelectionManager : MonoBehaviour
     {
         [SerializeField] LevelSelection[] levels;
+        [SerializeField] Sprite completedLevelSprite;
+        [SerializeField] Sprite availableLevelSprite;
+        [SerializeField] Sprite lockedLevelSprite;
 
         bool readyTosSelect = false;
 
@@ -35,9 +38,23 @@ namespace Towers.Scenes.RunSelection
 
         void ActivateActiveLevels()
         {
-            foreach (LevelSelection level in FindObjectsOfType<LevelSelection>())
+            var allCompletedLevels = FindObjectOfType<LevelCounter>().GetAllFinishedLevels();
+            bool levelFinished = false;
+            for (int i = 0; i < levels.Length; i++)
             {
-                level.IsActive(false);
+                foreach(int o in allCompletedLevels)
+                {
+                    if (i == o)
+                    {
+                        levels[i].LevelIsFinished();
+                        levelFinished = true;
+                    }
+                }
+                if (!levelFinished)
+                {
+                    levels[i].IsActive(false);
+                    levelFinished = false;
+                }
             }
             lastCompletedLevel.TurnOnAllnextLevels();
         }
@@ -58,7 +75,22 @@ namespace Towers.Scenes.RunSelection
 
         public LevelSelection GetCurrentLevel()
         {
-            return levels[FindObjectOfType<LevelCounter>().GetLevelFinished() - 1];
+            return lastCompletedLevel;
+        }
+
+        public Sprite GetCompletedLevelSprite()
+        {
+            return completedLevelSprite;
+        }
+
+        public Sprite GetAvailableLevelSprite()
+        {
+            return availableLevelSprite;
+        }
+
+        public Sprite GetLockedLevelSprite()
+        {
+            return lockedLevelSprite;
         }
     }
 }

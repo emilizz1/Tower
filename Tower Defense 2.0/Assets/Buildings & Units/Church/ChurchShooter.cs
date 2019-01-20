@@ -12,10 +12,13 @@ namespace Towers.Units
         protected override void Shoot()
         {
             base.Shoot();
-            GameObject newPartacle = ps;
-            newPartacle = Instantiate(newPartacle, target.transform.position + new Vector3(0f, 1f, 0f), Quaternion.identity, target.transform);
-            DealRadialDamage(baseDamage, target.transform);
-            Destroy(newPartacle, 3f);
+            if (target != null)
+            {
+                GameObject newPartacle = ps;
+                newPartacle = Instantiate(newPartacle, target.transform.position + new Vector3(0f, 1f, 0f), Quaternion.identity, target.transform);
+                DealRadialDamage(baseDamage, target.transform);
+                Destroy(newPartacle, 3f);
+            }
         }
 
         private void DealRadialDamage(float damage, Transform target)
