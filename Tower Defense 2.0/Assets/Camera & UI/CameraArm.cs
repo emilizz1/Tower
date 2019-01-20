@@ -14,6 +14,7 @@ namespace Towers.CameraUI
         void Start()
         {
             newPosition = transform.position;
+            Viewlevel();
         }
 
         void Update()
