@@ -7,6 +7,7 @@ namespace Towers.Units
     public class CampShooter : Shooter
     {
         List<EnemyAI> targets = new List<EnemyAI>();
+        EnemyAI lastTarget;
 
         protected override void CheckForTarget()
         {
@@ -15,8 +16,9 @@ namespace Towers.Units
             {
                 if (IsTargetAlive(enemy.gameObject) && IsTargetInRange(enemy.gameObject))
                 {
-                    targets.Add(enemy);
-                    target = enemy;
+                    targets.Add(enemy); // To gather all enemies
+                    target = enemy; // for shooter class to have a target
+                    lastTarget = enemy; // incase it shoots and all targets out of range, to do last shot
                 }
                 if(targets.Count > 1)
                 {
@@ -28,6 +30,10 @@ namespace Towers.Units
         protected override void Shoot()
         {
             CheckForTarget();
+            if(targets.Count == 0)
+            {
+                targets.Add(lastTarget);
+            }
             if (targets.Count > 0 && projectileSystem != null)
             {
                 foreach (EnemyAI enemy in targets)

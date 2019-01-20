@@ -138,5 +138,17 @@ namespace Towers.Resources
             resourceSlots = activeResourceSlots;
             resourceHolder = FindObjectOfType<ResourceHolder>();
         }
+
+        public bool CheckIfResourceIsActive(Resource resource)
+        {
+            for (int i = 0; i < resourceSlots.Length; i++)
+            {
+                if(resourceSlots[i].GetComponent<Image>().sprite == resource.GetSprite())
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }
