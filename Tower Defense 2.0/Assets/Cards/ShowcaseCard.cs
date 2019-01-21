@@ -9,9 +9,6 @@ namespace Towers.CardN
 {
     public class ShowcaseCard : MonoBehaviour
     {
-        [Header("Resources")]
-        [SerializeField] Sprite[] resources;
-
         [Header("Building Setup")]
         [SerializeField] RawImage buildingImage;
         [SerializeField] Text buildingName;

@@ -24,14 +24,11 @@ namespace Towers.Scenes
             }
         }
 
-        IEnumerator PlayAudio()
+        void PlayAudio()
         {
-            while (playing)
-            {
-                audioSource.clip = audioClips[Random.Range(0, audioClips.Length)];
-                audioSource.Play();
-                yield return new WaitForSeconds(audioSource.clip.length);
-            }
+            audioSource.clip = audioClips[Random.Range(0, audioClips.Length)];
+            audioSource.loop = true;
+            audioSource.Play();
         }
 
         IEnumerator ChangedScenes()
@@ -41,8 +38,8 @@ namespace Towers.Scenes
                 audioSource.volume -= 0.01f;
                 yield return new WaitForSeconds(0.1f);
             }
-            StopCoroutine(PlayAudio());
-            StartCoroutine(PlayAudio());
+            audioSource.Stop();
+            PlayAudio();
             while (audioSource.volume < audioVolume)
             {
                 audioSource.volume += 0.01f;
@@ -55,7 +52,7 @@ namespace Towers.Scenes
             audioClips = audioThemes;
             audioSource = GetComponent<AudioSource>();
             audioSource.volume = audioVolume;
-            StartCoroutine(PlayAudio());
+            PlayAudio();
             StartCoroutine(ChangedScenes());
         }
     }

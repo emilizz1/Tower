@@ -77,7 +77,6 @@ namespace Towers.Scenes.RunSelection
                     GetComponentInChildren<Image>().sprite = FindObjectOfType<LevelSelectionManager>().GetLockedLevelSprite();
                     break;
             }
-            print(gameObject.name + "   " + currenteState);
         }
     }
 }

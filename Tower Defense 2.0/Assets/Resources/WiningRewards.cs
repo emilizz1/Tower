@@ -54,7 +54,7 @@ namespace Towers.Resources
             lifepointText.text = lifepointsRewarded.ToString();
             for (int i = 0; i < lifepointsRewarded; i++)
             {
-                FindObjectOfType<LifePoints>().DamageLifePoints(-lifepointsRewarded);
+                FindObjectOfType<LifePoints>().DamageLifePoints(-1);
                 yield return new WaitForSeconds(2f / lifepointsRewarded);
             }
         }
