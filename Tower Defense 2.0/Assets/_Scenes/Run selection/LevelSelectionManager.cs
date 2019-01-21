@@ -55,8 +55,8 @@ namespace Towers.Scenes.RunSelection
                 if (!levelFinished)
                 {
                     levels[i].IsActive(false);
-                    levelFinished = false;
                 }
+                levelFinished = false;
             }
             lastCompletedLevel.TurnOnAllnextLevels();
         }

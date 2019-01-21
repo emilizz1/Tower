@@ -32,7 +32,7 @@ namespace Towers.Scenes.RunSelection
                 if (isActive)
                 {
                     this.isActive = true;
-                    currenteState = ImageState.completed;
+                    currenteState = ImageState.available;
                 }
                 else
                 {
