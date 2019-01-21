@@ -4,6 +4,7 @@ using Towers.Enemies;
 using Towers.Scenes;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 namespace Towers.Resources
 {
@@ -26,8 +27,7 @@ namespace Towers.Resources
         public void PrepareRewards()
         {
             rewards.SetActive(true);
-            lifepointText.text = lifepointsRewarded.ToString();
-            FindObjectOfType<LifePoints>().DamageLifePoints(-lifepointsRewarded);
+            StartCoroutine(AddLife());
             DisplayResourceRewards();
             FindObjectOfType<LevelCounter>().LevelFinished(currentLevel);
             if (cardAddedToDeck != null)
@@ -46,6 +46,16 @@ namespace Towers.Resources
             foreach (Card card in cardsAddedToAddables)
             {
                 FindObjectOfType<CardHolders>().AddAddableCard(card);
+            }
+        }
+
+        IEnumerator AddLife()
+        {
+            lifepointText.text = lifepointsRewarded.ToString();
+            for (int i = 0; i < lifepointsRewarded; i++)
+            {
+                FindObjectOfType<LifePoints>().DamageLifePoints(-lifepointsRewarded);
+                yield return new WaitForSeconds(2f / lifepointsRewarded);
             }
         }
 
@@ -91,5 +101,7 @@ namespace Towers.Resources
             }
             return buildingLevel + 1;
         }
+
+        
     }
 }
