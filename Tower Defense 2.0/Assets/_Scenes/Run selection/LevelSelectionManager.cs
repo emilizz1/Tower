@@ -9,6 +9,9 @@ namespace Towers.Scenes.RunSelection
         [SerializeField] Sprite completedLevelSprite;
         [SerializeField] Sprite availableLevelSprite;
         [SerializeField] Sprite lockedLevelSprite;
+        [SerializeField] GameObject completedLevelPS;
+        [SerializeField] GameObject availableLevelPS;
+        [SerializeField] GameObject lockedLevelPS;
 
         bool readyTosSelect = false;
 
@@ -93,6 +96,21 @@ namespace Towers.Scenes.RunSelection
         public Sprite GetLockedLevelSprite()
         {
             return lockedLevelSprite;
+        }
+
+        public GameObject GetCompletedLevelPS()
+        {
+            return completedLevelPS;
+        }
+
+        public GameObject GetAvailableLevelPs()
+        {
+            return availableLevelPS;
+        }
+
+        public GameObject GetLockedLevelPS()
+        {
+            return lockedLevelPS;
         }
     }
 }
