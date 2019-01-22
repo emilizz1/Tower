@@ -69,12 +69,15 @@ namespace Towers.Scenes.RunSelection
             {
                 case (ImageState.available):
                     GetComponentInChildren<Image>().sprite = FindObjectOfType<LevelSelectionManager>().GetAvailableLevelSprite();
+                    Instantiate(FindObjectOfType<LevelSelectionManager>().GetAvailableLevelPs(),transform.position, Quaternion.identity, transform);
                     break;
                 case (ImageState.completed):
                     GetComponentInChildren<Image>().sprite = FindObjectOfType<LevelSelectionManager>().GetCompletedLevelSprite();
+                    Instantiate(FindObjectOfType<LevelSelectionManager>().GetCompletedLevelPS(), transform.position, Quaternion.identity, transform);
                     break;
                 case (ImageState.locked):
                     GetComponentInChildren<Image>().sprite = FindObjectOfType<LevelSelectionManager>().GetLockedLevelSprite();
+                    Instantiate(FindObjectOfType<LevelSelectionManager>().GetLockedLevelPS(), transform.position, Quaternion.identity, transform);
                     break;
             }
         }
