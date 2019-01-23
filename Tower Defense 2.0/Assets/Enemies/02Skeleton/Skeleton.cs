@@ -39,7 +39,10 @@ namespace Towers.Enemies.Skeleton
 
         void Resurected()
         {
-            GetComponent<Collider>().enabled = true;
+            if (GetComponent<Collider>())
+            {
+                GetComponent<Collider>().enabled = true;
+            }
             GetComponent<NavMeshAgent>().radius = 0.25f;
         }
     }
