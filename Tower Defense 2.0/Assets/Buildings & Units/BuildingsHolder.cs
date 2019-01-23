@@ -9,7 +9,6 @@ namespace Towers.BuildingsN
 
         public Buildings GetBuilding(int stage)
         {
-            print("Asking for building stage: " + stage + " of " + buildings[0].gameObject.name);
             return buildings[stage];
         }
     }

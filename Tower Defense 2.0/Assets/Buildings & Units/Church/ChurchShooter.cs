@@ -28,7 +28,7 @@ namespace Towers.Units
             foreach (RaycastHit hit in hits)
             {
                 var damageable = hit.collider.gameObject.GetComponent<HealthSystem>();
-                if (damageable != null)
+                if (damageable != null && hit.transform != target)
                 {
                     damageable.TakeDamage(damage);
                 }

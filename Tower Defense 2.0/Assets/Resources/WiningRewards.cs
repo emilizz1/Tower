@@ -33,8 +33,8 @@ namespace Towers.Resources
             if (cardAddedToDeck != null)
             {
                 cardRewards.SetActive(true);
-                FindObjectOfType<CardHolders>().AddPlayerCard(cardAddedToDeck);
                 GetComponentInChildren<ShowcaseCard>().PutInformation(cardAddedToDeck, GetBuildingLevel());
+                FindObjectOfType<CardHolders>().AddPlayerCard(cardAddedToDeck);
             }
             else
             {
@@ -94,12 +94,12 @@ namespace Towers.Resources
             Buildings currentlyLooking = cardAddedToDeck.GetPrefabs().GetBuilding(0);
             foreach (Card card in FindObjectOfType<CardHolders>().GetAllPlayerCards())
             {
-                if (currentlyLooking == card.GetPrefabs().GetBuilding(0))
+                if (currentlyLooking.GetID() == card.GetPrefabs().GetBuilding(0).GetID())
                 {
                     buildingLevel++;
                 }
             }
-            return buildingLevel + 1;
+            return buildingLevel;
         }
 
         
