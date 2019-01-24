@@ -6,7 +6,6 @@ using Towers.Enemies;
 using Towers.Resources;
 using Towers.Units;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace Towers.Scenes
 {
@@ -126,7 +125,7 @@ namespace Towers.Scenes
                     IsAnotherBuildingAvailable();
                     break;
                 case State.levelCompleted:
-                    SceneManager.LoadSceneAsync(3);
+                    FindObjectOfType<LoadLevel>().LoadScene(3);
                     break;
                 case State.nothing:
                     break;

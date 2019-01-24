@@ -12,18 +12,6 @@ namespace Towers.Scenes
         AudioClip[] audioClips;
         AudioSource audioSource;
 
-        void Awake()
-        {
-            if (FindObjectsOfType<ThemePlayer>().Length > 1)
-            {
-                Destroy(gameObject);
-            }
-            else
-            {
-                DontDestroyOnLoad(gameObject);
-            }
-        }
-
         void PlayAudio()
         {
             audioSource.clip = audioClips[Random.Range(0, audioClips.Length)];
