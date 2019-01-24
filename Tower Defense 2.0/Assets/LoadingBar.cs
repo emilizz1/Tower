@@ -7,7 +7,7 @@ namespace Towers.Scenes
 {
     public class LoadingBar : MonoBehaviour
     {
-        [SerializeField] Slider slider;
+        [SerializeField] Image slider;
 
         LoadLevel loadLevel;
 
@@ -18,7 +18,7 @@ namespace Towers.Scenes
 
         void Update()
         {
-            slider.value = loadLevel.GetLoadingProgress();
+            slider.fillAmount = loadLevel.GetLoadingProgress();
         }
     }
 }
