@@ -482,8 +482,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rewards: {fileID: 1044263591396930}
   lifepointText: {fileID: 114688217962242214}
-  lifepointsRewarded: 10
-  resourcesAwarded: []
+  lifepointsRewarded: 5
+  resourcesAwarded:
+  - {fileID: 11400000, guid: ab56d4aa84abdd6499e6c50f2fc64889, type: 2}
+  - {fileID: 11400000, guid: ab56d4aa84abdd6499e6c50f2fc64889, type: 2}
+  - {fileID: 11400000, guid: ab56d4aa84abdd6499e6c50f2fc64889, type: 2}
+  - {fileID: 11400000, guid: ab56d4aa84abdd6499e6c50f2fc64889, type: 2}
+  - {fileID: 11400000, guid: ab56d4aa84abdd6499e6c50f2fc64889, type: 2}
   resourcesGameObjects:
   - {fileID: 1751882616658698}
   - {fileID: 1583124226384306}
@@ -493,6 +498,7 @@ MonoBehaviour:
   cardAddedToDeck: {fileID: 0}
   cardsAddedToAddables:
   - {fileID: 11400000, guid: 2101494dd050f2647b140e7c07733c23, type: 2}
+  - {fileID: 11400000, guid: ca08811b4e4806a4e8e90d9e6e47de77, type: 2}
 --- !u!114 &114341217659589290
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -613,7 +619,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a5276fb7695fd7459e0d363380d5c14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelCards: {fileID: 11400000, guid: cb36ff4f7fbe6604caf35e17aaed0152, type: 2}
+  levelCards: {fileID: 11400000, guid: 7562947235321ca4b9e2a2c4976b9ba5, type: 2}
 --- !u!114 &114512536186832380
 MonoBehaviour:
   m_ObjectHideFlags: 1
