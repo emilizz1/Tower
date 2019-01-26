@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Towers.Enemies;
 
 namespace Towers.Units
 {
@@ -10,7 +11,7 @@ namespace Towers.Units
         protected override void Shoot()
         {
             base.Shoot();
-            if (target != null)
+            if (target != null && target.GetComponent<HealthSystem>().ImunityToPoison())
             {
                 Poison poison;
                 if (target.GetComponent<Poison>())

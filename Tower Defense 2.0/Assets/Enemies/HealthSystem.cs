@@ -80,5 +80,10 @@ namespace Towers.Enemies
             Destroy(gameObject, deathVanishSeconds);
             DestroyColliders();
         }
+        
+        public virtual bool ImunityToPoison() //TODO make this universal
+        {
+            return false;
+        }
     }
 }

@@ -45,5 +45,10 @@ namespace Towers.Enemies.Skeleton
             }
             GetComponent<NavMeshAgent>().radius = 0.25f;
         }
+
+        public override bool ImunityToPoison()
+        {
+            return true;
+        }
     }
 }

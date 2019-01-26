@@ -20,8 +20,8 @@ namespace Towers.Units
         {
             while (health.healthAsPercentage != 0)
             {
-                health.TakeDamage(poisonLevel * poisonDamageMultiplayer);
-                yield return new WaitForSeconds(1f);
+                health.TakeDamage(poisonLevel * poisonDamageMultiplayer / 4f);
+                yield return new WaitForSeconds(0.25f);
             }
         }
 
