@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.AI;
 using Towers.CharacterN;
+using Towers.Units;
 
 namespace Towers.Enemies
 {
@@ -38,7 +39,7 @@ namespace Towers.Enemies
             }
         }
 
-        public void TakeDamage(float damage)
+        public virtual void TakeDamage(float damage, Shooter shooter = null)
         {
             bool characterDies = (currentHealthPoints - damage <= 0);
             currentHealthPoints = Mathf.Clamp(currentHealthPoints - damage, 0f, maxHealthPoints);

@@ -15,6 +15,7 @@ namespace Towers.Units
         [SerializeField] float maxAttackRange = 10f;
         [SerializeField] protected ProjectileSystem projectileSystem;
         [SerializeField] protected Transform projectileSocket;
+        [SerializeField] bool ShootsArrows;
 
         NavMeshAgent navMeshAgent;
         Vector3 permenentPossition;
@@ -135,7 +136,7 @@ namespace Towers.Units
                 {
                     projectileSystem.Shoot(target.transform, projectileSocket);
                 }
-                target.GetComponent<HealthSystem>().TakeDamage(baseDamage);
+                target.GetComponent<HealthSystem>().TakeDamage(baseDamage, this);
             }
         }
 
@@ -178,6 +179,11 @@ namespace Towers.Units
         public float GetRange()
         {
             return maxAttackRange;
+        }
+
+        public bool GetShootsArrows()
+        {
+            return ShootsArrows;
         }
     }
 }

@@ -41,7 +41,7 @@ namespace Towers.Units
                     if (enemy != null)
                     {
                         projectileSystem.Shoot(enemy.transform, projectileSocket);
-                        enemy.GetComponent<HealthSystem>().TakeDamage(baseDamage);
+                        enemy.GetComponent<HealthSystem>().TakeDamage(baseDamage, this);
                     }
                 }
             }

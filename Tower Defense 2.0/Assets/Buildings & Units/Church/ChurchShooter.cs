@@ -17,7 +17,7 @@ namespace Towers.Units
                 GameObject newPartacle = ps;
                 newPartacle = Instantiate(newPartacle, target.transform.position + new Vector3(0f, 1f, 0f), Quaternion.identity, target.transform);
                 DealRadialDamage(baseDamage / 2, target.transform); //AEO damage is halved
-                target.GetComponent<HealthSystem>().TakeDamage(baseDamage);
+                target.GetComponent<HealthSystem>().TakeDamage(baseDamage, this);
                 Destroy(newPartacle, 3f);
             }
         }
@@ -30,7 +30,7 @@ namespace Towers.Units
                 var damageable = hit.collider.gameObject.GetComponent<HealthSystem>();
                 if (damageable != null && hit.transform != target)
                 {
-                    damageable.TakeDamage(damage);
+                    damageable.TakeDamage(damage, this);
                 }
             }
         }

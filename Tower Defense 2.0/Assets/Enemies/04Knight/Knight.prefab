@@ -68,9 +68,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4101035481620990}
-  - component: {fileID: 114070313126111614}
   - component: {fileID: 114922414261489094}
   - component: {fileID: 114348833766854872}
+  - component: {fileID: 114002394451354182}
   m_Layer: 11
   m_Name: Knight
   m_TagString: Untagged
@@ -2407,7 +2407,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1014414367513432}
   m_Mesh: {fileID: 4300006, guid: d288a0e4a2d923b46898986e979da643, type: 3}
---- !u!114 &114070313126111614
+--- !u!114 &114002394451354182
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2415,10 +2415,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1020609746286520}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 362c1f6cd3d829e428cb1625a8572cc8, type: 3}
+  m_Script: {fileID: 11500000, guid: efa696e3a25df2a45b67328adb334178, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealthPoints: 250
+  maxHealthPoints: 185
   healthBar: {fileID: 114123783515310148}
   deathVanishSeconds: 2
 --- !u!114 &114072757344386736

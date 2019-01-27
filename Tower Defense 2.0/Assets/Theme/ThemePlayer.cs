@@ -7,8 +7,6 @@ namespace Towers.Scenes
     {
         [SerializeField] float audioVolume = 0.5f;
 
-        bool playing = true;
-
         AudioClip[] audioClips;
         AudioSource audioSource;
 

@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
-using Towers.Units;
 
 namespace Towers.Enemies.Skeleton
 {
@@ -17,11 +16,6 @@ namespace Towers.Enemies.Skeleton
         {
             if (once)
             {
-                if (GetComponent<Poison>())
-                {
-                    Destroy(GetComponent<Poison>());
-                    Destroy(GetComponentInChildren<ParticleSystem>());
-                }
                 GetComponent<Collider>().enabled = false;
                 GetComponent<NavMeshAgent>().radius = 0.000001f;
                 Animator animator = GetComponent<Animator>();
