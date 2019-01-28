@@ -11,7 +11,7 @@ namespace Towers.Units
         protected override void Shoot()
         {
             base.Shoot();
-            if (target != null && target.GetComponent<HealthSystem>().ImunityToPoison())
+            if (target != null && !target.GetComponent<HealthSystem>().ImunityToPoison())
             {
                 Poison poison;
                 if (target.GetComponent<Poison>())
