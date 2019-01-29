@@ -19,6 +19,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4676139055219724}
+  - component: {fileID: 114898440919176490}
   m_Layer: 0
   m_Name: Villa 1
   m_TagString: Untagged
@@ -550,3 +551,30 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1594047857271786}
   m_Mesh: {fileID: 4300000, guid: 0792381e74a668c4d8c4bda41136c9e8, type: 3}
+--- !u!114 &114898440919176490
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1165789319481566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2037a481f74be743afbc3df149b433c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildingName: Villa I
+  buildUnitCost:
+  - {fileID: 11400000, guid: ab56d4aa84abdd6499e6c50f2fc64889, type: 2}
+  - {fileID: 11400000, guid: 1f977c2c7ac1fda4886c7f930f2eef09, type: 2}
+  - {fileID: 11400000, guid: 1f977c2c7ac1fda4886c7f930f2eef09, type: 2}
+  - {fileID: 11400000, guid: 1f977c2c7ac1fda4886c7f930f2eef09, type: 2}
+  - {fileID: 11400000, guid: 1f977c2c7ac1fda4886c7f930f2eef09, type: 2}
+  unitPrefab: {fileID: 1036852371656684, guid: 3498290ce8a497f45ae3e2eda7c068f4, type: 2}
+  resourceAmountProduced:
+  - {fileID: 11400000, guid: ab56d4aa84abdd6499e6c50f2fc64889, type: 2}
+  - {fileID: 11400000, guid: ab56d4aa84abdd6499e6c50f2fc64889, type: 2}
+  Level: 1
+  iD: 7
+  buildingImage: {fileID: 0}
+  SpecialPower: '-'
+  unitsImage: {fileID: 0}
