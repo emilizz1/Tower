@@ -28,3 +28,5 @@
 //TODO replace resource images in showcase card
 //TODO Make all resources same size
 // Resources icons are 172x158 / 86x78 / 43x38 
+
+// Pirate unit materials: Lv1 - 01A. Lv2 - 02B
