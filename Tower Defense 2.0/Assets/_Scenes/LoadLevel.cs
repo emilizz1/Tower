@@ -10,7 +10,7 @@ namespace Towers.Scenes
 
         public void LoadScene(int scene)
         {
-            StartCoroutine(LoadNewScene(0));
+            StartCoroutine(LoadNewScene(4));
             StartCoroutine(LoadNewScene(scene));
         }
 
