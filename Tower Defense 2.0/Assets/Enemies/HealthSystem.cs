@@ -11,9 +11,9 @@ namespace Towers.Enemies
     public class HealthSystem : MonoBehaviour
     {
         [SerializeField] float maxHealthPoints = 100f;
-        [SerializeField] Image healthBar;
+        [SerializeField] Image redHealthBar;
+        [SerializeField] Image whiteHealthBar;
         [SerializeField] float deathVanishSeconds = 1f;
-        [SerializeField] GameObject damageNumber;
 
         protected string Death_Trigger = "Death";
         float currentHealthPoints = 0;
@@ -28,46 +28,26 @@ namespace Towers.Enemies
             character = GetComponent<Character>();
         }
 
-        void Update()
-        {
-            UpdateHealthBar();
-        }
-
-        void UpdateHealthBar()
-        {
-            if (healthBar)
-            {
-                healthBar.fillAmount = healthAsPercentage;
-            }
-        }
-
         public virtual void TakeDamage(float damage, Shooter shooter = null)
         {
             bool characterDies = (currentHealthPoints - damage <= 0);
             currentHealthPoints = Mathf.Clamp(currentHealthPoints - damage, 0f, maxHealthPoints);
-            //ShowDamageNumber(damage);
+            redHealthBar.fillAmount = healthAsPercentage;
+            StartCoroutine(WhiteHealthRemoval());
             if (characterDies)
             {
+                StartCoroutine(WhiteHealthRemoval(3f));
                 StartCoroutine(KillCharacter());
             }
         }
 
-        private void ShowDamageNumber(float damage)
+        IEnumerator WhiteHealthRemoval( float speed = 1f)
         {
-            var damageNum = Instantiate(damageNumber, healthBar.transform.position, Quaternion.identity, healthBar.transform);
-            damageNum.GetComponent<Text>().text = damage.ToString();
-            StartCoroutine(DamageNumberFloat(damageNum.GetComponent<Text>()));
-        }
-
-        IEnumerator DamageNumberFloat(Text damageNum)
-        {
-            while(damageNum.color.a > 0)
+            while (whiteHealthBar.fillAmount > redHealthBar.fillAmount)
             {
-                damageNum.transform.position += new Vector3(0f, 0.01f, 0f);
-                damageNum.color -= new Color(0f, 0f, 0f, 0.01f);
+                whiteHealthBar.fillAmount -= 0.001f * speed;
                 yield return new WaitForFixedUpdate();
             }
-            Destroy(damageNum.gameObject);
         }
 
         public virtual IEnumerator KillCharacter()
@@ -93,6 +73,8 @@ namespace Towers.Enemies
         public void SetHealthToMax()
         {
             currentHealthPoints = maxHealthPoints;
+            redHealthBar.fillAmount = 1f;
+            whiteHealthBar.fillAmount = 1f;
         }
 
         public void Death()
