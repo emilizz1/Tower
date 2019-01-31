@@ -5,11 +5,11 @@ using Towers.Units;
 
 namespace Towers.Enemies
 {
-    public class Knight : HealthSystem
+    public class Hero : HealthSystem
     {
         public override void TakeDamage(float damage, Shooter shooter)
         {
-            if (shooter.GetShootsArrows())
+            if (shooter.GetShootsArrows())//TODO add magic defense
             {
                 damage = damage / 2f;
             }

@@ -34,9 +34,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4101035481620990}
-  - component: {fileID: 114070313126111614}
   - component: {fileID: 114922414261489094}
   - component: {fileID: 114348833766854872}
+  - component: {fileID: 114960358461063580}
   m_Layer: 11
   m_Name: Hero
   m_TagString: Untagged
@@ -2451,21 +2451,6 @@ MonoBehaviour:
   m_FillAmount: 0.664
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114070313126111614
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1020609746286520}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 362c1f6cd3d829e428cb1625a8572cc8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealthPoints: 380
-  redHealthBar: {fileID: 114676124023626478}
-  whiteHealthBar: {fileID: 114037629123568642}
-  deathVanishSeconds: 2
 --- !u!114 &114072757344386736
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2580,6 +2565,21 @@ MonoBehaviour:
   movingTurnSpeed: 500
   stationaryTurnSpeed: 250
   moveThreshold: 1
+--- !u!114 &114960358461063580
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1020609746286520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfa0c06867d7aac40854290c6fe5a30a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealthPoints: 350
+  redHealthBar: {fileID: 114676124023626478}
+  whiteHealthBar: {fileID: 114037629123568642}
+  deathVanishSeconds: 2
 --- !u!137 &137250603424148354
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
