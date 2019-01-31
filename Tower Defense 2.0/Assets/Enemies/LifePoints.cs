@@ -16,7 +16,6 @@ namespace Towers.Enemies
             text = GetComponent<Text>();
             lifePoints = startingLifepoints;
             UpdateLifePoints();
-
         }
 
         void UpdateLifePoints()
