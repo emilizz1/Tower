@@ -9,7 +9,7 @@ namespace Towers.Enemies
     {
         public override void TakeDamage(float damage, Shooter shooter)
         {
-            if (shooter.GetShootsArrows())//TODO add magic defense
+            if (shooter.GetAttackType() == Shooter.AttackType.Arrows && shooter.GetAttackType() == Shooter.AttackType.Magic)
             {
                 damage = damage / 2f;
             }

@@ -9,7 +9,7 @@ namespace Towers.Enemies
     {
         public override void TakeDamage(float damage, Shooter shooter)
         {
-            if (shooter.GetShootsArrows())
+            if (shooter.GetAttackType() == Shooter.AttackType.Arrows)
             {
                 damage = damage / 2f;
             }

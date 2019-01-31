@@ -15,7 +15,15 @@ namespace Towers.Units
         [SerializeField] float maxAttackRange = 10f;
         [SerializeField] protected ProjectileSystem projectileSystem;
         [SerializeField] protected Transform projectileSocket;
-        [SerializeField] bool ShootsArrows;
+        [SerializeField] AttackType attackType;
+
+        public enum AttackType
+        {
+            Arrows,
+            Bullets,
+            Magic,
+            ThrowableObjects
+        }
 
         NavMeshAgent navMeshAgent;
         Vector3 permenentPossition;
@@ -181,9 +189,9 @@ namespace Towers.Units
             return maxAttackRange;
         }
 
-        public bool GetShootsArrows()
+        public AttackType GetAttackType()
         {
-            return ShootsArrows;
+            return attackType;
         }
     }
 }
