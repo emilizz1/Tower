@@ -43,7 +43,7 @@ MonoBehaviour:
     y: 0
     width: 1920
     height: 997
-  m_MinSize: {x: 950, y: 542}
+  m_MinSize: {x: 950, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &3
 MonoBehaviour:
@@ -106,10 +106,10 @@ MonoBehaviour:
     y: 30
     width: 1920
     height: 947
-  m_MinSize: {x: 683, y: 492}
+  m_MinSize: {x: 681, y: 492}
   m_MaxSize: {x: 14004, y: 14042}
   vertical: 0
-  controlID: 41
+  controlID: 3840
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -130,10 +130,10 @@ MonoBehaviour:
     y: 0
     width: 1368
     height: 947
-  m_MinSize: {x: 406, y: 492}
+  m_MinSize: {x: 404, y: 492}
   m_MaxSize: {x: 10002, y: 14042}
   vertical: 1
-  controlID: 42
+  controlID: 3841
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -154,10 +154,10 @@ MonoBehaviour:
     y: 0
     width: 1368
     height: 671
-  m_MinSize: {x: 406, y: 221}
-  m_MaxSize: {x: 8006, y: 4021}
+  m_MinSize: {x: 404, y: 221}
+  m_MaxSize: {x: 8004, y: 4021}
   vertical: 0
-  controlID: 43
+  controlID: 3842
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -286,7 +286,7 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 342
-    y: 92
+    y: 19
     width: 1024
     height: 650
   m_PersistentViewDataDictionary: {fileID: 0}
@@ -309,10 +309,10 @@ MonoBehaviour:
     m_VAllowExceedBaseRangeMin: 1
     m_VAllowExceedBaseRangeMax: 1
     m_ScaleWithWindow: 0
-    m_HSlider: 1
+    m_HSlider: 0
     m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
-    m_EnableMouseInput: 1
+    m_EnableMouseInput: 0
     m_EnableSliderZoomHorizontal: 0
     m_EnableSliderZoomVertical: 0
     m_UniformScale: 1
@@ -371,9 +371,9 @@ MonoBehaviour:
   m_PersistentViewDataDictionary: {fileID: 0}
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 
+    m_SelectedIDs: 72a00000
     m_LastClickedID: 0
-    m_ExpandedIDs: 685fdaffc85fdaffe6fbffff00000000
+    m_ExpandedIDs: 40bcfcff7089fdff7289fdff6092fdff6692fdff0a97fdff0c97fdffcc9bfdffce9bfdffd2a0fdffd4a0fdff44a5fdff46a5fdffdaa8fdffdca8fdff9c18ffff9e18ffffee1fffffe6fbffff00000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -392,7 +392,7 @@ MonoBehaviour:
       m_ClientGUIView: {fileID: 8}
     m_SearchString: 
   m_ExpandedScenes:
-  - Run selection
+  - MainMenu
   m_CurrenRootInstanceID: 0
   m_LockTracker:
     m_IsLocked: 0
@@ -423,14 +423,14 @@ MonoBehaviour:
     height: 650
   m_PersistentViewDataDictionary: {fileID: 0}
   m_SceneLighting: 1
-  lastFramingTime: 1486.2584613121799
+  lastFramingTime: 994.830212109966
   m_2DMode: 0
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 309.29364, y: 158.15721, z: 168.72101}
+    m_Target: {x: 209.41692, y: 51.209957, z: 34.455532}
     speed: 2
-    m_Value: {x: 309.29364, y: 158.15721, z: 168.72101}
+    m_Value: {x: 209.41692, y: 51.209957, z: 34.455532}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -458,13 +458,13 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: 0.36418834, y: -0.41208953, z: 0.21209365, w: 0.80781525}
+    m_Target: {x: -0.022514781, y: -0.97191596, z: 0.23423356, w: -0.0026798735}
     speed: 2
-    m_Value: {x: 0.36418834, y: -0.41208953, z: 0.21209365, w: 0.80781525}
+    m_Value: {x: 0.022514783, y: 0.971916, z: -0.23423357, w: 0.0026798735}
   m_Size:
-    m_Target: 54.260292
+    m_Target: 747.78314
     speed: 2
-    m_Value: 54.260292
+    m_Value: 747.78314
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -504,7 +504,7 @@ MonoBehaviour:
   m_AnimEditor: {fileID: 0}
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: -110580
+  m_LastSelectedObjectID: -60816
 --- !u!114 &16
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -567,11 +567,11 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets
+    - Assets/_Scenes/MainMenu
   m_ViewMode: 1
   m_StartGridSize: 69
   m_LastFolders:
-  - Assets
+  - Assets/_Scenes/MainMenu
   m_LastFoldersGridSize: 69
   m_LastProjectPath: C:\Users\simon_000\Desktop\Unity projects\TowerDefense\Tower
     Defense 2.0
@@ -579,9 +579,9 @@ MonoBehaviour:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 31}
-    m_SelectedIDs: 3a2b0000
-    m_LastClickedID: 11066
-    m_ExpandedIDs: 000000003a2b00007e2d0000b02f00000a320000923d00007a430000f6490000705100008e610000f06300000c7600008a7e00008882000058830000988b00000e8c0000168f000014900000b6970000a69f00005aa60000e4ae0000b4b2000092cc000094cc000096cc000098cc00009acc00009ccc00009ecc0000a0cc0000a2cc0000a4cc0000a6cc0000a8cc0000aacc0000accc0000aecc0000b0cc0000b2cc0000b4cc0000b6cc0000b8cc0000bacc0000bccc0000becc0000c0cc0000c2cc0000c4cc0000c6cc0000c8cc0000cacc0000cccc0000cecc0000
+    m_SelectedIDs: aca50000
+    m_LastClickedID: 42412
+    m_ExpandedIDs: 000000003a2b00007e2d0000b02f00000a320000923d00007a430000f6490000705100008e610000f06300000c7600008a7e0000888200005883000006850000988b00000e8c0000168f000014900000b6970000a69f00005ca60000e6ae0000b6b20000d8310100da310100dc310100de310100e0310100e2310100e4310100e6310100e8310100ea310100ec310100ee310100f0310100f2310100f4310100f6310100f8310100fa310100fc310100fe31010000320100023201000432010006320100083201000a3201000c3201000e320100103201001232010014320100
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -609,7 +609,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000003a2b00007e2d0000b02f00000a320000923d00007a430000f6490000bc4a0000705100008e610000f0630000167500000c7600008a7e00008882000058830000988b00000e8c0000168f000014900000b6970000a69f00005aa60000e4ae0000b4b2000058b30000f4b3000092cc000094cc000096cc000098cc00009acc00009ccc00009ecc0000a0cc0000a2cc0000a4cc0000a6cc0000a8cc0000aacc0000accc0000aecc0000b0cc0000b2cc0000b4cc0000b6cc0000b8cc0000bacc0000bccc0000becc0000c0cc0000c2cc0000c4cc0000c6cc0000c8cc0000cacc0000cccc0000cecc0000
+    m_ExpandedIDs: 000000003a2b00007e2d0000b02f00000a320000923d00007a430000f6490000705100008e610000f06300000c7600008a7e0000888200005883000006850000988b00000e8c0000168f000014900000b6970000a69f00005ca60000e6ae0000b6b20000d8310100da310100dc310100de310100e0310100e2310100e4310100e6310100e8310100ea310100ec310100ee310100f0310100f2310100f4310100f6310100f8310100fa310100fc310100fe31010000320100023201000432010006320100083201000a3201000c3201000e320100103201001232010014320100
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -636,7 +636,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 1
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: e6210000da210000869fffff00000000c63d00000c5e01009c98000078580000ac440000866b0000f6450000d83b0000a8880000de8f00005e9d00003e9c0000b2950000548c0000d26700004a2b0000b2890000a2890000549a000006b40000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
