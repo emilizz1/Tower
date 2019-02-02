@@ -475,6 +475,82 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardL: {fileID: 886534425}
   cardR: {fileID: 886534424}
+--- !u!1 &483349138
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 1300461984092812, guid: ad30eb58fdec3b34aa65174ba41cad16,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 483349139}
+  - component: {fileID: 483349141}
+  - component: {fileID: 483349140}
+  m_Layer: 0
+  m_Name: SM_Env_TreeBirch_03 (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &483349139
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 4928471411016022, guid: ad30eb58fdec3b34aa65174ba41cad16,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 483349138}
+  m_LocalRotation: {x: -0, y: -0.88196075, z: -0, w: -0.47132277}
+  m_LocalPosition: {x: 0.64, y: 0, z: -39.15}
+  m_LocalScale: {x: 1.0000002, y: 1, z: 1.0000002}
+  m_Children: []
+  m_Father: {fileID: 1535962255}
+  m_RootOrder: 40
+  m_LocalEulerAnglesHint: {x: 0, y: -236.23999, z: 0}
+--- !u!23 &483349140
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 23104388484456820, guid: ad30eb58fdec3b34aa65174ba41cad16,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 483349138}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
+  m_Materials:
+  - {fileID: 2100000, guid: fa8eda4ec55ee1a4e99ca991c5828dbf, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &483349141
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 33645103012616350, guid: ad30eb58fdec3b34aa65174ba41cad16,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 483349138}
+  m_Mesh: {fileID: 4300000, guid: 53db9fd4aca71a249bea37848ef55722, type: 3}
 --- !u!1 &538534570
 GameObject:
   m_ObjectHideFlags: 0
@@ -615,6 +691,82 @@ Transform:
   m_Father: {fileID: 915082510}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &816579255
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 1296191661421390, guid: ad30eb58fdec3b34aa65174ba41cad16,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 816579256}
+  - component: {fileID: 816579258}
+  - component: {fileID: 816579257}
+  m_Layer: 0
+  m_Name: SM_Env_TreeBirch_02 (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &816579256
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 4280959330512758, guid: ad30eb58fdec3b34aa65174ba41cad16,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 816579255}
+  m_LocalRotation: {x: -0, y: -0.74852836, z: -0, w: 0.66310287}
+  m_LocalPosition: {x: -12.72, y: 0, z: -39.07}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1535962255}
+  m_RootOrder: 39
+  m_LocalEulerAnglesHint: {x: 0, y: -96.926, z: 0}
+--- !u!23 &816579257
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 23407496038130274, guid: ad30eb58fdec3b34aa65174ba41cad16,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 816579255}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
+  m_Materials:
+  - {fileID: 2100000, guid: fa8eda4ec55ee1a4e99ca991c5828dbf, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &816579258
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 33458780338287634, guid: ad30eb58fdec3b34aa65174ba41cad16,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 816579255}
+  m_Mesh: {fileID: 4300000, guid: 9784cbd90e1ae6e4196e9491256c92df, type: 3}
 --- !u!1001 &886534421
 Prefab:
   m_ObjectHideFlags: 0
@@ -776,6 +928,82 @@ Transform:
   m_Father: {fileID: 1944527597}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &929936258
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 1300461984092812, guid: ad30eb58fdec3b34aa65174ba41cad16,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 929936259}
+  - component: {fileID: 929936261}
+  - component: {fileID: 929936260}
+  m_Layer: 0
+  m_Name: SM_Env_TreeBirch_03 (4)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &929936259
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 4928471411016022, guid: ad30eb58fdec3b34aa65174ba41cad16,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 929936258}
+  m_LocalRotation: {x: -0, y: -0.8819608, z: -0, w: -0.4713228}
+  m_LocalPosition: {x: 8.45, y: 0, z: -8.02}
+  m_LocalScale: {x: 0.75868773, y: 0.75868803, z: 0.75868773}
+  m_Children: []
+  m_Father: {fileID: 1535962255}
+  m_RootOrder: 41
+  m_LocalEulerAnglesHint: {x: 0, y: -236.23999, z: 0}
+--- !u!23 &929936260
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 23104388484456820, guid: ad30eb58fdec3b34aa65174ba41cad16,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 929936258}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
+  m_Materials:
+  - {fileID: 2100000, guid: fa8eda4ec55ee1a4e99ca991c5828dbf, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &929936261
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 33645103012616350, guid: ad30eb58fdec3b34aa65174ba41cad16,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 929936258}
+  m_Mesh: {fileID: 4300000, guid: 53db9fd4aca71a249bea37848ef55722, type: 3}
 --- !u!1 &964440742
 GameObject:
   m_ObjectHideFlags: 0
@@ -1475,6 +1703,11 @@ Prefab:
 --- !u!4 &1535962254 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4606323158112122, guid: ad30eb58fdec3b34aa65174ba41cad16,
+    type: 2}
+  m_PrefabInternal: {fileID: 1535962253}
+--- !u!4 &1535962255 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4326488132796332, guid: ad30eb58fdec3b34aa65174ba41cad16,
     type: 2}
   m_PrefabInternal: {fileID: 1535962253}
 --- !u!1 &1570085264
