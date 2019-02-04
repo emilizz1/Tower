@@ -7,7 +7,7 @@ namespace Towers.Resources
     public class ResourcesManager : MonoBehaviour
     {
         [SerializeField] GameObject resourceImage;
-        [SerializeField] float resourceMoveSpeed = 10f;
+        [SerializeField] float resourceMoveSpeed = 1f;
         [SerializeField] float dissapearingResourceOffset = -200f;
 
         GameObject[] resourceSlots;
@@ -53,7 +53,7 @@ namespace Towers.Resources
                 createdResource.GetComponent<Image>().sprite = resource.GetSprite();
                 createdResource.AddComponent<MovingResource>();
                 createdResource.GetComponent<MovingResource>().GiveResourceMovementInfo(GetResourceDestination(resource), resourceMoveSpeed, resource);
-                yield return new WaitForSecondsRealtime(0.15f);
+                yield return new WaitForEndOfFrame();
                 updateResourceText();
             }
         }
