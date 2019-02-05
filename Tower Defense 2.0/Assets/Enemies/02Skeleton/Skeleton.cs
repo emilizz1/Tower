@@ -16,6 +16,7 @@ namespace Towers.Enemies.Skeleton
         {
             if (once)
             {
+                once = false;
                 GetComponent<Collider>().enabled = false;
                 GetComponent<NavMeshAgent>().radius = 0.000001f;
                 Animator animator = GetComponent<Animator>();
@@ -23,7 +24,6 @@ namespace Towers.Enemies.Skeleton
                 yield return new WaitForSecondsRealtime(layingTime);
                 animator.SetTrigger(RESSURECTION_TRIGGER);
                 SetHealthToMax();
-                once = false;
             }
             else
             {
