@@ -7,17 +7,12 @@ namespace Towers.Resources
     public class ResourcesManager : MonoBehaviour
     {
         [SerializeField] GameObject resourceImage;
-        [SerializeField] float resourceMoveSpeed = 1f;
+        [SerializeField] float resourceGatherSpeed = 15f;
         [SerializeField] float dissapearingResourceOffset = -200f;
 
         GameObject[] resourceSlots;
         Transform deliveringFrom;
         ResourceHolder resourceHolder;
-
-        void Start()
-        {
-            updateResourceText();
-        }
 
         void Update()
         {
@@ -52,7 +47,7 @@ namespace Towers.Resources
                 var createdResource = Instantiate(resourceImage, carryFrom.position, Quaternion.identity, transform);
                 createdResource.GetComponent<Image>().sprite = resource.GetSprite();
                 createdResource.AddComponent<MovingResource>();
-                createdResource.GetComponent<MovingResource>().GiveResourceMovementInfo(GetResourceDestination(resource), resourceMoveSpeed, resource);
+                createdResource.GetComponent<MovingResource>().GiveResourceMovementInfo(GetResourceDestination(resource), resourceGatherSpeed, resource);
                 yield return new WaitForEndOfFrame();
                 updateResourceText();
             }
@@ -107,7 +102,7 @@ namespace Towers.Resources
             Vector3 target = new Vector3(createdResource.transform.position.x, createdResource.transform.position.y + dissapearingResourceOffset, 0f);
             while (Vector3.Distance(createdResource.transform.position, target) > 1f)
             {
-                createdResource.transform.position = Vector3.MoveTowards(createdResource.transform.position, target, resourceMoveSpeed / 3);
+                createdResource.transform.position = Vector3.MoveTowards(createdResource.transform.position, target, resourceGatherSpeed / 3);
                 createdResImageColor.a = createdResImageColor.a - 0.05f;
                 createdResource.GetComponent<Image>().color = createdResImageColor;
                 yield return new WaitForSeconds(0.05f);
@@ -137,6 +132,7 @@ namespace Towers.Resources
         {
             resourceSlots = activeResourceSlots;
             resourceHolder = FindObjectOfType<ResourceHolder>();
+            updateResourceText();
         }
 
         public bool CheckIfResourceIsActive(Resource resource)

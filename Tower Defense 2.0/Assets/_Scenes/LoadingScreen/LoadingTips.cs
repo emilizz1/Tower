@@ -9,6 +9,6 @@ public class LoadingTips : MonoBehaviour
     
 	void Start ()
     {
-        GetComponent<Image>().sprite = loadingTips[Random.Range(0, loadingTips.Length)];
+        //GetComponent<Image>().sprite = loadingTips[Random.Range(0, loadingTips.Length)];
 	}
 }

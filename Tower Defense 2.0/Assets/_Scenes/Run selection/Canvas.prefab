@@ -252,6 +252,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224625849951449650}
   - component: {fileID: 114813738944164000}
+  - component: {fileID: 114474058493359866}
   m_Layer: 5
   m_Name: Resources
   m_TagString: Untagged
@@ -573,6 +574,22 @@ MonoBehaviour:
     type: 2}
   lockedLevelPS: {fileID: 1921397896061942, guid: c9778d70035b95f46a1879b139ab3671,
     type: 2}
+--- !u!114 &114474058493359866
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1806460748823376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3af7e0caa72ee544592e926d1be89254, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ResourceSlots:
+  - {fileID: 1160474280434264}
+  - {fileID: 1522759388594804}
+  - {fileID: 1310764015388684}
+  - {fileID: 1982916226122336}
 --- !u!114 &114627198820413030
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -700,7 +717,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resourceImage: {fileID: 1581668026744250, guid: ce9e004f5e3933941ba5998c345504c6,
     type: 2}
-  resourceMoveSpeed: 1
+  resourceMoveSpeed: 5
   dissapearingResourceOffset: -200
 --- !u!114 &114833510402270180
 MonoBehaviour:
