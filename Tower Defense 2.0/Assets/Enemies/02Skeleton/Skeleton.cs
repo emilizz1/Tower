@@ -9,6 +9,7 @@ namespace Towers.Enemies.Skeleton
         [SerializeField] float layingTime = 1f;
 
         bool once = true;
+        bool readyToDie = false;
 
         string RESSURECTION_TRIGGER = "Ressurect";
 
@@ -24,8 +25,9 @@ namespace Towers.Enemies.Skeleton
                 yield return new WaitForSecondsRealtime(layingTime);
                 animator.SetTrigger(RESSURECTION_TRIGGER);
                 SetHealthToMax();
+                readyToDie = true;
             }
-            else
+            else if(readyToDie)
             {
                 Death(); 
             }
