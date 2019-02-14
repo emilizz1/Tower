@@ -36,6 +36,7 @@ namespace Towers.Enemies
             StartCoroutine(WhiteHealthRemoval());
             if (characterDies)
             {
+                StopCoroutine(WhiteHealthRemoval());
                 StartCoroutine(WhiteHealthRemoval(3f));
                 StartCoroutine(KillCharacter());
             }
@@ -45,7 +46,7 @@ namespace Towers.Enemies
         {
             while (whiteHealthBar.fillAmount > redHealthBar.fillAmount)
             {
-                whiteHealthBar.fillAmount -= 0.001f * speed;
+                whiteHealthBar.fillAmount -= 0.001f * speed * (5 - maxHealthPoints / 100);
                 yield return new WaitForFixedUpdate();
             }
         }

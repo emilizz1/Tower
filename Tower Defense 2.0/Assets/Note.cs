@@ -1,20 +1,23 @@
 ﻿// Need more images
-// special powers for enemy units?
-// Balance
 // Idea make units images to gifs
-
+// Main menu screen
 // animations for deck and discard
-// build selection level enviroment
 // build more events
-// add playablity with mouse
 // add persistent Items
 // add branching building paths
 // card shocase pages
 // more events: legendary cards, permanent items, upgrade a card
 // make negative events
-// think of restrictions how many cards can be removed
 // 3rd button? (position rerolls)
-// implement more resources, hide when not used
+
+//TODO add loading tips
+//TOOD add icons for attack, range..
+//TODO replace resource images in showcase card
+//TODO Make all resources same size
+//TODO Fix skeleton revive
+
+// Resources icons are 172x158 / 86x78 / 43x38 
+// Pirate unit materials: Lv1 - 01A. Lv2 - 02B
 
 // Ideas for permanent Items:
 // 00: After level gain 2/1/1 resources
@@ -24,12 +27,3 @@
 // 04: first enemy of level dies automaticly (same as lifes??)
 // 05: gain/ remove 2 cards
 // 06: better position for units first
-
-//TODO replace resource images in showcase card
-//TODO Make all resources same size
-// Resources icons are 172x158 / 86x78 / 43x38 
-
-// Pirate unit materials: Lv1 - 01A. Lv2 - 02B
-
-//TODO add loading tips
-//TOOD add icons for attack, range..
