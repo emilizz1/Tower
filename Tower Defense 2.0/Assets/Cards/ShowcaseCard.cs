@@ -18,7 +18,10 @@ namespace Towers.CardN
         [Header("Unit Setup")]
         [SerializeField] RawImage unitImage;
         [SerializeField] Text unitName;
-        [SerializeField] Text unitStats;
+        [SerializeField] Text unitAttack;
+        [SerializeField] Text unitFireRate;
+        [SerializeField] Text unitRange;
+        [SerializeField] Text unitSpecial;
         [System.Serializable] class CostResources
         {
             public GameObject[] resourceSlot = null;
@@ -57,7 +60,10 @@ namespace Towers.CardN
             unitName.text = building.GetUnit().name;
             float attack = 0f, speed = 0f, range = 0f;
             building.GetUnit().GetComponent<Shooter>().GiveStats(out attack, out speed, out range);
-            unitStats.text = "Attack: " + attack.ToString() + " Speed: " + ((speed * -10f) + 20f).ToString() + " Range: " + range.ToString() + " Special Power: " + building.GetSpecialPower();
+            unitAttack.text = attack.ToString();
+            unitFireRate.text = Mathf.RoundToInt(10 - 5f * speed).ToString();
+            unitRange.text = range.ToString();
+            unitSpecial.text = building.GetSpecialPower();
             DisplayUnitCost(building);
         }
 
