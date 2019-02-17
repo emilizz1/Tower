@@ -6,6 +6,7 @@ namespace Towers.Enemies.Skeleton
 {
     public class Skeleton : HealthSystem
     {
+        [SerializeField] string special;
         [SerializeField] float layingTime = 1f;
 
         bool once = true;
@@ -45,6 +46,11 @@ namespace Towers.Enemies.Skeleton
         public override bool ImunityToPoison()
         {
             return true;
+        }
+
+        public override string GetSpecial()
+        {
+            return special;
         }
     }
 }

@@ -32,8 +32,9 @@ namespace Towers.CardN
         [SerializeField] RawImage enemyImage;
         [SerializeField] Text enemyName;
         [SerializeField] Text enemyAmount;
-        [SerializeField] Text enemyStats;
+        [SerializeField] Text enemyHealth;
         [SerializeField] Text goldGained;
+        [SerializeField] Text enemySpecial;
 
         Card myCard;
 
@@ -115,8 +116,9 @@ namespace Towers.CardN
             enemyImage.texture = myCard.GetEnemyTexture();
             enemyName.text = enemy.name.ToString();
             enemyAmount.text = myCard.GetEnemyAmount().ToString();
-            enemyStats.text = enemy.GetComponent<HealthSystem>().GetMaxHP().ToString();
+            enemyHealth.text = enemy.GetComponent<HealthSystem>().GetMaxHP().ToString();
             goldGained.text = myCard.GetEnemyResources().Length.ToString();
+            enemySpecial.text = enemy.GetComponent<HealthSystem>().GetSpecial();
         }
     }
 }

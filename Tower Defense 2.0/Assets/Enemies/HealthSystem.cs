@@ -90,5 +90,10 @@ namespace Towers.Enemies
         {
             return false;
         }
+
+        public virtual string GetSpecial()
+        {
+            return "";
+        }
     }
 }
