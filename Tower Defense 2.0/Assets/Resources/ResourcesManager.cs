@@ -48,7 +48,7 @@ namespace Towers.Resources
                 createdResource.GetComponent<Image>().sprite = resource.GetSprite();
                 createdResource.AddComponent<MovingResource>();
                 createdResource.GetComponent<MovingResource>().GiveResourceMovementInfo(GetResourceDestination(resource), resourceGatherSpeed, resource);
-                yield return new WaitForEndOfFrame();
+                yield return new WaitForSeconds(0.1f);
                 updateResourceText();
             }
         }

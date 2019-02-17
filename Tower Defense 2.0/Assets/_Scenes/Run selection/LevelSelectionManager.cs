@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using Towers.Events;
+using Towers.Resources;
 
 namespace Towers.Scenes.RunSelection
 {
@@ -18,12 +19,10 @@ namespace Towers.Scenes.RunSelection
         Rect screenRectOnConstruction = new Rect(0, 0, Screen.width, Screen.height);
         float maxRaycasterDepth = 1000f;
         RaycastHit hitInfo;
-        LoadLevel loadLevel;
         LevelSelection lastCompletedLevel;
 
         void Start()
         {
-            loadLevel = GetComponent<LoadLevel>();
             lastCompletedLevel = levels[FindObjectOfType<LevelCounter>().GetLevelFinished()];
             ActivateActiveLevels();
             FindObjectOfType<EventManager>().PrepareEvents();
@@ -34,9 +33,11 @@ namespace Towers.Scenes.RunSelection
             if (Input.GetMouseButtonDown(0) && readyTosSelect)
             {
                 PerformRaycast();
-                if (hitInfo.transform.gameObject.GetComponent<LevelSelection>() && hitInfo.transform.gameObject.GetComponent<LevelSelection>().isActive)
+                if (hitInfo.transform.gameObject.GetComponent<LevelSelection>() &&
+                    hitInfo.transform.gameObject.GetComponent<LevelSelection>().isActive &&
+                    FindObjectsOfType<MovingResource>().Length == 0)
                 {
-                    loadLevel.LoadScene(hitInfo.transform.gameObject.GetComponent<LevelSelection>().GetLevel());
+                    GetComponent<LoadLevel>().LoadScene(hitInfo.transform.gameObject.GetComponent<LevelSelection>().GetLevel());
                 }
             }
         }
