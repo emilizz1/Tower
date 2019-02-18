@@ -13,7 +13,7 @@ namespace Towers.Enemies
 
         void Start()
         {
-            text = GetComponent<Text>();
+            text = GetComponentInChildren<Text>();
             lifePoints = startingLifepoints;
             UpdateLifePoints();
         }
