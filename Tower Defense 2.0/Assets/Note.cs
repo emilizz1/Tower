@@ -9,6 +9,8 @@
 // more events: legendary cards, permanent items, upgrade a card
 // make negative events
 // 3rd button? (position rerolls)
+// Card Modification/Building
+// Card leveling up
 
 //TODO add loading tips
 
