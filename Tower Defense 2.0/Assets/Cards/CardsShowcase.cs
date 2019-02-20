@@ -8,12 +8,13 @@ namespace Towers.CardN
     {
         [SerializeField] CardHolder playerCards;
         [SerializeField] ShowcaseCard[] cards;
-        [SerializeField] GameObject[] Pages;
+        [SerializeField] GameObject[] pages;
         [SerializeField] GameObject arrowLeft;
         [SerializeField] GameObject arrowRight;
         
         int currentlyActiveCards = 0;
         int currentlyActivePage = 0;
+        GameObject[] activePages;
 
         List<Buildings> buildings = new List<Buildings>();
         public static CardsShowcase control;
@@ -43,7 +44,18 @@ namespace Towers.CardN
             {
                 SetupCard(card);
             }
+            SetActivePages();
             TurnOffCards();
+        }
+
+        void SetActivePages()
+        {
+            int activePageCount = (currentlyActiveCards / 5) + 1;
+            activePages = new GameObject[activePageCount];
+            for (int i = 0; i < activePageCount; i++)
+            {
+                activePages[i] = pages[i];
+            }
         }
 
         private void SetupCard(Card card)
@@ -79,19 +91,19 @@ namespace Towers.CardN
 
         public void TurnPage(bool right)
         {
-            foreach (GameObject page in Pages)
+            foreach (GameObject page in activePages)
             {
                 page.SetActive(false);
             }
             if (right)
             {
                 currentlyActivePage++;
-                Pages[currentlyActivePage].SetActive(true);
+                activePages[currentlyActivePage].SetActive(true);
             }
             else if (!right)
             {
                 currentlyActivePage--;
-                Pages[currentlyActivePage].SetActive(true);
+                activePages[currentlyActivePage].SetActive(true);
             }
             CheckIfArrowsActive();
         }
@@ -106,7 +118,7 @@ namespace Towers.CardN
             {
                 arrowLeft.SetActive(false);
             }
-            if (Pages[currentlyActivePage + 1] != null)
+            if (currentlyActivePage + 1 != activePages.Length)
             {
                 arrowRight.SetActive(true);
             }

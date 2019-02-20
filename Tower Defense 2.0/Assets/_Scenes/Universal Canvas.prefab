@@ -4229,7 +4229,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &962950575700367233
 Transform:
   m_ObjectHideFlags: 0
@@ -4285,7 +4285,7 @@ MonoBehaviour:
   - {fileID: 4000050350604016648}
   - {fileID: 879785945521777468}
   - {fileID: 8566601807532075797}
-  Pages:
+  pages:
   - {fileID: 4732667317373971338}
   - {fileID: 783545014175179036}
   - {fileID: 5305683703532860254}
@@ -4382,7 +4382,7 @@ GameObject:
   - component: {fileID: 5682017517750751601}
   - component: {fileID: 962582219359887603}
   - component: {fileID: 3381014393268028696}
-  - component: {fileID: 3461727413817946743}
+  - component: {fileID: 4743610025114869806}
   m_Layer: 5
   m_Name: Card Showcase Button
   m_TagString: Untagged
@@ -4447,7 +4447,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
---- !u!114 &3461727413817946743
+--- !u!114 &4743610025114869806
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4456,7 +4456,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2930031766161226028}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: 2109663825, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
@@ -4484,12 +4484,15 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 3381014393268028696}
-  m_OnClick:
+  toggleTransition: 1
+  graphic: {fileID: 0}
+  m_Group: {fileID: 0}
+  onValueChanged:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1609023039144922730}
         m_MethodName: SetActive
-        m_Mode: 6
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -4498,8 +4501,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
+    m_TypeName: UnityEngine.UI.Toggle+ToggleEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  m_IsOn: 0
 --- !u!1 &4681314043378221967
 GameObject:
   m_ObjectHideFlags: 0
