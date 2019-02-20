@@ -85,18 +85,20 @@ namespace Towers.CardN
             }
             if (right)
             {
-                Pages[currentlyActivePage + 1].SetActive(true);
+                currentlyActivePage++;
+                Pages[currentlyActivePage].SetActive(true);
             }
             else if (!right)
             {
-                Pages[currentlyActivePage - 1].SetActive(true);
+                currentlyActivePage--;
+                Pages[currentlyActivePage].SetActive(true);
             }
             CheckIfArrowsActive();
         }
 
         void CheckIfArrowsActive()
         {
-            if(Pages[currentlyActivePage - 1] != null)
+            if(currentlyActivePage != 0)
             {
                 arrowLeft.SetActive(true);
             }
