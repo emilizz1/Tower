@@ -9,8 +9,11 @@ namespace Towers.CardN
         [SerializeField] CardHolder playerCards;
         [SerializeField] ShowcaseCard[] cards;
         [SerializeField] GameObject[] Pages;
+        [SerializeField] GameObject arrowLeft;
+        [SerializeField] GameObject arrowRight;
         
         int currentlyActiveCards = 0;
+        int currentlyActivePage = 0;
 
         List<Buildings> buildings = new List<Buildings>();
         public static CardsShowcase control;
@@ -31,7 +34,7 @@ namespace Towers.CardN
         void Start()
         {
             ShowcaseCards();
-            TurnPageTo(0);
+            CheckIfArrowsActive();
         }
 
         void ShowcaseCards()
@@ -74,13 +77,41 @@ namespace Towers.CardN
             return buildingLevel;
         }
 
-        public void TurnPageTo(int pageNumber)
+        public void TurnPage(bool right)
         {
             foreach (GameObject page in Pages)
             {
                 page.SetActive(false);
             }
-            Pages[pageNumber].SetActive(true);
+            if (right)
+            {
+                Pages[currentlyActivePage + 1].SetActive(true);
+            }
+            else if (!right)
+            {
+                Pages[currentlyActivePage - 1].SetActive(true);
+            }
+            CheckIfArrowsActive();
+        }
+
+        void CheckIfArrowsActive()
+        {
+            if(Pages[currentlyActivePage - 1] != null)
+            {
+                arrowLeft.SetActive(true);
+            }
+            else
+            {
+                arrowLeft.SetActive(false);
+            }
+            if (Pages[currentlyActivePage + 1] != null)
+            {
+                arrowRight.SetActive(true);
+            }
+            else
+            {
+                arrowRight.SetActive(false);
+            }
         }
     }
 }
