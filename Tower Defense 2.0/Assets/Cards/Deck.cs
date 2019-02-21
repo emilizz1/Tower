@@ -71,5 +71,10 @@ namespace Towers.CardN
         {
             return levelCards;
         }
+
+        public void ShowcaseDeck()
+        {
+            FindObjectOfType<CardsShowcase>().ShowcaseCards(null, deck);
+        }
     }
 }

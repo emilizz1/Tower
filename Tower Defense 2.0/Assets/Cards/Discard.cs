@@ -32,5 +32,10 @@ namespace Towers.CardN
         {
             text.text = discard.Count.ToString();
         }
+
+        public void ShowcaseDiscard()
+        {
+            FindObjectOfType<CardsShowcase>().ShowcaseCards(null, discard);
+        }
     }
 }

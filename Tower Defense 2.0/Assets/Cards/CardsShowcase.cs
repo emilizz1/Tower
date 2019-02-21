@@ -17,7 +17,6 @@ namespace Towers.CardN
         int currentlyActivePage = 0;
         GameObject[] activePages;
         bool showing = false;
-
         List<Buildings> buildings = new List<Buildings>();
         public static CardsShowcase control;
 
@@ -36,27 +35,45 @@ namespace Towers.CardN
 
         public void ShowcaseCards(CardHolder cardHolder)
         {
+            ShowcaseCards(cardHolder, null);
+        }
+
+        public void ShowcaseCards(CardHolder cardHolder, List<Card> cards)
+        {
             if (!showing)
             {
                 Time.timeScale = 0f;
                 cardsUI.SetActive(false);
                 showcase.SetActive(true);
-                InsertCardsInfo(cardHolder);
+                InsertCardsInfo(cardHolder, cards);
                 CheckIfArrowsActive();
+                buildings = new List<Buildings>();
+                showing = true;
             }
             else
             {
                 Time.timeScale = 1f;
                 cardsUI.SetActive(true);
                 showcase.SetActive(false);
+                showing = false;
             }
         }
 
-        void InsertCardsInfo(CardHolder cardHolder)
+        void InsertCardsInfo(CardHolder cardHolder = null, List<Card> cards = null)
         {
-            foreach (Card card in cardHolder.GetAllCards())
+            if (cardHolder != null)
             {
-                SetupCard(card);
+                foreach (Card card in cardHolder.GetAllCards())
+                {
+                    SetupCard(card);
+                }
+            }
+            else
+            {
+                foreach (Card card in cards)
+                {
+                    SetupCard(card);
+                }
             }
             SetActivePages();
             TurnOffCards();
@@ -65,6 +82,10 @@ namespace Towers.CardN
         void SetActivePages()
         {
             int activePageCount = (currentlyActiveCards / 5) + 1;
+            if(currentlyActiveCards% 5 == 0)
+            {
+                activePageCount--;
+            }
             activePages = new GameObject[activePageCount];
             for (int i = 0; i < activePageCount; i++)
             {
