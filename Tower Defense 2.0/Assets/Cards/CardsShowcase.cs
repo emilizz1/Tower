@@ -6,7 +6,8 @@ namespace Towers.CardN
 {
     public class CardsShowcase : MonoBehaviour
     {
-        [SerializeField] CardHolder playerCards;
+        [SerializeField] GameObject cardsUI;
+        [SerializeField] GameObject showcase;
         [SerializeField] ShowcaseCard[] cards;
         [SerializeField] GameObject[] pages;
         [SerializeField] GameObject arrowLeft;
@@ -15,6 +16,7 @@ namespace Towers.CardN
         int currentlyActiveCards = 0;
         int currentlyActivePage = 0;
         GameObject[] activePages;
+        bool showing = false;
 
         List<Buildings> buildings = new List<Buildings>();
         public static CardsShowcase control;
@@ -32,15 +34,27 @@ namespace Towers.CardN
             }
         }
 
-        void Start()
+        public void ShowcaseCards(CardHolder cardHolder)
         {
-            ShowcaseCards();
-            CheckIfArrowsActive();
+            if (!showing)
+            {
+                Time.timeScale = 0f;
+                cardsUI.SetActive(false);
+                showcase.SetActive(true);
+                InsertCardsInfo(cardHolder);
+                CheckIfArrowsActive();
+            }
+            else
+            {
+                Time.timeScale = 1f;
+                cardsUI.SetActive(true);
+                showcase.SetActive(false);
+            }
         }
 
-        void ShowcaseCards()
+        void InsertCardsInfo(CardHolder cardHolder)
         {
-            foreach (Card card in playerCards.GetAllCards())
+            foreach (Card card in cardHolder.GetAllCards())
             {
                 SetupCard(card);
             }
@@ -56,6 +70,7 @@ namespace Towers.CardN
             {
                 activePages[i] = pages[i];
             }
+            activePages[0].SetActive(true);
         }
 
         private void SetupCard(Card card)
