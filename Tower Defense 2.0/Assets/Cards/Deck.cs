@@ -74,7 +74,7 @@ namespace Towers.CardN
 
         public void ShowcaseDeck()
         {
-            FindObjectOfType<CardsShowcase>().ShowcaseCards(null, deck);
+            FindObjectOfType<CardsShowcase>().ShowcaseCards(null, deck, CardsShowcase.Showing.Deck);
         }
     }
 }

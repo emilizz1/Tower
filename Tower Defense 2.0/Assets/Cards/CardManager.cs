@@ -20,11 +20,11 @@ namespace Towers.CardN
         int cardSelected;
         bool firstRound = true;
 
-        void Start()
+        public void Setup()
         {
+            cards = GetComponentsInChildren<Cards>();
             bPM = FindObjectOfType<BuildingPlacementManager>();
             rM = FindObjectOfType<ResourcesManager>();
-            cards = GetComponentsInChildren<Cards>();
             deck = FindObjectOfType<Deck>();
             discard = FindObjectOfType<Discard>();
             levelEnemyCard = FindObjectOfType<LevelEnemyCard>();

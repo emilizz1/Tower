@@ -41,10 +41,10 @@ namespace Towers.Scenes
         void Start()
         {
             myCamera = FindObjectOfType<CameraArm>();
-            cardM = FindObjectOfType<CardManager>();
             buildingM = FindObjectOfType<BuildingManager>();
             placementM = FindObjectOfType<UnitPlacementManager>();
             enemySpawner = FindObjectOfType<EnemySpawner>();
+            cardM = FindObjectOfType<CardManager>();
             levelM = FindObjectOfType<LevelManager>();
             upcomingActions = FindObjectOfType<UpcomingActions>();
             startLevelDisplayer = FindObjectOfType<StartLevelDisplayer>();

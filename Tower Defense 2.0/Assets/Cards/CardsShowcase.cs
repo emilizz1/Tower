@@ -6,19 +6,25 @@ namespace Towers.CardN
 {
     public class CardsShowcase : MonoBehaviour
     {
-        [SerializeField] GameObject cardsUI;
-        [SerializeField] GameObject showcase;
+        [SerializeField] GameObject cardsUI, showcase, arrowLeft, arrowRight, mouseBlock;
         [SerializeField] ShowcaseCard[] cards;
         [SerializeField] GameObject[] pages;
-        [SerializeField] GameObject arrowLeft;
-        [SerializeField] GameObject arrowRight;
         
-        int currentlyActiveCards = 0;
+        int activeCards = 0;
         int currentlyActivePage = 0;
         GameObject[] activePages;
-        bool showing = false;
+        Showing nowShowing = Showing.Nothing;
         List<Buildings> buildings = new List<Buildings>();
         public static CardsShowcase control;
+
+        public enum Showing
+        {
+            PlayerCards,
+            Deck,
+            Discard,
+            StartLevelCards,
+            Nothing
+        }
 
         void Awake()
         {
@@ -33,29 +39,42 @@ namespace Towers.CardN
             }
         }
 
-        public void ShowcaseCards(CardHolder cardHolder)
+        public void ShowcaseCards(CardHolder cardHolder, Showing showing)
         {
-            ShowcaseCards(cardHolder, null);
+            ShowcaseCards(cardHolder, null, showing);
         }
 
-        public void ShowcaseCards(CardHolder cardHolder, List<Card> cards)
+        public void ShowPlayerCards(CardHolder cardHolder)
         {
-            if (!showing)
+            ShowcaseCards(cardHolder, null, Showing.PlayerCards);
+        }
+
+        public void ShowcaseCards(CardHolder cardHolder, List<Card> cards, Showing showing)
+        {
+            if (nowShowing != showing)
             {
                 Time.timeScale = 0f;
                 cardsUI.SetActive(false);
                 showcase.SetActive(true);
                 InsertCardsInfo(cardHolder, cards);
-                CheckIfArrowsActive();
                 buildings = new List<Buildings>();
-                showing = true;
+                nowShowing = showing;
             }
             else
             {
                 Time.timeScale = 1f;
                 cardsUI.SetActive(true);
                 showcase.SetActive(false);
-                showing = false;
+                if (nowShowing == Showing.StartLevelCards)
+                {
+
+                    FindObjectOfType<CardManager>().Setup();
+                }
+                nowShowing = Showing.Nothing;
+            }
+            if(showing == Showing.StartLevelCards)
+            {
+                mouseBlock.SetActive(false);
             }
         }
 
@@ -81,8 +100,8 @@ namespace Towers.CardN
 
         void SetActivePages()
         {
-            int activePageCount = (currentlyActiveCards / 5) + 1;
-            if(currentlyActiveCards% 5 == 0)
+            int activePageCount = (activeCards / 5) + 1;
+            if(activeCards% 5 == 0)
             {
                 activePageCount--;
             }
@@ -92,22 +111,23 @@ namespace Towers.CardN
                 activePages[i] = pages[i];
             }
             activePages[0].SetActive(true);
+            CheckIfArrowsActive();
         }
 
         private void SetupCard(Card card)
         {
-            cards[currentlyActiveCards].gameObject.SetActive(true);
-            cards[currentlyActiveCards].PutInformation(card, GetBuildingLevel(card));
-            currentlyActiveCards++;
+            cards[activeCards].gameObject.SetActive(true);
+            cards[activeCards].PutInformation(card, GetBuildingLevel(card));
+            activeCards++;
         }
 
         void TurnOffCards()
         {
-            for (int i = currentlyActiveCards; i < cards.Length; i++)
+            for (int i = activeCards; i < cards.Length; i++)
             {
                 cards[i].gameObject.SetActive(false);
             }
-            currentlyActiveCards = 0;
+            activeCards = 0;
         }
 
         int GetBuildingLevel(Card card)

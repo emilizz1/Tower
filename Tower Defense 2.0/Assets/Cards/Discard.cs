@@ -35,7 +35,7 @@ namespace Towers.CardN
 
         public void ShowcaseDiscard()
         {
-            FindObjectOfType<CardsShowcase>().ShowcaseCards(null, discard);
+            FindObjectOfType<CardsShowcase>().ShowcaseCards(null, discard, CardsShowcase.Showing.Discard);
         }
     }
 }
