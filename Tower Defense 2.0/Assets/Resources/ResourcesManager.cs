@@ -31,20 +31,28 @@ namespace Towers.Resources
             }
         }
         
-        public void AddResources(Resource[] Resources, Transform cardTransform = null)
+        public void AddResources(Resource[] Resources, Transform cardTransform = null, bool attachToTransform = false)
         {
             if(cardTransform == null)
             {
                 cardTransform = FindObjectOfType<ResourceCardChoice>().transform;
             }
-            StartCoroutine(GatherResources(Resources, cardTransform));
+            StartCoroutine(GatherResources(Resources, cardTransform, attachToTransform));
         }
 
-        IEnumerator GatherResources(Resource[] Resources, Transform carryFrom)
+        IEnumerator GatherResources(Resource[] Resources, Transform carryFrom, bool attachToTransform)
         {
             foreach (Resource resource in Resources)
             {
-                var createdResource = Instantiate(resourceImage, carryFrom.position, Quaternion.identity, transform);
+                GameObject createdResource;
+                if (attachToTransform) // When delivering from higher sorting layer canvas
+                {
+                    createdResource = Instantiate(resourceImage, carryFrom.position, Quaternion.identity, carryFrom);
+                }
+                else
+                {
+                    createdResource = Instantiate(resourceImage, carryFrom.position, Quaternion.identity, transform);
+                }
                 createdResource.GetComponent<Image>().sprite = resource.GetSprite();
                 createdResource.AddComponent<MovingResource>();
                 createdResource.GetComponent<MovingResource>().GiveResourceMovementInfo(GetResourceDestination(resource), resourceGatherSpeed, resource);

@@ -136,7 +136,10 @@ namespace Towers.Scenes
                     IsAnotherBuildingAvailable();
                     break;
                 case State.levelCompleted:
-                    FindObjectOfType<LoadLevel>().LoadScene(3);
+                    if (FindObjectsOfType<MovingResource>().Length == 0)
+                    {
+                        FindObjectOfType<LoadLevel>().LoadScene(3);
+                    }
                     break;
                 case State.nothing:
                     break;

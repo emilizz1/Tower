@@ -73,7 +73,7 @@ namespace Towers.Resources
                     resourcesGameObjects[currentlyUsedResourceSlot].SetActive(true);
                     resourcesGameObjects[currentlyUsedResourceSlot].GetComponentInChildren<Image>().sprite = resource.GetSprite();
                     resourcesGameObjects[currentlyUsedResourceSlot].GetComponentInChildren<Text>().text = resources.Length.ToString();
-                    resourceManager.AddResources(resources, resourcesGameObjects[currentlyUsedResourceSlot].transform);
+                    resourceManager.AddResources(resources, resourcesGameObjects[currentlyUsedResourceSlot].transform, true);
                     currentlyUsedResourceSlot++;
                 }
                 lastResource = resource;
