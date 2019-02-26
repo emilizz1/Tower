@@ -1,7 +1,6 @@
 ﻿using Towers.CardN;
 using UnityEngine;
 
-
 namespace Towers.BuildingsN
 {
     public class BuildingPlacementManager : MonoBehaviour

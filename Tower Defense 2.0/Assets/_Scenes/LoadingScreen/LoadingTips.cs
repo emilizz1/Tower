@@ -1,14 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class LoadingTips : MonoBehaviour
+namespace Towers.Scenes
 {
-    [SerializeField] Sprite[] loadingTips;
-    
-	void Start ()
+    public class LoadingTips : MonoBehaviour
     {
-        //GetComponent<Image>().sprite = loadingTips[Random.Range(0, loadingTips.Length)];
-	}
+        [SerializeField] Sprite[] loadingTips;
+
+        void Start()
+        {
+            //GetComponent<Image>().sprite = loadingTips[Random.Range(0, loadingTips.Length)];
+        }
+    }
 }

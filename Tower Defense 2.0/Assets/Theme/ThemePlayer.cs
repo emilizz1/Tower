@@ -19,11 +19,7 @@ namespace Towers.Scenes
 
         IEnumerator ChangedScenes()
         {
-            while(audioSource.volume > 0f)
-            {
-                audioSource.volume -= 0.01f;
-                yield return new WaitForSeconds(0.1f);
-            }
+            audioSource.volume = 0f;
             audioSource.Stop();
             PlayAudio();
             while (audioSource.volume < audioVolume)
@@ -40,6 +36,12 @@ namespace Towers.Scenes
             audioSource.volume = audioVolume;
             PlayAudio();
             StartCoroutine(ChangedScenes());
+        }
+
+        public void ChangeAudioVolume(float volume)
+        {
+            audioVolume = volume;
+            audioSource.volume = audioVolume;
         }
     }
 }

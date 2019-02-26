@@ -1,7 +1,5 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using Towers.CardN;
-using Towers.BuildingsN;
 
 namespace Towers.CameraUI
 {

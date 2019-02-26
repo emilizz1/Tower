@@ -1,9 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using Towers.Units;
 
-namespace Towers.Enemies
+namespace Towers.Enemies.Knight
 {
     public class Knight : HealthSystem
     {

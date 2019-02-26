@@ -13,5 +13,10 @@ namespace Towers.Scenes
                 FindObjectOfType<ThemePlayer>().GiveAudioTheme(audioClips);
             }
         }
+
+        public void MuteMusic()
+        {
+            FindObjectOfType<ThemePlayer>().ChangeAudioVolume(0f);
+        }
     }
 }
