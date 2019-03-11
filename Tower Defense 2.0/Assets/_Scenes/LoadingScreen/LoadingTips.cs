@@ -5,11 +5,12 @@ namespace Towers.Scenes
 {
     public class LoadingTips : MonoBehaviour
     {
-        [SerializeField] Sprite[] loadingTips;
+        [SerializeField] Text TipsText;
+        [SerializeField] string[] loadingTips;
 
         void Start()
         {
-            //GetComponent<Image>().sprite = loadingTips[Random.Range(0, loadingTips.Length)];
+            TipsText.text = loadingTips[Random.Range(0, loadingTips.Length)];
         }
     }
 }

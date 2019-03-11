@@ -13,6 +13,8 @@ namespace Towers.Enemies
 
         void Start()
         {
+            NewSceneLoaded(SceneManager.GetActiveScene(), LoadSceneMode.Single);
+            SceneManager.sceneLoaded += NewSceneLoaded;
             text = GetComponentInChildren<Text>();
             lifePoints = startingLifepoints;
             UpdateLifePoints();
@@ -36,6 +38,21 @@ namespace Towers.Enemies
         public float GetLifePoints()
         {
             return lifePoints;
+        }
+
+        //To hide HP when in main menu and loading
+        private void NewSceneLoaded(Scene arg0, LoadSceneMode arg1)
+        {
+            if (arg0.buildIndex == 0 || arg0.buildIndex == 4)
+            {
+                GetComponentInChildren<Transform>().gameObject.SetActive(false);
+                GetComponent<Image>().enabled = false;
+            }
+            else
+            {
+                GetComponentInChildren<Transform>().gameObject.SetActive(true);
+                GetComponent<Image>().enabled = true;
+            }
         }
     }
 }
