@@ -1954,10 +1954,10 @@ MonoBehaviour:
   characterAvatar: {fileID: 9000000, guid: d288a0e4a2d923b46898986e979da643, type: 3}
   audioSourceSpatialBlend: 0.5
   colliderCenter: {x: 0, y: 1, z: 0}
-  collidererRadius: 0.25
+  collidererRadius: 0.1
   colliderHeight: 1.75
-  moveSpeedMulyiplier: 1
-  animationSpeedMultiplier: 1
+  moveSpeedMulyiplier: 1.1
+  animationSpeedMultiplier: 1.2
   movingTurnSpeed: 500
   stationaryTurnSpeed: 250
   moveThreshold: 1
@@ -1976,7 +1976,7 @@ MonoBehaviour:
   stoppingDistance: 1
   navMeshSteeringSpeed: 1
   damageToLifePoints: 1
-  navMeshRadius: 0.25
+  navMeshRadius: 0.1
 --- !u!114 &114506182719091886
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1989,7 +1989,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee27cb2b2f320534fa029bc376877778, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealthPoints: 50
+  maxHealthPoints: 35
   redHealthBar: {fileID: 114056130624999060}
   whiteHealthBar: {fileID: 114673617229852364}
   deathVanishSeconds: 1
