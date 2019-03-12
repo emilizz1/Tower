@@ -7,6 +7,7 @@ public class MainMenuBackground : MonoBehaviour
 {
     [SerializeField] Color[] bgColors;
     [SerializeField] float transitionSpeed = 0.1f;
+    [SerializeField] float changeColorAfter = 8f;
 
     RawImage image;
 
@@ -18,16 +19,17 @@ public class MainMenuBackground : MonoBehaviour
 
     IEnumerator ChangeBgColors()
     {
+        float time = Time.time;
         Color changingTo = bgColors[Random.Range(0, bgColors.Length)];
         while (true)
         {
-            image.color = Color.Lerp(image.color, changingTo, transitionSpeed);
-            yield return new WaitForEndOfFrame();
-            if(image.color == changingTo)
+            if (Time.time - time > changeColorAfter)
             {
                 changingTo = bgColors[Random.Range(0, bgColors.Length)];
+                time = Time.time;
             }
-            print("changing");
+            image.color = Color.Lerp(image.color, changingTo, transitionSpeed);
+            yield return new WaitForEndOfFrame();
         }
     }
 }
