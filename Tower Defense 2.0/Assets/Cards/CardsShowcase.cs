@@ -76,6 +76,10 @@ namespace Towers.CardN
             {
                 mouseBlock.SetActive(false);
             }
+            else
+            {
+                mouseBlock.SetActive(false);
+            }
         }
 
         void InsertCardsInfo(CardHolder cardHolder = null, List<Card> cards = null)
