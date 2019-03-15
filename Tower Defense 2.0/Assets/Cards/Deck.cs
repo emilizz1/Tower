@@ -16,6 +16,15 @@ namespace Towers.CardN
         List<Card> deck = new List<Card>();
         Discard discard;
         Text text;
+        
+        void PrepareDeck()
+        {
+            text = GetComponentInChildren<Text>();
+            discard = FindObjectOfType<Discard>();
+            playerCards = FindObjectOfType<CardHolders>().GetAllPlayerCards();
+            ShuffleHolders();
+            deckPrepared = true;
+        }
 
         void ShuffleHolders()
         {
@@ -36,6 +45,7 @@ namespace Towers.CardN
             {
                 if (deck.Count <= 0)
                 {
+                    //Gets discarded cards
                     deck.AddRange(discard.GetDiscard());
                 }
                 Card tempCard = deck.ToArray()[UnityEngine.Random.Range(0, deck.Count)];
@@ -46,15 +56,6 @@ namespace Towers.CardN
             UpdateText();
             return selected;
 
-        }
-
-        void PrepareDeck()
-        {
-            text = GetComponentInChildren<Text>();
-            discard = FindObjectOfType<Discard>();
-            playerCards = FindObjectOfType<CardHolders>().GetAllPlayerCards();
-            ShuffleHolders();
-            deckPrepared = true;
         }
 
         public void RemoveACard(Card cardToRemove)
