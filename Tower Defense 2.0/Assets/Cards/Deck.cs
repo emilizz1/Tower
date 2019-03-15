@@ -8,6 +8,7 @@ namespace Towers.CardN
     public class Deck : MonoBehaviour
     {
         [SerializeField] CardHolder levelCards;
+        [SerializeField] GameObject shuffledCard;
 
         bool deckPrepared = false;
 
@@ -56,6 +57,14 @@ namespace Towers.CardN
             UpdateText();
             return selected;
 
+        }
+
+        void ShuffleAnimation(int times)
+        {
+            for (int i = 0; i < times; i++)
+            {
+
+            }
         }
 
         public void RemoveACard(Card cardToRemove)
