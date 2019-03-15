@@ -47,7 +47,9 @@ namespace Towers.CardN
                 if (deck.Count <= 0)
                 {
                     //Gets discarded cards
-                    deck.AddRange(discard.GetDiscard());
+                    var shuffledCards = discard.GetDiscard();
+                    ShuffleAnimation(shuffledCards.Count);
+                    deck.AddRange(shuffledCards);
                 }
                 Card tempCard = deck.ToArray()[UnityEngine.Random.Range(0, deck.Count)];
 
@@ -63,7 +65,9 @@ namespace Towers.CardN
         {
             for (int i = 0; i < times; i++)
             {
-
+                var startLocation = new Vector3(Random.Range(-40f, 40f), Random.Range(-40f, 40f), 0f) + discard.transform.position;
+                var createdObj = Instantiate(shuffledCard, startLocation, Quaternion.identity, transform);
+                createdObj.GetComponent<MovingObject>().GiveMovementInfo(transform.position, Random.Range(14f, 16f), Random.Range(-30, 30));
             }
         }
 

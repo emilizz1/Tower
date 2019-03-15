@@ -6,6 +6,7 @@ public class MovingObject : MonoBehaviour
 {
     Vector3 myDestination = Vector3.zero;
     float moveSpeed;
+    float rotationSpeed;
 
     void Update()
     {
@@ -14,6 +15,10 @@ public class MovingObject : MonoBehaviour
             if (Vector3.Distance(transform.position, myDestination) > 1f)
             {
                 transform.position = Vector3.MoveTowards(transform.position, myDestination, moveSpeed);
+                if(rotationSpeed != 0)
+                {
+                    transform.Rotate(0f, 0f, rotationSpeed);
+                }
             }
             else
             {
@@ -22,9 +27,10 @@ public class MovingObject : MonoBehaviour
         }
     }
 
-    public void GiveMovementInfo(Vector3 destination, float moveSpeed)
+    public void GiveMovementInfo(Vector3 destination, float movSpeed, float rotSpeed)
     {
         myDestination = destination;
-        this.moveSpeed = moveSpeed;
+        moveSpeed = movSpeed;
+        rotationSpeed = rotSpeed;
     }
 }

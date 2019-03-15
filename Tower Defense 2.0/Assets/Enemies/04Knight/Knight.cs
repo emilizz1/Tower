@@ -9,7 +9,6 @@ namespace Towers.Enemies.Knight
 
         public override void TakeDamage(float damage, Shooter shooter)
         {
-            print("shooter: " + shooter);
             if (shooter.GetAttackType() == Shooter.AttackType.Arrows)
             {
                 damage = damage / 2f;

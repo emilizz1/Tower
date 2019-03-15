@@ -78,7 +78,7 @@ namespace Towers.CardN
             }
             else
             {
-                mouseBlock.SetActive(false);
+                mouseBlock.SetActive(true);
             }
         }
 
