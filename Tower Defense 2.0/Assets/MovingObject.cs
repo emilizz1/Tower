@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class MovingObject : MonoBehaviour
 {
-    Vector3 myDestination = Vector3.zero;
+    Transform myDestination;
     float moveSpeed;
     float rotationSpeed;
 
     void Update()
     {
-        if (myDestination != Vector3.zero)
+        if (myDestination != null)
         {
-            if (Vector3.Distance(transform.position, myDestination) > 1f)
+            if (Vector3.Distance(transform.position, myDestination.position) > 0.1f)
             {
-                transform.position = Vector3.MoveTowards(transform.position, myDestination, moveSpeed);
+                transform.position = Vector3.MoveTowards(transform.position, myDestination.position, moveSpeed);
                 if(rotationSpeed != 0)
                 {
                     transform.Rotate(0f, 0f, rotationSpeed);
@@ -27,7 +27,7 @@ public class MovingObject : MonoBehaviour
         }
     }
 
-    public void GiveMovementInfo(Vector3 destination, float movSpeed, float rotSpeed)
+    public void GiveMovementInfo(Transform destination, float movSpeed, float rotSpeed)
     {
         myDestination = destination;
         moveSpeed = movSpeed;

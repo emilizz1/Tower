@@ -68,7 +68,7 @@ namespace Towers.CardN
                 var createdObj = Instantiate(shuffledCard, discard.transform.position, Quaternion.identity, transform);
                 createdObj.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
                 createdObj.transform.localPosition = new Vector3(Random.Range(-30f, 30f), Random.Range(-30f, 30f), 0f) + createdObj.transform.localPosition;
-                createdObj.GetComponent<MovingObject>().GiveMovementInfo(transform.position, Random.Range(0.45f, 0.7f), Random.Range(-5, 5));
+                createdObj.GetComponent<MovingObject>().GiveMovementInfo(transform, Random.Range(0.45f, 0.7f), Random.Range(-5, 5));
             }
         }
 

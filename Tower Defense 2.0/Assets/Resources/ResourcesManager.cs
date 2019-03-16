@@ -56,21 +56,22 @@ namespace Towers.Resources
                 createdResource.GetComponent<Image>().sprite = resource.GetSprite();
                 createdResource.AddComponent<MovingResource>();
                 createdResource.GetComponent<MovingResource>().GiveResourceMovementInfo(GetResourceDestination(resource), resourceGatherSpeed, resource);
+                createdResource.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
                 yield return new WaitForSeconds(0.1f);
                 updateResourceText();
             }
         }
 
-        Vector3 GetResourceDestination(Resource resource)
+        Transform GetResourceDestination(Resource resource)
         {
             for (int i = 0; i < resourceSlots.Length; i++)
             {
                 if (resourceSlots[i].GetComponentInChildren<Image>().sprite == resource.GetSprite())
                 {
-                    return resourceSlots[i].GetComponentInChildren<Image>().transform.position;
+                    return resourceSlots[i].GetComponentInChildren<Image>().transform;
                 }
             }
-            return Vector3.zero; // if no resource was found
+            return null; // if no resource was found
         }
 
         public bool CheckForResources(Resource[] resources)
@@ -95,7 +96,7 @@ namespace Towers.Resources
         {
             foreach (Resource resource in resources)
             {
-                GameObject createdResource = Instantiate(resourceImage, GetResourceDestination(resource), Quaternion.identity, transform);
+                GameObject createdResource = Instantiate(resourceImage, GetResourceDestination(resource).position, Quaternion.identity, transform);
                 createdResource.GetComponent<Image>().sprite = resource.GetSprite();
                 resource.RemoveResource();
                 updateResourceText();

@@ -4,17 +4,17 @@ namespace Towers.Resources
 {
     public class MovingResource : MonoBehaviour
     {
-        Vector3 myDestination = Vector3.zero;
+        Transform myDestination;
         float resourceMoveSpeed;
         Resource myResource;
 
         void Update()
         {
-            if (myDestination != Vector3.zero)
+            if (myDestination != null)
             {
-                if (Vector3.Distance(transform.position, myDestination) > 1f)
+                if (Vector3.Distance(transform.position, myDestination.position) > 0.1f)
                 {
-                    transform.position = Vector3.MoveTowards(transform.position, myDestination, resourceMoveSpeed);
+                    transform.position = Vector3.MoveTowards(transform.position, myDestination.position, resourceMoveSpeed);
                 }
                 else
                 {
@@ -25,7 +25,7 @@ namespace Towers.Resources
             }
         }
 
-        public void GiveResourceMovementInfo(Vector3 destination, float moveSpeed, Resource resource)
+        public void GiveResourceMovementInfo(Transform destination, float moveSpeed, Resource resource)
         {
             myDestination = destination;
             resourceMoveSpeed = moveSpeed;
