@@ -4368,6 +4368,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1948872947}
     m_Modifications:
+    - target: {fileID: 1454304915933694, guid: 6dcc086f0be1f714fae13457cccfabab, type: 3}
+      propertyPath: m_Name
+      value: Level Canvas
+      objectReference: {fileID: 0}
     - target: {fileID: 224186965662530428, guid: 6dcc086f0be1f714fae13457cccfabab,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4407,6 +4411,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224186965662530428, guid: 6dcc086f0be1f714fae13457cccfabab,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224186965662530428, guid: 6dcc086f0be1f714fae13457cccfabab,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224186965662530428, guid: 6dcc086f0be1f714fae13457cccfabab,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224186965662530428, guid: 6dcc086f0be1f714fae13457cccfabab,
         type: 3}
@@ -4458,6 +4477,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 223859939314075472, guid: 6dcc086f0be1f714fae13457cccfabab,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1148513175}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6dcc086f0be1f714fae13457cccfabab, type: 3}
 --- !u!224 &508270262 stripped
@@ -13062,6 +13086,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 223498277363596552, guid: 2ed5b92d733568b44bee2ae8a2f0915c,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1148513175}
     - target: {fileID: 1633709076554542, guid: 2ed5b92d733568b44bee2ae8a2f0915c, type: 3}
       propertyPath: m_IsActive
       value: 1

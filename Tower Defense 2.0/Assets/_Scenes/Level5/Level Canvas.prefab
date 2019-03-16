@@ -365,6 +365,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelCards: {fileID: 11400000, guid: c999f92e2b01db9498fb8e1543714b58, type: 2}
+  shuffledCard: {fileID: 2718189775522793268, guid: 0a1d8caaa6801ac43aaa0014c63db8d5,
+    type: 3}
 --- !u!1 &1241026027981632
 GameObject:
   m_ObjectHideFlags: 0
@@ -951,9 +953,9 @@ Canvas:
   m_GameObject: {fileID: 1454304915933694}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 0}
-  m_PlaneDistance: 100
+  m_PlaneDistance: 10
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
