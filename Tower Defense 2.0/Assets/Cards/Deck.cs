@@ -17,7 +17,7 @@ namespace Towers.CardN
         List<Card> deck = new List<Card>();
         Discard discard;
         Text text;
-        
+
         void PrepareDeck()
         {
             text = GetComponentInChildren<Text>();
@@ -65,9 +65,10 @@ namespace Towers.CardN
         {
             for (int i = 0; i < times; i++)
             {
-                var startLocation = new Vector3(Random.Range(-40f, 40f), Random.Range(-40f, 40f), 0f) + discard.transform.position;
-                var createdObj = Instantiate(shuffledCard, startLocation, Quaternion.identity, transform);
-                createdObj.GetComponent<MovingObject>().GiveMovementInfo(transform.position, Random.Range(14f, 16f), Random.Range(-30, 30));
+                var createdObj = Instantiate(shuffledCard, discard.transform.position, Quaternion.identity, transform);
+                createdObj.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
+                createdObj.transform.localPosition = new Vector3(Random.Range(-30f, 30f), Random.Range(-30f, 30f), 0f) + createdObj.transform.localPosition;
+                createdObj.GetComponent<MovingObject>().GiveMovementInfo(transform.position, Random.Range(0.45f, 0.7f), Random.Range(-5, 5));
             }
         }
 
