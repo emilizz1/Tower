@@ -11,6 +11,7 @@
 // 3rd button? (position rerolls)
 // Card Modification/Building
 // Card leveling up
+// Idea Change card destruction?
 
 //TODO add loading tips
 
