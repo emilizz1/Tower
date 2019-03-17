@@ -19,6 +19,7 @@ namespace Towers.CardN
         
         int cardSelected;
         bool firstRound = true;
+        public bool drawCards = false;
 
         public void Setup()
         {
@@ -28,6 +29,15 @@ namespace Towers.CardN
             deck = FindObjectOfType<Deck>();
             discard = FindObjectOfType<Discard>();
             levelEnemyCard = FindObjectOfType<LevelEnemyCard>();
+        }
+
+        private void Update()
+        {
+            if (drawCards)
+            {
+                GetComponent<Animator>().SetTrigger(0);
+                drawCards = false;
+            }
         }
 
         public BuildingsHolder GetPrefabs()
