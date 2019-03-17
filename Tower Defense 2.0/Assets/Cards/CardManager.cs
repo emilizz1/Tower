@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections;
 using Towers.BuildingsN;
 using Towers.Resources;
 using UnityEngine;
@@ -15,10 +16,12 @@ namespace Towers.CardN
         Deck deck;
         Discard discard;
         Card[] selectedCards;
+        Animator animator;
         LevelEnemyCard levelEnemyCard;
         
         int cardSelected;
         bool firstRound = true;
+        bool playingAnim = false;
 
         public void Setup()
         {
@@ -28,6 +31,7 @@ namespace Towers.CardN
             deck = FindObjectOfType<Deck>();
             discard = FindObjectOfType<Discard>();
             levelEnemyCard = FindObjectOfType<LevelEnemyCard>();
+            animator = GetComponent<Animator>();
         }
 
         public BuildingsHolder GetPrefabs()
@@ -49,11 +53,14 @@ namespace Towers.CardN
                 if (selectedCard == 1) // Discards not selected card
                 {
                     discard.DiscardCards(selectedCards[0]);
+                    animator.SetTrigger("DiscardLeftCard");
                 }
                 else
                 {
                     discard.DiscardCards(selectedCards[1]);
+                    animator.SetTrigger("DiscardRightCard");
                 }
+                playingAnim = true;
                 bPM.BuildingSelected();
             }
             else
@@ -86,39 +93,61 @@ namespace Towers.CardN
 
         public void SetNewCards(bool secondChoice)
         {
-            int i = 0;
-            if (secondChoice)
+            if (playingAnim)
             {
-                selectedCards = deck.GetNewCards().ToArray();
-                GetComponent<Animator>().SetTrigger("DrawCards");
+                playingAnim = false;
+                Invoke("SetNewCards(secondChoice)", 1f);
             }
             else
             {
-                levelEnemyCard.PutEnemiesOnScreen();
-            }
-            foreach (Card card in selectedCards)
-            {
-                cards[i++].SetCard(card, secondChoice);
+                int i = 0;
+                if (secondChoice)
+                {
+                    selectedCards = deck.GetNewCards().ToArray();
+                    animator.SetTrigger("DrawCards");
+                    playingAnim = true;
+                }
+                else
+                {
+                    levelEnemyCard.PutEnemiesOnScreen();
+                }
+                foreach (Card card in selectedCards)
+                {
+                    cards[i++].SetCard(card, secondChoice);
+                }
             }
         }
 
         public void TurnCards(bool isItOn)
         {
-            int i = 0;
-            if (!isItOn)
+            if (playingAnim)
             {
-                foreach (Cards card in cards)
-                {
-                    card.SetupCards(false, false, false);
-                }
+                playingAnim = false;
+                Invoke("TurnCards(isItOn)", 1f);
             }
             else
             {
-                foreach (Card card in selectedCards)
+                int i = 0;
+                if (!isItOn)
                 {
-                    cards[i++].SetCard(card, true);
+                    foreach (Cards card in cards)
+                    {
+                        card.SetupCards(false, false, false);
+                    }
+                }
+                else
+                {
+                    foreach (Card card in selectedCards)
+                    {
+                        cards[i++].SetCard(card, true);
+                    }
                 }
             }
+        }
+
+        IEnumerator WaitForAnimation(bool choice)
+        {
+            yield return new WaitForSeconds(1f);
         }
     }
 }
