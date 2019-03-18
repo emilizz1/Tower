@@ -21,6 +21,7 @@ namespace Towers.CardN
         
         int cardSelected;
         bool firstRound = true;
+        bool animationIdle = true;
 
         public void Setup()
         {
@@ -59,6 +60,7 @@ namespace Towers.CardN
                     discard.DiscardCards(selectedCards[1]);
                     animator.SetTrigger("DiscardRightCard");
                 }
+                animationIdle = false;
                 bPM.BuildingSelected();
             }
             else
@@ -91,8 +93,7 @@ namespace Towers.CardN
 
         public void SetNewCards(bool secondChoice)
         {
-            print(animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"));
-            if (animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+            if (animationIdle)
             {
                 int i = 0;
                 if (secondChoice)
@@ -118,7 +119,7 @@ namespace Towers.CardN
 
         public void TurnCards(bool isItOn)
         {
-            if (animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+            if (animationIdle)
             {
                 int i = 0;
                 if (!isItOn)
@@ -145,7 +146,7 @@ namespace Towers.CardN
 
         IEnumerator WaitingForAnimToFinish(bool choice, bool isItTurnCards)
         {
-            while (!animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+            while (!animationIdle)
             {
                 yield return new WaitForFixedUpdate();
             }
@@ -158,6 +159,18 @@ namespace Towers.CardN
                 SetNewCards(choice);
             }
         }
+        
+        public void AnimationIdle()
+        {
 
+            print("Called true");
+            animationIdle = true;
+        }
+
+        public void AnimationNotIdle()
+        {
+            print("Called false");
+            animationIdle = false;
+        }
     }
 }
