@@ -130,14 +130,11 @@ namespace Towers.CardN
         
         public void AnimationIdle()
         {
-
-            print("Called true");
             animationIdle = true;
         }
 
         public void AnimationNotIdle()
         {
-            print("Called false");
             animationIdle = false;
         }
 
