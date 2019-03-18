@@ -21,7 +21,6 @@ namespace Towers.CardN
         
         int cardSelected;
         bool firstRound = true;
-        bool playingAnim = false;
 
         public void Setup()
         {
@@ -60,7 +59,6 @@ namespace Towers.CardN
                     discard.DiscardCards(selectedCards[1]);
                     animator.SetTrigger("DiscardRightCard");
                 }
-                playingAnim = true;
                 bPM.BuildingSelected();
             }
             else
@@ -93,19 +91,14 @@ namespace Towers.CardN
 
         public void SetNewCards(bool secondChoice)
         {
-            if (playingAnim)
-            {
-                playingAnim = false;
-                Invoke("SetNewCards(secondChoice)", 1f);
-            }
-            else
+            print(animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"));
+            if (animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
             {
                 int i = 0;
                 if (secondChoice)
                 {
                     selectedCards = deck.GetNewCards().ToArray();
                     animator.SetTrigger("DrawCards");
-                    playingAnim = true;
                 }
                 else
                 {
@@ -116,16 +109,16 @@ namespace Towers.CardN
                     cards[i++].SetCard(card, secondChoice);
                 }
             }
+            else
+            {
+                StartCoroutine(WaitingForAnimToFinish(secondChoice, false));
+                print("Called Set");
+            }
         }
 
         public void TurnCards(bool isItOn)
         {
-            if (playingAnim)
-            {
-                playingAnim = false;
-                Invoke("TurnCards(isItOn)", 1f);
-            }
-            else
+            if (animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
             {
                 int i = 0;
                 if (!isItOn)
@@ -143,11 +136,28 @@ namespace Towers.CardN
                     }
                 }
             }
+            else
+            {
+                StartCoroutine(WaitingForAnimToFinish(isItOn, true));
+                print("Called Turn");
+            }
         }
 
-        IEnumerator WaitForAnimation(bool choice)
+        IEnumerator WaitingForAnimToFinish(bool choice, bool isItTurnCards)
         {
-            yield return new WaitForSeconds(1f);
+            while (!animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+            {
+                yield return new WaitForFixedUpdate();
+            }
+            if (isItTurnCards)
+            {
+                TurnCards(choice);
+            }
+            else
+            {
+                SetNewCards(choice);
+            }
         }
+
     }
 }
