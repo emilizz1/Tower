@@ -1,4 +1,5 @@
-﻿using Towers.BuildingsN;
+﻿using System.Collections;
+using Towers.BuildingsN;
 using Towers.Enemies;
 using Towers.Units;
 using UnityEngine;
@@ -65,19 +66,10 @@ namespace Towers.CardN
             return card.GetEnemyAmount();
         }
 
-        public void SetCard(Card cardToSet, bool secondChoice)
+        public void SetCard(Card cardToSet, bool secondChoice) //TODO Remove this
         {
             card = cardToSet;
             SetupCards(secondChoice, !secondChoice, false);
-            if (secondChoice)
-            {
-                SetupBuildingCard();
-            }
-            else
-            {
-                SetupEnemyCard();
-            }
-
         }
 
         void SetupEnemyCard()
@@ -169,34 +161,52 @@ namespace Towers.CardN
 
         public void SetupCards(bool isItBuilding, bool isItEnemy, bool isItResource)
         {
-            if (isItBuilding)
+            if (FindObjectOfType<CardManager>().GetAnimationIdle())
             {
-                buildingsCard.SetActive(true);
-                unitsCard.SetActive(true);
-                enemyCard.SetActive(false);
-                resourceCard.SetActive(false);
-            }
-            else if (isItEnemy)
-            {
-                buildingsCard.SetActive(false);
-                unitsCard.SetActive(false);
-                enemyCard.SetActive(true);
-                resourceCard.SetActive(false);
-            }
-            else if (isItResource)
-            {
-                buildingsCard.SetActive(false);
-                unitsCard.SetActive(true);
-                enemyCard.SetActive(false);
-                resourceCard.SetActive(true);
+                if (isItBuilding)
+                {
+                    buildingsCard.SetActive(true);
+                    unitsCard.SetActive(true);
+                    enemyCard.SetActive(false);
+                    resourceCard.SetActive(false);
+                    SetupBuildingCard();
+                }
+                else if (isItEnemy)
+                {
+                    buildingsCard.SetActive(false);
+                    unitsCard.SetActive(false);
+                    enemyCard.SetActive(true);
+                    resourceCard.SetActive(false);
+                    SetupEnemyCard();
+                }
+                else if (isItResource)
+                {
+                    buildingsCard.SetActive(false);
+                    unitsCard.SetActive(true);
+                    enemyCard.SetActive(false);
+                    resourceCard.SetActive(true);
+                }
+                else
+                {
+                    buildingsCard.SetActive(false);
+                    unitsCard.SetActive(false);
+                    enemyCard.SetActive(false);
+                    resourceCard.SetActive(false);
+                }
             }
             else
             {
-                buildingsCard.SetActive(false);
-                unitsCard.SetActive(false);
-                enemyCard.SetActive(false);
-                resourceCard.SetActive(false);
+                StartCoroutine(WaitForIdleAnimation(isItBuilding, isItEnemy, isItResource));
             }
+        }
+
+        IEnumerator WaitForIdleAnimation(bool isItBuilding, bool isItEnemy, bool isItResource)
+        {
+            while (!FindObjectOfType<CardManager>().GetAnimationIdle())
+            {
+                yield return new WaitForFixedUpdate();
+            }
+            SetupCards(isItBuilding, isItEnemy, isItResource);
         }
 
         public Card GetCard()

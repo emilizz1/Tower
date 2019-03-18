@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using System.Collections;
+
 using Towers.BuildingsN;
 using Towers.Resources;
 using UnityEngine;
@@ -93,70 +93,38 @@ namespace Towers.CardN
 
         public void SetNewCards(bool secondChoice)
         {
-            if (animationIdle)
+            int i = 0;
+            if (secondChoice)
             {
-                int i = 0;
-                if (secondChoice)
-                {
-                    selectedCards = deck.GetNewCards().ToArray();
-                    animator.SetTrigger("DrawCards");
-                }
-                else
-                {
-                    levelEnemyCard.PutEnemiesOnScreen();
-                }
-                foreach (Card card in selectedCards)
-                {
-                    cards[i++].SetCard(card, secondChoice);
-                }
+                selectedCards = deck.GetNewCards().ToArray();
+                animator.SetTrigger("DrawCards");
             }
             else
             {
-                StartCoroutine(WaitingForAnimToFinish(secondChoice, false));
-                print("Called Set");
+                levelEnemyCard.PutEnemiesOnScreen();
+            }
+            foreach (Card card in selectedCards)
+            {
+                cards[i++].SetCard(card, secondChoice);
             }
         }
 
         public void TurnCards(bool isItOn)
         {
-            if (animationIdle)
+            int i = 0;
+            if (!isItOn)
             {
-                int i = 0;
-                if (!isItOn)
+                foreach (Cards card in cards)
                 {
-                    foreach (Cards card in cards)
-                    {
-                        card.SetupCards(false, false, false);
-                    }
-                }
-                else
-                {
-                    foreach (Card card in selectedCards)
-                    {
-                        cards[i++].SetCard(card, true);
-                    }
+                    card.SetupCards(false, false, false);
                 }
             }
             else
             {
-                StartCoroutine(WaitingForAnimToFinish(isItOn, true));
-                print("Called Turn");
-            }
-        }
-
-        IEnumerator WaitingForAnimToFinish(bool choice, bool isItTurnCards)
-        {
-            while (!animationIdle)
-            {
-                yield return new WaitForFixedUpdate();
-            }
-            if (isItTurnCards)
-            {
-                TurnCards(choice);
-            }
-            else
-            {
-                SetNewCards(choice);
+                foreach (Card card in selectedCards)
+                {
+                    cards[i++].SetCard(card, true);
+                }
             }
         }
         
@@ -171,6 +139,11 @@ namespace Towers.CardN
         {
             print("Called false");
             animationIdle = false;
+        }
+
+        public bool GetAnimationIdle()
+        {
+            return animationIdle;
         }
     }
 }
