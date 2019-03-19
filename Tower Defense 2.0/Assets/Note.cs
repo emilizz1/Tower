@@ -1,11 +1,8 @@
 ﻿// Need more images
 // Idea make units images to gifs
-// Main menu screen
-// animations for deck and discard
 // build more events
 // add persistent Items
 // add branching building paths
-// card shocase pages
 // more events: legendary cards, permanent items, upgrade a card
 // make negative events
 // 3rd button? (position rerolls)
@@ -14,6 +11,7 @@
 // Idea Change card destruction?
 
 //TODO After discard no card flash
+//TODO Streamline enemy walking
 
 // Resources icons are 172x158 / 86x78 / 43x38 
 // Pirate unit materials: Lv1 - 01A. Lv2 - 02B
