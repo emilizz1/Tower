@@ -450,7 +450,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7799942317990023084}
   - component: {fileID: 1676043618877739816}
-  - component: {fileID: 1003380334876016775}
   m_Layer: 5
   m_Name: Music Volume Slider
   m_TagString: Untagged
@@ -527,7 +526,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1003380334876016775}
+      - m_Target: {fileID: 7813285217820819257}
         m_MethodName: ChangeMusicVolume
         m_Mode: 1
         m_Arguments:
@@ -540,18 +539,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &1003380334876016775
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 295540706143521545}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40b747305bdb82549bc97c8cec96c87e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &635086920536039145
 GameObject:
   m_ObjectHideFlags: 0
@@ -637,6 +624,7 @@ GameObject:
   - component: {fileID: 1629935309610295541}
   - component: {fileID: 5847611904248169151}
   - component: {fileID: 5055809694179746405}
+  - component: {fileID: 7813285217820819257}
   m_Layer: 5
   m_Name: Options
   m_TagString: Untagged
@@ -702,6 +690,18 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!114 &7813285217820819257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3184356066423892111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40b747305bdb82549bc97c8cec96c87e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3265878892320205059
 GameObject:
   m_ObjectHideFlags: 0

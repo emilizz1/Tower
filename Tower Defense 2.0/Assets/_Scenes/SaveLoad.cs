@@ -22,25 +22,15 @@ namespace Towers.Scenes
             }
         }
 
-        public void SavePlayerHolder(CardHolder playerHolder)
+        public void SaveFloatInfo(string infoName, float savingFloat)
         {
-            BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = File.Open(Application.persistentDataPath + "/playerInfo.dat", FileMode.Open);
-            bf.Serialize(file, playerHolder);
-            file.Close();
+            PlayerPrefs.SetFloat(infoName, savingFloat);
+            PlayerPrefs.Save();
         }
 
-        public CardHolder LoadPlayerHolder()
+        public float LoadFloatInfo(string infoName)
         {
-            if (File.Exists(Application.persistentDataPath + "/playerInfo.dat"))
-            {
-                BinaryFormatter bf = new BinaryFormatter();
-                FileStream file = File.Open(Application.persistentDataPath + "/playerInfo.dat", FileMode.Open);
-                CardHolder data = (CardHolder)bf.Deserialize(file);
-                file.Close();
-                return data;
-            }
-            return null;
+            return PlayerPrefs.GetFloat(infoName);
         }
     }
 }

@@ -5,8 +5,7 @@ namespace Towers.Scenes
 {
     public class ThemePlayer : MonoBehaviour
     {
-        [SerializeField] float audioVolume = 0.5f;
-
+        float audioVolume = 0.5f;
         AudioClip[] audioClips;
         AudioSource audioSource;
 
@@ -32,7 +31,6 @@ namespace Towers.Scenes
         public void GiveAudioTheme(AudioClip[] audioThemes)
         {
             audioClips = audioThemes;
-            audioSource = GetComponent<AudioSource>();
             audioSource.volume = audioVolume;
             PlayAudio();
             StartCoroutine(ChangedScenes());
@@ -41,6 +39,10 @@ namespace Towers.Scenes
         public void ChangeAudioVolume(float volume)
         {
             audioVolume = volume;
+            if(audioSource == null)
+            {
+                audioSource = GetComponent<AudioSource>();
+            }
             audioSource.volume = audioVolume;
         }
     }
