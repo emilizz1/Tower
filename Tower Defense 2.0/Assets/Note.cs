@@ -9,7 +9,7 @@
 // Card Modification/Building
 // Card leveling up
 // Idea Change card destruction?
-
+// Add arrows showing enemy path.
 //TODO After discard no card flash
 //TODO Streamline enemy walking
 

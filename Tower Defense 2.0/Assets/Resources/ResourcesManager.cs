@@ -115,6 +115,7 @@ namespace Towers.Resources
                 createdResImageColor.a = createdResImageColor.a - 0.05f;
                 createdResource.GetComponent<Image>().color = createdResImageColor;
                 yield return new WaitForSeconds(0.05f);
+                target = new Vector3(createdResource.transform.position.x, createdResource.transform.position.y + dissapearingResourceOffset, 0f);
             }
             Destroy(createdResource);
         }
