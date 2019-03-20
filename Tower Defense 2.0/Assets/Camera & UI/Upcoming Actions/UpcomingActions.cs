@@ -100,7 +100,7 @@ namespace Towers.CameraUI
             currentlyActive++;
             lastState.transform.localScale = new Vector3(1f, 1f, 1f);
             currentState.transform.localScale = new Vector3(objectSize, objectSize, objectSize);
-            lastState.transform.localPosition = new Vector3(lastState.transform.localPosition.x, 0f);
+            lastState.transform.localPosition = new Vector3(lastState.transform.localPosition.x, -0.01f);
         }
 
         void ClearAllObjects()

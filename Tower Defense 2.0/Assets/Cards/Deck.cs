@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 using System.Linq;
 using UnityEngine.UI;
@@ -48,7 +49,7 @@ namespace Towers.CardN
                 {
                     //Gets discarded cards
                     var shuffledCards = discard.GetDiscard();
-                    ShuffleAnimation(shuffledCards.Count);
+                    StartCoroutine(ShuffleAnimation(shuffledCards.Count));
                     deck.AddRange(shuffledCards);
                 }
                 Card tempCard = deck.ToArray()[UnityEngine.Random.Range(0, deck.Count)];
@@ -61,7 +62,7 @@ namespace Towers.CardN
 
         }
 
-        void ShuffleAnimation(int times)
+        IEnumerator ShuffleAnimation(int times)
         {
             for (int i = 0; i < times; i++)
             {
@@ -69,6 +70,7 @@ namespace Towers.CardN
                 createdObj.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
                 createdObj.transform.localPosition = new Vector3(Random.Range(-30f, 30f), Random.Range(-30f, 30f), 0f) + createdObj.transform.localPosition;
                 createdObj.GetComponent<MovingObject>().GiveMovementInfo(transform, Random.Range(0.45f, 0.7f), Random.Range(-5, 5));
+                yield return new WaitForSeconds(0.1f);
             }
         }
 
