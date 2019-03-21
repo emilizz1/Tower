@@ -9,7 +9,7 @@ namespace Towers.Units
         List<EnemyAI> targets = new List<EnemyAI>();
         EnemyAI lastTarget;
 
-        protected override void CheckForTarget()
+        protected override void CheckForClosestTarget()
         {
             targets = new List<EnemyAI>();
             foreach (EnemyAI enemy in enemySpawner.GetAllEnemies())
@@ -29,7 +29,7 @@ namespace Towers.Units
 
         protected override void Shoot()
         {
-            CheckForTarget();
+            CheckForClosestTarget();
             if(targets.Count == 0)
             {
                 targets.Add(lastTarget);

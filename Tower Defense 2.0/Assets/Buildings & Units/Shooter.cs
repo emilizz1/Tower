@@ -48,7 +48,7 @@ namespace Towers.Units
         {
             if (target == null)
             {
-                CheckForTarget();
+                CheckForClosestTarget();
             }
             else if (IsTargetInRange(target.gameObject) && IsTargetAlive(target.gameObject))
             {
@@ -57,7 +57,11 @@ namespace Towers.Units
             else
             {
                 StopAllCoroutines();
-                CheckForTarget();
+                CheckForClosestTarget();
+            }
+            if(target != null)
+            {
+                transform.LookAt(target.transform);
             }
             CorrectPossition();
         }
@@ -85,16 +89,20 @@ namespace Towers.Units
             }
         }
 
-        protected virtual void CheckForTarget()
+        protected virtual void CheckForClosestTarget()
         {
+            EnemyAI closestTarget = null;
+            float distanceToClosestTarget = 10000; //Huge number because of comparing and looking for smallest.
             foreach (EnemyAI enemy in enemySpawner.GetAllEnemies())
             {
-                if (IsTargetAlive(enemy.gameObject) && IsTargetInRange(enemy.gameObject))
+                float distanceToEnemy = (enemy.transform.position - transform.position).magnitude;
+                if (IsTargetAlive(enemy.gameObject) && distanceToEnemy < distanceToClosestTarget)
                 {
-                    target = enemy;
-                    return;
+                    distanceToClosestTarget = distanceToEnemy;
+                    closestTarget = enemy;
                 }
             }
+            target = closestTarget;
         }
 
         IEnumerator AttackTargetRepeatadly()
@@ -113,7 +121,6 @@ namespace Towers.Units
 
         private void AttackTargetOnce()
         {
-            transform.LookAt(target.transform);
             animator.SetTrigger(ATTACK_TRIGGER);
             SetAttackAnimation();
         }
