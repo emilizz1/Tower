@@ -8,11 +8,12 @@ namespace Towers.CardN
 {
     public class LevelEnemyCard : MonoBehaviour
     {
-        [Header("1st Enemy Setup")]
+        [Header("Enemy Setup")]
         [SerializeField] GameObject[] enemyCard;
         [SerializeField] Text[] enemyName;
         [SerializeField] Text[] enemyAmount;
-        [SerializeField] Text[] enemyStats;
+        [SerializeField] Text[] enemyHealth;
+        [SerializeField] Text[] enemySpecial;
 
         LevelManager levelManager;
         int differentEnemyTypes = 0;
@@ -54,8 +55,9 @@ namespace Towers.CardN
         {
             enemyCard[differentEnemyTypes].SetActive(true);
             enemyName[differentEnemyTypes].text = enemy.name;
-            enemyAmount[differentEnemyTypes].text = "Amount: " + amount.ToString();
-            enemyStats[differentEnemyTypes].text = "Health: " + enemy.GetComponent<HealthSystem>().GetMaxHP() + " Movement Speed: " + enemy.GetComponent<Character>().GetMovementSpeed();
+            enemyAmount[differentEnemyTypes].text = amount.ToString();
+            enemyHealth[differentEnemyTypes].text = enemy.GetComponent<HealthSystem>().GetMaxHP().ToString();
+            enemySpecial[differentEnemyTypes].text = enemy.GetComponent<HealthSystem>().GetSpecial();
             differentEnemyTypes++;
 
         }
