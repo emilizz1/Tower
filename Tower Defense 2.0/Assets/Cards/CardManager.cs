@@ -17,7 +17,6 @@ namespace Towers.CardN
         Discard discard;
         Card[] selectedCards;
         Animator animator;
-        LevelEnemyCard levelEnemyCard;
         
         int cardSelected;
         bool firstRound = true;
@@ -30,7 +29,6 @@ namespace Towers.CardN
             rM = FindObjectOfType<ResourcesManager>();
             deck = FindObjectOfType<Deck>();
             discard = FindObjectOfType<Discard>();
-            levelEnemyCard = FindObjectOfType<LevelEnemyCard>();
             animator = GetComponent<Animator>();
         }
 
@@ -69,7 +67,7 @@ namespace Towers.CardN
                 SetEnemies();
                 GiveGold();
                 TurnCards(false);
-                levelEnemyCard.TurnOffEnemyCards();
+                FindObjectOfType<LevelEnemyCard>().TurnOffEnemyCards();
             }
         }
 
@@ -101,7 +99,7 @@ namespace Towers.CardN
             }
             else
             {
-                levelEnemyCard.PutEnemiesOnScreen();
+                //levelEnemyCard.PutEnemiesOnScreen();
             }
             foreach (Card card in selectedCards)
             {

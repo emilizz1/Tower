@@ -74,6 +74,7 @@ namespace Towers.CardN
 
         void SetupEnemyCard()
         {
+            FindObjectOfType<LevelEnemyCard>().PutEnemiesOnScreen();
             var enemy = card.GetEnemyPrefab();
             enemyImage.texture = card.GetEnemyTexture();
             enemyName.text = enemy.name.ToString();
