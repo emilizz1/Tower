@@ -19,6 +19,7 @@ namespace Towers.Events
         public void Activated()
         {
             FindObjectOfType<CardHolders>().RemovePlayerCard(card);
+            FindObjectOfType<EventManager>().gameObject.SetActive(false);
         }
 
         int GetBuildingLevel()

@@ -20,6 +20,19 @@ namespace Towers.Events
         {
             FindObjectOfType<CardHolders>().AddPlayerCard(card);
             FindObjectOfType<CardHolders>().RemoveAddableCard(card);
+            if(transform.parent.position.x > 0)
+            {
+                GetComponent<Animator>().SetTrigger("AddCardRight");
+            }
+            else
+            {
+                GetComponent<Animator>().SetTrigger("AddCardLeft");
+            }
+        }
+
+        public void AnimationFinished()
+        {
+            FindObjectOfType<EventManager>().gameObject.SetActive(false);
         }
 
         int GetBuildingLevel()

@@ -28,12 +28,14 @@ namespace Towers.Events
             if (choice == 0)
             {
                 leftChoice.BroadcastMessage("Activated");
+                rightChoice.SetActive(false);
+
             }
             else if (choice == 1)
             {
                 rightChoice.BroadcastMessage("Activated");
+                leftChoice.SetActive(false);
             }
-            SetEventsActive(false);
         }
     }
 }
