@@ -12,6 +12,7 @@ public class MovingObject : MonoBehaviour
     {
         if (myDestination != null)
         {
+            transform.position = new Vector3(transform.position.x, transform.position.y, transform.parent.position.z);
             if (Vector3.Distance(transform.position, myDestination.position) > 0.1f)
             {
                 transform.position = Vector3.MoveTowards(transform.position, myDestination.position, moveSpeed);
