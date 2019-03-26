@@ -97,10 +97,6 @@ namespace Towers.CardN
                 selectedCards = deck.GetNewCards().ToArray();
                 animator.SetTrigger("DrawCards");
             }
-            else
-            {
-                //levelEnemyCard.PutEnemiesOnScreen();
-            }
             foreach (Card card in selectedCards)
             {
                 cards[i++].SetCard(card, secondChoice);

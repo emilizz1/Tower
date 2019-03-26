@@ -83,7 +83,6 @@ namespace Towers.Scenes
                 case State.LevelStarted: //showing what cards are added to deck
                     startLevelDisplayer.TurnOffAllShowcaseCards();
                     upcomingActions.StartUpcomingActions();
-                    cardM.SetNewCards(true);
                     currentState = State.buildingSelecting;
                     break;
                 case State.buildingSelecting: //selected what building to build

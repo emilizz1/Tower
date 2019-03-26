@@ -187,5 +187,18 @@ namespace Towers.CardN
                 arrowRight.SetActive(false);
             }
         }
+
+        public void StartLevelAnimation()
+        {
+            print("Started");
+            GetComponent<Animator>().SetTrigger("AddCards");
+            Time.timeScale = 1f;
+        }
+
+        public void AnimationFinished()
+        {
+            ShowcaseCards(new CardHolder(), Showing.StartLevelCards);
+            FindObjectOfType<CardManager>().SetNewCards(true);
+        }
     }
 }

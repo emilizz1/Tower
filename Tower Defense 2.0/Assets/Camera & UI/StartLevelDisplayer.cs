@@ -11,14 +11,13 @@ namespace Towers.CameraUI
 
         void Start()
         {
-            levelCards = FindObjectOfType<Deck>().GetLevelCards();
-            FindObjectOfType<CardsShowcase>().ShowcaseCards(levelCards, CardsShowcase.Showing.StartLevelCards);
+            FindObjectOfType<CardsShowcase>().ShowcaseCards(FindObjectOfType<Deck>().GetLevelCards(), CardsShowcase.Showing.StartLevelCards);
             text.SetActive(true);
         }
 
         public void TurnOffAllShowcaseCards()
         {
-            FindObjectOfType<CardsShowcase>().ShowcaseCards(levelCards, CardsShowcase.Showing.StartLevelCards);
+            FindObjectOfType<CardsShowcase>().StartLevelAnimation();
             text.SetActive(false);
         }
     }
