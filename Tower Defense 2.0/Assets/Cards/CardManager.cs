@@ -99,7 +99,7 @@ namespace Towers.CardN
             }
             foreach (Card card in selectedCards)
             {
-                cards[i++].SetCard(card, secondChoice);
+                cards[i++].SetupCards(secondChoice, !secondChoice, false, card);
             }
         }
 
@@ -117,7 +117,7 @@ namespace Towers.CardN
             {
                 foreach (Card card in selectedCards)
                 {
-                    cards[i++].SetCard(card, true);
+                    cards[i++].SetupCards( true, false, false, card);
                 }
             }
         }

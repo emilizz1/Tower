@@ -66,12 +66,6 @@ namespace Towers.CardN
             return card.GetEnemyAmount();
         }
 
-        public void SetCard(Card cardToSet, bool secondChoice) //TODO Remove this
-        {
-            card = cardToSet;
-            SetupCards(secondChoice, !secondChoice, false);
-        }
-
         void SetupEnemyCard()
         {
             FindObjectOfType<LevelEnemyCard>().PutEnemiesOnScreen();
@@ -160,8 +154,12 @@ namespace Towers.CardN
             }
         }
 
-        public void SetupCards(bool isItBuilding, bool isItEnemy, bool isItResource)
+        public void SetupCards(bool isItBuilding, bool isItEnemy, bool isItResource, Card cardToSet = null)
         {
+            if(cardToSet != null)
+            {
+                card = cardToSet;
+            }
             if (FindObjectOfType<CardManager>().GetAnimationIdle())
             {
                 if (isItBuilding)

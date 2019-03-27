@@ -20,7 +20,7 @@ namespace Towers.Events
         {
             FindObjectOfType<CardHolders>().AddPlayerCard(card);
             FindObjectOfType<CardHolders>().RemoveAddableCard(card);
-            if(transform.parent.position.x > 0)
+            if(transform.parent.localPosition.x > 0)
             {
                 GetComponent<Animator>().SetTrigger("AddCardRight");
             }
