@@ -42,8 +42,7 @@ namespace Towers.Events
 
         public void Activated()
         {
-            var resourceHolder = FindObjectOfType<ResourcesManager>();
-            resourceHolder.AddResources(resourcesToAdd.ToArray(), transform);
+            FindObjectOfType<ResourcesManager>().AddResources(resourcesToAdd.ToArray(), transform);
             FindObjectOfType<EventManager>().gameObject.SetActive(false);
         }
     }
