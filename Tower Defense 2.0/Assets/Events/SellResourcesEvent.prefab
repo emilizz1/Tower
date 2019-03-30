@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1657629702873320061}
   - component: {fileID: 4749936032024635736}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -129,6 +129,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fecc4ba3dcf05664385cf06007d36e4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sellingResource: {fileID: 9189613537346257010}
+  firstGoldResourceImage: {fileID: 8267939177975868704}
+  secondGoldResourceImage: {fileID: 5929106876502482262}
+  sellingNumberText: {fileID: 7033452844013316956}
 --- !u!1 &1670213158882239683
 GameObject:
   m_ObjectHideFlags: 0
@@ -289,7 +293,7 @@ GameObject:
   - component: {fileID: 887452939142401901}
   - component: {fileID: 7033452844013316956}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Selling Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
