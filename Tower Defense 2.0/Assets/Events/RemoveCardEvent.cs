@@ -19,6 +19,11 @@ namespace Towers.Events
         public void Activated()
         {
             FindObjectOfType<CardHolders>().RemovePlayerCard(card);
+            GetComponent<Animator>().SetTrigger("RemoveCard");
+        }
+
+        public void AnimationFinished()
+        {
             FindObjectOfType<EventManager>().gameObject.SetActive(false);
         }
 

@@ -10,8 +10,9 @@
 // Card leveling up
 // Idea Change card destruction?
 // Add arrows showing enemy path.
-//TODO After discard no card flash
 //TODO Streamline enemy walking
+// Resources dont change possitions
+// Sounds
 
 // Resources icons are 172x158 / 86x78 / 43x38 
 // Pirate unit materials: Lv1 - 01A. Lv2 - 02B
