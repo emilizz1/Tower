@@ -9,7 +9,7 @@ namespace Towers.Events
     public class SellResourcesEvent : MonoBehaviour
     {
         [SerializeField] Image sellingResource;
-        [SerializeField] Image firstGoldResourceImage, secondGoldResourceImage;
+        [SerializeField] Image goldImage;
         [SerializeField] Text sellingNumberText;
 
         int sellingNumber;
@@ -32,14 +32,15 @@ namespace Towers.Events
         {
             var resourceHolder = FindObjectOfType<ResourceHolder>();
             var activeResourceSlots = FindObjectOfType<ResourceSetter>().GetActiveResourceSlots();
-            Resource[] randomizableResources = new Resource[activeResourceSlots.Length];
+            Resource[] randomizableResources = new Resource[activeResourceSlots.Length -1];
+            int randomizableResourceCount = 0;
             for (int i = 0; i < activeResourceSlots.Length; i++)
             {
-                print(firstGoldResourceImage.sprite + "  " + activeResourceSlots[i].GetComponentInChildren<Image>().sprite);
-                if (firstGoldResourceImage.sprite != activeResourceSlots[i].GetComponentInChildren<Image>().sprite)
+                if (resourceHolder.ConvertToResource(goldImage.sprite) != resourceHolder.ConvertToResource(activeResourceSlots[i].GetComponentInChildren<Image>().sprite))
                 {
                     var activeResourceImage = activeResourceSlots[i].GetComponentInChildren<Image>().sprite;
-                    randomizableResources[i] = resourceHolder.ConvertToResource(activeResourceImage);
+                    randomizableResources[randomizableResourceCount] = resourceHolder.ConvertToResource(activeResourceImage);
+                    randomizableResourceCount++;
                 }
             }
             sellingResourceType = randomizableResources[Random.Range(0, randomizableResources.Length)];
@@ -49,18 +50,16 @@ namespace Towers.Events
         {
             var resourceManager = FindObjectOfType<ResourcesManager>();
             Resource[] sellingResources = new Resource[sellingNumber];
-            Resource[] gettingGoldI = new Resource[sellingNumber];
-            Resource[] gettingGoldII = new Resource[sellingNumber];
-            Resource goldResource = FindObjectOfType<ResourceHolder>().ConvertToResource(firstGoldResourceImage.sprite);
+            Resource[] gettingGold = new Resource[sellingNumber * 2];
+            Resource goldResource = FindObjectOfType<ResourceHolder>().ConvertToResource(goldImage.sprite);
             for (int i = 0; i < sellingNumber; i++)
             {
                 sellingResources[i] = sellingResourceType;
-                gettingGoldI[i] = goldResource;
-                gettingGoldII[i] = goldResource;
+                gettingGold[i] = goldResource;
+                gettingGold[i + sellingNumber] = goldResource;
             }
             resourceManager.CheckForResources(sellingResources);
-            resourceManager.AddResources(gettingGoldI, firstGoldResourceImage.transform, true);
-            resourceManager.AddResources(gettingGoldII, secondGoldResourceImage.transform, true);
+            resourceManager.AddResources(gettingGold, transform);
             FindObjectOfType<EventManager>().gameObject.SetActive(false);
         }
     }

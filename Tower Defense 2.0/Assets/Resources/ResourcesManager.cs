@@ -53,6 +53,7 @@ namespace Towers.Resources
                 {
                     createdResource = Instantiate(resourceImage, carryFrom.position, Quaternion.identity, transform);
                 }
+                print(createdResource);
                 createdResource.GetComponent<Image>().sprite = resource.GetSprite();
                 createdResource.AddComponent<MovingResource>();
                 createdResource.GetComponent<MovingResource>().GiveResourceMovementInfo(GetResourceDestination(resource), resourceGatherSpeed, resource);
