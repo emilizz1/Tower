@@ -25,6 +25,7 @@ namespace Towers.CardN
 
         public void PutEnemiesOnScreen()
         {
+            print("Adding level enemies to screen");
             if (levelManager.GetCurrentLevelEnemies().Length != 0)
             {
                 int currentEnemyCount = 0;
@@ -49,6 +50,7 @@ namespace Towers.CardN
                 }
                 ListAnotherEnemy(currentEnemyCount, myEnemy);
             }
+            differentEnemyTypes = 0;
         }
 
         void ListAnotherEnemy(int amount, GameObject enemy)
@@ -59,7 +61,6 @@ namespace Towers.CardN
             enemyHealth[differentEnemyTypes].text = enemy.GetComponent<HealthSystem>().GetMaxHP().ToString();
             enemySpecial[differentEnemyTypes].text = enemy.GetComponent<HealthSystem>().GetSpecial();
             differentEnemyTypes++;
-
         }
 
         public void TurnOffEnemyCards()
@@ -67,7 +68,6 @@ namespace Towers.CardN
             foreach (GameObject myEnemyCard in enemyCard)
             {
                 myEnemyCard.SetActive(false);
-                differentEnemyTypes = 0;
             }
         }
     }
