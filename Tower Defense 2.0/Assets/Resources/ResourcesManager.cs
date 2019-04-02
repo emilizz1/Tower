@@ -53,7 +53,6 @@ namespace Towers.Resources
                 {
                     createdResource = Instantiate(resourceImage, carryFrom.position, Quaternion.identity, transform);
                 }
-                print(createdResource);
                 createdResource.GetComponent<Image>().sprite = resource.GetSprite();
                 createdResource.AddComponent<MovingResource>();
                 createdResource.GetComponent<MovingResource>().GiveResourceMovementInfo(GetResourceDestination(resource), resourceGatherSpeed, resource);
@@ -98,6 +97,7 @@ namespace Towers.Resources
             foreach (Resource resource in resources)
             {
                 GameObject createdResource = Instantiate(resourceImage, GetResourceDestination(resource).position, Quaternion.identity, transform);
+                createdResource.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
                 createdResource.GetComponent<Image>().sprite = resource.GetSprite();
                 resource.RemoveResource();
                 updateResourceText();
