@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Towers.Scenes
+namespace Towers.Theme
 {
     public class LevelTheme : MonoBehaviour
     {

@@ -12,7 +12,6 @@ namespace Towers.CameraUI
         [SerializeField] GameObject enemyWaveIcon;
         [SerializeField] GameObject buildingBonusesIcon;
         [SerializeField] GameObject levelComnpletedIcon;
-
         [SerializeField] float objectsWidh = 30f;
         [SerializeField] float objectSize = 1.3f;
         [SerializeField] float objectElevation = 30f;

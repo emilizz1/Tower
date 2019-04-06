@@ -67,7 +67,7 @@ namespace Towers.Resources
             Resource lastResource = null;
             foreach (Resource resource in resourcesAwarded)
             {
-                if(resource != lastResource && resourceManager.CheckIfResourceIsActive(resource))
+                if (resource != lastResource && resourceManager.CheckIfResourceIsActive(resource))
                 {
                     Resource[] resources = resourceManager.CountAllResourcesOfType(resource, resourcesAwarded);
                     resourcesGameObjects[currentlyUsedResourceSlot].SetActive(true);
@@ -101,7 +101,5 @@ namespace Towers.Resources
             }
             return buildingLevel;
         }
-
-        
     }
 }

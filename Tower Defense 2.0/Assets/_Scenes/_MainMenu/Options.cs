@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using Towers.Scenes;
 using UnityEngine.UI;
+using Towers.Theme;
 
 public class Options : MonoBehaviour
 {

@@ -26,7 +26,6 @@ namespace Towers.Enemies
                 Instantiate(enemy, this.transform.position, Quaternion.identity, this.transform);
                 yield return new WaitForSecondsRealtime(0.25f);
             }
-
         }
 
         public void StartNextWave()

@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-namespace Towers.Scenes
+namespace Towers.Theme
 {
     public class ThemePlayer : MonoBehaviour
     {

@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine;
 using System.Linq;
 using UnityEngine.UI;
+using Towers.Core;
 
 namespace Towers.CardN
 {
@@ -53,7 +54,6 @@ namespace Towers.CardN
                     deck.AddRange(shuffledCards);
                 }
                 Card tempCard = deck.ToArray()[UnityEngine.Random.Range(0, deck.Count)];
-
                 selected.Add(tempCard);
                 deck.Remove(tempCard);
             }

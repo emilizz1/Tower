@@ -1,7 +1,4 @@
 ﻿using UnityEngine;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.IO;
-using Towers.CardN;
 
 namespace Towers.Scenes
 {

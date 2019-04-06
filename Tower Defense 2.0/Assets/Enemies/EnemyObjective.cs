@@ -6,7 +6,6 @@ namespace Towers.Enemies
     {
         private void OnTriggerEnter(Collider collider)
         {
-
             if (collider.GetComponent<EnemyAI>())
             {
                 FindObjectOfType<LifePoints>().DamageLifePoints(collider.GetComponent<EnemyAI>().GetDamageToLifePoints());

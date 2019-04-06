@@ -1,5 +1,4 @@
-﻿using Towers.CharacterN;
-using Towers.Enemies;
+﻿using Towers.Enemies;
 using Towers.Scenes;
 using UnityEngine;
 using UnityEngine.UI;
