@@ -1,10 +1,9 @@
 ﻿// Need more images
 // Idea make units images to gifs
-// build more events
 // add persistent Items
 // add branching building paths
 // more events: legendary cards, permanent items, upgrade a card
-// make negative events
+// make negative events??
 // 3rd button? (position rerolls)
 // Card Modification/Building
 // Card leveling up
