@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Towers.Resources;
 
 namespace Towers.Scenes
 {
@@ -32,7 +33,7 @@ namespace Towers.Scenes
 
         public void SavePlayerResources()
         {
-
+            FindObjectOfType<ResourceHolder>()
         }
     }
 }

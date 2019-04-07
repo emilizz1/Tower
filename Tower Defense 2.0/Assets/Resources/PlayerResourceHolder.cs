@@ -14,7 +14,7 @@ namespace Towers.Resources
             return resources;
         }
 
-        public void GetResources(List<Resource> givenResources)
+        public void GiveResources(List<Resource> givenResources)
         {
             resources = givenResources;
         }

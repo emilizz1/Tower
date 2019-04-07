@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
 
 namespace Towers.Resources
 {
@@ -13,8 +14,11 @@ namespace Towers.Resources
         int currentWood;
         int currentCoal;
 
-        void Awake()
+        void ResetResources()
         {
+            currentGold = 0;
+            currentWood = 0;
+            currentCoal = 0;
             foreach (Resource resource in startingResources)
             {
                 resource.AddResource();
@@ -88,6 +92,35 @@ namespace Towers.Resources
         public void AddCoal(int Amount)
         {
             currentCoal += Amount;
+        }
+
+        public List<Resource> GetAllCurrentResources()
+        {
+            List<Resource> currentResources = new List<Resource>();
+            for (int i = 0; i < currentGold; i++)
+            {
+                currentResources.Add(goldResource);
+            }
+            for (int i = 0; i < currentWood; i++)
+            {
+                currentResources.Add(woodResource);
+            }
+            for (int i = 0; i < currentCoal; i++)
+            {
+                currentResources.Add(coalResource);
+            }
+            return currentResources;
+        }
+
+        public void SetAllNewResources(List<Resource> resources)
+        {
+            currentGold = 0;
+            currentWood = 0;
+            currentCoal = 0;
+            foreach(Resource resource in resources)
+            {
+                resource.AddResource();
+            }
         }
     }
 }
