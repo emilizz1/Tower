@@ -6,6 +6,7 @@ namespace Towers.Scenes
     public class SaveLoad : MonoBehaviour
     {
         public static SaveLoad control;
+        [SerializeField] PlayerResourceHolder resourceHolder;
 
         void Awake()
         {
@@ -33,7 +34,23 @@ namespace Towers.Scenes
 
         public void SavePlayerResources()
         {
-            FindObjectOfType<ResourceHolder>()
+            resourceHolder.GiveResources(FindObjectOfType<ResourceHolder>().GetAllCurrentResources());
+        }
+
+        public void LoadPlayerResources()
+        {
+            FindObjectOfType<ResourceHolder>().SetAllNewResources(resourceHolder.GetResources());
+        }
+
+        public void SaveIntInfo(string infoName, int savingInt)
+        {
+            PlayerPrefs.SetInt(infoName, savingInt);
+            PlayerPrefs.Save();
+        }
+
+        public int LoadIntInfo(string infoName)
+        {
+            return PlayerPrefs.GetInt(infoName);
         }
     }
 }
