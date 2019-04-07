@@ -29,5 +29,10 @@ namespace Towers.Scenes
         {
             return PlayerPrefs.GetFloat(infoName);
         }
+
+        public void SavePlayerResources()
+        {
+
+        }
     }
 }

@@ -9,7 +9,7 @@ namespace Towers.CardN
         [SerializeField] CardHolder addableCards;
         [SerializeField] CardHolder startingAddableCards;
 
-        void Awake()
+        public void ResetPlayerCards()
         {
             RemoveAllCards(playerCards);
             RemoveAllCards(addableCards);

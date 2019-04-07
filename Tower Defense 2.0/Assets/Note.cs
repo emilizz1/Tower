@@ -6,12 +6,13 @@
 // make negative events??
 // 3rd button? (position rerolls)
 // Card Modification/Building
-// Card leveling up
+// PRIORITY Card leveling up
 // Idea Change card destruction?
 // Add arrows showing enemy path.
-//TODO Streamline enemy walking
+// TODO Streamline enemy walking
 // Resources dont change possitions
 // Sounds
+// Saving runs.
 
 // Resources icons are 172x158 / 86x78 / 43x38 
 // Pirate unit materials: Lv1 - 01A. Lv2 - 02B
