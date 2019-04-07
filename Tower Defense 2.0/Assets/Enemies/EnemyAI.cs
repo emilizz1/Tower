@@ -11,7 +11,7 @@ namespace Towers.Enemies
         [Header("Nav Mesh Agent")]
         [SerializeField] float stoppingDistance = 1f;
         [SerializeField] float navMeshSteeringSpeed = 1f;
-        [SerializeField] float damageToLifePoints = 1;
+        [SerializeField] int damageToLifePoints = 1;
         [SerializeField] float navMeshRadius = 0.25f;
 
         NavMeshAgent navMeshAgent;
@@ -63,7 +63,7 @@ namespace Towers.Enemies
             nextWaypointIndex = (nextWaypointIndex + 1) % patrolPath.transform.childCount;
         }
 
-        public float GetDamageToLifePoints()
+        public int GetDamageToLifePoints()
         {
             return damageToLifePoints;
         }

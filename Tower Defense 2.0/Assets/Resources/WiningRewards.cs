@@ -1,12 +1,12 @@
 ﻿using Towers.BuildingsN;
 using Towers.CardN;
-using Towers.Enemies;
-using Towers.Scenes;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using Towers.Resources;
+using Towers.Core;
 
-namespace Towers.Resources
+namespace Towers.Scenes
 {
     public class WiningRewards : MonoBehaviour
     {

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
+using Towers.Enemies;
 
-namespace Towers.Enemies
+namespace Towers.Core
 {
     public class EnemyObjective : MonoBehaviour
     {

@@ -14,7 +14,7 @@ namespace Towers.Resources
         int currentWood;
         int currentCoal;
 
-        void ResetResources()
+        public void ResetResources()
         {
             currentGold = 0;
             currentWood = 0;

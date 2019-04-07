@@ -2,20 +2,24 @@
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-namespace Towers.Enemies
+namespace Towers.Core
 {
     public class LifePoints : MonoBehaviour
     {
-        [SerializeField] float startingLifepoints = 20;
+        [SerializeField] int startingLifepoints = 20;
 
         Text text;
-        float lifePoints;
+        int lifePoints;
 
         void Start()
         {
             NewSceneLoaded(SceneManager.GetActiveScene(), LoadSceneMode.Single);
             SceneManager.sceneLoaded += NewSceneLoaded;
             text = GetComponentInChildren<Text>();
+        }
+
+        public void ResetLifepoints()
+        {
             lifePoints = startingLifepoints;
             UpdateLifePoints();
         }
@@ -25,10 +29,10 @@ namespace Towers.Enemies
             text.text = lifePoints.ToString();
         }
 
-        public void DamageLifePoints(float amount)
+        public void DamageLifePoints(int amount)
         {
             lifePoints -= amount;
-            if (lifePoints <= 0f)
+            if (lifePoints <= 0)
             {
                 SceneManager.LoadScene(2);
             }
@@ -53,6 +57,11 @@ namespace Towers.Enemies
                 GetComponentInChildren<Transform>().gameObject.SetActive(true);
                 GetComponent<Image>().enabled = true;
             }
+        }
+
+        public void GiveNewLifepoints(int GivenLifepoints)
+        {
+            lifePoints = GivenLifepoints;
         }
     }
 }
