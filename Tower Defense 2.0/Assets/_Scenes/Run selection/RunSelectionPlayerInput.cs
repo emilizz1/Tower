@@ -1,5 +1,6 @@
 ﻿using Towers.Events;
 using UnityEngine;
+using Towers.Core;
 
 namespace Towers.Scenes.RunSelection
 {
@@ -23,6 +24,11 @@ namespace Towers.Scenes.RunSelection
             eventManager = FindObjectOfType<EventManager>();
             levelSelectionManager = FindObjectOfType<LevelSelectionManager>();
             screenWidth = Screen.width;
+            if (FindObjectOfType<SaveLoad>().LoadIntInfo("EventFinished") == 1)
+            {
+                currentState = State.choosingLevel;
+                levelSelectionManager.ChangeReadyToSelect(true);
+            }
         }
 
         void Update()

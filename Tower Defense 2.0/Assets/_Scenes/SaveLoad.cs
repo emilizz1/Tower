@@ -71,5 +71,10 @@ namespace Towers.Core
         {
             return PlayerPrefs.GetInt(infoName);
         }
+
+        public void ResetEventFinished()
+        {
+            SaveIntInfo("EventFinished", 0);
+        }
     }
 }

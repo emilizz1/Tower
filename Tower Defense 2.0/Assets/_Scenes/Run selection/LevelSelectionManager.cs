@@ -117,10 +117,5 @@ namespace Towers.Scenes.RunSelection
         {
             return lockedLevelPS;
         }
-
-        public void EventFinished()
-        {
-
-        }
     }
 }

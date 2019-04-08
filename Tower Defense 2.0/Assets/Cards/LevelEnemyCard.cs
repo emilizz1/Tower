@@ -24,7 +24,6 @@ namespace Towers.CardN
 
         public void PutEnemiesOnScreen()
         {
-            print("Adding level enemies to screen");
             if (levelManager.GetCurrentLevelEnemies().Length != 0)
             {
                 int currentEnemyCount = 0;
