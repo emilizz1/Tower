@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using Towers.Events;
 using Towers.Resources;
+using Towers.Core;
 
 namespace Towers.Scenes.RunSelection
 {
@@ -15,7 +16,6 @@ namespace Towers.Scenes.RunSelection
         [SerializeField] GameObject lockedLevelPS;
 
         bool readyTosSelect = false;
-        int eventFinished = 0; // acts as a bool, int for saving purposes
 
         Rect screenRectOnConstruction = new Rect(0, 0, Screen.width, Screen.height);
         float maxRaycasterDepth = 1000f;
@@ -26,7 +26,7 @@ namespace Towers.Scenes.RunSelection
         {
             lastCompletedLevel = levels[FindObjectOfType<LevelCounter>().GetLevelFinished()];
             ActivateActiveLevels();
-            if (eventFinished == 0)
+            if (FindObjectOfType<SaveLoad>().LoadIntInfo("EventFinished") == 0)
             {
                 FindObjectOfType<EventManager>().PrepareEvents();
             }
@@ -120,8 +120,7 @@ namespace Towers.Scenes.RunSelection
 
         public void EventFinished()
         {
-            eventFinished = 1;
-            FindObjectOfType<SaveLoad>().SaveIntInfo("EventFinished", eventFinished);
+
         }
     }
 }

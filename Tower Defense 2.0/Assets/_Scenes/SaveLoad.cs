@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using Towers.Resources;
+using Towers.Scenes;
 
-namespace Towers.Scenes
+namespace Towers.Core
 {
     public class SaveLoad : MonoBehaviour
     {
@@ -30,7 +31,7 @@ namespace Towers.Scenes
             PlayerPrefs.Save();
         }
 
-        public float LoadBoolInfo(string infoName)
+        public float LoadFloatInfo(string infoName)
         {
             return PlayerPrefs.GetFloat(infoName);
         }

@@ -1,4 +1,5 @@
-﻿using Towers.Scenes.RunSelection;
+﻿using Towers.Core;
+using Towers.Scenes.RunSelection;
 using UnityEngine;
 
 namespace Towers.Events
@@ -36,6 +37,7 @@ namespace Towers.Events
                 rightChoice.BroadcastMessage("Activated");
                 leftChoice.SetActive(false);
             }
+            FindObjectOfType<SaveLoad>().SaveIntInfo("EventFinished", 1);
         }
     }
 }

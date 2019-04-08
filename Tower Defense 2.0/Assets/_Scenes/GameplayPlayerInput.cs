@@ -153,6 +153,7 @@ namespace Towers.Scenes
             saveLoad.SavePlayerResources();
             saveLoad.SaveIntInfo("Lifepoints", FindObjectOfType<LifePoints>().GetLifePoints());
             saveLoad.SaveCompletedLevels(FindObjectOfType<LevelCounter>().GetLevelFinished());
+            saveLoad.SaveIntInfo("EventFinished", 0);
         }
 
         void IsAnotherBuildingAvailable()
