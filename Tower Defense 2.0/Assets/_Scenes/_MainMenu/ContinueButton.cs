@@ -6,8 +6,6 @@ using Towers.Core;
 
 public class ContinueButton : MonoBehaviour
 {
-    [SerializeField] int levelDifference;
-
     SaveLoad saveLoad;
 
     void Start()

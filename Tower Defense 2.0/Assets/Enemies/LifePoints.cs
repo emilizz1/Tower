@@ -39,7 +39,7 @@ namespace Towers.Core
             UpdateLifePoints();
         }
 
-        public float GetLifePoints()
+        public int GetLifePoints()
         {
             return lifePoints;
         }

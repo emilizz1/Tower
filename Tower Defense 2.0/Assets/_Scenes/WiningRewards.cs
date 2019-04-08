@@ -47,6 +47,15 @@ namespace Towers.Scenes
             {
                 FindObjectOfType<CardHolders>().AddAddableCard(card);
             }
+            SaveProgesss();
+        }
+
+        void SaveProgesss()
+        {
+            var saveLoad = FindObjectOfType<SaveLoad>();
+            saveLoad.SavePlayerResources();
+            saveLoad.SaveIntInfo("Lifepoints", FindObjectOfType<LifePoints>().GetLifePoints());
+            saveLoad.SaveCompletedLevels(currentLevel);
         }
 
         IEnumerator AddLife()

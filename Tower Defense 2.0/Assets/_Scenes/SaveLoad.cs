@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using Towers.Resources;
 
 namespace Towers.Scenes
@@ -6,7 +7,9 @@ namespace Towers.Scenes
     public class SaveLoad : MonoBehaviour
     {
         public static SaveLoad control;
+
         [SerializeField] PlayerResourceHolder resourceHolder;
+        [SerializeField] PlayerCompletedLevels completedLevels;
 
         void Awake()
         {
@@ -40,6 +43,24 @@ namespace Towers.Scenes
         public void LoadPlayerResources()
         {
             FindObjectOfType<ResourceHolder>().SetAllNewResources(resourceHolder.GetResources());
+        }
+
+        public void SaveCompletedLevels(int levelFinished)
+        {
+            completedLevels.LevelFinished(levelFinished);
+        }
+
+        public void LoadCompletedLevels()
+        {
+            foreach (int level in completedLevels.GetAllFinishedLevels())
+            {
+                FindObjectOfType<LevelCounter>().LevelFinished(level);
+            }
+        }
+
+        public void ResetCompletedLevels()
+        {
+            completedLevels.Reset();
         }
 
         public void SaveIntInfo(string infoName, int savingInt)
