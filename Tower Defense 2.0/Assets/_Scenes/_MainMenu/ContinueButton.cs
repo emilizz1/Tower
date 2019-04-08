@@ -11,8 +11,8 @@ public class ContinueButton : MonoBehaviour
     void Start()
     {
         saveLoad = FindObjectOfType<SaveLoad>();
-        int levelToContinue = saveLoad.LoadIntInfo("Level");
-        if(levelToContinue< 1 || levelToContinue > 5)
+        List<int> completedLevels = saveLoad.LoadCompletedLevels();
+        if(completedLevels.Count < 1 || completedLevels.Count > 6)
         {
             gameObject.SetActive(false);
         }
@@ -22,6 +22,10 @@ public class ContinueButton : MonoBehaviour
     {
         saveLoad.LoadPlayerResources();
         FindObjectOfType<LifePoints>().GiveNewLifepoints(saveLoad.LoadIntInfo("Lifepoints"));
+        foreach (int level in saveLoad.LoadCompletedLevels())
+        {
+            FindObjectOfType<LevelCounter>().LevelFinished(level);
+        }
         FindObjectOfType<LoadLevel>().LoadScene(3);
     }
 }

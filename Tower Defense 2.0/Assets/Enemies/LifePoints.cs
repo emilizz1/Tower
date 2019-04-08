@@ -49,12 +49,12 @@ namespace Towers.Core
         {
             if (arg0.buildIndex == 0 || arg0.buildIndex == 4)
             {
-                GetComponentInChildren<Transform>().gameObject.SetActive(false);
+                GetComponentInChildren<Text>().enabled = false;
                 GetComponent<Image>().enabled = false;
             }
             else
             {
-                GetComponentInChildren<Transform>().gameObject.SetActive(true);
+                GetComponentInChildren<Text>().enabled = true;
                 GetComponent<Image>().enabled = true;
             }
         }
@@ -62,6 +62,7 @@ namespace Towers.Core
         public void GiveNewLifepoints(int GivenLifepoints)
         {
             lifePoints = GivenLifepoints;
+            UpdateLifePoints();
         }
     }
 }

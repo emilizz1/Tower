@@ -50,12 +50,9 @@ namespace Towers.Scenes
             completedLevels.LevelFinished(levelFinished);
         }
 
-        public void LoadCompletedLevels()
+        public List<int> LoadCompletedLevels()
         {
-            foreach (int level in completedLevels.GetAllFinishedLevels())
-            {
-                FindObjectOfType<LevelCounter>().LevelFinished(level);
-            }
+            return completedLevels.GetAllFinishedLevels();
         }
 
         public void ResetCompletedLevels()

@@ -6,6 +6,7 @@ using Towers.Enemies;
 using Towers.Resources;
 using Towers.Units;
 using UnityEngine;
+using Towers.Core;
 
 namespace Towers.Scenes
 {
@@ -137,12 +138,21 @@ namespace Towers.Scenes
                 case State.levelCompleted:
                     if (FindObjectsOfType<MovingResource>().Length == 0)
                     {
+                        SaveProgesss();
                         FindObjectOfType<LoadLevel>().LoadScene(3);
                     }
                     break;
                 case State.nothing:
                     break;
             }
+        }
+
+        void SaveProgesss()
+        {
+            var saveLoad = FindObjectOfType<SaveLoad>();
+            saveLoad.SavePlayerResources();
+            saveLoad.SaveIntInfo("Lifepoints", FindObjectOfType<LifePoints>().GetLifePoints());
+            saveLoad.SaveCompletedLevels(FindObjectOfType<LevelCounter>().GetLevelFinished());
         }
 
         void IsAnotherBuildingAvailable()
