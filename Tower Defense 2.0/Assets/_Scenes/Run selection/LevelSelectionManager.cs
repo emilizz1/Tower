@@ -15,6 +15,7 @@ namespace Towers.Scenes.RunSelection
         [SerializeField] GameObject lockedLevelPS;
 
         bool readyTosSelect = false;
+        int eventFinished = 0; // acts as a bool, int for saving purposes
 
         Rect screenRectOnConstruction = new Rect(0, 0, Screen.width, Screen.height);
         float maxRaycasterDepth = 1000f;
@@ -25,7 +26,10 @@ namespace Towers.Scenes.RunSelection
         {
             lastCompletedLevel = levels[FindObjectOfType<LevelCounter>().GetLevelFinished()];
             ActivateActiveLevels();
-            FindObjectOfType<EventManager>().PrepareEvents();
+            if (eventFinished == 0)
+            {
+                FindObjectOfType<EventManager>().PrepareEvents();
+            }
         }
 
         void Update()
@@ -112,6 +116,12 @@ namespace Towers.Scenes.RunSelection
         public GameObject GetLockedLevelPS()
         {
             return lockedLevelPS;
+        }
+
+        public void EventFinished()
+        {
+            eventFinished = 1;
+            FindObjectOfType<SaveLoad>().SaveIntInfo("EventFinished", eventFinished);
         }
     }
 }

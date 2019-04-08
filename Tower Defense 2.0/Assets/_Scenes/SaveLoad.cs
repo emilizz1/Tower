@@ -30,7 +30,7 @@ namespace Towers.Scenes
             PlayerPrefs.Save();
         }
 
-        public float LoadFloatInfo(string infoName)
+        public float LoadBoolInfo(string infoName)
         {
             return PlayerPrefs.GetFloat(infoName);
         }

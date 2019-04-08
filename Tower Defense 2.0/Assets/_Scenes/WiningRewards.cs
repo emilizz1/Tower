@@ -55,7 +55,7 @@ namespace Towers.Scenes
             for (int i = 0; i < lifepointsRewarded; i++)
             {
                 FindObjectOfType<LifePoints>().DamageLifePoints(-1);
-                yield return new WaitForSeconds(2f / lifepointsRewarded);
+                yield return new WaitForSeconds(1.5f / lifepointsRewarded);
             }
         }
 
