@@ -3,7 +3,7 @@ using Towers.Scenes;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Towers.CameraUI
+namespace Towers.CameraUI.UpcomingAction
 {
     public class UpcomingActions : MonoBehaviour
     {

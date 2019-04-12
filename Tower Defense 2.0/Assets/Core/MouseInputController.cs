@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using Towers.Scenes;
 
-namespace Towers.CameraUI {
+namespace Towers.Core
+{
     public class MouseInputController : MonoBehaviour
     {
         public void MousePressed()

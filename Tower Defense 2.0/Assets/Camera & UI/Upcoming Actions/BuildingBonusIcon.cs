@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using Towers.Resources;
 
-namespace Towers.CameraUI
+namespace Towers.CameraUI.UpcomingAction
 {
     public class BuildingBonusIcon : MonoBehaviour
     {

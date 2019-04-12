@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace Towers.Scenes
+namespace Towers.Scenes.Loading
 {
     public class LoadingTips : MonoBehaviour
     {

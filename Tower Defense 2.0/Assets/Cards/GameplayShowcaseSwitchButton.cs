@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Towers.CameraUI
+namespace Towers.CardN
 {
     public class GameplayShowcaseSwitchButton : MonoBehaviour
     {

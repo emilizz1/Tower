@@ -14,10 +14,10 @@ namespace Towers.Units
             targets = new List<EnemyAI>();
             foreach (EnemyAI enemy in enemySpawner.GetAllEnemies())
             {
+                target = enemy; // for shooter class to have a target
                 if (IsTargetAlive(enemy.gameObject) && IsTargetInRange(enemy.gameObject))
                 {
                     targets.Add(enemy); // To gather all enemies
-                    target = enemy; // for shooter class to have a target
                     lastTarget = enemy; // incase it shoots and all targets out of range, to do last shot
                 }
                 if(targets.Count > 1)
