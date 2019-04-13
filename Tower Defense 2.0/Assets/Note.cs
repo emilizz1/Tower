@@ -3,13 +3,11 @@
 // add persistent Items
 // add branching building paths
 // more events: legendary cards, permanent items, upgrade a card
-// make negative events??
-// 3rd button? (position rerolls)
 // Card Modification/Building
 // PRIORITY Card leveling up
 // Idea Change card destruction?
 // Add arrows showing enemy path.
-// TODO Streamline enemy walking
+// more enemy variety
 // Resources dont change possitions
 // Sounds
 

@@ -6,6 +6,8 @@ namespace Towers.Enemies
     [RequireComponent(typeof(HealthSystem))]
     public class EnemyAI : MonoBehaviour
     {
+        [SerializeField] int damageToLifePoints = 1;
+
         [Header("Animator Settings")]
         [SerializeField] RuntimeAnimatorController animatorController;
         [SerializeField] AnimatorOverrideController animatorOverrideController;
@@ -14,7 +16,6 @@ namespace Towers.Enemies
         [Header("Nav Mesh Agent")]
         [SerializeField] float stoppingDistance = 1f;
         [SerializeField] float navMeshSteeringSpeed = 1f;
-        [SerializeField] int damageToLifePoints = 1;
         [SerializeField] float navMeshRadius = 0.25f;
 
         [Header("Movement")]
@@ -42,7 +43,6 @@ namespace Towers.Enemies
         void Start()
         {
             AddRequiredComponents();
-            AddNavMeshAgent();
             patrolPath = FindObjectOfType<WaypointContainer>();
         }
 
@@ -75,6 +75,14 @@ namespace Towers.Enemies
             animator = gameObject.AddComponent<Animator>();
             animator.runtimeAnimatorController = animatorController;
             animator.avatar = characterAvatar;
+
+            navMeshAgent = gameObject.AddComponent<NavMeshAgent>();
+            navMeshAgent.updateRotation = false;
+            navMeshAgent.updatePosition = true;
+            navMeshAgent.stoppingDistance = 0.1f;
+            navMeshAgent.speed = navMeshSteeringSpeed;
+            navMeshAgent.autoBraking = false;
+            navMeshAgent.radius = navMeshRadius;
         }
 
         void Patrol()
@@ -93,22 +101,15 @@ namespace Towers.Enemies
         private void CycleWaypoint()
         {
             nextWaypointIndex = (nextWaypointIndex + 1) % patrolPath.transform.childCount;
+            if(nextWaypointIndex == 0)
+            {
+                stoppingDistance = 0.1f;
+            }
         }
 
         public int GetDamageToLifePoints()
         {
             return damageToLifePoints;
-        }
-
-        void AddNavMeshAgent()
-        {
-            navMeshAgent = gameObject.AddComponent<NavMeshAgent>();
-            navMeshAgent.updateRotation = false;
-            navMeshAgent.updatePosition = true;
-            navMeshAgent.stoppingDistance = stoppingDistance;
-            navMeshAgent.speed = navMeshSteeringSpeed;
-            navMeshAgent.autoBraking = false;
-            navMeshAgent.radius = navMeshRadius;
         }
 
         void SetDestination(Vector3 worldPos)
