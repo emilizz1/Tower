@@ -1,20 +1,28 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
-using Towers.CharacterN;
 using Towers.Enemies;
 
 namespace Towers.Units
 {
-    [RequireComponent(typeof(Character))]
     public class Shooter : MonoBehaviour
     {
+        [Header("Stats")]
         [SerializeField] [Range(0.1f, 2f)] float timeBetweenAttacks = 1f;
         [SerializeField] protected float baseDamage = 50f;
         [SerializeField] float maxAttackRange = 10f;
         [SerializeField] protected ProjectileSystem projectileSystem;
         [SerializeField] protected Transform projectileSocket;
         [SerializeField] AttackType attackType;
+
+        [Header("Animator Settings")]
+        [SerializeField] RuntimeAnimatorController animatorController;
+        [SerializeField] AnimatorOverrideController animatorOverrideController;
+        [SerializeField] Avatar characterAvatar;
+
+        [Header("Captule Collider")]
+        [SerializeField] Vector3 colliderCenter = new Vector3(0f,1.5f,0f);
+        [SerializeField] float colliderHeight = 2.5f;
 
         public enum AttackType
         {
@@ -28,7 +36,6 @@ namespace Towers.Units
         Vector3 permenentPossition;
         protected EnemyAI target;
         Animator animator;
-        Character character;
         float lastHitTime;
         protected EnemySpawner enemySpawner;
 
@@ -37,9 +44,9 @@ namespace Towers.Units
 
         void Start()
         {
+            AddRequiredComponents();
             enemySpawner = FindObjectOfType<EnemySpawner>();
             animator = GetComponent<Animator>();
-            character = GetComponent<Character>();
             SetAttackAnimation();
             SetAnimatorSpeed();
         }
@@ -66,19 +73,36 @@ namespace Towers.Units
             CorrectPossition();
         }
 
+        void AddRequiredComponents()
+        {
+            var capsuleCollider = gameObject.AddComponent<CapsuleCollider>();
+            capsuleCollider.center = colliderCenter;
+            capsuleCollider.height = colliderHeight;
+
+            var myRigidbody = gameObject.AddComponent<Rigidbody>();
+            myRigidbody.constraints = RigidbodyConstraints.FreezeRotation;
+
+            var audioSource = gameObject.AddComponent<AudioSource>();
+            audioSource.spatialBlend = 0.5f; // if wanted to change create [Header("Audio")] [SerializeField] float audioSourceSpatialBlend = 0.5f;
+
+            animator = gameObject.AddComponent<Animator>();
+            animator.runtimeAnimatorController = animatorController;
+            animator.avatar = characterAvatar;
+        }
+
         void SetAttackAnimation()
         {
-            if (!character.GetOverrideController())
+            if (!animatorOverrideController)
             {
                 Debug.Break();
                 Debug.LogAssertion("please provide " + gameObject + "with animator override controller");
             }
-            animator.runtimeAnimatorController = character.GetOverrideController();
+            animator.runtimeAnimatorController = animatorOverrideController;
         }
 
         private void SetAnimatorSpeed()
         {
-            var attackClip = character.GetOverrideController()[DEFAULT_ATTACK];
+            var attackClip = animatorOverrideController[DEFAULT_ATTACK];
             while (attackClip.length / animator.speed >= timeBetweenAttacks) // if its too fast
             {
                 animator.speed += 0.01f;
@@ -137,11 +161,6 @@ namespace Towers.Units
             return targetHealth > Mathf.Epsilon;
         }
 
-        private void OnDrawGizmos()
-        {
-            Gizmos.DrawWireSphere(transform.position, maxAttackRange);
-        }
-
         protected virtual void Shoot()
         {
             if (target != null)
@@ -198,6 +217,11 @@ namespace Towers.Units
         public AttackType GetAttackType()
         {
             return attackType;
+        }
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.DrawWireSphere(transform.position, maxAttackRange);
         }
     }
 }

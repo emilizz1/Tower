@@ -1322,7 +1322,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4636848712779850}
-  - component: {fileID: 114322511791993970}
   - component: {fileID: 114270607075123476}
   m_Layer: 9
   m_Name: Villiger VI
@@ -1348,31 +1347,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114322511791993970
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1480109098551122}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d99b11b7ba783c84babc7fa8f9fdf046, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animatorController: {fileID: 9100000, guid: 58f77cb94c98c1f47a6b5bc33b4b7bad, type: 2}
-  animatorOverrideController: {fileID: 22100000, guid: a2bb50f57943a8041a0f1ae9131f1220,
-    type: 2}
-  characterAvatar: {fileID: 9000000, guid: d288a0e4a2d923b46898986e979da643, type: 3}
-  audioSourceSpatialBlend: 0.5
-  colliderCenter: {x: 0, y: 1.5, z: 0}
-  collidererRadius: 0.25
-  colliderHeight: 2.5
-  moveSpeedMulyiplier: 1
-  animationSpeedMultiplier: 1.45
-  movingTurnSpeed: 360
-  stationaryTurnSpeed: 180
-  moveThreshold: 1
 --- !u!114 &114270607075123476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1391,6 +1365,12 @@ MonoBehaviour:
   projectileSystem: {fileID: 11400000, guid: 3461eb0431f443a41ae671245cc2e1ec, type: 2}
   projectileSocket: {fileID: 4348113355053818}
   attackType: 3
+  animatorController: {fileID: 9100000, guid: 58f77cb94c98c1f47a6b5bc33b4b7bad, type: 2}
+  animatorOverrideController: {fileID: 22100000, guid: 443d8d8135ab5fc4792f449817b83fd3,
+    type: 2}
+  characterAvatar: {fileID: 9000000, guid: d288a0e4a2d923b46898986e979da643, type: 3}
+  colliderCenter: {x: 0, y: 1.5, z: 0}
+  colliderHeight: 2.5
 --- !u!1 &1493653458035786
 GameObject:
   m_ObjectHideFlags: 0

@@ -764,7 +764,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4451321702283670}
-  - component: {fileID: 114014376223560516}
   - component: {fileID: 114612269364313036}
   m_Layer: 0
   m_Name: Holy Knight I
@@ -780,7 +779,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1184777562506296}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.809, y: 0, z: 23.793}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -794,31 +793,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114014376223560516
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1184777562506296}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d99b11b7ba783c84babc7fa8f9fdf046, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animatorController: {fileID: 9100000, guid: 58f77cb94c98c1f47a6b5bc33b4b7bad, type: 2}
-  animatorOverrideController: {fileID: 22100000, guid: 3275eba0deb86d048a3058a031a83f7e,
-    type: 2}
-  characterAvatar: {fileID: 9000000, guid: d288a0e4a2d923b46898986e979da643, type: 3}
-  audioSourceSpatialBlend: 0.5
-  colliderCenter: {x: 0, y: 1.5, z: 0}
-  collidererRadius: 0.25
-  colliderHeight: 2.5
-  moveSpeedMulyiplier: 1
-  animationSpeedMultiplier: 0.7
-  movingTurnSpeed: 360
-  stationaryTurnSpeed: 180
-  moveThreshold: 1
 --- !u!114 &114612269364313036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -837,6 +811,12 @@ MonoBehaviour:
   projectileSystem: {fileID: 0}
   projectileSocket: {fileID: 0}
   attackType: 2
+  animatorController: {fileID: 9100000, guid: 58f77cb94c98c1f47a6b5bc33b4b7bad, type: 2}
+  animatorOverrideController: {fileID: 22100000, guid: 3275eba0deb86d048a3058a031a83f7e,
+    type: 2}
+  characterAvatar: {fileID: 9000000, guid: d288a0e4a2d923b46898986e979da643, type: 3}
+  colliderCenter: {x: 0, y: 1.5, z: 0}
+  colliderHeight: 2.5
   ps: {fileID: 1023831457723612, guid: 5a4d2e894c34a574ea2e8868464f0b9e, type: 3}
   radius: 3
 --- !u!1 &1213556553494066

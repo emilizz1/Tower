@@ -1205,7 +1205,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4450692592438130}
-  - component: {fileID: 114662364016416932}
   - component: {fileID: 114635074896605058}
   m_Layer: 0
   m_Name: Sand Raider III
@@ -1221,7 +1220,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1564730201378790}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.909, y: 0, z: 24.989}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1235,31 +1234,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114662364016416932
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1564730201378790}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d99b11b7ba783c84babc7fa8f9fdf046, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animatorController: {fileID: 9100000, guid: 58f77cb94c98c1f47a6b5bc33b4b7bad, type: 2}
-  animatorOverrideController: {fileID: 22100000, guid: 4c9a1e9b0676629489cbe4fcd9b889ec,
-    type: 2}
-  characterAvatar: {fileID: 9000000, guid: fd7d68a65822e4a44a9ef78850e64cfc, type: 3}
-  audioSourceSpatialBlend: 0.5
-  colliderCenter: {x: 0, y: 1.5, z: 0}
-  collidererRadius: 0.25
-  colliderHeight: 2.5
-  moveSpeedMulyiplier: 1
-  animationSpeedMultiplier: 1
-  movingTurnSpeed: 360
-  stationaryTurnSpeed: 180
-  moveThreshold: 1
 --- !u!114 &114635074896605058
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1278,6 +1252,12 @@ MonoBehaviour:
   projectileSystem: {fileID: 11400000, guid: 82880b9e062e7984498eaf10d0b09a8a, type: 2}
   projectileSocket: {fileID: 4646082489975470}
   attackType: 1
+  animatorController: {fileID: 9100000, guid: 58f77cb94c98c1f47a6b5bc33b4b7bad, type: 2}
+  animatorOverrideController: {fileID: 22100000, guid: 4c9a1e9b0676629489cbe4fcd9b889ec,
+    type: 2}
+  characterAvatar: {fileID: 9000000, guid: 409520c9226982345a49c9803624f208, type: 3}
+  colliderCenter: {x: 0, y: 1.5, z: 0}
+  colliderHeight: 2.5
 --- !u!1 &1578075601064938
 GameObject:
   m_ObjectHideFlags: 0

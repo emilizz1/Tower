@@ -12,7 +12,6 @@
 // TODO Streamline enemy walking
 // Resources dont change possitions
 // Sounds
-// Saving runs.
 
 // Resources icons are 172x158 / 86x78 / 43x38 
 // Pirate unit materials: Lv1 - 01A. Lv2 - 02B

@@ -229,7 +229,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4856368316159932}
-  - component: {fileID: 114831840033236586}
   - component: {fileID: 114126957415919302}
   m_Layer: 0
   m_Name: English Soldier I
@@ -245,7 +244,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1036852371656684}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -8.377, y: 0, z: 23.523}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -255,31 +254,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114831840033236586
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1036852371656684}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d99b11b7ba783c84babc7fa8f9fdf046, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animatorController: {fileID: 9100000, guid: 58f77cb94c98c1f47a6b5bc33b4b7bad, type: 2}
-  animatorOverrideController: {fileID: 22100000, guid: 2ed52ee1d46ae1440810cac85bb1f569,
-    type: 2}
-  characterAvatar: {fileID: 9000000, guid: 409520c9226982345a49c9803624f208, type: 3}
-  audioSourceSpatialBlend: 0.5
-  colliderCenter: {x: 0, y: 1.5, z: 0}
-  collidererRadius: 0.25
-  colliderHeight: 2.5
-  moveSpeedMulyiplier: 1
-  animationSpeedMultiplier: 1
-  movingTurnSpeed: 360
-  stationaryTurnSpeed: 180
-  moveThreshold: 1
 --- !u!114 &114126957415919302
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -298,6 +272,12 @@ MonoBehaviour:
   projectileSystem: {fileID: 11400000, guid: f9dcc89ef85dac747a9e32209ae06d73, type: 2}
   projectileSocket: {fileID: 4383023866308412}
   attackType: 1
+  animatorController: {fileID: 9100000, guid: 58f77cb94c98c1f47a6b5bc33b4b7bad, type: 2}
+  animatorOverrideController: {fileID: 22100000, guid: 2ed52ee1d46ae1440810cac85bb1f569,
+    type: 2}
+  characterAvatar: {fileID: 9000000, guid: 409520c9226982345a49c9803624f208, type: 3}
+  colliderCenter: {x: 0, y: 1.5, z: 0}
+  colliderHeight: 2.5
 --- !u!1 &1040831046254012
 GameObject:
   m_ObjectHideFlags: 0

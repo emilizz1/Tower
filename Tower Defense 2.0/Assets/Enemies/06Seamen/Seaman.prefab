@@ -3347,7 +3347,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4673110477544240}
   - component: {fileID: 114604450114022178}
-  - component: {fileID: 114400777958045724}
   - component: {fileID: 114950084298436132}
   m_Layer: 0
   m_Name: Seaman
@@ -3389,31 +3388,6 @@ MonoBehaviour:
   redHealthBar: {fileID: 114482124345113936}
   whiteHealthBar: {fileID: 114864783147970910}
   deathVanishSeconds: 2
---- !u!114 &114400777958045724
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1762183105742768}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d99b11b7ba783c84babc7fa8f9fdf046, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animatorController: {fileID: 9100000, guid: 58f77cb94c98c1f47a6b5bc33b4b7bad, type: 2}
-  animatorOverrideController: {fileID: 22100000, guid: d33688c469c63be4a94fd94562e0075c,
-    type: 2}
-  characterAvatar: {fileID: 9000000, guid: 409520c9226982345a49c9803624f208, type: 3}
-  audioSourceSpatialBlend: 0.5
-  colliderCenter: {x: 0, y: 1, z: 0}
-  collidererRadius: 0.1
-  colliderHeight: 1.75
-  moveSpeedMulyiplier: 1.25
-  animationSpeedMultiplier: 1.1
-  movingTurnSpeed: 500
-  stationaryTurnSpeed: 250
-  moveThreshold: 1
 --- !u!114 &114950084298436132
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3426,10 +3400,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d651ae6b1fb18aa4aa4dc160dc21db24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animatorController: {fileID: 9100000, guid: 58f77cb94c98c1f47a6b5bc33b4b7bad, type: 2}
+  animatorOverrideController: {fileID: 22100000, guid: d33688c469c63be4a94fd94562e0075c,
+    type: 2}
+  characterAvatar: {fileID: 9000000, guid: 409520c9226982345a49c9803624f208, type: 3}
   stoppingDistance: 1
   navMeshSteeringSpeed: 1
   damageToLifePoints: 1
   navMeshRadius: 0.1
+  moveSpeedMulyiplier: 1
+  animationSpeedMultiplier: 1
+  movingTurnSpeed: 360
+  stationaryTurnSpeed: 180
+  moveThreshold: 1
+  colliderCenter: {x: 0, y: 1.5, z: 0}
+  collidererRadius: 0.25
+  colliderHeight: 2.5
 --- !u!1 &1768666705720386
 GameObject:
   m_ObjectHideFlags: 0

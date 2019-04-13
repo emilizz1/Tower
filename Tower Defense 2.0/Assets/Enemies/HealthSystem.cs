@@ -2,7 +2,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.AI;
-using Towers.CharacterN;
 using Towers.Units;
 using System;
 
@@ -19,13 +18,13 @@ namespace Towers.Enemies
         float currentHealthPoints = 0;
         Animator animator;
         public float healthAsPercentage { get { return currentHealthPoints / maxHealthPoints; } }
-        Character character;
+        EnemyAI character;
 
         void Start()
         {
             SetHealthToMax();
             animator = GetComponent<Animator>();
-            character = GetComponent<Character>();
+            character = GetComponent<EnemyAI>();
         }
 
         public virtual void TakeDamage(float damage, Shooter shooter = null)

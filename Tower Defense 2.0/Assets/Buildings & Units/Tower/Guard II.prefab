@@ -997,7 +997,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4325503559491364}
-  - component: {fileID: 114194025549688032}
   - component: {fileID: 114379792885222506}
   m_Layer: 0
   m_Name: Guard II
@@ -1013,7 +1012,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1382453661192396}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -15.581, y: 0, z: 25.89}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1027,31 +1026,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114194025549688032
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1382453661192396}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d99b11b7ba783c84babc7fa8f9fdf046, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animatorController: {fileID: 9100000, guid: 58f77cb94c98c1f47a6b5bc33b4b7bad, type: 2}
-  animatorOverrideController: {fileID: 22100000, guid: 5240be2ba75c8134d999295ea9f65c45,
-    type: 2}
-  characterAvatar: {fileID: 9000000, guid: d288a0e4a2d923b46898986e979da643, type: 3}
-  audioSourceSpatialBlend: 0.5
-  colliderCenter: {x: 0, y: 1.5, z: 0}
-  collidererRadius: 0.25
-  colliderHeight: 2.5
-  moveSpeedMulyiplier: 1
-  animationSpeedMultiplier: 1
-  movingTurnSpeed: 360
-  stationaryTurnSpeed: 180
-  moveThreshold: 1
 --- !u!114 &114379792885222506
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1070,6 +1044,12 @@ MonoBehaviour:
   projectileSystem: {fileID: 11400000, guid: 044f1dc1e9a4be542bad9e46918d3616, type: 2}
   projectileSocket: {fileID: 4482690954833434}
   attackType: 0
+  animatorController: {fileID: 9100000, guid: 58f77cb94c98c1f47a6b5bc33b4b7bad, type: 2}
+  animatorOverrideController: {fileID: 22100000, guid: 5240be2ba75c8134d999295ea9f65c45,
+    type: 2}
+  characterAvatar: {fileID: 9000000, guid: d288a0e4a2d923b46898986e979da643, type: 3}
+  colliderCenter: {x: 0, y: 1.5, z: 0}
+  colliderHeight: 2.5
 --- !u!1 &1394475350270602
 GameObject:
   m_ObjectHideFlags: 0
