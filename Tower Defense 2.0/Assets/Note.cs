@@ -10,6 +10,7 @@
 // more enemy variety
 // Resources dont change possitions
 // Sounds
+// different paths
 
 // Resources icons are 172x158 / 86x78 / 43x38 
 // Pirate unit materials: Lv1 - 01A. Lv2 - 02B
