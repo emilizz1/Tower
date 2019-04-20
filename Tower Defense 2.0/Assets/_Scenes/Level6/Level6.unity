@@ -44,7 +44,7 @@ RenderSettings:
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 11
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -195,7 +195,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: e131f4a99bca21246a1f6c87bf6698b6, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: e131f4a99bca21246a1f6c87bf6698b6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2242,6 +2242,11 @@ PrefabInstance:
     - target: {fileID: 4945469184054670, guid: 32a4361567510c74690c7d61e37ce3a4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1239917031499376247, guid: 32a4361567510c74690c7d61e37ce3a4,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 32a4361567510c74690c7d61e37ce3a4, type: 3}

@@ -40,9 +40,13 @@ namespace Towers.Enemies
         Animator animator;
         Rigidbody myRigidbody;
 
-        void Start()
+        private void Awake()
         {
             AddRequiredComponents();
+        }
+
+        void Start()
+        {
             patrolPath = FindObjectOfType<WaypointContainer>();
         }
 

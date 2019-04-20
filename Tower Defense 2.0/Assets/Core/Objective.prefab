@@ -59,6 +59,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dbcb5a9f93c32b498dd499515329529, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  particle: {fileID: 571695292069795162}
 --- !u!1001 &571695292055505562
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -290,12 +291,58 @@ PrefabInstance:
       propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 4e39159ffdfd62d4aae444d0ea6ee89a, type: 3}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.maxCurve.m_Curve.Array.data[0].inWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 4e39159ffdfd62d4aae444d0ea6ee89a, type: 3}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.maxCurve.m_Curve.Array.data[0].outWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 4e39159ffdfd62d4aae444d0ea6ee89a, type: 3}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.maxCurve.m_Curve.Array.data[1].inWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 4e39159ffdfd62d4aae444d0ea6ee89a, type: 3}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.maxCurve.m_Curve.Array.data[1].outWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 4e39159ffdfd62d4aae444d0ea6ee89a, type: 3}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minCurve.m_Curve.Array.data[0].inWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 4e39159ffdfd62d4aae444d0ea6ee89a, type: 3}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minCurve.m_Curve.Array.data[0].outWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 4e39159ffdfd62d4aae444d0ea6ee89a, type: 3}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minCurve.m_Curve.Array.data[1].inWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 4e39159ffdfd62d4aae444d0ea6ee89a, type: 3}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minCurve.m_Curve.Array.data[1].outWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 4e39159ffdfd62d4aae444d0ea6ee89a, type: 3}
+      propertyPath: InitialModule.startSize.minScalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 4e39159ffdfd62d4aae444d0ea6ee89a, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11400000, guid: 4e39159ffdfd62d4aae444d0ea6ee89a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 4e39159ffdfd62d4aae444d0ea6ee89a, type: 3}
 --- !u!4 &571695292055638042 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 4e39159ffdfd62d4aae444d0ea6ee89a,
+    type: 3}
+  m_PrefabInstance: {fileID: 571695292055505562}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &571695292069795162 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 19800000, guid: 4e39159ffdfd62d4aae444d0ea6ee89a,
     type: 3}
   m_PrefabInstance: {fileID: 571695292055505562}
   m_PrefabAsset: {fileID: 0}
