@@ -9,18 +9,24 @@ namespace Towers.Enemies.BlackMarketer
     public class BlackMarketer : HealthSystem
     {
         [SerializeField] string special;
+        [SerializeField] Resource[] goldResources;
+
+        public bool GiveGold = false;
+
+        private void Update()
+        {
+            if (GiveGold)
+            {
+                FindObjectOfType<ResourcesManager>().AddResources(goldResources);
+
+                GiveGold = false;
+            }
+        }
 
         public override IEnumerator KillCharacter()
         {
-            GiveGold();
-            return base.KillCharacter();
-        }
-
-        void GiveGold()
-        {
-            Resource[] goldResources = new Resource[1];
-            goldResources[0] = new ResourceGold();
             FindObjectOfType<ResourcesManager>().AddResources(goldResources);
+            return base.KillCharacter();
         }
 
         public override string GetSpecial()
