@@ -9,7 +9,7 @@ namespace Towers.Enemies.BlackMarketer
     public class BlackMarketer : HealthSystem
     {
         [SerializeField] string special;
-        [SerializeField] Resource[] goldResources;
+        [SerializeField] Resource[] resouces;
 
         public bool GiveGold = false;
 
@@ -17,7 +17,7 @@ namespace Towers.Enemies.BlackMarketer
         {
             if (GiveGold)
             {
-                FindObjectOfType<ResourcesManager>().AddResources(goldResources);
+                FindObjectOfType<ResourcesManager>().AddResources(resouces);
 
                 GiveGold = false;
             }
@@ -25,7 +25,7 @@ namespace Towers.Enemies.BlackMarketer
 
         public override IEnumerator KillCharacter()
         {
-            FindObjectOfType<ResourcesManager>().AddResources(goldResources);
+            FindObjectOfType<ResourcesManager>().AddResources(resouces);
             return base.KillCharacter();
         }
 
