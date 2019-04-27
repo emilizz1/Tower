@@ -15,7 +15,7 @@ namespace Towers.Scenes.RunSelection
         [SerializeField] GameObject availableLevelPS;
         [SerializeField] GameObject lockedLevelPS;
 
-        bool readyTosSelect = false;
+        bool readyToSelect = false;
 
         Rect screenRectOnConstruction = new Rect(0, 0, Screen.width, Screen.height);
         float maxRaycasterDepth = 1000f;
@@ -34,7 +34,7 @@ namespace Towers.Scenes.RunSelection
 
         void Update()
         {
-            if (Input.GetMouseButtonDown(0) && readyTosSelect)
+            if (Input.GetMouseButtonDown(0) && readyToSelect)
             {
                 PerformRaycast();
                 if (hitInfo.transform.gameObject.GetComponent<LevelSelection>() &&
@@ -80,7 +80,7 @@ namespace Towers.Scenes.RunSelection
 
         public void ChangeReadyToSelect(bool change)
         {
-            readyTosSelect = change;
+            readyToSelect = change;
         }
 
         public LevelSelection GetCurrentLevel()
