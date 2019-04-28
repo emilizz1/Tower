@@ -2315,6 +2315,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1788988866982917284}
   - component: {fileID: 3320723074076127555}
+  - component: {fileID: 7033761111293808399}
   m_Layer: 5
   m_Name: DeckBuilder
   m_TagString: Untagged
@@ -2359,6 +2360,25 @@ MonoBehaviour:
   rightChoice: {fileID: 452767289005697737}
   addableCards: {fileID: 11400000, guid: b6c1099c85169c94bbaba1c5aa69ad18, type: 2}
   cardsToDraft: 6
+--- !u!95 &7033761111293808399
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6731214774587499709}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e2d358104bd2f164fb6368ae8f8c6ccc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7066899717711668699
 GameObject:
   m_ObjectHideFlags: 0
@@ -3049,12 +3069,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 73adf98fd930ac04999bdc07ec0c8489, type: 3}
---- !u!224 &8895357178297673216 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 8616058366538900890, guid: 73adf98fd930ac04999bdc07ec0c8489,
-    type: 3}
-  m_PrefabInstance: {fileID: 927965095197279130}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &4700556277457653920 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5610201258237006650, guid: 73adf98fd930ac04999bdc07ec0c8489,
@@ -3067,6 +3081,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8410578e1e6954447af40146fb4f5fdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!224 &8895357178297673216 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8616058366538900890, guid: 73adf98fd930ac04999bdc07ec0c8489,
+    type: 3}
+  m_PrefabInstance: {fileID: 927965095197279130}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1539232463612054880
 PrefabInstance:
   m_ObjectHideFlags: 0
