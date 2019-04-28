@@ -71,7 +71,10 @@ namespace Towers.Scenes.RunSelection
 
         public void AddAllCards()
         {
-            
+            foreach(Card card in cardsDrafted)
+            {
+                FindObjectOfType<CardHolders>().AddPlayerCard(card);
+            }
         }
     }
 }
