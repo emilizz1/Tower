@@ -20,6 +20,6 @@
 // 01: Boost for dmg, rng, spd to bow, pistol, throwing characters
 // 02: after building x amount of buildings temple apears which gives gold or wood
 // 03: swamp apears in level, slowed enemies
-// 04: first enemy of level dies automaticly (same as lifes??)
+// 04: first enemy of level dies automaticly (same as lifes??) 
 // 05: gain/ remove 2 cards
 // 06: better position for units first

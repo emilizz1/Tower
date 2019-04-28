@@ -68,6 +68,8 @@ namespace Towers.Scenes.RunSelection
                     if(deckBuilder.IsFinished())
                     {
                         currentState = State.choosingEvent;
+                        deckBuilder.gameObject.SetActive(false);
+                        FindObjectOfType<NewRunPlus>().SetCardDraft(false);
                     }
                     break;
             }

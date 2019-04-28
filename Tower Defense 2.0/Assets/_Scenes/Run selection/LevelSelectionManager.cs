@@ -8,12 +8,8 @@ namespace Towers.Scenes.RunSelection
     public class LevelSelectionManager : MonoBehaviour
     {
         [SerializeField] LevelSelection[] levels;
-        [SerializeField] Sprite completedLevelSprite;
-        [SerializeField] Sprite availableLevelSprite;
-        [SerializeField] Sprite lockedLevelSprite;
-        [SerializeField] GameObject completedLevelPS;
-        [SerializeField] GameObject availableLevelPS;
-        [SerializeField] GameObject lockedLevelPS;
+        [SerializeField] Sprite availableLevelSprite, lockedLevelSprite, completedLevelSprite;
+        [SerializeField] GameObject completedLevelPS, availableLevelPS, lockedLevelPS, deckBuilder;
 
         bool readyToSelect = false;
 
@@ -29,6 +25,10 @@ namespace Towers.Scenes.RunSelection
             if (FindObjectOfType<SaveLoad>().LoadIntInfo("EventFinished") == 0)
             {
                 FindObjectOfType<EventManager>().PrepareEvents();
+            }
+            if (!FindObjectOfType<NewRunPlus>().GetCardDraft())
+            {
+                deckBuilder.SetActive(false);
             }
         }
 

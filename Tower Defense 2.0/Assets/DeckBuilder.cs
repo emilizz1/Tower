@@ -11,13 +11,12 @@ namespace Towers.Scenes.RunSelection
         [SerializeField] CardHolder addableCards;
         [SerializeField] int cardsToDraft = 6; //make private
  
-        CardHolder cardsDrafted;
+        List<Card> cardsDrafted = new List<Card>();
         Card leftCard, rightCard;
         List<Buildings> buildings = new List<Buildings>();
 
         void Start()
         {
-            cardsDrafted = new CardHolder();
             PrepareNewCards();
         }
 
@@ -25,13 +24,13 @@ namespace Towers.Scenes.RunSelection
         {
             if(choice == 0)
             {
-                cardsDrafted.AddCard(leftCard);
+                cardsDrafted.Add(leftCard);
                 buildings.Add(leftCard.GetPrefabs().GetBuilding(0));
                 addableCards.AddCard(rightCard);
             }
             else
             {
-                cardsDrafted.AddCard(rightCard);
+                cardsDrafted.Add(rightCard);
                 buildings.Add(rightCard.GetPrefabs().GetBuilding(0));
                 addableCards.AddCard(leftCard);
             }
@@ -43,7 +42,7 @@ namespace Towers.Scenes.RunSelection
 
         public bool IsFinished()
         {
-            return cardsDrafted.GetAllCards().Length == cardsToDraft;
+            return cardsDrafted.Count == cardsToDraft;
         }
 
         void PrepareNewCards()
@@ -68,6 +67,11 @@ namespace Towers.Scenes.RunSelection
                 }
             }
             return buildingLevel;
+        }
+
+        public void AddAllCards()
+        {
+            
         }
     }
 }
