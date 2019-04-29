@@ -1,21 +1,22 @@
 ﻿using UnityEngine;
 using Towers.BuildingsN;
 using Towers.Resources;
+using Towers.Enemies;
 
 namespace Towers.CardN
 {
     [CreateAssetMenu(menuName = ("Tower defense/Card"))]
     public class Card : ScriptableObject
     {
-        [SerializeField] Resource[] GoldGivenFromEnemies;
+        [SerializeField] Resource[] GoldGiven;
+        [SerializeField] BuildingsHolder buildingsPrefabs;
         [SerializeField] Texture enemyImage;
-        [SerializeField] BuildingsHolder prefabs;
         [SerializeField] GameObject enemyPrefab;
         [SerializeField] float amount;
 
         public Resource[] GetEnemyResources()
         {
-            return GoldGivenFromEnemies;
+            return GoldGiven;
         }
 
         public Texture GetEnemyTexture()
@@ -25,7 +26,7 @@ namespace Towers.CardN
 
         public BuildingsHolder GetPrefabs()
         {
-            return prefabs;
+            return buildingsPrefabs;
         }
 
         public GameObject GetEnemyPrefab()

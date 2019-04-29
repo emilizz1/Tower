@@ -21,7 +21,7 @@ MonoBehaviour:
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 2}
-  m_MinSize: {x: 950, y: 544}
+  m_MinSize: {x: 950, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &2
 MonoBehaviour:
@@ -45,7 +45,7 @@ MonoBehaviour:
     y: 0
     width: 1920
     height: 997
-  m_MinSize: {x: 950, y: 544}
+  m_MinSize: {x: 950, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &3
 MonoBehaviour:
@@ -114,7 +114,7 @@ MonoBehaviour:
   m_MinSize: {x: 683, y: 494}
   m_MaxSize: {x: 14004, y: 14044}
   vertical: 0
-  controlID: 66
+  controlID: 42
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -139,7 +139,7 @@ MonoBehaviour:
   m_MinSize: {x: 406, y: 494}
   m_MaxSize: {x: 10002, y: 14044}
   vertical: 1
-  controlID: 67
+  controlID: 43
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -164,7 +164,7 @@ MonoBehaviour:
   m_MinSize: {x: 406, y: 222}
   m_MaxSize: {x: 8006, y: 4022}
   vertical: 0
-  controlID: 68
+  controlID: 44
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -184,8 +184,8 @@ MonoBehaviour:
     y: 0
     width: 295
     height: 667
-  m_MinSize: {x: 202, y: 222}
-  m_MaxSize: {x: 4002, y: 4022}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 14}
@@ -419,7 +419,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 60fbffff
+      m_ExpandedIDs: 8efbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -481,7 +481,7 @@ MonoBehaviour:
   m_Position:
     m_Target: {x: 1.091465, y: 2.8335903, z: 15.067919}
     speed: 2
-    m_Value: {x: -0.023489475, y: 0.014131665, z: -0.0000019073486}
+    m_Value: {x: 1.091465, y: 2.8335903, z: 15.067919}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -516,7 +516,7 @@ MonoBehaviour:
   m_Size:
     m_Target: 19.585724
     speed: 2
-    m_Value: 1.2646052
+    m_Value: 19.585724
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -605,21 +605,21 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Buildings & Units/ButcherShop
+    - Assets
   m_ViewMode: 1
   m_StartGridSize: 69
   m_LastFolders:
-  - Assets/Buildings & Units/ButcherShop
+  - Assets
   m_LastFoldersGridSize: 69
   m_LastProjectPath: C:\Users\simon_000\Desktop\Unity projects\TowerDefense\Tower
     Defense 2.0
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 123}
-    m_SelectedIDs: 86510000
-    m_LastClickedID: 20870
-    m_ExpandedIDs: 00000000563f0000e6410000164400003846000022470000a84c000038530000c2590000f25b0000245d00007e5f000066690000066a00006e7100006a73000002780000ce7b0000d67c00008c7e00007e7f0000827f00003c850000a285000098870000928800008e8900004e8f0000d09600006e9900001a9a000098a00000fca50000d2a90000e2c60000e4c60000e6c60000e8c60000eac60000ecc60000eec60000f0c60000f2c60000f4c60000f6c60000f8c60000fac60000fcc60000fec6000000c7000002c7000004c7000006c7000008c700000ac700000cc700000ec7000010c7000012c7000014c7000016c7000018c700001ac700001cc700001ec7000020c7000022c7000024c70000
+    scrollPos: {x: 0, y: 31}
+    m_SelectedIDs: 6c3e0000
+    m_LastClickedID: 15980
+    m_ExpandedIDs: 000000006c3e0000fc4000002c4300004e45000038460000be4b00004e520000d8580000085b00003a5c0000945e00007c6800001c690000847000008072000018770000e47a0000947e0000987e000052840000b8840000ae860000a8870000a4880000668e0000e89500008698000032990000b09f000014a50000eaa800005cc600005ec6000060c6000062c6000064c6000066c6000068c600006ac600006cc600006ec6000070c6000072c6000074c6000076c6000078c600007ac600007cc600007ec6000080c6000082c6000084c6000086c6000088c600008ac600008cc600008ec6000090c6000092c6000094c6000096c6000098c600009ac600009cc600009ec60000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -647,7 +647,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000563f0000e6410000164400003846000022470000a84c000038530000c2590000f25b0000245d00007e5f000066690000066a00006e7100006a73000002780000ce7b0000d67c00008c7e00007e7f0000827f00003c850000a285000098870000928800008e8900004e8f0000d09600006e9900001a9a000098a00000fca50000d2a90000e2c60000e4c60000e6c60000e8c60000eac60000ecc60000eec60000f0c60000f2c60000f4c60000f6c60000f8c60000fac60000fcc60000fec6000000c7000002c7000004c7000006c7000008c700000ac700000cc700000ec7000010c7000012c7000014c7000016c7000018c700001ac700001cc700001ec7000020c7000022c7000024c70000
+    m_ExpandedIDs: 000000006c3e0000fc4000002c4300004e45000038460000be4b00004e520000d8580000085b00003a5c0000945e00007c6800001c690000847000008072000018770000e47a0000ec7b0000a27d0000947e0000987e000052840000b8840000ae860000a8870000a4880000668e0000e89500008698000032990000b09f000014a50000eaa800005cc600005ec6000060c6000062c6000064c6000066c6000068c600006ac600006cc600006ec6000070c6000072c6000074c6000076c6000078c600007ac600007cc600007ec6000080c6000082c6000084c6000086c6000088c600008ac600008cc600008ec6000090c6000092c6000094c6000096c6000098c600009ac600009cc600009ec60000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
