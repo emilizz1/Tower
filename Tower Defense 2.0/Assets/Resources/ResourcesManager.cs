@@ -31,13 +31,13 @@ namespace Towers.Resources
             }
         }
         
-        public void AddResources(Resource[] Resources, Transform cardTransform = null, bool attachToTransform = false)
+        public void AddResources(Resource[] Resources, Transform carryFrom = null, bool attachToTransform = false)
         {
-            if(cardTransform == null)
+            if(carryFrom == null)
             {
-                cardTransform = FindObjectOfType<ResourceCardChoice>().transform;
+                carryFrom = FindObjectOfType<ResourceCardChoice>().transform;
             }
-            StartCoroutine(GatherResources(Resources, cardTransform, attachToTransform));
+            StartCoroutine(GatherResources(Resources, carryFrom, attachToTransform));
         }
 
         IEnumerator GatherResources(Resource[] Resources, Transform carryFrom, bool attachToTransform)
