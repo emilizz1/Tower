@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using Towers.BuildingsN;
 using UnityEngine;
+using Towers.Resources;
+using Towers.Core;
 
 namespace Towers.CardN
 {
@@ -46,7 +48,10 @@ namespace Towers.CardN
 
         public void ShowPlayerCards(CardHolder cardHolder)
         {
-            ShowcaseCards(cardHolder, null, Showing.PlayerCards);
+            if (!FindObjectOfType<MovingResource>())
+            {
+                ShowcaseCards(cardHolder, null, Showing.PlayerCards);
+            }
         }
 
         public void ShowcaseCards(CardHolder cardHolder, List<Card> cards, Showing showing)
@@ -63,7 +68,8 @@ namespace Towers.CardN
             else
             {
                 Time.timeScale = 1f;
-                cardsUI.SetActive(true);
+                bool eventFinished = FindObjectOfType<SaveLoad>().LoadIntInfo("EventFinished") == 0;
+                cardsUI.SetActive(eventFinished);
                 showcase.SetActive(false);
                 if (nowShowing == Showing.StartLevelCards)
                 {

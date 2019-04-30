@@ -44,11 +44,24 @@ namespace Towers.Scenes.RunSelection
 
         void Update()
         {
-            if (Input.GetButtonDown("Choice Left") || (Input.GetMouseButtonDown(0) && Input.mousePosition.x < screenWidth / 2))
+            if (Input.GetButtonDown("Choice Left"))
+            {
+
+                currentChoiceSelected(0);
+            }
+            if (Input.GetButtonDown("Choice Right"))
+            {
+                currentChoiceSelected(1);
+            }
+        }
+
+        public void MousePressed()
+        {
+            if (Input.mousePosition.x < screenWidth / 2)
             {
                 currentChoiceSelected(0);
             }
-            if (Input.GetButtonDown("Choice Right") || (Input.GetMouseButtonDown(0) && Input.mousePosition.x > screenWidth / 2))
+            if (Input.mousePosition.x > screenWidth / 2)
             {
                 currentChoiceSelected(1);
             }
