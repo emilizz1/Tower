@@ -11,6 +11,7 @@ namespace Towers.CardN
         [SerializeField] GameObject cardsUI, showcase, arrowLeft, arrowRight, mouseBlock;
         [SerializeField] ShowcaseCard[] cards;
         [SerializeField] GameObject[] pages;
+        [SerializeField] bool runSelection = false;
         
         int activeCards = 0;
         int currentlyActivePage = 0;
@@ -68,8 +69,15 @@ namespace Towers.CardN
             else
             {
                 Time.timeScale = 1f;
-                bool eventFinished = FindObjectOfType<SaveLoad>().LoadIntInfo("EventFinished") == 0;
-                cardsUI.SetActive(eventFinished);
+                if (runSelection)
+                {
+                    bool eventFinished = FindObjectOfType<SaveLoad>().LoadIntInfo("EventFinished") == 0;
+                    cardsUI.SetActive(eventFinished);
+                }
+                else
+                {
+                    cardsUI.SetActive(true);
+                }
                 showcase.SetActive(false);
                 if (nowShowing == Showing.StartLevelCards)
                 {
