@@ -31,15 +31,15 @@ namespace Towers.CardN
 
         void Awake()
         {
-            if (control == null)
-            {
-                DontDestroyOnLoad(gameObject);
-                control = this;
-            }
-            else if (control != null)
-            {
-                Destroy(gameObject);
-            }
+            //if (control == null)
+            //{
+            //    DontDestroyOnLoad(gameObject);
+            //    control = this;
+            //}
+            //else if (control != null)
+            //{
+            //    Destroy(gameObject);
+            //}
         }
 
         public void ShowcaseCards(CardHolder cardHolder, Showing showing)
@@ -204,7 +204,6 @@ namespace Towers.CardN
 
         public void StartLevelAnimation()
         {
-            print("Started");
             GetComponent<Animator>().SetTrigger("AddCards");
             Time.timeScale = 1f;
         }

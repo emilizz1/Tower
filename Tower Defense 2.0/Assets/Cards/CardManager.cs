@@ -23,7 +23,6 @@ namespace Towers.CardN
 
         public void Setup()
         {
-            print("Setting up");
             cards = GetComponentsInChildren<Cards>();
             bPM = FindObjectOfType<BuildingPlacementManager>();
             rM = FindObjectOfType<ResourcesManager>();
