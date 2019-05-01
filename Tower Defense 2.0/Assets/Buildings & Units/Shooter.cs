@@ -175,7 +175,7 @@ namespace Towers.Units
 
         void CorrectPossition()
         {
-            if (permenentPossition != new Vector3(0f, 0f, 0f) && Vector3.Distance(transform.position, permenentPossition) > 0.3f)
+            if (permenentPossition != Vector3.zero && Vector3.Distance(transform.position, permenentPossition) > 0.5f)
             {
                 transform.position = permenentPossition;
             }
