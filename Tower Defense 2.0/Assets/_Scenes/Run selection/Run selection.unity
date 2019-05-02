@@ -2923,7 +2923,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &770089305
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6058,6 +6058,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 1377348144026832, guid: 30ca8d3f4fae97541ac4f794c57758e8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 224123756452726726, guid: 30ca8d3f4fae97541ac4f794c57758e8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8597,8 +8601,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelToLoad: 10
-  afterCompletionUnlocks:
-  - {fileID: 770089305}
+  afterCompletionUnlocks: []
   events:
   - {fileID: 1437406260967834, guid: 8fc542345b1bf4341b1c4652f1f46efb, type: 3}
   - {fileID: 1437406260967834, guid: 8fc542345b1bf4341b1c4652f1f46efb, type: 3}
