@@ -63,16 +63,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d651ae6b1fb18aa4aa4dc160dc21db24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageToLifePoints: 1
   animatorController: {fileID: 9100000, guid: 58f77cb94c98c1f47a6b5bc33b4b7bad, type: 2}
   animatorOverrideController: {fileID: 22100000, guid: 873fd1bfa9beca14985af8ba2c26bedc,
     type: 2}
   characterAvatar: {fileID: 9000000, guid: d288a0e4a2d923b46898986e979da643, type: 3}
   stoppingDistance: 1
   navMeshSteeringSpeed: 1
-  damageToLifePoints: 1
   navMeshRadius: 0.1
   moveSpeedMulyiplier: 1
-  animationSpeedMultiplier: 1
+  animationSpeedMultiplier: 1.15
   movingTurnSpeed: 360
   stationaryTurnSpeed: 180
   moveThreshold: 1

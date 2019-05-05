@@ -124,7 +124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 362c1f6cd3d829e428cb1625a8572cc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealthPoints: 20
+  maxHealthPoints: 18
   redHealthBar: {fileID: 114054928042801442}
   whiteHealthBar: {fileID: 114847485137557886}
   deathVanishSeconds: 2
@@ -148,8 +148,8 @@ MonoBehaviour:
   stoppingDistance: 1
   navMeshSteeringSpeed: 1
   navMeshRadius: 0.1
-  moveSpeedMulyiplier: 1
-  animationSpeedMultiplier: 1
+  moveSpeedMulyiplier: 1.1
+  animationSpeedMultiplier: 1.1
   movingTurnSpeed: 180
   stationaryTurnSpeed: 180
   moveThreshold: 1
