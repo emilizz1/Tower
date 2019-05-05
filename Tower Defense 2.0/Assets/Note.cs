@@ -14,6 +14,7 @@
 
 // Resources icons are 172x158 / 86x78 / 43x38 
 // Pirate unit materials: Lv1 - 01A. Lv2 - 02B
+// Knight unit materials: Lv1 - Black. Lv2 - -Blue. Lv3 - Yellow. Lv4 - Orange. Lv5 - Red. Lv6 - Greem. Lv7 - White. Lv8 - Brown.
 
 // Ideas for permanent Items:
 // 00: After level gain 2/1/1 resources
