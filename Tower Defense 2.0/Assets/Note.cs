@@ -13,7 +13,7 @@
 // different paths
 
 // Resources icons are 172x158 / 86x78 / 43x38 
-// Pirate unit materials: Lv1 - 01A. Lv2 - 02B
+// Pirate unit materials: Lv1 - 01A. Lv2 - 02B. Lv3 - 03C. Lv4 - 04A.
 // Knight unit materials: Lv1 - Black. Lv2 - -Blue. Lv3 - Yellow. Lv4 - Orange. Lv5 - Red. Lv6 - Greem. Lv7 - White. Lv8 - Brown.
 
 // Ideas for permanent Items:

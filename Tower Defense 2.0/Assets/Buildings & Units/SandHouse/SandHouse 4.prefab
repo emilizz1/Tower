@@ -761,10 +761,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildingName: Desert Village III
-  buildUnitCost: []
-  unitPrefab: {fileID: 1564730201378790, guid: d85ade054ed77a343b4cdf696fde8306, type: 3}
-  resourceAmountProduced: []
-  Level: 2
+  buildUnitCost:
+  - {fileID: 11400000, guid: ab56d4aa84abdd6499e6c50f2fc64889, type: 2}
+  - {fileID: 11400000, guid: ab56d4aa84abdd6499e6c50f2fc64889, type: 2}
+  - {fileID: 11400000, guid: ab56d4aa84abdd6499e6c50f2fc64889, type: 2}
+  - {fileID: 11400000, guid: ab56d4aa84abdd6499e6c50f2fc64889, type: 2}
+  - {fileID: 11400000, guid: ab56d4aa84abdd6499e6c50f2fc64889, type: 2}
+  - {fileID: 11400000, guid: 1f977c2c7ac1fda4886c7f930f2eef09, type: 2}
+  - {fileID: 11400000, guid: 1f977c2c7ac1fda4886c7f930f2eef09, type: 2}
+  - {fileID: 11400000, guid: 1f977c2c7ac1fda4886c7f930f2eef09, type: 2}
+  - {fileID: 11400000, guid: 1f977c2c7ac1fda4886c7f930f2eef09, type: 2}
+  - {fileID: 11400000, guid: 1f977c2c7ac1fda4886c7f930f2eef09, type: 2}
+  unitPrefab: {fileID: 862152317044828496, guid: f0faec68cc07232439bd14bec16b3fda,
+    type: 3}
+  resourceAmountProduced:
+  - {fileID: 11400000, guid: 1f977c2c7ac1fda4886c7f930f2eef09, type: 2}
+  - {fileID: 11400000, guid: 1f977c2c7ac1fda4886c7f930f2eef09, type: 2}
+  - {fileID: 11400000, guid: 1f977c2c7ac1fda4886c7f930f2eef09, type: 2}
+  Level: 3
   iD: 4
   buildingImage: {fileID: 2800000, guid: 78f6243e580adc84c821c950d7602a63, type: 3}
   SpecialPower: 
