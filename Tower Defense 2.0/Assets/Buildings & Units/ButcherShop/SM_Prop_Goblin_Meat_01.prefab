@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 3446421755574408567}
   - component: {fileID: -583200944769943656}
   - component: {fileID: 2165498566958543392}
+  - component: {fileID: 1847995044618704359}
+  - component: {fileID: 8868508548463090353}
   m_Layer: 0
   m_Name: SM_Prop_Goblin_Meat_01
   m_TagString: Untagged
@@ -195,3 +197,32 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!54 &1847995044618704359
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3446421755572711027}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &8868508548463090353
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3446421755572711027}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.65597725, y: 0.5894238, z: 1.2537613}
+  m_Center: {x: -0.04697895, y: 0.028263345, z: -0.0000038146973}
