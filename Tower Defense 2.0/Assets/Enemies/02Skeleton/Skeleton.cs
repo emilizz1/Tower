@@ -40,7 +40,10 @@ namespace Towers.Enemies.Skeleton
             {
                 GetComponent<Collider>().enabled = true;
             }
-            GetComponent<NavMeshAgent>().radius = 0.25f;
+            if (GetComponent<NavMeshAgent>())
+            {
+                GetComponent<NavMeshAgent>().radius = 0.25f;
+            }
         }
 
         public override bool ImunityToPoison()

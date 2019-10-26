@@ -14,13 +14,11 @@ namespace Towers.Resources
             {
                 if (Vector3.Distance(transform.position, myDestination.position) > 0.1f)
                 {
-                    transform.position = Vector3.MoveTowards(transform.position, myDestination.position, resourceMoveSpeed);
+                    transform.position = Vector3.MoveTowards(transform.position, myDestination.position, resourceMoveSpeed * Time.deltaTime);
                 }
                 else
                 {
-                    myResource.AddResource();
-                    FindObjectOfType<ResourcesManager>().updateResourceText();
-                    Destroy(gameObject);
+                    GiveResourceInstantly();
                 }
             }
         }
@@ -30,6 +28,13 @@ namespace Towers.Resources
             myDestination = destination;
             resourceMoveSpeed = moveSpeed;
             myResource = resource;
+        }
+
+        public void GiveResourceInstantly()
+        {
+            myResource.AddResource();
+            FindObjectOfType<ResourcesManager>().updateResourceText();
+            Destroy(gameObject);
         }
     }
 }

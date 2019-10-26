@@ -11,11 +11,9 @@ namespace Towers.Enemies
         CardManager cardManager;
         List<GameObject> enemies;
         EnemyAI[] levelEnemies;
-        LevelManager levelManager;
 
         void Start()
         {
-            levelManager = FindObjectOfType<LevelManager>();
             cardManager = FindObjectOfType<CardManager>();
         }
 
@@ -31,7 +29,7 @@ namespace Towers.Enemies
         public void StartNextWave()
         {
             enemies = cardManager.GetEnemiesToCome();
-            levelEnemies = levelManager.GetCurrentLevelEnemies();
+            levelEnemies = LevelManager.instance.GetCurrentLevelEnemies();
             if (levelEnemies != null)
             {
                 foreach (EnemyAI enemy in levelEnemies)

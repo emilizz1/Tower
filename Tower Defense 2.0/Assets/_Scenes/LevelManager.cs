@@ -7,6 +7,8 @@ namespace Towers.Scenes
 {
     public class LevelManager : MonoBehaviour
     {
+        public static LevelManager instance;
+
         [SerializeField] EnemyHolder enemyHolder;
         
         Text text;
@@ -15,6 +17,7 @@ namespace Towers.Scenes
 
         void Start()
         {
+            instance = this;
             text = GetComponent<Text>();
             wavesCount = enemyHolder.GetLevelCount();
             CheckForWaveMaxCount();

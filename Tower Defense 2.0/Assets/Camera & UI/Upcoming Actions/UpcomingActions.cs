@@ -13,7 +13,6 @@ namespace Towers.CameraUI.UpcomingAction
         [SerializeField] GameObject buildingBonusesIcon;
         [SerializeField] GameObject levelComnpletedIcon;
         [SerializeField] float objectsWidh = 30f;
-        [SerializeField] float objectSize = 1.3f;
         [SerializeField] float objectElevation = 30f;
 
         bool myFirstTurn = true;
@@ -62,6 +61,7 @@ namespace Towers.CameraUI.UpcomingAction
                 var tempPos = states[i].transform.position;
                 tempPos.x = currentPosition;
                 tempPos.y = 0f;
+                tempPos.z = 0f;
                 states[i].transform.localPosition = tempPos;
                 currentPosition += objectsWidh;
             }
@@ -87,26 +87,21 @@ namespace Towers.CameraUI.UpcomingAction
             }
             myFirstTurn = firstTurn;
             PrepareLevel();
-            states[currentlyActive].transform.localScale = new Vector3(objectSize, objectSize, objectSize);
             states[currentlyActive].transform.localPosition = new Vector3(states[currentlyActive].transform.localPosition.x, objectElevation);
         }
 
         public void PhaseFinished()
         {
             PrepareLevel();
-            var lastState = states[currentlyActive];
-            var currentState = states[currentlyActive + 1];
             currentlyActive++;
-            lastState.transform.localScale = new Vector3(1f, 1f, 1f);
-            currentState.transform.localScale = new Vector3(objectSize, objectSize, objectSize);
-            lastState.transform.localPosition = new Vector3(lastState.transform.localPosition.x, -0.01f);
+            states[currentlyActive].transform.localPosition = new Vector3(states[currentlyActive].transform.localPosition.x, objectElevation);
         }
 
         void ClearAllObjects()
         {
             foreach (Image myObject in GetComponentsInChildren<Image>())
             {
-                myObject.gameObject.SetActive(false);
+                Destroy(myObject.gameObject);
             }
         }
 

@@ -18,7 +18,6 @@ namespace Towers.Scenes
         BuildingManager buildingM;
         UnitPlacementManager placementM;
         EnemySpawner enemySpawner;
-        LevelManager levelM;
         UpcomingActions upcomingActions;
         StartLevelDisplayer startLevelDisplayer;
 
@@ -47,7 +46,6 @@ namespace Towers.Scenes
             placementM = FindObjectOfType<UnitPlacementManager>();
             enemySpawner = FindObjectOfType<EnemySpawner>();
             cardM = FindObjectOfType<CardManager>();
-            levelM = FindObjectOfType<LevelManager>();
             upcomingActions = FindObjectOfType<UpcomingActions>();
             startLevelDisplayer = FindObjectOfType<StartLevelDisplayer>();
             buildingM.TurnBuildings(false, false);
@@ -208,13 +206,13 @@ namespace Towers.Scenes
             {
                 upcomingActions.NewLevel(false);
             }
-            levelM.WaveFinished();
+            LevelManager.instance.WaveFinished();
             myCamera.Viewlevel();
         }
 
         bool CheckForLevelCompleted()
         {
-            if (levelM.CheckForLevelWon())
+            if (LevelManager.instance.CheckForLevelWon())
             {
                 currentState = State.levelCompleted;
                 FindObjectOfType<WiningRewards>().PrepareRewards();

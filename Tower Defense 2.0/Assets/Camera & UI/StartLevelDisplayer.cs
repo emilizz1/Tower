@@ -8,10 +8,13 @@ namespace Towers.CameraUI
         [SerializeField] GameObject text;
         
         CardHolder levelCards;
+        GameObject level;
 
         void Start()
         {
             FindObjectOfType<CardsShowcase>().ShowcaseCards(FindObjectOfType<Deck>().GetLevelCards(), CardsShowcase.Showing.StartLevelCards);
+            level = GameObject.Find("Level");
+            level.SetActive(false);
             text.SetActive(true);
         }
 
@@ -19,6 +22,7 @@ namespace Towers.CameraUI
         {
             FindObjectOfType<CardsShowcase>().StartLevelAnimation();
             text.SetActive(false);
+            level.SetActive(true);
         }
     }
 }

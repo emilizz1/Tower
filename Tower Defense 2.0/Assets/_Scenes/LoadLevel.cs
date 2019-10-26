@@ -1,32 +1,24 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Towers.Scenes.Loading;
 
 namespace Towers.Scenes
 {
     public class LoadLevel : MonoBehaviour
     {
         AsyncOperation async;
+        public int sceneToLoad;
 
         public void LoadScene(int scene)
         {
-            StartCoroutine(LoadNewScene(4));
-            StartCoroutine(LoadNewScene(scene));
+            sceneToLoad = scene;
+            SceneManager.LoadScene(4);
         }
 
-        IEnumerator LoadNewScene(int scene)
+        public int GetSceneToLoad()
         {
-            async = SceneManager.LoadSceneAsync(scene);
-
-            while (!async.isDone)
-            {
-                yield return null;
-            }
-        }
-
-        public float GetLoadingProgress()
-        {
-            return async.progress;
+            return sceneToLoad;
         }
     }
 }

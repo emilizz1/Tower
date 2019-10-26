@@ -28,16 +28,15 @@ namespace Towers.Events
 
         void GetRandomizableResources()
         {
-            var resourceHolder = FindObjectOfType<ResourceHolder>();
             var activeResourceSlots = FindObjectOfType<ResourceSetter>().GetActiveResourceSlots();
             Resource[] randomizableResources = new Resource[activeResourceSlots.Length -1];
             int randomizableResourceCount = 0;
             for (int i = 0; i < activeResourceSlots.Length; i++)
             {
-                if (resourceHolder.ConvertToResource(goldImage.sprite) != resourceHolder.ConvertToResource(activeResourceSlots[i].GetComponentInChildren<Image>().sprite))
+                if (ResourceHolder.instance.ConvertToResource(goldImage.sprite) != ResourceHolder.instance.ConvertToResource(activeResourceSlots[i].GetComponentInChildren<Image>().sprite))
                 {
                     var activeResourceImage = activeResourceSlots[i].GetComponentInChildren<Image>().sprite;
-                    randomizableResources[randomizableResourceCount] = resourceHolder.ConvertToResource(activeResourceImage);
+                    randomizableResources[randomizableResourceCount] = ResourceHolder.instance.ConvertToResource(activeResourceImage);
                     randomizableResourceCount++;
                 }
             }

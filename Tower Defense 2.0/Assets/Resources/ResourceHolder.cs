@@ -5,6 +5,8 @@ namespace Towers.Resources
 {
     public class ResourceHolder : MonoBehaviour
     {
+        public static ResourceHolder instance;
+
         [SerializeField] Resource[] startingResources;
         [SerializeField] Resource goldResource;
         [SerializeField] Resource woodResource;
@@ -13,6 +15,11 @@ namespace Towers.Resources
         int currentGold;
         int currentWood;
         int currentCoal;
+
+        private void Awake()
+        {
+            instance = this;
+        }
 
         public void ResetResources()
         {

@@ -38,10 +38,13 @@ namespace Towers.Scenes.RunSelection
             {
                 PerformRaycast();
                 if (hitInfo.transform.gameObject.GetComponent<LevelSelection>() &&
-                    hitInfo.transform.gameObject.GetComponent<LevelSelection>().isActive &&
-                    FindObjectsOfType<MovingResource>().Length == 0)
+                    hitInfo.transform.gameObject.GetComponent<LevelSelection>().isActive)
                 {
-                    GetComponent<LoadLevel>().LoadScene(hitInfo.transform.gameObject.GetComponent<LevelSelection>().GetLevel());
+                    foreach(MovingResource movingResource in FindObjectsOfType<MovingResource>())
+                    {
+                        movingResource.GiveResourceInstantly();
+                    }
+                    FindObjectOfType<LoadLevel>().LoadScene(hitInfo.transform.gameObject.GetComponent<LevelSelection>().GetLevel());
                 }
             }
         }

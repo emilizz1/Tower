@@ -12,22 +12,17 @@ namespace Towers.Resources
 
         GameObject[] resourceSlots;
         Transform deliveringFrom;
-        ResourceHolder resourceHolder;
 
         void Update()
         {
-            if (resourceHolder == null)
-            {
-                resourceHolder = FindObjectOfType<ResourceHolder>();
                 updateResourceText();
-            }
         }
 
         public void updateResourceText()
         {
             for (int i = 0; i < resourceSlots.Length; i++)
             {
-                resourceSlots[i].GetComponentInChildren<Text>().text = resourceHolder.getCurrentResources(resourceSlots[i].GetComponentInChildren<Image>().sprite).ToString();
+                resourceSlots[i].GetComponentInChildren<Text>().text = ResourceHolder.instance.getCurrentResources(resourceSlots[i].GetComponentInChildren<Image>().sprite).ToString();
             }
         }
         
@@ -45,14 +40,14 @@ namespace Towers.Resources
             foreach (Resource resource in Resources)
             {
                 GameObject createdResource;
-                if (attachToTransform) // When delivering from higher sorting layer canvas
-                {
-                    createdResource = Instantiate(resourceImage, carryFrom.position, Quaternion.identity, carryFrom);
-                }
-                else
-                {
+                //if (attachToTransform) // When delivering from higher sorting layer canvas
+                //{
+                //    createdResource = Instantiate(resourceImage, carryFrom.position, Quaternion.identity, carryFrom);
+                //}
+                //else
+                //{
                     createdResource = Instantiate(resourceImage, carryFrom.position, Quaternion.identity, transform);
-                }
+                //}
                 createdResource.GetComponent<Image>().sprite = resource.GetSprite();
                 createdResource.AddComponent<MovingResource>();
                 createdResource.GetComponent<MovingResource>().GiveResourceMovementInfo(GetResourceDestination(resource), resourceGatherSpeed, resource);
@@ -86,7 +81,7 @@ namespace Towers.Resources
                         currentResource++;
                     }
                 }
-                if(resourceHolder.getCurrentResources(resourceSlots[i].GetComponentInChildren<Image>().sprite) < currentResource) { return false; }
+                if(ResourceHolder.instance.getCurrentResources(resourceSlots[i].GetComponentInChildren<Image>().sprite) < currentResource) { return false; }
             }
             StartCoroutine(PayResources(resources));
             return true;
@@ -112,7 +107,7 @@ namespace Towers.Resources
             Vector3 target = new Vector3(createdResource.transform.position.x, createdResource.transform.position.y + dissapearingResourceOffset, 0f);
             while (Vector3.Distance(createdResource.transform.position, target) > 1f)
             {
-                createdResource.transform.position = Vector3.MoveTowards(createdResource.transform.position, target, resourceGatherSpeed / 3);
+                createdResource.transform.position = Vector3.MoveTowards(createdResource.transform.position, target, resourceGatherSpeed / 3 * Time.deltaTime);
                 createdResImageColor.a = createdResImageColor.a - 0.05f;
                 createdResource.GetComponent<Image>().color = createdResImageColor;
                 yield return new WaitForSeconds(0.05f);
@@ -142,7 +137,6 @@ namespace Towers.Resources
         public void GiveActiveResourceSlots(GameObject[] activeResourceSlots)
         {
             resourceSlots = activeResourceSlots;
-            resourceHolder = FindObjectOfType<ResourceHolder>();
             updateResourceText();
         }
 
